@@ -1,22 +1,27 @@
 'use client'
 import { useRouter } from "next/navigation"
+import { useGetProductsQuery, useGetProductsByIdQuery } from "@/src/redux/services/productApi";
 
 export default function Productos({ productos }){
   const router = useRouter();
-  console.log(productos);
+  const {data, error, isLoading, isFetching} = useGetProductsQuery(null);
+
+  if(isLoading || isFetching) return <p>Loading...</p>
+  if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
+
     return(
         <ul>
         {
-          productos.map((producto) => (
+          data?.map((producto) => (
             <li key={producto.id} onClick={() => {
               router.push(`/productos/${producto.id}`)
               }}>
               <div>
                 <h5>#{producto.id}</h5>
                 <h2>{producto.title}</h2>
-                <h3>{producto.price}</h3>
+                <h3>{producto.precio}</h3>
               </div>
-              <img src={producto.image} alt={producto.id} />
+              <img src={producto.imagen} alt={producto.id} />
             </li>
           ))
         }
