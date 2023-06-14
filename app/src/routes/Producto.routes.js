@@ -8,7 +8,7 @@ const ProductoRouter = Router();
 
 ProductoRouter.get("/", HandlerProducto);
 
-// ProductoRouter.get("/:id", () => {});
+ProductoRouter.get("/:id", () => {});
 
 // ProductoRouter.post("/", () => {});
 
