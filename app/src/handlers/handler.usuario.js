@@ -1,4 +1,5 @@
-const createUser = require("../controllers/createUser");
+const createUser = require("../controllers/Usuarios/createUser");
+const allUsuario = require("../controllers/Usuarios/usuarios")
 
 const HandlerCrearUsuario = async(req, res) => {
     const user = req.body;
@@ -10,6 +11,14 @@ const HandlerCrearUsuario = async(req, res) => {
     }
 }
 
+const HandlerAllUsuarios = async (req, res) => {
+    try {
+        const ress = await allUsuario()
+        res.status(200).json(ress);
+    } catch (error) {
+        res.status(500).json({msg: error.message})
+    }
+}
 
 
-module.exports = { HandlerCrearUsuario }
+module.exports = { HandlerCrearUsuario, HandlerAllUsuarios }

@@ -1,12 +1,12 @@
 const { Router } = require("express");
 
-const {HandlerCrearUsuario} = require("../handlers/handler.usuario");
+const {HandlerCrearUsuario, HandlerAllUsuarios} = require("../handlers/handler.usuario");
 
 const UsuarioRouter = Router();
 
 UsuarioRouter.post("/", HandlerCrearUsuario);
 
-UsuarioRouter.get("/", () => {});
+UsuarioRouter.get("/", HandlerAllUsuarios);
 
 // UsuarioRouter.post("/", () => {});
 

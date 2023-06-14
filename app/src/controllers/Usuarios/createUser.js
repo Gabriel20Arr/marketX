@@ -1,5 +1,5 @@
-const db = require('../database/index');
-const Usuario = require('../models/Usuario');
+const db = require('../../database/index');
+const Usuario = require('../../models/Usuario');
 
 const createUser = async ({ nombre, correo, contraseña, rol }) => {
   if (!nombre || !correo || !contraseña ||!rol) {
