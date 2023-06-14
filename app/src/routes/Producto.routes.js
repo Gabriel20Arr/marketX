@@ -1,15 +1,16 @@
 const { Router } = require("express");
 
 const {
-  HandlerProducto,
+  HandlerProducto, HandlerAllProductos
 } = require("../handlers/handler.producto");
 
 const ProductoRouter = Router();
 
-ProductoRouter.get("/", HandlerProducto);
+ProductoRouter.post("/", HandlerProducto);
+
+ProductoRouter.get("/", HandlerAllProductos);
 
 // ProductoRouter.get("/:id", () => {});
 
-// ProductoRouter.post("/", () => {});
 
 module.exports = ProductoRouter;
