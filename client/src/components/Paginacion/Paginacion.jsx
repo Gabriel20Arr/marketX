@@ -1,29 +1,32 @@
 "use client"
 
+import { useGetProductsQuery, useGetProductsByIdQuery } from "@/src/redux/services/productApi";
 import ReactPaginate from "react-paginate";
 import style from "./Paginacion.module.css" 
 import { useState } from "react"
 import { useParams } from "react-router-dom";
 
-const  Paginacion = ({items}) => {
+const Paginacion = () => {
 
   const { pageNumber } = useParams(); 
   const [ currentPage, setCurrentPage ] = useState(pageNumber ? pageNumber - 1 : 0);
   const itemsPerPage = 10;
-  
-  // Calcula la sección de elementos para mostrar en la pagina actual.
   const offset = currentPage * itemsPerPage;
+
+  const {data, error, isLoading, isFetching} = useGetProductsQuery(null);
+  
+  if(isLoading || isFetching) return <p>Loading...</p>
+  if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
 
 
   const handlePageChange  = ({ selected  }) => {
     setCurrentPage( selected );
-    window.scrollTo(0, 0); // Muestra la parte superior de la pagina 
+    window.scrollTo(0, 0);
   }
 
-  const currentItems = items.slice(offset, offset + itemsPerPage);
+  const currentItems = data.slice(offset, offset + itemsPerPage);
 
-  // calcula el número de páginas en función de la cantidad de elementos
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const pageCount = Math.ceil(data.length / itemsPerPage);
 
   return (
     <>
@@ -59,4 +62,4 @@ const  Paginacion = ({items}) => {
   );
 };
 
-export default Paginacion
+export default Paginacion;

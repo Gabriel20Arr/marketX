@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation"
 import { useGetProductsQuery, useGetProductsByIdQuery } from "@/src/redux/services/productApi";
 
-export default function Productos({ productos }){
+export default function Productos(){
   const router = useRouter();
   const {data, error, isLoading, isFetching} = useGetProductsQuery(null);
 

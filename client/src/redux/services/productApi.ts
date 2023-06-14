@@ -13,7 +13,7 @@ type Product = {
 export const productsApi = createApi({
     reducerPath: 'productAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3001/'
+        baseUrl: 'https://jsonplaceholder.typicode.com/posts'
     }),
     endpoints: (builder) => ({
         getProducts: builder.query<Product[], null>({

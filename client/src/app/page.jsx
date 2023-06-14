@@ -1,11 +1,9 @@
-import Productos from '../components/Productos/Productos';
 
-export default async function HomePage() {
+export default function HomePage() {
 
   return (
     <div>
-      <h1>ESTA ES LA HOME PAGE</h1>
-      <Productos />
+      <h1>ESTE ES EL LANDING</h1>
     </div>
   )
 }
