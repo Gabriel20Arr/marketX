@@ -1,9 +1,12 @@
 
-export default function HomePage() {
+export default function Landing() {
 
   return (
     <div>
-      <h1>ESTE ES EL LANDING</h1>
+      <h4>Bienvenido a</h4>
+      <h1>marketX</h1>
+      <br/>
+      <h5>Todo el mundo de la tecnología en un solo lugar</h5>
     </div>
   )
 }
