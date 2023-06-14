@@ -13,7 +13,11 @@ const UsuarioSchema = new Schema({
     contraseña: {
         type: String,
         required: true
-    }
+    },
+    rol: {
+        type: String,
+        required: true
+    },
 }, {
     timestamps: true
 })
