@@ -5,13 +5,13 @@ const categorias = new mongoose.Schema({
   nombre: {
     type: String,
     require: true,
-    minlength: 5,
+    minlength: [5, "Minimo se requiere que el nombre posea 5 caracateres"],
   },
   descripcion: {
     type: String,
     require: true,
-    minlength: 30,
-    maxlength: 200,
+    minlength: [30, "No se cumple la longitud minima de 30 caracteres"],
+    maxlength: [300, "Se esta excediendo la longitud maxima de 300 caracteres"],
   },
 });
 
