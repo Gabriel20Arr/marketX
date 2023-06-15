@@ -8,6 +8,7 @@ const buscarProductoPorId = async (req, res) => {
     try {
         const producto = await Producto.findById(id)
             .populate({
+                path: 'categoria',
                 select: 'nombre',
                 model: Categoria,
             })
