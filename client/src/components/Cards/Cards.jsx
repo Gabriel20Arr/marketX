@@ -1,17 +1,14 @@
-import React from 'react'
+import React from 'react';
 import Card from '../Card/Card';
 
-export default function Cards({currentItems}) {
-  return (
-    <div>
-        <div>
-        {currentItems.map((item, index) => (
-            <div>
-            <Card item={item} key={index}/>
-            </div>
-        ))}
-      </div>
-    </div>
-
-  )
+export default function Cards({ currentItems }) {
+	return (
+		<div>
+			{currentItems.map((item) => (
+				<div key={item.id}>
+					<Card item={item} />
+				</div>
+			))}
+		</div>
+	);
 }
