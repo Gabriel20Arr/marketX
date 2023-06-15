@@ -1,3 +1,9 @@
+
+
+
+
+
+
 'use client';
 
 import React from 'react';
@@ -16,49 +22,43 @@ import Cards from '../Cards/Cards';
 import { productos } from '../../api/api';
 
 const Paginacion = () => {
-	const dispatch = useDispatch();
 	const sortOrder = useSelector((state) => state.sort.sortOrder);
+	const dispatch = useDispatch();
 	const { pageNumber } = useParams();
 	const [currentPage, setCurrentPage] = useState(
 		pageNumber ? pageNumber - 1 : 0
 	);
-	const itemsPerPage = 10;
+	const itemsPerPage = 6;
 	const offset = currentPage * itemsPerPage;
 
+	// const paginado1 = ()=>{
+	// 	setCurrentPage(1)
+	// }
+
+	
 	const { data, error, isLoading, isFetching } = useGetProductsQuery(null);
-	const items = data ? data.concat(productos) : productos;
+	const apiProductos = data || [];
+	const items = [...apiProductos, ...productos];
 
 	if (isLoading || isFetching) return <p>Loading...</p>;
 	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
 
 	const sortProducts = (products) => {
 		if (sortOrder === 'title') {
-			return products.sort((a, b) => {
-				if (a.titulo?.localeCompare && b.titulo?.localeCompare) {
-					return a.titulo.localeCompare(b.titulo);
-				}
-				return 0;
-			});
+		  return products.slice().sort((a, b) => a.titulo.localeCompare(b.titulo));
 		} else if (sortOrder === 'price') {
-			return products.sort(
-				(a, b) => parseFloat(a.precio) - parseFloat(b.precio)
-			);
+		  return products.slice().sort((a, b) => parseFloat(a.precio) - parseFloat(b.precio));
 		} else if (sortOrder === 'price-reverse') {
-			return products.sort(
-				(a, b) => parseFloat(b.precio) - parseFloat(a.precio)
-			);
+		  return products.slice().sort((a, b) => parseFloat(b.precio) - parseFloat(a.precio));
 		} else if (sortOrder === 'quantitySold') {
-			return products.sort(
-				(a, b) => parseInt(a.cantidadVenta) - parseInt(b.cantidadVenta)
-			);
+		  return products.slice().sort((a, b) => parseInt(a.cantidadVenta) - parseInt(b.cantidadVenta));
 		} else if (sortOrder === 'quantitySold-reverse') {
-			return products.sort(
-				(a, b) => parseInt(b.cantidadVenta) - parseInt(a.cantidadVenta)
-			);
-		} else {
-			return products;
+		  return products.slice().sort((a, b) => parseInt(b.cantidadVenta) - parseInt(a.cantidadVenta));
+		} else if (sortOrder === 'reverse') {
+		  return products.slice().reverse();
 		}
-	};
+	  };
+
 
 	const handlePageChange = ({ selected }) => {
 		setCurrentPage(selected);
@@ -73,23 +73,40 @@ const Paginacion = () => {
 
 	return (
 		<>
-			<div className={style['sort-buttons']}>
+			 <div className={style['sort-buttons']}>
+                <h3>A-Z</h3>
+                <select onChange={() => dispatch(setSortOrder('title'))} onClick={() => dispatch(setCurrentPage(1))}>
+                    <option value="default" hidden>Default</option>
+                    <option value="ascendente">Ascendente</option>
+                </select>
+				<h3>Precio</h3>
+                <select onChange={() => dispatch(setSortOrder('price'))}>
+                    <option value="default" disabled hidden>Default</option>
+                    <option value="ascendente">Ascendente</option>
+                </select>
+				<h3>A-Z</h3>
+                <select onChange={() => dispatch(setSortOrder('title'))}>
+                    <option value="default">Default</option>
+                    <option value="ascendente">Ascendente</option>
+                </select>
+
+			{/* <div className={style['sort-buttons']}>
 				<button onClick={() => dispatch(setSortOrder('title'))}>
 					Sort by Title
-				</button>
+				</button> */}
 				<button onClick={() => dispatch(setSortOrder('price'))}>
 					Sort by Price
 				</button>
 				<button onClick={() => dispatch(setSortOrder('quantitySold'))}>
 					Sort by Quantity Sold
 				</button>
+				<button onClick={() => dispatch(setSortOrder('reverse'))}>
+					Restore
+				</button>
 			</div>
+
+
 			<Cards currentItems={currentItems} />
-			<div>
-				{currentItems.map((item) => (
-					<Card item={item} key={item.id} />
-				))}
-			</div>
 			<ReactPaginate
 				pageCount={pageCount}
 				onPageChange={handlePageChange}
