@@ -4,26 +4,52 @@ import { useState } from "react"
 import Style from './Loging.module.css';
 import image from '../../images/WhatsApp Image 2023-06-13 at 8.46.20 PM.jpeg';
 import Image from "next/image";
+import { useGetUsersQuery } from "@/src/redux/services/userApi";
+import { useRouter } from "next/navigation";
 
 export default function Registrarse() {
   const [usuario, setUsuario] = useState({
     correo:'',
     contraseña:''
   });
+  
+  const [error, setError] = useState({
+    correo:'',
+    contraseña:''
+  });
+
+  const {data} = useGetUsersQuery(null);
+  const router = useRouter();
 
   const handlerUsuario = (e)=>{
     const {value, name} = e.target;
     setUsuario({...usuario, [name]:value});
   };
 
-  const handlerSubmit =(e)=>{
+  const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log(usuario);
-    setUsuario({
-      correo:'',
-      contraseña:''
-    })
-  }
+    const correos = data && data.map(user => user.correo).includes(usuario.correo);
+    const contraseñas = data && data.map(user => user.contraseña).includes(usuario.contraseña);
+    if (contraseñas && correos) {
+      setUsuario({
+        correo: '',
+        contraseña: ''
+      });
+      setError({
+        correo: '',
+        contraseña: ''
+      });
+      alert("Se inicio sesion correctamente");
+      router.push('/home');
+    } else {
+      setError(prevError => ({
+        ...prevError,
+        correo: correos ? '' : 'correo no registrado',
+        contraseña: correos ? (contraseñas ? '' : 'contraseña incorrecta') : ''
+      }));
+    }
+  };
+  
 
   return (
     <div className={Style.container}>
@@ -32,11 +58,16 @@ export default function Registrarse() {
         width={230} height={500} alt=""/>
       </div>
       <div className={Style.form}>
-        <h1>Registrese gratis</h1>
+        <h1>Inisiar sesión</h1>
+
         <span>correo: </span>
         <input type="text" name="correo" onChange={handlerUsuario} value={usuario.correo}/><br />
+        <p>{error.correo ? error.correo : ''}</p><br />
+
         <span>contraseña: </span>
         <input type="text" name="contraseña" onChange={handlerUsuario} value={usuario.contraseña}/><br />
+        <p>{error.contraseña ? error.contraseña : ''}</p><br />
+
         <button type="submit" onClick={handlerSubmit}>Continuar</button>
       </div>
     </div>
