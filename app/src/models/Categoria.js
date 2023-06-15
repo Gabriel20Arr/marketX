@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Producto = require("./Producto");
 
 // 1.definir el schema
 const categorias = new mongoose.Schema({
@@ -12,6 +13,10 @@ const categorias = new mongoose.Schema({
     require: true,
     minlength: [30, "No se cumple la longitud minima de 30 caracteres"],
     maxlength: [300, "Se esta excediendo la longitud maxima de 300 caracteres"],
+  },
+  Producto: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Producto,
   },
 });
 

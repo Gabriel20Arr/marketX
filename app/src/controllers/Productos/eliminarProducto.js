@@ -1,7 +1,8 @@
 const Producto = require("../../models/Producto");
 
 const eliminarProducto = async (id) => {
-  const productoEliminado = await Producto.findByIdAndRemove({ _id: id });
+  const productoEliminado = await Producto.deleteOne({ _id: id });
+
   return productoEliminado;
 };
 
