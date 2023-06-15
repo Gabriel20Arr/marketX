@@ -5,7 +5,8 @@ import ReactPaginate from "react-paginate";
 import style from "./Paginacion.module.css" 
 import { useState } from "react"
 import { useParams } from "react-router-dom";
-import Cards from '../Cards/Cards'
+import Cards from '../Cards/Cards';
+import {productos} from '../../api/api';
 
 const Paginacion = () => {
 
@@ -15,6 +16,7 @@ const Paginacion = () => {
   const offset = currentPage * itemsPerPage;
 
   const {data, error, isLoading, isFetching} = useGetProductsQuery(null);
+  const items = data.concat(productos);
   
   if(isLoading || isFetching) return <p>Loading...</p>
   if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
@@ -25,9 +27,9 @@ const Paginacion = () => {
     window.scrollTo(0, 0);
   }
 
-  const currentItems = data.slice(offset, offset + itemsPerPage);
+  const currentItems = items.slice(offset, offset + itemsPerPage);
 
-  const pageCount = Math.ceil(data.length / itemsPerPage);
+  const pageCount = Math.ceil(items.length / itemsPerPage);
 
   return (
     <>
