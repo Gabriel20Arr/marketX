@@ -31,10 +31,6 @@ const Paginacion = () => {
 	const itemsPerPage = 6;
 	const offset = currentPage * itemsPerPage;
 
-	// const paginado1 = ()=>{
-	// 	setCurrentPage(1)
-	// }
-
 	
 	const { data, error, isLoading, isFetching } = useGetProductsQuery(null);
 	const apiProductos = data || [];
@@ -73,40 +69,28 @@ const Paginacion = () => {
 
 	return (
 		<>
-			 <div className={style['sort-buttons']}>
-                <h3>A-Z</h3>
-                <select onChange={() => dispatch(setSortOrder('title'))} onClick={() => dispatch(setCurrentPage(1))}>
-                    <option value="default" hidden>Default</option>
-                    <option value="ascendente">Ascendente</option>
-                </select>
-				<h3>Precio</h3>
-                <select onChange={() => dispatch(setSortOrder('price'))}>
-                    <option value="default" disabled hidden>Default</option>
-                    <option value="ascendente">Ascendente</option>
-                </select>
-				<h3>A-Z</h3>
-                <select onChange={() => dispatch(setSortOrder('title'))}>
-                    <option value="default">Default</option>
-                    <option value="ascendente">Ascendente</option>
-                </select>
-
-			{/* <div className={style['sort-buttons']}>
+			<div className={style['sort-buttons']}>
 				<button onClick={() => dispatch(setSortOrder('title'))}>
-					Sort by Title
-				</button> */}
-				<button onClick={() => dispatch(setSortOrder('price'))}>
-					Sort by Price
-				</button>
-				<button onClick={() => dispatch(setSortOrder('quantitySold'))}>
-					Sort by Quantity Sold
+					A-Z
 				</button>
 				<button onClick={() => dispatch(setSortOrder('reverse'))}>
-					Restore
+					Z-A
+				</button>
+				<button onClick={() => dispatch(setSortOrder('price'))}>
+					MENOR A MAYOR PRECIO
+				</button>
+				<button onClick={() => dispatch(setSortOrder('price-reverse'))}>
+					MAYOR A MENOR PRECIO
+				</button>
+				<button onClick={() => dispatch(setSortOrder('quantitySold'))}>
+					MÁS VENDIDO
+				</button>
+				<button onClick={() => dispatch(setSortOrder('reverse'))}>
+					RESTORE
 				</button>
 			</div>
-
-
 			<Cards currentItems={currentItems} />
+			
 			<ReactPaginate
 				pageCount={pageCount}
 				onPageChange={handlePageChange}
