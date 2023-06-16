@@ -3,6 +3,7 @@
 import { useState } from "react";
 import validation from './validation';
 import axios from "axios";
+import style from './Form.module.css';
 
 export default function CrearProducto(){
     const [form, setForm] = useState({
@@ -55,30 +56,30 @@ export default function CrearProducto(){
                 <h3>Completa los siguientes datos para publicar un producto: </h3>
                 <div>
                     <label htmlFor="">Título: </label>
-                    <input type="text" name="titulo" value={form.titulo} onChange={changeHandler} />
-                    {errors.titulo && <span>{errors.titulo}</span>}
+                    <input type="text" name="titulo" className={style.formInput} value={form.titulo} onChange={changeHandler} />
+                    {errors.titulo && <span className={style.errors}>{errors.titulo}</span>}
                 </div>
                 <div>
                     <label htmlFor="">Categoría: </label>
-                    <input type="text" name="categoria" value={form.categoria} onChange={changeHandler}/>
-                    {errors.categoria && <span>{errors.categoria}</span>}
+                    <input type="text" name="categoria" className={style.formInput} value={form.categoria} onChange={changeHandler}/>
+                    {errors.categoria && <span className={style.errors}>{errors.categoria}</span>}
                 </div>
                 <div>
                     <label htmlFor="">Imagen: </label>
-                    <input type="text" name="imagen" value={form.imagen} onChange={changeHandler}/>
-                    {errors.imagen && <span>{errors.imagen}</span>}
+                    <input type="text" name="imagen" className={style.formInput} value={form.imagen} onChange={changeHandler}/>
+                    {errors.imagen && <span className={style.errors}>{errors.imagen}</span>}
                 </div>
                 <div>
                     <label htmlFor="">Precio (AR$): </label>
-                    <input type="text" name="precio" value={form.precio} onChange={changeHandler}/>
-                    {errors.precio && <span>{errors.precio}</span>}
+                    <input type="text" name="precio" className={style.formInput} value={form.precio} onChange={changeHandler}/>
+                    {errors.precio && <span className={style.errors}>{errors.precio}</span>}
                 </div>
                 <div>
                     <p>Descripción del producto: </p>
-                    <textarea name="descripcion" id="" cols="60" rows="10" value={form.descripcion} onChange={changeHandler}></textarea>
-                    {errors.descripcion && <span>{errors.descripcion}</span>}
+                    <textarea name="descripcion" className={style.formInput} id="" cols="60" rows="10" value={form.descripcion} onChange={changeHandler}></textarea>
+                    {errors.descripcion && <p className={style.errors}>{errors.descripcion}</p>}
                 </div>
-                <button type="submit" disabled={errors.titulo || errors.categoria || errors.imagen || errors.precio || errors.descripcion}>PUBLICAR</button>
+                <button type="submit" className={style.submitButton} disabled={errors.titulo || errors.categoria || errors.imagen || errors.precio || errors.descripcion}>PUBLICAR</button>
             </div>
         </form>
     )

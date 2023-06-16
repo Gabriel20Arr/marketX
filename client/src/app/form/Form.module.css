@@ -1,0 +1,43 @@
+.formInput{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.errors{
+    margin-left: 10px;
+    color: red;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.submitButton{
+    padding: 10px;
+    background-color: aqua;
+    color: darkblue;
+    border-radius: 20px;
+    border: 2px solid black;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.submitButton:hover{
+    cursor: pointer;
+    transition: 0.1s;
+    background-color: blue;
+    box-shadow: 0 0 20px aqua;
+    color: white;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.submitButton:disabled{
+    background-color: rgba(255, 255, 255, 0.43);
+    color: rgb(64, 64, 64);
+    font-size: 20px;
+    box-shadow: 0;
+    border: 2px solid black;
+}
