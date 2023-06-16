@@ -19,7 +19,7 @@ const Paginacion = () => {
   
   if(isLoading || isFetching) return <p>Loading...</p>
   if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
-  const items = data?data.concat(productos):productos;
+  const items = data.concat(productos);
 
   const handlePageChange  = ({ selected  }) => {
     setCurrentPage( selected );
