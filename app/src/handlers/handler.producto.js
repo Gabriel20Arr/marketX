@@ -24,16 +24,7 @@ const HandlerIdProductos = async (req, res) => {
   const { id } = req.params;
   try {
     const producto = await productoId(id);
-    if (!producto) {
-      return res.status(404).json({ error: "Producto no encontrado" });
-    }
-    const cleanProducto = {
-      titulo: producto.titulo,
-      categoria: producto.categoria,
-      imagen: producto.imagen,
-      precio: producto.precio,
-    };
-    res.status(200).json(cleanProducto);
+    res.status(200).json(producto);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
