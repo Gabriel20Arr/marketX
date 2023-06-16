@@ -9,6 +9,7 @@ import {
 import ReactPaginate from 'react-paginate';
 import style from './Paginacion.module.css';
 import Cards from '../Cards/Cards';
+
 import { productos } from '../../api/api';
 
 const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
@@ -101,6 +102,7 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 			/>
 		</>
 	);
+
 };
 
 export default Paginacion;
