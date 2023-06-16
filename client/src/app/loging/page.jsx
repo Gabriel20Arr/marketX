@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Style from './Loging.module.css';
 import image from '../../images/WhatsApp Image 2023-06-13 at 8.46.20 PM.jpeg';
 import Image from "next/image";
@@ -17,7 +17,6 @@ export default function Registrarse() {
     correo:'',
     contraseña:''
   });
-
   const {data} = useGetUsersQuery(null);
   const router = useRouter();
 
