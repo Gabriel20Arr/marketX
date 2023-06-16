@@ -1,4 +1,4 @@
-let productos = [
+ const productos = [
   {
     id: 1,
     titulo: "Placa de video NVIDIA GeForce RTX 3080",
@@ -99,4 +99,4 @@ let productos = [
     cantidadVenta: 6
   }
 ];
-
+module.exports=productos;

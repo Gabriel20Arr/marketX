@@ -1,5 +1,8 @@
+'use client'
+
 import { Providers } from '../redux/Providers/Providers';
 import NavBar from '../components/NavBar/NavBar';
+import { usePathname } from 'next/navigation';
 
 export const metadata = {
   title: 'Create Next App',
@@ -7,6 +10,8 @@ export const metadata = {
 }
 
 export default function RootLayout({children}){
+  const router = usePathname();
+  console.log(router);
   return (
     <html lang="en">
       <head>
@@ -14,7 +19,7 @@ export default function RootLayout({children}){
       </head>
         <body >
           <Providers>
-            <NavBar />
+           {(router !='/' && router!='/loging' && router!='/registrarse')? <NavBar />:''}
             <div className='container p-4'>
               {children}
             </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useGetProductsQuery, useGetProductsByIdQuery } from "@/src/redux/services/productApi";
+import { useGetProductsByIdQuery, useGetProductsQuery } from "@/src/redux/services/productApi";
 import ReactPaginate from "react-paginate";
 import style from "./Paginacion.module.css" 
 import { useState } from "react"
@@ -15,12 +15,11 @@ const Paginacion = () => {
   const itemsPerPage = 10;
   const offset = currentPage * itemsPerPage;
 
-  const {data, error, isLoading, isFetching} = useGetProductsQuery(null);
+  let {data, error, isLoading, isFetching} = useGetProductsQuery(null);
   
   if(isLoading || isFetching) return <p>Loading...</p>
-  if(error || data === null) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
-  const items = data?.concat(productos);
-
+  if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
+  const items = data?data.concat(productos):productos;
 
   const handlePageChange  = ({ selected  }) => {
     setCurrentPage( selected );
