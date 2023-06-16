@@ -13,6 +13,9 @@ export default function Navigation(){
               <li className="nav-item">
                 <Link className="nav-link" href="/favoritos">Productos favoritos</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" href="/form">Publicar un producto</Link>
+              </li>
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown

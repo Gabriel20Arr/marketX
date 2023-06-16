@@ -5,7 +5,7 @@ export default function Cards({currentItems}) {
   return (
     <div>
         <div>
-        {currentItems.map((item, index) => (
+        {currentItems?.map((item, index) => (
             <div>
             <Card item={item} key={index}/>
             </div>

@@ -16,10 +16,10 @@ const Paginacion = () => {
   const offset = currentPage * itemsPerPage;
 
   const {data, error, isLoading, isFetching} = useGetProductsQuery(null);
-  const items = data.concat(productos);
   
   if(isLoading || isFetching) return <p>Loading...</p>
-  if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
+  if(error || data === null) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
+  const items = data?.concat(productos);
 
 
   const handlePageChange  = ({ selected  }) => {
@@ -27,9 +27,9 @@ const Paginacion = () => {
     window.scrollTo(0, 0);
   }
 
-  const currentItems = items.slice(offset, offset + itemsPerPage);
+  const currentItems = items?.slice(offset, offset + itemsPerPage);
 
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const pageCount = Math.ceil(items?.length / itemsPerPage);
 
   return (
     <>
