@@ -9,12 +9,19 @@ export default function Card({item}) {
   return (
     <div className={style.cont}>
         {item.id?<article>
-            <h2 className={style.name} onClick={()=>handlerDetail()}>{item.titulo}</h2>
-            
-            <img className={style.img} src={item.imagen} alt="" />
-            
-            <h2>{item.precio}</h2>
+            <div className={style.contT}>
+              <h2 className={style.name} >{item.titulo}</h2>
+            </div>            
 
+            <div className={style.Countimg}>
+              <img className={style.img} src={item.imagen} alt="" />
+            </div>
+            
+            <div className={style.Countprecio}>
+              <h2 className={style.precio}> ${item.precio}</h2>
+            </div>
+
+            <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
         </article>:null}
     </div>
   )
