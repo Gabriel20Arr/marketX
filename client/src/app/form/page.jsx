@@ -46,9 +46,9 @@ export default function CrearProducto(){
             precio: '',
             cantidadVenta: ''
           });
-          alert("Creacion Exitosa ");
+          alert("El producto se ha publicado exitosamente");
         } catch (error) {
-          alert("Esta actividad ya esta creada");
+          alert("Error al publicar el producto");
         }
       };
 

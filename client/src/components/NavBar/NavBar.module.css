@@ -2,19 +2,26 @@
     margin-bottom: 25px;
     margin-top: 0;
 
-    background-color: rgba(0, 0, 255, 0.646);
+    background-color: #030a32;
+
+    border-radius: 20px;
 }
 
 .NavConteiner{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     border: 1px solid aliceblue;
 
-    padding: 15px 0;
+    padding: 5px 20px;
 
     color: aliceblue;
+}
+
+.logo{
+    height: 100px;
+    width: fit-content;
 }
 
 .btn{
@@ -25,12 +32,14 @@
     padding: 9px;
     color: black;
 
-    font-size: large;
+    font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
     
-    background-color: aliceblue;
+    background-color: #0df3ff;
 }
 
 .btn:hover{
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: 0.2s;
+    box-shadow: 0 2px 4px #0df3ff;
 }
