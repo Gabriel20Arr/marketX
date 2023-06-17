@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import style from "./Card.module.css";
 
 export default function Card({item}) {
   const router = useRouter();
@@ -6,12 +7,21 @@ export default function Card({item}) {
     item.id?router.push(`/home/${item.id}`):console.log('no');
   }
   return (
-    <div>
+    <div className={style.cont}>
         {item.id?<article>
-            <h2 onClick={()=>handlerDetail()}>{item.titulo}</h2>
-            <h2>{item.precio}</h2>
-            <img src={item.imagen} alt="" />
+            <div className={style.contT}>
+              <h2 className={style.name} >{item.titulo}</h2>
+            </div>            
 
+            <div className={style.Countimg}>
+              <img className={style.img} src={item.imagen} alt="" />
+            </div>
+            
+            <div className={style.Countprecio}>
+              <h2 className={style.precio}> ${item.precio}</h2>
+            </div>
+
+            <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
         </article>:null}
     </div>
   )
