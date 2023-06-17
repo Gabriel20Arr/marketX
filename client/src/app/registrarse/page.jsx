@@ -70,13 +70,13 @@ export default function Registrarse() {
       <div className={Style.image}>
         <Image src={image} width={230} height={500} alt="" />
       </div>
-      <div className="d-flex aling-items-center justify-content-center w-100">
+      <div className="d-flex aling-items-center justify-content-center w-100 border  pb-5">
         <div className={Style.form}>
-          <h2 className="mb-3 text-center">Registrese gratis</h2>
+          <h2 className="mb-3 mt-3 text-center">Registrese gratis</h2>
           <form onSubmit={handlerSubmit}>
             <div className="mb-2">
               <label className="form-label" htmlFor="nombre">
-                nombre:
+                Nombre :
               </label>
               <input
                 className="form-control"
@@ -85,11 +85,13 @@ export default function Registrarse() {
                 onChange={handlerUsuario}
                 value={usuario.nombre}
               />
-              <p className="form-text">{error.nombre ? error.nombre : ""}</p>
+              <p className="form-text text-danger">
+                {error.nombre ? error.nombre : ""}
+              </p>
             </div>
             <div className="mb-2">
               <label className="form-label" htmlFor="correo">
-                correo:
+                Correo :
               </label>
               <input
                 className="form-control"
@@ -98,11 +100,13 @@ export default function Registrarse() {
                 onChange={handlerUsuario}
                 value={usuario.correo}
               />
-              <p className="form-text">{error.correo ? error.correo : ""}</p>
+              <p className="form-text text-danger">
+                {error.correo ? error.correo : ""}
+              </p>
             </div>
             <div className=" mb-2">
               <label className="form-label" htmlFor="constraseña">
-                contraseña:
+                Contraseña :
               </label>
               <input
                 className="form-control"
@@ -111,13 +115,13 @@ export default function Registrarse() {
                 onChange={handlerUsuario}
                 value={usuario.contraseña}
               />
-              <p className="form-text">
+              <p className="form-text text-danger">
                 {error.contraseña ? error.contraseña : ""}
               </p>
             </div>
             <div className="mb-3">
               <label className="form-label" htmlFor="confirmar contraseña">
-                confirmar contraseña:
+                Confirmar Contraseña :
               </label>
               <input
                 className="form-control"
@@ -126,7 +130,7 @@ export default function Registrarse() {
                 onChange={handlerUsuario}
                 value={usuario.confirme_su_contraseña}
               />
-              <p className="form-text">
+              <p className="form-text text-danger">
                 {error.confirme_su_contraseña
                   ? error.confirme_su_contraseña
                   : ""}
@@ -149,7 +153,7 @@ export default function Registrarse() {
               {existeError ? null : (
                 <button
                   disabled={buttonHablitado()}
-                  className="btn btn-success mt-2"
+                  className="btn btn-success mt-2 mb-3 "
                   type="submit"
                 >
                   Registrarse
