@@ -57,7 +57,7 @@ export default function Registrarse() {
         width={230} height={500} alt=""/>
       </div>
       <div className={Style.form}>
-        <h1>Inisiar sesión</h1>
+        <h1>Iniciar sesión</h1>
 
         <span>correo: </span>
         <input type="text" name="correo" onChange={handlerUsuario} value={usuario.correo}/><br />
