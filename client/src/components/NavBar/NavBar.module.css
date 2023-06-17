@@ -1,0 +1,36 @@
+.container{
+    margin-bottom: 25px;
+    margin-top: 0;
+
+    background-color: rgba(0, 0, 255, 0.646);
+}
+
+.NavConteiner{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 1px solid aliceblue;
+
+    padding: 15px 0;
+
+    color: aliceblue;
+}
+
+.btn{
+    border: 1px solid black;
+    border-radius: 20px;
+
+    margin: 5px;
+    padding: 9px;
+    color: black;
+
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    background-color: aliceblue;
+}
+
+.btn:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
