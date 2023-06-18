@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../../images/MarketX-newlogo (2).png';
 import styles from "./NavBar.module.css";
 
 export default function Navigation(){
@@ -6,8 +8,10 @@ export default function Navigation(){
       <nav className={styles.container}>
 
               <div className={styles.NavConteiner} >
-                <div className={styles.btn}>
-                  <Link style={{ textDecoration: "none", color: "inherit" }} className="navbar-brand" href="/home">MarketX</Link>
+                <div>
+                  <Link href="/home">
+                    <Image src={logo} className={styles.logo}/>
+                  </Link>
                 </div>
 
                   {/* <li className="nav-item">

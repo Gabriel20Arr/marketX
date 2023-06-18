@@ -12,6 +12,7 @@ export default function Cards({ currentItems }) {
 			))}
 		</div>
 	);
+
 }
 // import React from 'react'
 // import Card from '../Card/Card';
