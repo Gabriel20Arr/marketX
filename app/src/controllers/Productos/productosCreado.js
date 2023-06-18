@@ -18,7 +18,6 @@ const productoCreado = async (
     cantidadVenta,
     usuario: usuario._id,
   });
-  console.log(usuario);
 
   nuevoProducto.save();
 };

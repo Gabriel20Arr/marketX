@@ -7,8 +7,8 @@ const validation = (form) => {
     if(form.titulo.length < 4 || form.titulo.length > 140) {
         errors.titulo = 'El título del producto debe tener entre 4 y 140 caracteres';
     }
-    if(!form.imagen) {
-        errors.imagen = '(Campo obligatorio)';
+    if(!form.image && !form.imagenDowland) {
+        errors.image = '(Campo obligatorio)';
     }
     if(!form.categoria){
         errors.categoria = '(Campo obligatorio)';

@@ -8,6 +8,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use(require('../routes/index.routes'))
+  app.use(require("../routes/index.routes"));
+  
 
 module.exports = app;

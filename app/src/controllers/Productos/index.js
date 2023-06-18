@@ -3,6 +3,7 @@ const { allProductos } = require("./allProductos");
 const { eliminarProducto } = require("./eliminarProducto");
 const { productoActualizado } = require("./productoActualizado");
 const { productoCreado } = require("./productosCreado");
+const {createProduct} = require('./createProduct');
 
 module.exports = {
   productoActualizado,
@@ -10,4 +11,5 @@ module.exports = {
   productoId,
   allProductos,
   eliminarProducto,
+  createProduct
 };

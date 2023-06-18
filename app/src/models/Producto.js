@@ -1,10 +1,10 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, } = require("mongoose");
 const Usuario = require("./Usuario");
 
 const ProductoSchema = new Schema({
   titulo: {
     type: String,
-    required: true,
+    required: true, 
   },
   categoria: {
     type: String,
