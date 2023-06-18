@@ -7,19 +7,21 @@ import Image from "next/image";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import { useRouter } from "next/navigation";
 
-export default function Registrarse() {
+export default function Registrarse() {     
   const [usuario, setUsuario] = useState({
     correo:'',
     contraseña:''
   });
+  const {data:usuarios} = useGetUsersQuery(null);
+  console.log(usuarios);
   
   const [error, setError] = useState({
     correo:'',
     contraseña:''
   });
-  const {data} = useGetUsersQuery(null);
   const router = useRouter();
-
+  useEffect(()=>{
+  },[usuarios])
   const handlerUsuario = (e)=>{
     const {value, name} = e.target;
     setUsuario({...usuario, [name]:value});
@@ -27,8 +29,8 @@ export default function Registrarse() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    const correos = data && data.map(user => user.correo).includes(usuario.correo);
-    const contraseñas = data && data.map(user => user.contraseña).includes(usuario.contraseña);
+    const correos = usuarios && usuarios.map(user => user.correo).includes(usuario.correo);
+    const contraseñas = usuarios && usuarios.map(user => user.contraseña).includes(usuario.contraseña);
     if (contraseñas && correos) {
       setUsuario({
         correo: '',
