@@ -35,7 +35,13 @@ export default function Landing() {
             Inicia con google
           </span>
 
-        </button>    
+        </button> 
+
+        <span className={Style.invitadoCount}> 
+          <Link className={Style.invitado} href={"/home"} style={{ textDecoration: "none", color: "inherit" }}>
+            Ingresar como Invitado
+          </Link>
+        </span>   
 
       </div>
 

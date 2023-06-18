@@ -85,6 +85,23 @@
     padding: 10px;
 
   }
+
+  .registrar1:hover{
+    border-radius: 10px;
+
+    font-size: 21px;
+
+    /* background-color: rgb(143, 136, 136); */
+
+    width: 13em;
+
+    cursor: pointer;
+
+    box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    -webkit-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    -moz-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    
+  }
   
   .divR{
     display: flex;
@@ -97,6 +114,20 @@
     padding: 5px;
   }
 
+  .divR:hover{
+    border-radius: 10px;
+
+    /* background-color: rgb(143, 136, 136); */
+
+    font-size: 11px;
+    
+    cursor: pointer;
+
+    box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    -webkit-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    -moz-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+  }
+  
   .logo {
     max-width: 3em;
   }
@@ -106,3 +137,49 @@
     padding: 5px;
   }
   
+  .invitadoCount{
+    display: flex;
+    justify-content: center;
+    
+    padding: 5px;
+    margin: 10px;
+    margin-top: 40px;
+
+    width: 90%;
+    
+    /* border: 1px solid black; */
+  }
+  
+  .invitado{
+    display: flex;
+    justify-content: start;
+    
+    border-radius: 10px;
+
+    font-size: medium;
+    color: black;
+    
+    padding: 5px;
+    margin: 10px;
+    margin-top: 30px;
+
+    border-bottom: 1px solid black;
+  }
+
+  .invitado:hover{
+    border-radius: 10px;
+
+    font-size: large;
+
+    /* background-color: rgb(143, 136, 136); */
+    
+    padding: 5px;
+    margin: 10px;
+    margin-top: 30px;
+
+    border-bottom: 1px solid black;
+
+    box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    -webkit-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    -moz-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+  }

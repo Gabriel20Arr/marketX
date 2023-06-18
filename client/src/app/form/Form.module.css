@@ -1,8 +1,29 @@
 .container{
     display: flex;
-    justify-content: space-between;
-    padding-left: 40px;
-    padding-right: 40px;
+    justify-content: space-around;
+
+    margin-right: 0;
+    padding-left: 0;
+    /* padding-right: 40px; */
+
+    /* border: 5px solid rgb(29, 0, 63); */
+}
+
+.containerForm{
+    display: flex;
+    justify-content: center;
+    
+    padding: 60px;
+
+    border: 5px solid rgb(29, 0, 63);
+    width: 450px;
+}
+
+.title{
+    font-size: 30px;
+    color: rgb(29, 0, 63);
+    font-style: italic;
+    text-shadow: 0 0 8px rgb(50, 173, 255);
 }
 
 .consigna{
@@ -53,13 +74,14 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 25px;
     font-weight: bolder;
+
+    margin-bottom: 0;
 }
 
 .submitButton:hover{
     cursor: pointer;
     transition: 0.1s;
     background-color: rgb(40, 236, 239);
-    box-shadow: 0 0 20px aqua;
     color: rgb(29, 0, 63);
     border-color: rgb(29, 0, 63);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -77,29 +99,33 @@
 .imgContainer{
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-left: 20px;
+
     padding-bottom: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 5px solid rgb(29, 0, 63);
     border-radius: 20px;
+
+    width: 350px;
 }
 
 .img{
     margin-top: 0;
     object-fit: contain;
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .text{
-    align-self: center;
+    display: flex;
+    justify-content: center;
+
     color: rgb(29, 0, 63);
     font-size: 30px;
     font-style: italic;
     text-shadow: 0 0 8px rgb(50, 173, 255);
+
+    /* padding: 0 45px; */
 }
 

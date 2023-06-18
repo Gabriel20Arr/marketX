@@ -23,7 +23,7 @@ export const productos = [
 	},
 	{
 		id: 3,
-		titulo: 'Motherboard ASUS ROG STRIX B550-F GAMING (WI-FI)',
+		titulo: 'Motherboard ASUS ROG STRIX B550-F',
 		categoria: 'Motherboards',
 		imagen:
 			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgGfQ0ORNQl1cWy4ALB1joTR5uF-Ift-jUHg&usqp=CAU',
