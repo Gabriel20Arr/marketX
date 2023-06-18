@@ -1,114 +1,41 @@
 .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 1045px;
+  justify-content: center;
+  /* Agrega esta línea para centrar el contenido horizontalmente */
+}
 
-    /* border: 5px solid yellow; */
-    
-  }
-  
-  .image {
-    /* border: 9px solid black; */
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    width: 600px;
-    height: 600px;
-  }
+.image {
+  overflow: hidden;
+  background-image: url("../../images/teclado-3.jpg");
+  object-fit: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .formulario{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* border: 9px solid green; */
+.Logo {
+  height: 70px;
+  width: 80px;
+  margin-top: 7px;
+  margin-left: 40px;
+  border-radius: 50%;
+}
 
-    width: 600px;
-    height: 600px;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
+.containerLogo h2 {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 20px;
 
-    align-items: center;
-    justify-content: center;
+}
 
-    border: 1px solid black;
-
-    height: 31em;
-    width: 30em;
-
-    padding: 5px;
-  }
-
-  .formInput{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-
-    padding-left: 8px;
-
-    width: 20em;
-    height: 2em;
-
-    /* border: 1px solid red; */
-  }
-
-  .formInput2{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-
-    padding-left: 8px;
-
-    width: 20em;
-    height: 2em;
-
-    /* border: 1px solid red; */
-  }
-
-  .titulo{
-    display: flex;
-    justify-content: center;
-
-    width: 200px;
-
-    font-size: 30px;
-    border-bottom: 3px solid black; 
-  }
-
-  .titulos{
-    display: flex;
-    justify-content: start;
-
-    width: 250px;
-
-    font-size: 15px;
-
-    /* margin: 5px; */
-    /* border: 3px solid black;  */
-  }
-
-  .titulos2{
-    display: flex;
-    justify-content: start;
-
-    width: 250px;
-
-    font-size: 15px;
-
-    margin-top: 10px;
-    /* border: 3px solid black;  */
-  }
-
-  .errores{
-    color: red;
-    /* border-bottom: 1px solid black; */
-
-    margin-left: 5px;
-  }
+.containerLogo {
+  display: flex;
+  margin-bottom: 320px;
+}
