@@ -4,15 +4,15 @@ import { Providers } from "../redux/Providers/Providers";
 import NavBar from "../components/NavBar/NavBar";
 import { usePathname } from "next/navigation";
 
-import { Share_Tech } from 'next/font/google'
+import { Share_Tech } from "next/font/google";
 
 const inter = Share_Tech({
-  weight: ['400'],
-  size: 'xx-Larger',
+  weight: ["400"],
+  size: "xx-Larger",
   style: [],
-  subsets: ['latin'],
-  display: 'swap',
-})
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           ) : (
             ""
           )}
-          <div className="container p-4">{children}</div>
+          <div>{children}</div>
         </Providers>
       </body>
     </html>

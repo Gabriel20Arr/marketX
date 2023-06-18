@@ -1,12 +1,41 @@
 .container {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 1045px;
+  justify-content: center;
+  /* Agrega esta línea para centrar el contenido horizontalmente */
 }
 
 .image {
-  flex: 1;
-  margin-right: 20px;
-  width: 400px;
-  height: auto;
-  margin: 100px 200px;
+  overflow: hidden;
+  background-image: url("../../images/teclado-3.jpg");
+  object-fit: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Logo {
+  height: 70px;
+  width: 80px;
+  margin-top: 7px;
+  margin-left: 40px;
+  border-radius: 50%;
+}
+
+.containerLogo h2 {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+
+}
+
+.containerLogo {
+  display: flex;
+  margin-bottom: 320px;
 }

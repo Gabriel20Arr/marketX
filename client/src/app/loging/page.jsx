@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Style from "./Loging.module.css";
-import image from "../../images/WhatsApp Image 2023-06-13 at 8.46.20 PM.jpeg";
+import logo from "../../images/MarketX-newlogo.png";
 import Image from "next/image";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import { useRouter } from "next/navigation";
@@ -62,53 +62,56 @@ export default function Registrarse() {
 
   return (
     <div className={Style.container}>
-      <div className={Style.image}>
-        <Image src={image} width={230} height={500} alt="" />
-      </div>
-
-      <div className="d-flex align-items-center justify-content-center w-100 border pt-5 pb-5 pr-3 pl-1 ">
-        <form onSubmit={handlerSubmit}>
-          <h1 className="mb-3 text-center">Iniciar Sesión</h1>
-          <div className="mb-2">
-            <label htmlFor="correo" className="form-label">
-              Correo :
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              name="correo"
-              onChange={handlerUsuario}
-              value={usuario.correo}
-            />
-            <p className="form-text text-danger">
-              {error.correo ? error.correo : ""}
-            </p>
-          </div>
-          <div className="mb-2">
-            <label htmlFor="contraeña" className="form-label">
-              Contraseña :
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              name="contraseña"
-              onChange={handlerUsuario}
-              value={usuario.contraseña}
-            />
-            <p className="form-text text-danger">
-              {error.contraseña ? error.contraseña : ""}
-            </p>
-          </div>
-          <div className="d-grid gap-2 col-6 mx-auto">
-            <button
-              disabled={habilitarBoton()}
-              className="btn btn-success mt-2"
-              type="submit"
-            >
-              Ingresar
-            </button>
-          </div>
-        </form>
+      <div className={Style.image}></div>
+      <div>
+        <div className={Style.containerLogo}>
+          <Image className={Style.Logo} src={logo} alt="logo" />
+          <h2>MARKET X</h2>
+        </div>
+        <div className="d-flex align-items-center justify-content-center w-100  pb-5 mb-130 pr-145">
+          <form className={Style.form} onSubmit={handlerSubmit}>
+            <h1 className="mb-3 text-center">Iniciar Sesión</h1>
+            <div className="mb-2">
+              <label htmlFor="correo" className="form-label">
+                Correo :
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="correo"
+                onChange={handlerUsuario}
+                value={usuario.correo}
+              />
+              <p className="form-text text-danger">
+                {error.correo ? error.correo : ""}
+              </p>
+            </div>
+            <div className="mb-2">
+              <label htmlFor="contraeña" className="form-label">
+                Contraseña :
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="contraseña"
+                onChange={handlerUsuario}
+                value={usuario.contraseña}
+              />
+              <p className="form-text text-danger">
+                {error.contraseña ? error.contraseña : ""}
+              </p>
+            </div>
+            <div className="d-grid gap-2 col-6 mx-auto">
+              <button
+                disabled={habilitarBoton()}
+                className="btn btn-success mt-2"
+                type="submit"
+              >
+                Ingresar
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
