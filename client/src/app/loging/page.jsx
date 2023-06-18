@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Style from './Loging.module.css';
-import image from '../../images/WhatsApp Image 2023-06-13 at 8.46.20 PM.jpeg';
+import image from '../../images/MarketX-newlogo.png';
 import Image from "next/image";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import { useRouter } from "next/navigation";
@@ -53,22 +53,38 @@ export default function Registrarse() {
 
   return (
     <div className={Style.container}>
-      <div className={Style.image}>
-        <Image  src={image} 
-        width={230} height={500} alt=""/>
-      </div>
-      <div className={Style.form}>
-        <h1>Inisiar sesión</h1>
+    
+        <div className={Style.image}>
+          <Image  src={image} 
+          width={350} alt=""/>
+        </div>
 
-        <span>correo: </span>
-        <input type="text" name="correo" onChange={handlerUsuario} value={usuario.correo}/><br />
-        <p>{error.correo ? error.correo : ''}</p><br />
+      <div className={Style.formulario}>
 
-        <span>contraseña: </span>
-        <input type="text" name="contraseña" onChange={handlerUsuario} value={usuario.contraseña}/><br />
-        <p>{error.contraseña ? error.contraseña : ''}</p><br />
+        <div className={Style.form}>
+          <h1 className={Style.titulo}>Iniciar sesión</h1>
 
-        <button type="submit" onClick={handlerSubmit}>Continuar</button>
+          <span className={Style.titulos}>Correo: </span>
+          <div className={Style.formInput}>
+
+            <input placeholder="Correo" className={Style.Input} type="text" name="correo" onChange={handlerUsuario} value={usuario.correo}/>
+
+            <p className={Style.errores}>{error.correo ? error.correo : ''}</p>
+
+          </div>
+          
+          <span className={Style.titulos2}>Contraseña: </span>
+          <div className={Style.formInput2}>
+
+            <input placeholder="Contraseña" className={Style.Input} type="text" name="contraseña" onChange={handlerUsuario} value={usuario.contraseña}/>
+
+            <p className={Style.errores}>{error.contraseña ? error.contraseña : ''}</p>
+
+          </div>
+
+          <button type="submit" onClick={handlerSubmit}>Continuar</button>
+        </div>
+
       </div>
     </div>
   )

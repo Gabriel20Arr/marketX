@@ -1,33 +1,108 @@
+
+.formAll{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* border: 5px solid black; */
+}
+
+.formT{
+  display: flex;
+  justify-content: center;
+
+  font-size: 40px;
+  
+  border: 1px solid black;
+  padding: 25px 0;
+  
+  background-color:  #030a32;
+  color: aliceblue;
+
+  width: 90%;
+}
+
 .container {
+    /* border: 1px solid red; */
+  
     display: flex;
+    justify-content: space-around;
     align-items: center;
+
+    height: 60vh;
+    width: 90%;
   }
   
   .image {
-    flex: 1;
-    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+    /* border: 1px solid black; */
     width: 400px;
-    height: auto;
-    margin: 100px 200px;
+    height: 500px;
   }
   
   .form {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+
+    width: 500px;
+    height: 500px;
+
+  }
+
+  /* .iniciarSesion{
+    border-bottom: 3px solid black;
+  } */
+
+  .iniciarSesionFondo{
+    display: flex;
+    justify-content: space-around;
+
+    width: 13.5em;
+
+    padding-bottom: 5px;
+
+    border-bottom: 3px solid black;
+  }
+
+  .registrar1{
+    display: flex;
+    justify-content: center;
+    
+    border-radius: 10px;
+
+    font-size: x-large;
+    
+    width: 13em;
+    
+    padding: 10px;
+
+  }
+  
+  .divR{
+    display: flex;
+    justify-content: space-around;
+    
+    border-radius: 10px;
+    
+    width: 25em;
+    
+    padding: 5px;
   }
 
   .logo {
-    height: 20px;
-    width: auto;
-  }
-
-  .iniciarSesion{
-    font-size: small;
+    max-width: 3em;
   }
 
   .registrar{
-    font-size: 30px;
-    border-radius: 10px;
+    font-size: 20px;
+    padding: 5px;
   }
+  
