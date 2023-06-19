@@ -1,0 +1,146 @@
+.cont{
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+
+    height: 28em;
+    width: 18em;
+
+    margin: 20px;
+
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 255, 0.646);
+    /* background: linear-gradient(to bottom, #f6c176dd, #ffa600, #ffa6009d,#f6c176dd, 
+    #ffa600, #ffa600, #f6c176dd, #ffa600,
+    #ffa600); */
+
+    border: solid 3px black;
+    border-radius: 15px;
+    
+    -moz-osx-fond-smoothing: grayscale;
+
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+}
+
+.cont:hover{
+    transform: scale(1.05);
+}
+
+.name{
+   background-color: aliceblue; 
+    
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   border: solid 2px black;
+   border-radius: 10px;
+    
+   width: 200px;
+   max-height: fit-content; 
+   font-size: larger;
+
+   color: black;
+   
+   padding: 5px 5px;
+   margin-bottom: 10px;
+}
+
+.contT{
+    /* border: 1px solid; */
+
+    display: flex;
+    justify-content: center;
+    
+    padding: 0;
+    margin-bottom: 1px;
+}
+
+.Countimg{
+    display: flex;
+    justify-content: center;
+    
+    margin-bottom: 1px;
+}
+
+.img{
+    /* position: absolute; */
+    
+    /* top: 25%; */
+    /* left: 3%; */
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    
+    height: 200px;
+    width: 90%;
+    border-radius: 10%;
+    border: solid 2px black;
+
+}
+
+.Countprecio{
+    /* border: solid 2px black; */
+
+    width: 95%;
+    
+    display: flex;
+    justify-content: end;
+    padding: 1px;
+
+    margin-top: 5px;
+    
+}
+
+.precio{
+    display: flex;
+
+    margin: 0;
+    padding: 2px;
+    
+    /* border: solid 1px black; */
+
+    border-radius: 9px;
+
+    color: aliceblue;
+    
+    /* background-color: aliceblue; */
+    text-shadow: 3px 3px 2px  black;
+}
+
+.detalle{
+    background-color: aliceblue; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    border: solid 2px black;
+    border-radius: 10px;
+    
+    /* width: 95%; */
+    
+    width: fit-content;
+    max-height: fit-content; 
+    font-size: small;
+ 
+    color: black;
+    
+    padding:  2px;
+    
+    margin-bottom: 10px;
+}
+
+.detalle:hover{
+    cursor: pointer;
+
+    /* background-color:grey; */
+    box-shadow: 0 0  10px black;
+
+    color: gray;
+}

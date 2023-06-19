@@ -1,37 +1,91 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+
+    margin-right: 0;
+    padding-left: 0;
+    /* padding-right: 40px; */
+
+    /* border: 5px solid rgb(29, 0, 63); */
+}
+
+.containerForm{
+    display: flex;
+    justify-content: center;
+    
+    padding: 60px;
+
+    border: 5px solid rgb(29, 0, 63);
+    width: 450px;
+}
+
+.title{
+    font-size: 30px;
+    color: rgb(29, 0, 63);
+    font-style: italic;
+    text-shadow: 0 0 8px rgb(50, 173, 255);
+}
+
+.consigna{
+    color: rgb(29, 0, 63);
+    font-size: 1.3em;
+    font-weight: bolder;
+}
+
+.formLabel{
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .formInput{
     margin-left: 10px;
     margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
     border: 1px solid black;
     border-radius: 10px;
+    font-size: 18px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .errors{
     margin-left: 10px;
     color: red;
-    font-size: 15px;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.errorsDesc{
+    margin-top: 0;
+    margin-left: 10px;
+    color: red;
+    font-size: 18px;
     font-style: italic;
 }
 
 .submitButton{
     padding: 10px;
-    background-color: aqua;
-    color: darkblue;
+    background-color: rgb(29, 0, 63);
+    color: rgb(40, 236, 239);
     border-radius: 20px;
-    border: 2px solid black;
-    font-size: large;
+    border: 3px solid rgb(40, 236, 239);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
     font-weight: bolder;
+
+    margin-bottom: 0;
 }
 
 .submitButton:hover{
     cursor: pointer;
     transition: 0.1s;
-    background-color: blue;
-    box-shadow: 0 0 20px aqua;
-    color: white;
+    background-color: rgb(40, 236, 239);
+    color: rgb(29, 0, 63);
+    border-color: rgb(29, 0, 63);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bolder;
-    font-style: italic;
 }
 
 .submitButton:disabled{
@@ -41,3 +95,37 @@
     box-shadow: 0;
     border: 2px solid black;
 }
+
+.imgContainer{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding-bottom: 50px;
+    border-radius: 20px;
+
+    width: 350px;
+}
+
+.img{
+    margin-top: 0;
+    object-fit: contain;
+    width: 400px;
+    height: 400px;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+
+    color: rgb(29, 0, 63);
+    font-size: 30px;
+    font-style: italic;
+    text-shadow: 0 0 8px rgb(50, 173, 255);
+
+    /* padding: 0 45px; */
+}
+

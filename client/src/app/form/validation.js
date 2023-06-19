@@ -2,25 +2,25 @@ const validation = (form) => {
     let errors = {};
 
     if(!form.titulo) {
-        errors.titulo = '(Campo obligatorio)';
+        errors.titulo = '*';
     }
     if(form.titulo.length < 4 || form.titulo.length > 140) {
-        errors.titulo = 'El título del producto debe tener entre 4 y 140 caracteres';
+        errors.titulo = 'El título debe tener entre 4 y 140 caracteres';
     }
     if(!form.imagen) {
-        errors.imagen = '(Campo obligatorio)';
+        errors.imagen = '*';
     }
     if(!form.categoria){
-        errors.categoria = '(Campo obligatorio)';
+        errors.categoria = '*';
     }
-    if(!form.descripcion){
-        errors.descripcion = '(Campo obligatorio)';
+    if(form.descripcion.length < 1){
+        errors.descripcion = '*';
     }
     if(form.descripcion.length < 30 || form.descripcion.length > 400) {
-        errors.descripcion = 'La descripción del producto debe tener entre 30 y 400 caracteres';
+        errors.descripcion = 'La descripción debe tener entre 30 y 400 caracteres';
     }
     if(!form.precio){
-        errors.precio = '(Campo obligatorio)';
+        errors.precio = '*';
     }
     
     return errors;

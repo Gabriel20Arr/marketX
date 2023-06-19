@@ -16,7 +16,7 @@ const productoCreado = async (
     descripcion,
     precio,
     cantidadVenta,
-    usuario: usuario._id,
+    // usuario: usuario._id,
   });
   console.log(usuario);
 
