@@ -1,0 +1,72 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+  list-style: none;
+  font-style: italic;
+}
+
+.page-item {
+  margin: 0 5px;
+  list-style: none;
+}
+
+.active {
+  border: 3px solid #0df3ff;
+  font-weight: bold;
+  color: #0df3ff;
+  list-style: none;
+}
+
+.pagination .page-item {
+  display: inline-block;
+  margin-right: 10px;
+  height: 40px;
+  width: 65px;
+  padding: 5px;
+  background-color: rgb(29, 0, 63);
+  list-style: none;
+  border-radius: 15px
+}
+
+.page-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+  list-style: none;
+}
+
+.next{
+  background-color: #e2e2ee;
+  z-index: 3;
+  list-style: none;
+}
+
+.filterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #cacad5;
+  padding: 2%;
+  list-style: none;
+}
+
+.disable{
+  text-decoration: none;
+  list-style: none;
+}
+
+.next:disabled::marker{
+  text-decoration: none;
+  z-index: 1;
+  list-style: none;
+}

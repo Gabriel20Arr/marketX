@@ -1,0 +1,136 @@
+.container{
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    background-color: #030a32;
+    
+    border-radius: 20px;
+}
+
+.NavConteiner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+
+
+    /* border: 1px solid aliceblue; */
+
+    padding: 5px 20px;
+    margin-right: 20px;
+
+    color: aliceblue;
+}
+
+.logo{
+    height: 100px;
+    width: fit-content;
+}
+
+.btn{
+    border: 1px solid black;
+    border-radius: 20px;
+
+    margin: 5px;
+    padding: 4px 9px;
+    color: black;
+
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    
+    background-color: #0df3ff;
+}
+
+.btn:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 2px 4px #0df3ff;
+}
+
+.btnExit{
+    border: 1px solid black;
+    border-radius: 20px;
+
+    margin: 5px 20px;
+    padding: 4px 9px;
+    color: black;
+
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    
+    background-color: #0df3ff;
+}
+
+.btnExit:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 2px 4px #ff0d0d;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdownToggle {
+      border: 2px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 1px 8px;
+
+      background-color: transparent;
+      color: white;
+
+      rotate: 90deg;
+
+      width: fit-content;
+  }
+
+  .dropdownToggle:hover {
+    font-size: medium;
+  }
+
+  .dropdownMenu {
+    position: absolute;
+    top: 95%;
+    right: 0;
+    z-index: 1;
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    color: black;
+    padding: 0;
+    width: 10em;
+  }
+
+  .dropdownMenu li {
+    list-style: none;
+  }
+
+  .dropdownItem {
+    padding: 8px 16px;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  }
+
+  .dropdownItem:hover {
+    padding: 8px 16px;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-size: larger;
+    font-weight: bold;
+
+    background-color: #0df3ff;
+    border-radius: 10px;
+  }
+
+   /* Mostrar el menú desplegable cuando está abierto */
+  .dropdown.open .dropdownMenu {
+    display: block;
+  }
+
+  .show {
+    display: block;
+  }
+  

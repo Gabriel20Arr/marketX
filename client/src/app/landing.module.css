@@ -1,0 +1,198 @@
+
+.formAll{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* border: 5px solid black; */
+}
+
+.formT{
+  display: flex;
+  justify-content: center;
+
+  font-size: 40px;
+  
+  border: 1px solid black;
+  padding: 25px 0;
+  
+  background-color:  #030a32;
+  color: aliceblue;
+
+  width: 90%;
+}
+
+.container {
+    /* border: 1px solid red; */
+  
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 60vh;
+    width: 90%;
+  }
+  
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+    /* border: 1px solid black; */
+    width: 400px;
+    height: 500px;
+    
+  }
+
+  .imgMarketX{
+    border-radius: 0px;
+  }
+  
+  .form {
+    margin-top: 70px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #030b33;
+    border-radius: 0px;
+
+    width: 400px;
+    height: 400px;
+
+  }
+
+  .iniciarSesion{
+    margin-bottom: 40px;
+  }
+
+  .iniciarSesionFondo{
+    display: flex;
+    justify-content: space-around;
+
+    width: 15em;
+
+    padding-bottom: 5px;
+
+    border-bottom: 3px solid black;
+  }
+
+  .registrar1{
+    display: flex;
+    justify-content: center;
+    
+    border-radius: 10px;
+
+    font-size: x-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+    width: 13em;
+    
+    padding: 10px;
+    margin-bottom: 40px;
+
+    text-decoration: none;
+
+  }
+
+  .registrar1:hover{
+    border-radius: 10px;
+
+    font-size: 21px;
+
+    /* background-color: rgb(143, 136, 136); */
+
+    width: 13em;
+
+    cursor: pointer;
+
+    box-shadow: 0px -1px 12px -2px #111033;
+    -webkit-box-shadow: 0px -1px 12px -2px #111033;
+    -moz-box-shadow: 0px -1px 12px -2px #111033;
+    
+  }
+  
+  .divR{
+    display: flex;
+    justify-content: space-around;
+    
+    border-radius: 10px;
+    
+    width: 25em;
+    
+    padding: 5px;
+  }
+
+  .divR:hover{
+    border-radius: 10px;
+
+    /* background-color: rgb(143, 136, 136); */
+
+    font-size: 11px;
+    
+    cursor: pointer;
+
+    box-shadow: 0px -1px 12px -2px #111033;
+    -webkit-box-shadow: 0px -1px 12px -2px #111033;
+    -moz-box-shadow: 0px -1px 12px -2px #111033;
+  }
+  
+  .logo {
+    max-width: 3em;
+  }
+
+  .registrar{
+    font-size: 20px;
+    padding: 5px;
+  }
+  
+  .invitadoCount{
+    display: flex;
+    justify-content: center;
+    
+    padding: 5px;
+    margin: 10px;
+    margin-top: 20px;
+
+    width: 90%;
+    
+    /* border: 1px solid black; */
+  }
+  
+  .invitado{
+    display: flex;
+    justify-content: start;
+    
+    border-radius: 10px;
+
+    font-size: large;
+    color: black;
+    
+    padding: 5px;
+    margin: 10px;
+    margin-top: 30px;
+
+    border-bottom: 1px solid black;
+  }
+
+  .invitado:hover{
+    border-radius: 10px;
+
+    font-size: large;
+    font-weight: bold;
+
+    /* background-color: rgb(143, 136, 136); */
+    
+    padding: 5px;
+    margin: 10px;
+    margin-top: 30px;
+
+    border-bottom: 1px solid black;
+
+    box-shadow: 0px -1px 12px -2px #111033;
+    -webkit-box-shadow: 0px -1px 12px -2px #111033;
+    -moz-box-shadow: 0px -1px 12px -2px #111033;
+  }

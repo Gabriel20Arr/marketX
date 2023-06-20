@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.js", "src/app/page.jsx", "src/redux/features/countSlice.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.js", "src/app/page.jsx", "src/redux/features/countSlice.js", "src/redux/services/productApi.js","src/redux/services/userPost.js"],
   "exclude": ["node_modules"]
 }

@@ -1,0 +1,68 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 80vh;
+  justify-content: center;
+  /* Agrega esta línea para centrar el contenido horizontalmente */
+}
+
+.image {
+  overflow: hidden;
+  background-image: url("../../images/teclado-3.jpg");
+  object-fit: cover;
+  min-height: 95vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Logo {
+  height: 70px;
+  width: 80px;
+  margin-top: 7px;
+  margin-left: 40px;
+  border-radius: 50%;
+}
+
+.containerLogo h2 {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+
+}
+
+.containerLogo {
+  display: flex;
+  margin-bottom: 150px;
+}
+
+.formInput2{
+  border: 1px solid black;
+  height: 2.5em;
+  width: 12.5em;
+}
+
+.inputs{
+  /* border: 1px solid black; */
+
+  display: flex;
+  align-items: center;
+  
+}
+
+.formInput{
+  border: 1px solid black;
+  border-right: none;
+  height: 2.5em;
+  outline: none;
+}
+
+.svg1{
+  border: 1px solid black;
+  border-left: none;
+  height: 2.5em;
+}
