@@ -1,4 +1,4 @@
-export const productos = [
+const productos = [
 	{
 		id: 1,
 		titulo: 'Placa de video AMD Sapphire Pulse Radeon RX 6800 Series',
@@ -24,7 +24,7 @@ export const productos = [
 	{
 		id: 3,
 		titulo: 'Motherboard ASUS ROG STRIX B550-F',
-		categoria: 'Motherboards',
+		categoria: 'Motherboard',
 		imagen:
 			'https://www.fullh4rd.com.ar/img/productos/Pics_Prod/mother-asus-b550f-gaming-rog-strix-wifi-0.jpg',
 		descripcion:
@@ -121,3 +121,5 @@ export const productos = [
 		cantidadVenta: 6,
 	},
 ];
+
+module.exports = productos

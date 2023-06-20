@@ -18,7 +18,7 @@ export default function Landing() {
 
       <div className={Style.form}>
 
-        <Link href='/registrarse'><button className={Style.registrar1}>Registrarse gratis</button></Link>
+        <Link style={{ textDecoration: "none", color: "inherit" }} href='/registrarse'><button className={Style.registrar1}>Registrarse gratis</button></Link>
 
         <div className={Style.iniciarSesion}>
           {/* <h3 className={Style.iniciarSesion}> */}

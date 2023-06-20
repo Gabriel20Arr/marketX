@@ -32,7 +32,7 @@ export default function HomePage() {
 					<option value=''>Todas las categorías</option>
 					<option value='Placas de video'>Placas de video</option>
 					<option value='Procesadores'>Procesadores</option>
-					<option value='Motherboards'>Motherboards</option>
+					<option value='Motherboard'>Motherboards</option>
 				</select>
 				
 				<button className={style.orfilbtn} onClick={() => handleSortOrder('title')}>A-Z</button>

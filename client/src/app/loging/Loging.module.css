@@ -1,7 +1,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 1045px;
+  height: 80vh;
   justify-content: center;
   /* Agrega esta línea para centrar el contenido horizontalmente */
 }
@@ -10,7 +10,7 @@
   overflow: hidden;
   background-image: url("../../images/teclado-3.jpg");
   object-fit: cover;
-  min-height: 100vh;
+  min-height: 95vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -38,4 +38,31 @@
 .containerLogo {
   display: flex;
   margin-bottom: 150px;
+}
+
+.formInput2{
+  border: 1px solid black;
+  height: 2.5em;
+  width: 12.5em;
+}
+
+.inputs{
+  /* border: 1px solid black; */
+
+  display: flex;
+  align-items: center;
+  
+}
+
+.formInput{
+  border: 1px solid black;
+  border-right: none;
+  height: 2.5em;
+  outline: none;
+}
+
+.svg1{
+  border: 1px solid black;
+  border-left: none;
+  height: 2.5em;
 }
