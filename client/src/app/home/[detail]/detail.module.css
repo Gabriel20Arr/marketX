@@ -13,7 +13,7 @@
 
 .CountDes{
     
-    border: 2px solid;
+    /* border: 2px solid; */
     /* width: ; */
     
     margin: 1px;
@@ -30,10 +30,11 @@
 
 .CountAll{
     
-    border: 2px solid;
+    border: 2px solid rgb(29, 0, 63);
+    border-radius: 20px;
     /* width: ; */
     
-    padding: 15px;
+    padding: 15px 40px;
     
 }
 
@@ -44,7 +45,7 @@
     height: 500px;
     width: 300px;
     
-    margin: 25px;
+    margin: 25px 40px;
     padding: 15px;
 
     display: flex;
@@ -55,8 +56,8 @@
 }
 
 .btn{
-    border: 1px solid black;
-
+    border: 1px solid rgb(29, 0, 63);
+    border-radius: 10px;
     
     display: flex;
     justify-content: start;
@@ -79,7 +80,7 @@
 }
 
 .btnTitulo{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     
     display: flex;
     justify-content: center;
@@ -92,16 +93,17 @@
 }
 
 .btnPrecio{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     
     display: flex;
     justify-content: center;
+    font-size: 30px;
 
     width: fit-content;
 }
 
 .btnCategoria{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     
     display: flex;
     justify-content: center;
@@ -110,12 +112,13 @@
 }
 
 .btnDescripcion{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     
     display: flex;
     justify-content: center;
 
     width: fit-content;
+    font-style: italic;
 }
 
 .btnImagen{
@@ -137,10 +140,10 @@
 }
 
 .btnAtras{
-    border: 1px solid black;
+    border: 1px solid rgb(29, 0, 63);
     /* background-color: rgba(0, 0, 255, 0.646); */
     background-color: aliceblue;
-    color: black;
+    color: rgb(29, 0, 63);
     
     display: flex;
     flex-direction: column;
@@ -160,5 +163,5 @@
     font-style: italic;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
-    border: 2px solid;
+    border: 3px solid rgb(29, 0, 63);
 }

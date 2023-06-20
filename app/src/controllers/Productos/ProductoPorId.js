@@ -1,5 +1,5 @@
 const Producto = require("../../models/Producto");
-const productosApi = require('../../../../client/Api/api');
+const productosApi = require('../../../../client/src/api/api');
 
 const productoId = async (id) => {
     const existe= productosApi.find(producto=>producto.id==id)

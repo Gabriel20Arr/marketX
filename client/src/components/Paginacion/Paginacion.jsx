@@ -1,6 +1,7 @@
 'use client';
 
-import React,{useEffect} from 'react';
+import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
 	useGetProductsQuery,
@@ -10,7 +11,7 @@ import ReactPaginate from 'react-paginate';
 import style from './Paginacion.module.css';
 import Cards from '../Cards/Cards';
 
-import { productos } from '../../api/api';
+import productos from '../../../../client/src/api/api';
 
 const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	const sortOrder = useSelector((state) => state.sort.sortOrder);
@@ -53,12 +54,13 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 
 	const { data, error, isLoading, isFetching, refetch } =
 		useGetProductsQuery(selectedCategory);
+
 	const apiProductos = data || [];
 	const items = [...apiProductos, ...productos];
 
 	useEffect(() => {
-		refetch()
-	}, [])
+		refetch();
+	}, []);
 
 	if (isLoading || isFetching) return <p>Loading...</p>;
 	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
@@ -71,7 +73,7 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	};
 
 	const sortedProducts = sortProducts(items);
-	const itemsPerPage = 10;
+	const itemsPerPage = 12;
 	const offset = currentPage * itemsPerPage;
 	const currentItems = sortedProducts.slice(offset, offset + itemsPerPage);
 	const pageCount = Math.ceil(sortedProducts.length / itemsPerPage);

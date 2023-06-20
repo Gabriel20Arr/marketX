@@ -39,3 +39,30 @@
   display: flex;
   margin-bottom: 150px;
 }
+
+.formInput2{
+  border: 1px solid black;
+  height: 2.5em;
+  width: 12.5em;
+}
+
+.inputs{
+  /* border: 1px solid black; */
+
+  display: flex;
+  align-items: center;
+  
+}
+
+.formInput{
+  border: 1px solid black;
+  border-right: none;
+  height: 2.5em;
+  outline: none;
+}
+
+.svg1{
+  border: 1px solid black;
+  border-left: none;
+  height: 2.5em;
+}

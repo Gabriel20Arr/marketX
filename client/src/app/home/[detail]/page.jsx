@@ -16,7 +16,7 @@ export default function Detail({ params }) {
       <div className={styles.CountAll}>
 
         <Link href={'/home'} style={{ textDecoration: "none", color: "inherit" }} >
-          <div className={styles.btnAtras}>Atras</div>
+          <div className={styles.btnAtras}>Atrás</div>
         </Link>
 
         <div className={styles.CountImg}>
@@ -37,7 +37,7 @@ export default function Detail({ params }) {
       </div>
 
       <div className={styles.btn}>
-        <h2 className={styles.btnPrecio}> Precio: {data.precio}</h2>
+        <h2 className={styles.btnPrecio}> Precio: ${data.precio}</h2>
       </div>
       
       <div className={styles.btn}>

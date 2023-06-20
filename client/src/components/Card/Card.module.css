@@ -3,9 +3,7 @@
     align-items: center;
     justify-content: center;
 
-    /* flex-wrap: wrap; */
-
-    padding: 5px;
+    padding: 2px;
     padding-top: 0;
 
     height: 29.5em;
@@ -16,8 +14,6 @@
     overflow: hidden;
 
     background-color: #030a32;
-
-    /* background-color: rgba(0, 0, 255, 0.646); */
     /* background: linear-gradient(to bottom, #f6c176dd, #ffa600, #ffa6009d,#f6c176dd, 
     #ffa600, #ffa600, #f6c176dd, #ffa600,
     #ffa600); */
@@ -84,9 +80,9 @@
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    
-    height: 200px;
+    background-color: white;
     width: 93%;
+    height: 200px;
     border-radius: 10%;
     border: solid 2px black;
 
@@ -99,7 +95,7 @@
     
     display: flex;
     justify-content: end;
-    padding: 1px;
+    /* padding: 1px; */
 
     margin-top: 5px;
     
@@ -109,7 +105,7 @@
     display: flex;
 
     margin: 0;
-    /* padding: 0; */
+    /* padding: 2px; */
     
     /* border: solid 1px black; */
 
@@ -141,7 +137,7 @@
     
     padding:  2px;
     
-    margin-bottom: 5%;
+    margin-bottom: 5px;
 }
 
 .detalle:hover{
