@@ -1,9 +1,9 @@
 .container{
     margin-bottom: 25px;
     margin-top: 0;
-
+    
     background-color: #030a32;
-
+    
     border-radius: 20px;
 }
 
@@ -11,8 +11,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 20px;
 
-    border: 1px solid aliceblue;
+
+    /* border: 1px solid aliceblue; */
 
     padding: 5px 20px;
 
@@ -43,3 +45,68 @@
     transition: 0.2s;
     box-shadow: 0 2px 4px #0df3ff;
 }
+
+/* Menu */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdownToggle {
+      border: none;
+      cursor: pointer;
+      
+      background-color: transparent;
+      color: white;
+
+      padding: 1px 8px;
+
+      rotate: 90deg;
+
+      border: 2px solid gray;
+      border-radius: 5px;
+  }
+
+  .dropdownToggle:hover {
+    font-size: medium;
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 70%;
+    right: 0;
+    z-index: 1;
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 0;
+    
+    width: 10em;
+  }
+  
+  .dropdownMenu li {
+    list-style: none;
+  }
+  
+  .dropdownItem {
+    padding: 8px 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .dropdownItem:hover {
+    padding: 8px 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+
+    background-color: #0df3ff;
+  }
+  
+  /* Mostrar el menú desplegable cuando está abierto */
+  .dropdown.open .dropdownMenu {
+    display: block;
+  }
+
+  .show {
+    display: block;
+  }

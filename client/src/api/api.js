@@ -15,7 +15,7 @@ export const productos = [
 		titulo: 'Procesador AMD Ryzen 7 5800X',
 		categoria: 'Procesadores',
 		imagen:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgGfQ0ORNQl1cWy4ALB1joTR5uF-Ift-jUHg&usqp=CAU',
+			'https://http2.mlstatic.com/D_NQ_NP_2X_903113-MLA44347094942_122020-F.webp',
 		descripcion:
 			'El procesador AMD Ryzen™ 7 5800X tiene 8 núcleos y 16 hilos, con una frecuencia base de 3.8 GHz que puede subir hasta los 4.7 GHz. Es compatible con la plataforma AM4 y ofrece un rendimiento excepcional para juegos y aplicaciones exigentes.',
 		precio: 69999,
@@ -78,10 +78,10 @@ export const productos = [
 	},
 	{
 		id: 8,
-		titulo: 'Placa de video MSI GeForce RTX 3070 Ti',
+		titulo: 'Placa de video MSI GeForce RTX 3050',
 		categoria: 'Placas de video',
 		imagen:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgGfQ0ORNQl1cWy4ALB1joTR5uF-Ift-jUHg&usqp=CAU',
+			'https://http2.mlstatic.com/D_NQ_NP_2X_642143-MLA49407168504_032022-F.webp',
 		descripcion:
 			'La placa de video MSI GeForce RTX 3070 Ti es una tarjeta gráfica de gama alta que ofrece un rendimiento excepcional para juegos en resolución 1440p y 4K. Cuenta con la arquitectura Ampere de NVIDIA, con núcleos RT y Tensor mejorados, y 8GB de memoria GDDR6X. Además, tiene un diseño elegante con iluminación RGB personalizable.',
 		precio: 179999,
@@ -89,10 +89,10 @@ export const productos = [
 	},
 	{
 		id: 9,
-		titulo: 'Procesador Intel Core i7-11700K',
+		titulo: 'Procesador Intel Core i5-11700K',
 		categoria: 'Procesadores',
 		imagen:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgGfQ0ORNQl1cWy4ALB1joTR5uF-Ift-jUHg&usqp=CAU',
+			'https://http2.mlstatic.com/D_NQ_NP_2X_686262-MLA42885718700_072020-F.webp',
 		descripcion:
 			'El procesador Intel Core i7-11700K es un CPU de alto rendimiento que pertenece a la undécima generación de procesadores Intel Core. Tiene 8 núcleos y 16 hilos, con una frecuencia base de 3.6 GHz que puede alcanzar los 5 GHz con Turbo Boost. Es compatible con la plataforma LGA1200 y ofrece un excelente desempeño para juegos y multitarea.',
 		precio: 79999,
@@ -103,7 +103,7 @@ export const productos = [
 		titulo: 'Placa de video MSI GeForce RTX 3070 Ti',
 		categoria: 'Placas de video',
 		imagen:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgGfQ0ORNQl1cWy4ALB1joTR5uF-Ift-jUHg&usqp=CAU',
+			'https://http2.mlstatic.com/D_NQ_NP_2X_807698-MLA45639355505_042021-F.webp',
 		descripcion:
 			'La placa de video MSI GeForce RTX 3070 Ti es una tarjeta gráfica de gama alta que ofrece un rendimiento excepcional para juegos en resolución 1440p y 4K. Cuenta con la arquitectura Ampere de NVIDIA, con núcleos RT y Tensor mejorados, y 8GB de memoria GDDR6X. Además, tiene un diseño elegante con iluminación RGB personalizable.',
 		precio: 179999,
@@ -114,7 +114,7 @@ export const productos = [
 		titulo: 'Procesador Intel Core i7-11700K',
 		categoria: 'Procesadores',
 		imagen:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgGfQ0ORNQl1cWy4ALB1joTR5uF-Ift-jUHg&usqp=CAU',
+			'https://http2.mlstatic.com/D_NQ_NP_2X_793315-MLA45400163649_032021-F.webp',
 		descripcion:
 			'El procesador Intel Core i7-11700K es un CPU de alto rendimiento que pertenece a la undécima generación de procesadores Intel Core. Tiene 8 núcleos y 16 hilos, con una frecuencia base de 3.6 GHz que puede alcanzar los 5 GHz con Turbo Boost. Es compatible con la plataforma LGA1200 y ofrece un excelente desempeño para juegos y multitarea.',
 		precio: 79999,

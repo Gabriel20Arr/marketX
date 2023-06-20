@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import {
 	useGetProductsQuery,
@@ -51,13 +51,19 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 		return sortedProducts;
 	};
 
-	const { data, error, isLoading, isFetching } =
+	const { data, error, isLoading, isFetching, refetch } =
 		useGetProductsQuery(selectedCategory);
 	const apiProductos = data || [];
 	const items = [...apiProductos, ...productos];
 
+	useEffect(() => {
+		refetch()
+	}, [])
+
 	if (isLoading || isFetching) return <p>Loading...</p>;
 	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
+
+	
 
 	const handlePageChange = ({ selected }) => {
 		setCurrentPage(selected);

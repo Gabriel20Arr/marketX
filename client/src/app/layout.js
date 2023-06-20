@@ -36,7 +36,7 @@ export default function RootLayout({children}){
         <body className={cairo.className}>
           <Providers>
            {(router !='/' && router!='/loging' && router!='/registrarse')? <NavBar />:''}
-            <div className='container p-4'>
+            <div >
               {children}
             </div>
           </Providers>

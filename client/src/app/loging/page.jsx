@@ -18,8 +18,12 @@ export default function Registrarse() {
     correo: "",
     contraseña: "",
   });
-  const { data } = useGetUsersQuery(null);
+  const { data, refetch } = useGetUsersQuery(null);
   const router = useRouter();
+  
+  useEffect(()=> {
+    refetch();
+  }, [])
 
   const handlerUsuario = (e) => {
     const { value, name } = e.target;
@@ -92,7 +96,7 @@ export default function Registrarse() {
               </label>
               <input
                 className="form-control"
-                type="text"
+                type="password"
                 name="contraseña"
                 onChange={handlerUsuario}
                 value={usuario.contraseña}
