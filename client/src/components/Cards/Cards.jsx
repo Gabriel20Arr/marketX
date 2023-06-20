@@ -6,7 +6,7 @@ export default function Cards({ currentItems }) {
 	return (
 		<div className={style.contt}>
 			{currentItems.map((item) => (
-				<div key={item.id}>
+				<div key={item.id || item._id}>
 					<Card item={item} />
 				</div>
 			))}
