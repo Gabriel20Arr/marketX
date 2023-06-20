@@ -6,10 +6,10 @@
     padding: 2px;
     padding-top: 0;
 
-    height: 29.5em;
+    height: 30em;
     width: 19.5em;
 
-    margin: 15px;
+    margin: 10px;
 
     overflow: hidden;
 
@@ -78,8 +78,8 @@
     justify-content: center;
     align-items: center; */
     background-color: white;
-    width: 93%;
-    height: 200px;
+    width: 90%;
+    height: 240px;
     border-radius: 10%;
     border: solid 2px black;
 
@@ -128,7 +128,7 @@
     
     width: fit-content;
     max-height: fit-content; 
-    font-size: small;
+    font-size: 15px;
  
     color: black;
     
@@ -140,8 +140,8 @@
 .detalle:hover{
     cursor: pointer;
 
-    /* background-color:grey; */
-    box-shadow: 0 0  10px black;
+    background-color:#0df3ff;
+    box-shadow: 0 0  10px #0df3ff;
 
-    color: gray;
+    /* color: gray; */
 }

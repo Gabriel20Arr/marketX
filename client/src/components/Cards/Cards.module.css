@@ -1,16 +1,16 @@
 .contt{
-    /* display: grid;
-    margin: auto 0 ;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
 
-    max-width: 100%; */
+    width: 98%;
+
 
     /* border: 1px solid black; */
-    display: flex;
+    /* display: flex;
     border-radius: 20px;
     flex-wrap: wrap;
     justify-content: center;
     
-    padding: 2px;
+    padding: 2px; */
 }

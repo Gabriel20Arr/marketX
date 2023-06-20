@@ -45,7 +45,8 @@ export default function Registrarse() {
         correo: "",
         contraseña: "",
       });
-      alert("Se inicio sesion correctamente");
+      // alert("Se inicio sesion correctamente");
+      <p>Redirigiendo al home...</p>
       router.push("/home");
     } else {
       setError((prevError) => ({

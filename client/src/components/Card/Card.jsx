@@ -21,7 +21,7 @@ export default function Card({item}) {
               <h2 className={style.precio}> ${item.precio}</h2>
             </div>
 
-            <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
+            <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar más</h3>
         </article>:null}
     </div>
   )
