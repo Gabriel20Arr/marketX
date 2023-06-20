@@ -17,7 +17,10 @@ export default function Registrarse() {
     correo: "",
     contraseña: "",
   });
-  
+  const {data, refetch} = useGetUsersQuery(null);
+  useEffect(()=>{
+    refetch();
+  },[])
   const router = useRouter();
 
   const handlerUsuario = (e) => {
