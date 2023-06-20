@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSortOrder } from '../../redux/features/sortSlice';
 import Paginacion from '../../components/Paginacion/Paginacion';
+import style from './home.module.css';
 
 export default function HomePage() {
 	const dispatch = useDispatch();
@@ -27,25 +28,25 @@ export default function HomePage() {
 	return (
 		<div>
 			<div>
-				<select value={selectedCategory} onChange={handleCategoryChange}>
+				<select className={style.orfilbtn} value={selectedCategory} onChange={handleCategoryChange}>
 					<option value=''>Todas las categorías</option>
 					<option value='Placas de video'>Placas de video</option>
 					<option value='Procesadores'>Procesadores</option>
 					<option value='Motherboards'>Motherboards</option>
 				</select>
 				
-				<button onClick={() => handleSortOrder('title')}>A-Z</button>
-				<button onClick={() => handleSortOrder('reverse')}>Z-A</button>
-				<button onClick={() => handleSortOrder('price')}>
+				<button className={style.orfilbtn} onClick={() => handleSortOrder('title')}>A-Z</button>
+				<button className={style.orfilbtn} onClick={() => handleSortOrder('reverse')}>Z-A</button>
+				<button className={style.orfilbtn} onClick={() => handleSortOrder('price')}>
 					MENOR A MAYOR PRECIO
 				</button>
-				<button onClick={() => handleSortOrder('price-reverse')}>
+				<button className={style.orfilbtn} onClick={() => handleSortOrder('price-reverse')}>
 					MAYOR A MENOR PRECIO
 				</button>
 				{/* <button onClick={() => handleSortOrder('quantitySold')}>
 					MÁS VENDIDO
 				</button> */}
-				<button onClick={() => handleSortOrder('restore')}>RESTORE</button>
+				{/* <button className={style.orfilbtn} onClick={() => handleSortOrder('restore')}>RESTORE</button> */}
 			</div>
 			<Paginacion
 				currentPage={currentPage}

@@ -1,3 +1,7 @@
+.cont{
+    padding-top: 5px;
+}
+
 .container{
     display: flex;
     justify-content: space-around;
@@ -9,14 +13,36 @@
     /* border: 5px solid rgb(29, 0, 63); */
 }
 
+.atras{
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: 2px solid #111033;
+    border-radius: 10px;
+    color: #111033;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.atras:hover{
+    cursor: pointer;
+    box-shadow: 0 2px 4px #111033;
+    font-weight: bolder;
+    transition: 0.2s;
+}
+
 .containerForm{
     display: flex;
     justify-content: center;
     
+    margin-top: 10px;
+
     padding: 60px;
+    padding-top: 10px;
 
     border: 5px solid rgb(29, 0, 63);
-    width: 450px;
+    border-radius: 20px;
 }
 
 .title{
@@ -113,8 +139,9 @@
 .img{
     margin-top: 0;
     object-fit: contain;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
 }
 
 .text{

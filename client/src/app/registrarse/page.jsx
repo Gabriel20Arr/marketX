@@ -78,7 +78,7 @@ export default function Registrarse() {
         </div>
         <div className="bg-white d-flex aling-items-center justify-content-center w-100  pb-5">
           <div className={Style.form}>
-            <h2 className="mb-3 mt-3 text-center">Registrese gratis</h2>
+            <h2 className="mb-3 mt-3 text-center">Regístrese gratis</h2>
             <form onSubmit={handlerSubmit}>
               <div className="mb-2">
                 <label className="form-label" htmlFor="nombre">
@@ -116,7 +116,7 @@ export default function Registrarse() {
                 </label>
                 <input
                   className="form-control"
-                  type="text"
+                  type="password"
                   name="contraseña"
                   onChange={handlerUsuario}
                   value={usuario.contraseña}
@@ -131,7 +131,7 @@ export default function Registrarse() {
                 </label>
                 <input
                   className="form-control"
-                  type="text"
+                  type="password"
                   name="confirme_su_contraseña"
                   onChange={handlerUsuario}
                   value={usuario.confirme_su_contraseña}
@@ -166,11 +166,11 @@ export default function Registrarse() {
                 )}
               </div>
 
-              <div class="d-flex align-items-center justify-content-center">
+              {/* <div class="d-flex align-items-center justify-content-center">
                 <div class="border-bottom flex-grow-1"></div>
                 <div class="px-3">O</div>
                 <div class="border-bottom flex-grow-1"></div>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

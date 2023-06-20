@@ -41,31 +41,39 @@
     /* border: 1px solid black; */
     width: 400px;
     height: 500px;
+    
+  }
+
+  .imgMarketX{
+    border-radius: 0px;
   }
   
   .form {
+    margin-top: 70px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     
     justify-content: center;
     align-items: center;
 
-    border: 1px solid black;
+    border: 2px solid #030b33;
+    border-radius: 0px;
 
     width: 500px;
     height: 500px;
 
   }
 
-  /* .iniciarSesion{
-    border-bottom: 3px solid black;
-  } */
+  .iniciarSesion{
+    margin-bottom: 40px;
+  }
 
   .iniciarSesionFondo{
     display: flex;
     justify-content: space-around;
 
-    width: 14em;
+    width: 15em;
 
     padding-bottom: 5px;
 
@@ -79,10 +87,14 @@
     border-radius: 10px;
 
     font-size: x-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     
     width: 13em;
     
     padding: 10px;
+    margin-bottom: 40px;
+
+    text-decoration: none;
 
   }
 
@@ -97,9 +109,9 @@
 
     cursor: pointer;
 
-    box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
-    -webkit-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
-    -moz-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    box-shadow: 0px -1px 12px -2px #111033;
+    -webkit-box-shadow: 0px -1px 12px -2px #111033;
+    -moz-box-shadow: 0px -1px 12px -2px #111033;
     
   }
   
@@ -123,9 +135,9 @@
     
     cursor: pointer;
 
-    box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
-    -webkit-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
-    -moz-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    box-shadow: 0px -1px 12px -2px #111033;
+    -webkit-box-shadow: 0px -1px 12px -2px #111033;
+    -moz-box-shadow: 0px -1px 12px -2px #111033;
   }
   
   .logo {
@@ -143,7 +155,7 @@
     
     padding: 5px;
     margin: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
 
     width: 90%;
     
@@ -156,7 +168,7 @@
     
     border-radius: 10px;
 
-    font-size: medium;
+    font-size: large;
     color: black;
     
     padding: 5px;
@@ -170,6 +182,7 @@
     border-radius: 10px;
 
     font-size: large;
+    font-weight: bold;
 
     /* background-color: rgb(143, 136, 136); */
     
@@ -179,7 +192,7 @@
 
     border-bottom: 1px solid black;
 
-    box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
-    -webkit-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
-    -moz-box-shadow: 0px -1px 12px -2px rgba(0,0,0,0.73);
+    box-shadow: 0px -1px 12px -2px #111033;
+    -webkit-box-shadow: 0px -1px 12px -2px #111033;
+    -moz-box-shadow: 0px -1px 12px -2px #111033;
   }

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import validation from './validation';
 import axios from 'axios';
+import Link from 'next/link';
 import style from './Form.module.css';
 import Image from "next/image";
 import logo from "../../images/MarketX-newlogo.png";
@@ -53,6 +54,8 @@ export default function CrearProducto() {
 	};
 
 	return (
+		<div className = {style.cont}>
+			<Link href={'/home'} className={style.atras}>Atrás</Link>
 		<div className={style.container}>
 			<form className={style.containerForm} onSubmit={submitHandler}>
 				<div>
@@ -155,6 +158,7 @@ export default function CrearProducto() {
 				<Image src={logo} className={style.img} />
 			</div>
 			
+		</div>
 		</div>
 	);
 }
