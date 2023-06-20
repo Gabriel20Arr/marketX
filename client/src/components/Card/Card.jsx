@@ -7,19 +7,11 @@ export default function Card({item}) {
     item.id?router.push(`/home/${item.id}`):console.log('no');
   }
   return (
-<<<<<<< HEAD
-    <div>
-        <article>
-            <h2>{item.titulo}</h2>
-            <h2>${item.precio}</h2>
-            <img src={item.imagen} alt="" />
-=======
     <div className={style.cont}>
         {item.id?<article>
             <div className={style.contT}>
               <h2 className={style.name} >{item.titulo}</h2>
             </div>            
->>>>>>> f24094d22adacd1c300c5d303a860c7244ecb257
 
             <div className={style.Countimg}>
               <img className={style.img} src={item.imagen} alt="" />

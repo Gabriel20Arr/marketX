@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // import { configureStore } from '@reduxjs/toolkit';
 // import counterSlice from '../features/countSlice';
 // import productReducer from '../features/productSlice';
@@ -25,7 +23,6 @@
 // export type RootState = ReturnType<typeof store.getState>;
 // export type AppDispatch = typeof store.dispatch;
 
->>>>>>> f24094d22adacd1c300c5d303a860c7244ecb257
 import { configureStore } from '@reduxjs/toolkit';
 import counterSlice from '../features/countSlice';
 import productReducer from '../features/productSlice';

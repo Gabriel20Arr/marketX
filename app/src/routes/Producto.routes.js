@@ -16,12 +16,4 @@ ProductoRouter.post("/crearProductos", HandlerProducto);
 ProductoRouter.put("/actualizar/:id", HadlerActualizar);
 ProductoRouter.delete("/eliminar/:id", HandlerEliminar);
 
-<<<<<<< HEAD
-ProductoRouter.get("/:id", () => {});
-
-
 module.exports = ProductoRouter;
-
-=======
-module.exports = ProductoRouter;
->>>>>>> f24094d22adacd1c300c5d303a860c7244ecb257

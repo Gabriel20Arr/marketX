@@ -1,11 +1,6 @@
 const Producto = require('../../models/Producto');
 const productos = require('../../../../client/Api/api');
 const allProductos = async () => {
-<<<<<<< HEAD
-	try {
-		//const productoDB = await Producto.find();
-		const productoDB = productos;
-=======
   try {
     const productoDB = await Producto.find();
     if(productoDB.length > 0) {
@@ -17,7 +12,6 @@ const allProductos = async () => {
     } else {
         return console.log('Producto no existente');
     }
->>>>>>> f24094d22adacd1c300c5d303a860c7244ecb257
 
 		if (productoDB.length > 0) {
 			return productoDB;

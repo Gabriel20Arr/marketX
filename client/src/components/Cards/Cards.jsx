@@ -4,11 +4,7 @@ import style from "./Cards.module.css";
 
 export default function Cards({ currentItems }) {
 	return (
-<<<<<<< HEAD
-		<div>
-=======
 		<div className={style.contt}>
->>>>>>> f24094d22adacd1c300c5d303a860c7244ecb257
 			{currentItems.map((item) => (
 				<div key={item.id}>
 					<Card item={item} />
@@ -16,10 +12,6 @@ export default function Cards({ currentItems }) {
 			))}
 		</div>
 	);
-<<<<<<< HEAD
-=======
-
->>>>>>> f24094d22adacd1c300c5d303a860c7244ecb257
 }
 // import React from 'react'
 // import Card from '../Card/Card';

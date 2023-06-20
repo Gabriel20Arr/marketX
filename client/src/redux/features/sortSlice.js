@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // import { createSlice } from '@reduxjs/toolkit';
 
 // const initialState = {
@@ -20,7 +18,6 @@
 
 // export default sortSlice.reducer;
 
->>>>>>> f24094d22adacd1c300c5d303a860c7244ecb257
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
