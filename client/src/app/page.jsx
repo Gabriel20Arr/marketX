@@ -21,12 +21,10 @@ export default function Landing() {
         <Link style={{ textDecoration: "none", color: "inherit" }} href='/registrarse'><button className={Style.registrar1}>Registrarse gratis</button></Link>
 
         <div className={Style.iniciarSesion}>
-          {/* <h3 className={Style.iniciarSesion}> */}
             <h4 className={Style.iniciarSesionFondo}> 
               ¿Ya tienes cuenta?  
               <Link href='/loging'>INICIA SESION</Link> 
             </h4>
-          {/* </h3> */}
         </div>
         
         {/* <button className={Style.divR}>

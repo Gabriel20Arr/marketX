@@ -1,14 +1,35 @@
 'use client'
 
+import { useEffect } from "react";
 import { useGetProductsByIdQuery } from "@/src/redux/services/productApi";
 import styles from './detail.module.css';
 import Link from "next/link";
+import axios from "axios";
 
 export default function Detail({ params }) {
   const { detail } = params;
   const {data,error, isLoading, isFetching}=useGetProductsByIdQuery({ id: detail });
-  if(isLoading || isFetching) return <p>Loading...</p>
-  if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
+
+    useEffect(() => {
+    const handleClick = async () => {
+      const response = await axios('pago/routerPago/createorder', {
+        method: 'POST'
+      });
+
+      const data = await response.json();
+      console.log(data);
+      window.location.href = data.init_point;
+    };
+    
+    // Eliminar el event listener cuando se desmonte el componente
+    return () => {
+      check.removeEventListener('click', handleClick);
+    };
+  }, []);
+
+  
+  if (isLoading || isFetching) return <p>Loading...</p>;
+  if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
  
   return (
     <div className={styles.countForm}>
@@ -47,7 +68,10 @@ export default function Detail({ params }) {
       <div className={styles.btn}>
         <h2 className={styles.btnDescripcion}>{data.descripcion}</h2>
       </div>
-      
+
+      <div className={styles.Pagar}>
+        <button className={styles.btnPagar} id="buttomPagar">Pagar</button>
+      </div>      
       
       {/* <div>
         <h2 className={styles.btn} > cantidadVenta: {data.cantidadVenta}</h2>

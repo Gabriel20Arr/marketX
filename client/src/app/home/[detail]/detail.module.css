@@ -165,3 +165,12 @@
 
     border: 3px solid rgb(29, 0, 63);
 }
+
+
+.btnPagar{
+
+    width: 5em;
+
+    font-size: 30px;
+
+}
