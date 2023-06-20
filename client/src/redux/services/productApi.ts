@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
 type Product = {
-    id: number,
+    id: string,
     titulo: string,
     categoria: string,
     imagen: string,

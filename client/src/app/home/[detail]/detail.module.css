@@ -1,0 +1,167 @@
+.countForm{
+    display: flex;
+    justify-content: left;
+
+    height: 100vh;
+
+    /* padding: 20px; */
+
+    /* background-color: gray; */
+
+    /* border: 1px solid black; */
+}
+
+.CountDes{
+    
+    /* border: 2px solid; */
+    /* width: ; */
+    
+    margin: 1px;
+    padding: 15px;
+
+    background-color: aliceblue;
+    
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+
+.CountAll{
+    
+    border: 2px solid rgb(29, 0, 63);
+    border-radius: 20px;
+    /* width: ; */
+    
+    padding: 15px 40px;
+    
+}
+
+.CountImg{
+    
+    /* border: 2px solid; */
+
+    height: 500px;
+    width: 300px;
+    
+    margin: 25px 40px;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.btn{
+    border: 1px solid rgb(29, 0, 63);
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: start;
+    
+    width: 100%;
+    
+    padding: 0 5px;
+}
+
+.btn2{
+    /* border: 1px solid black; */
+
+    
+    display: flex;
+    justify-content: center;
+    
+    width: 100%;
+    
+    padding: 0 5px;
+}
+
+.btnTitulo{
+    /* border: 1px solid black; */
+    
+    display: flex;
+    justify-content: center;
+
+    width: fit-content;
+
+    font-size: xx-large;
+
+    padding: auto;
+}
+
+.btnPrecio{
+    /* border: 1px solid black; */
+    
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+
+    width: fit-content;
+}
+
+.btnCategoria{
+    /* border: 1px solid black; */
+    
+    display: flex;
+    justify-content: center;
+
+    width: fit-content;
+}
+
+.btnDescripcion{
+    /* border: 1px solid black; */
+    
+    display: flex;
+    justify-content: center;
+
+    width: fit-content;
+    font-style: italic;
+}
+
+.btnImagen{
+    /* border: 1px solid black; */
+    
+    display: flex;
+    justify-content: center;
+
+    height: 280px;
+    /* width: 300px; */
+
+}
+
+.btnImagen:hover {
+    height: 320px;
+    cursor: zoom-in;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.btnAtras{
+    border: 1px solid rgb(29, 0, 63);
+    /* background-color: rgba(0, 0, 255, 0.646); */
+    background-color: aliceblue;
+    color: rgb(29, 0, 63);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    width: 3.5em;
+    height: 1.5em;
+
+    border-radius: 5px;
+} 
+
+.btnAtras:hover{
+    font-style: italic;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+    border: 3px solid rgb(29, 0, 63);
+}

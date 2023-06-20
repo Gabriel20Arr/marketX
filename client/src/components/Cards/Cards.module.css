@@ -1,0 +1,15 @@
+.contt{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    
+    width: 98%;
+
+    /* border: 1px solid black; */
+    /* display: flex;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    padding: 2px; */
+}

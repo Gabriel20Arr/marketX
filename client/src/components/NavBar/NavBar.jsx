@@ -1,42 +1,89 @@
-import Link from 'next/link';
+'use client'
 
-export default function Navigation(){
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../../images/MarketX-newlogo (2).png';
+import styles from "./NavBar.module.css";
+import React, {useState} from 'react';
+
+export default function Navigation({ currentPath }){
+
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
     return (
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <Link className="navbar-brand" href="/home">marketX</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" href="/favoritos">Productos favoritos</Link>
-              </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Action</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><hr className="dropdown-divider"/></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/">Cerrar sesión</Link>
-              </li>
-            </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-              <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+      <nav className={styles.container}>
+
+              <div className={styles.NavConteiner} >
+                <div>
+                  <Link href="/home">
+                    <Image src={logo} className={styles.logo}/>
+                  </Link>
+                </div>
+
+                  {/* <li className="nav-item">
+                    <Link className="nav-link" href="/favoritos">Productos favoritos</Link>
+                  </li> */}
+
+                 { currentPath !== '/form' && (
+                    <div className={styles.btn}>
+                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/form">Publicar Producto</Link>
+                    </div>
+                  )
+                 }
+
+                { currentPath !== '/about' && (
+                    <div className={styles.btn}>
+                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/about">Sobre MarketX</Link>
+                    </div>
+                  )
+                 }
+
+                  {/* <div className={styles.btn}>
+                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/loging">Iniciar sesión</Link>
+                  </div> */}
+
+                  {/* <div className={styles.btn}>
+                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/registrarse">Registrarse</Link>
+                  </div> */}
+{/* 
+                  <div className={styles.btnExit}>
+                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/">Salir</Link>
+                  </div> */}
+                  
+                  <div className={styles.dropdown}>
+                    <button className={styles.dropdownToggle} onClick={toggleMenu}>
+                      <h2>
+                        |||
+                      </h2>
+                    </button>
+                  <ul className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}>
+                    <li className={styles.dropdownItem}>
+                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/loging">Iniciar sesión</Link>
+                    </li>
+                    <li className={styles.dropdownItem}>
+                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/registrarse">Registrarse</Link>
+                    </li>
+                    {/* { currentPath !== '/about' && (
+                    <li className={styles.dropdownItem}>
+                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/about">Sobre MarketX</Link>
+                    </li>
+                    )} */}
+                    <li className={styles.dropdownItem}>
+                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/">Salir</Link>
+                    </li>
+                  </ul>
         </div>
+
+                {/* <form className="d-flex" role="search">
+                  <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                  <button className="btn btn-outline-success" type="submit">Search</button>
+                </form> */}
+            
+              </div>
       </nav>
     )
 }

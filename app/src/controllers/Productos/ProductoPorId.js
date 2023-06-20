@@ -1,34 +1,21 @@
-const Producto = require('../models/Producto');
-const Categoria = require('../models/Categoria');
+const Producto = require("../../models/Producto");
+const productosApi = require('../../../../client/src/api/api');
 
-
-const buscarProductoPorId = async (req, res) => {
-    const id = req.params.id;
-
-    try {
-        const producto = await Producto.findById(id)
-            .populate({
-                path: 'categoria',
-                select: 'nombre',
-                model: Categoria,
-            })
-            .exec();
-
-        if (!producto) {
-            return res.status(404).json({ error: 'Producto no encontrado' });
-        }
-
-        const cleanProducto = {
-            titulo: producto.titulo,
-            categoria: producto.categoria,
-            imagen: producto.imagen,
-            precio: producto.precio,
-        };
-
-        res.status(200).json(cleanProducto);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
+const productoId = async (id) => {
+    const existe= productosApi.find(producto=>producto.id==id)
+  try {
+    if (existe) {
+        return existe
     }
+    const productoDB = await Producto.findById(id);
+    if (productoDB) {
+      return productoDB;
+    } else {
+      throw new Error('Producto no existente');
+    }
+  } catch (error) {
+    throw new Error('Error al obtener el producto por ID');
+  }
 };
 
-module.exports = buscarProductoPorId;
+module.exports = {productoId};
