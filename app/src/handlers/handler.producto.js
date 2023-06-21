@@ -4,6 +4,7 @@ const {
   productoActualizado,
   productoCreado,
   eliminarProducto,
+  ProductByUser
 } = require("../controllers/Productos/index");
 
 //------------Traer todos los Productos------------------>
@@ -33,10 +34,10 @@ const HandlerIdProductos = async (req, res) => {
 //-------------Crear Productos--------------------------------->
 
 const HandlerProducto = async (req, res) => {
-  const { titulo, categoria, imagen, descripcion, precio, cantidadVenta } =
+  const { titulo, categoria, imagen, descripcion, precio, cantidadVenta, usuario, categorias } =
     req.body;
   try {
-    if (!titulo || !categoria || !imagen || !descripcion || !precio)
+    if (!titulo || !categoria || !imagen || !descripcion || !precio || !usuario)
       throw new Error(
         "Se necesita tener todo los campos completos para crear un Producto"
       );
@@ -46,7 +47,9 @@ const HandlerProducto = async (req, res) => {
       imagen,
       descripcion,
       precio,
-      cantidadVenta
+      cantidadVenta,
+      usuario,
+      categorias
     );
     res.status(201).send("Se creo con exito el Producto");
   } catch (error) {
@@ -96,10 +99,22 @@ const HandlerEliminar = async (req, res) => {
   }
 };
 
+//--------------------------Productos por usuario -------------------------------->
+
+const HandlerProductUsers =async (req, res)=>{
+  try {
+    const result =await ProductByUser();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({message:error.message})    
+  }
+}
+
 module.exports = {
   HandlerProducto,
   HandlerAllProductos,
   HadlerActualizar,
   HandlerEliminar,
   HandlerIdProductos,
+  HandlerProductUsers
 };

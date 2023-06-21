@@ -4,17 +4,17 @@ import style from "./Card.module.css";
 export default function Card({item}) {
   const router = useRouter();
   const handlerDetail = ()=>{
-    item.id?router.push(`/home/${item.id}`):console.log('no');
+    (item.id || item._id)?router.push(`/home/${item.id || item._id}`):console.log('no');
   }
-  return (
+  return (  
     <div className={style.cont}>
-        {item.id?<article>
+        {(item.id || item._id)?<article>
             <div className={style.contT}>
               <h2 className={style.name} >{item.titulo}</h2>
             </div>            
 
             <div className={style.Countimg}>
-              <img className={style.img} src={item.imagen} alt="" />
+              <img className={style.img} src={item.imagen} alt={item.titulo} />
             </div>
             
             <div className={style.Countprecio}>
@@ -22,6 +22,7 @@ export default function Card({item}) {
             </div>
 
             <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
+
         </article>:null}
     </div>
   )

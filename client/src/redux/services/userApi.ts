@@ -14,7 +14,7 @@ export const userApi = createApi({
     }),
     endpoints: (builder)=>({
         getUsers: builder.query<User[],null>({
-            query: ()=>'Usuario'
+            query: ()=>'Usuario',
         }),
         getUserById: builder.query<User, {id:string}>({
             query:({id})=> `Usuario/${id}`
