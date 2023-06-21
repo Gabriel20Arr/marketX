@@ -18,6 +18,10 @@ const UsuarioSchema = new Schema(
     rol: {
       type: String,
     },
+    carrito:{
+      type: Array,
+      default:[]
+    }
   },
   {
     timestamps: true,

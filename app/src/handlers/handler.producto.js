@@ -60,23 +60,10 @@ const HandlerProducto = async (req, res) => {
 //--------------------Actualizar Producto --------------------------->
 
 const HadlerActualizar = async (req, res) => {
-  const { id, titulo, categoria, imagen, descripcion, precio, cantidadVenta } =
-    req.body;
+  const {_id} =req.body;
+  delete req.body._id;
   try {
-    if (!id)
-      throw new Error("Se necesita el Id para poder actualizar un Producto");
-    if (id.length < 24) throw new Error("El id proporcionado no Existe");
-
-    const actualizado = await productoActualizado(
-      id,
-      titulo,
-      categoria,
-      imagen,
-      descripcion,
-      precio,
-      cantidadVenta
-    );
-
+    await productoActualizado(_id,req.body);
     res.status(200).send("Se actualizó correctamente");
   } catch (error) {
     res.status(422).send(error.message);

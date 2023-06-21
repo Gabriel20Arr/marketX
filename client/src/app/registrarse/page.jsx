@@ -12,6 +12,7 @@ import { useAppDispatch } from "@/src/redux/hooks/hooks";
 import { validate } from "../../hooks/registrarseValidar";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {enviarNotificacionPorCorreo} from '../../hooks/enviarCorreo';
 
 export default function Registrarse() {
   const [showPass, setShowPass] = useState(false);
@@ -47,7 +48,10 @@ export default function Registrarse() {
   const handlerSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(postRequestAsync(usuario));
-    console.log(result);
+    const asunto = "Bienvenido a Market X";
+    const mensaje = "Su cuaneta se ha creado correctamente";
+    const correoEnviado = enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje);
+    console.log(result, correoEnviado);
     setUsuario({
       nombre: "",
       correo: "",

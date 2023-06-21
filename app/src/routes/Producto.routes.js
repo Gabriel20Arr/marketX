@@ -15,7 +15,7 @@ ProductoRouter.get("/", HandlerAllProductos);
 ProductoRouter.get('/usuario',HandlerProductUsers);
 ProductoRouter.get("/:id", HandlerIdProductos);
 ProductoRouter.post("/crearProductos", HandlerProducto);
-ProductoRouter.put("/actualizar/:id", HadlerActualizar);
+ProductoRouter.put("/actualizar", HadlerActualizar);
 ProductoRouter.delete("/eliminar/:id", HandlerEliminar);
 
 module.exports = ProductoRouter;
