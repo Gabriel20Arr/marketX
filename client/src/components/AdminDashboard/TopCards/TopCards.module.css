@@ -1,0 +1,51 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+}
+
+.card {
+	width: calc(33.33% - 0.67rem);
+	background-color: #ffffff;
+	border: 1px solid #000000;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+.cardContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cardInfo {
+	flex: 1;
+}
+
+.cardTitle {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+	color: #4b5563;
+}
+
+.cardBadge {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+}
+
+.greenBackground {
+	background-color: #48bb78;
+}
+
+.cardBadgeText {
+	color: #38a169;
+	font-size: 1.5rem;
+}
