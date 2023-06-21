@@ -1,0 +1,14 @@
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
+}
+
+.title {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.subtitle {
+	font-size: 1rem;
+}
