@@ -43,10 +43,15 @@ export default function Registrarse() {
     const contraseñas =
       data && data.map((user) => user.contraseña).includes(usuario.contraseña);
     if (contraseñas && correos) {
+      const guardado = data.find((user)=>user.correo === usuario.correo);
+      const guardadoString = JSON.stringify(guardado);
+      localStorage.setItem('usuario', guardadoString);
+
       setUsuario({
         correo: "",
         contraseña: "",
       });
+      
       setError({
         correo: "",
         contraseña: "",

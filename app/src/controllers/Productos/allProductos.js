@@ -1,5 +1,5 @@
 const Producto = require('../../models/Producto');
-const productos = require('../../../../client/Api/api');
+const productos = require('../../../../client/src/api/api');
 const allProductos = async () => {
   try {
     const productoDB = await Producto.find();
