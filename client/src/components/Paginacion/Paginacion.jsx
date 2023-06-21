@@ -10,7 +10,7 @@ import ReactPaginate from 'react-paginate';
 import style from './Paginacion.module.css';
 import Cards from '../Cards/Cards';
 
-import productos from '../../../../client/src/api/api';
+const productos = require('../../api/api')
 
 const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	const sortOrder = useSelector((state) => state.sort.sortOrder);

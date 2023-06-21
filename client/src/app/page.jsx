@@ -22,10 +22,10 @@ export default function Landing() {
 
         <div className={Style.iniciarSesion}>
           {/* <h3 className={Style.iniciarSesion}> */}
-            <h4 className={Style.iniciarSesionFondo}> 
+            <h3 className={Style.iniciarSesionFondo}> 
               ¿Ya tienes cuenta?  
               <Link href='/loging'>INICIA SESION</Link> 
-            </h4>
+            </h3>
           {/* </h3> */}
         </div>
         

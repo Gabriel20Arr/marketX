@@ -89,7 +89,7 @@ export default function Registrarse() {
             <form onSubmit={handlerSubmit}>
               <div className="mb-2">
                 <label className="form-label" htmlFor="nombre">
-                  Nombre :
+                  Nombre y apellido:
                 </label>
                 <input
                   className="form-control"
