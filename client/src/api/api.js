@@ -9,6 +9,7 @@ const productos = [
 			'AMD es un fabricante estadounidense de placas de video, por su tecnología se ha destacado en crear procesadores de alta gama que permiten un excelente funcionamiento del motor gráfico de tu computadora.',
 		precio: 199999,
 		cantidadVenta: 12,
+		stock: 10
 	},
 	{
 		id: 2,
@@ -20,6 +21,7 @@ const productos = [
 			'El procesador AMD Ryzen™ 7 5800X tiene 8 núcleos y 16 hilos, con una frecuencia base de 3.8 GHz que puede subir hasta los 4.7 GHz. Es compatible con la plataforma AM4 y ofrece un rendimiento excepcional para juegos y aplicaciones exigentes.',
 		precio: 69999,
 		cantidadVenta: 8,
+		stock: 0
 	},
 	{
 		id: 3,

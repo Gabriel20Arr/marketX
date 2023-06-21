@@ -9,7 +9,8 @@ export default function Card({item}) {
   }
   return (  
     <div className={style.cont}>
-        {(item.id || item._id)?<article>
+        {(item.id || item._id)?
+        <article>
             <div className={style.contT}>
               <h2 className={style.name} >{item.titulo}</h2>
             </div>            
@@ -29,7 +30,6 @@ export default function Card({item}) {
                 
               </button>
             </Link> */}
-            <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
 
         </article>:null}
     </div>

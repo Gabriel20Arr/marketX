@@ -6,9 +6,8 @@ import logo from '../../images/MarketX-newlogo (2).png';
 import styles from "./NavBar.module.css";
 import React, {useContext, useEffect, useState} from 'react';
 import { Cart4 } from 'react-bootstrap-icons';
-import { StoreContext } from '@/src/utils/Store';
+import { Store } from '@/src/utils/Store';
 import { useRouter } from 'next/navigation';
-import React, {useState} from 'react';
 
   
   export default function Navigation({ currentPath }){
@@ -18,7 +17,7 @@ import React, {useState} from 'react';
     router.push(`/${value}`)
   }
 
-  const { state, dispatch } = useContext(StoreContext);
+  const { state, dispatch } = useContext(Store);
 
   const { cart } = state;
 
