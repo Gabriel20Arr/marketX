@@ -1,11 +1,16 @@
 import { useRouter } from "next/navigation";
 import style from "./Card.module.css";
+import axios from "axios";
+
+// import productos from "@/src/api/api"; // arays de objetos
 
 export default function Card({item}) {
   const router = useRouter();
+  
   const handlerDetail = ()=>{
     item.id?router.push(`/home/${item.id}`):console.log('no');
   }
+  
   return (
     <div className={style.cont}>
         {item.id?<article>
@@ -20,6 +25,23 @@ export default function Card({item}) {
             <div className={style.Countprecio}>
               <h2 className={style.precio}> ${item.precio}</h2>
             </div>
+
+            <div className={style.Pagar}>
+                <button  
+                    className={style.btnPagar} 
+                    id="buttomPagar"
+                    onClick={() => {
+                      axios.post("http://localhost:3001/pago/createorder", item, {
+                        headers: {
+                          'Content-Type': 'application/json'
+                        }
+                      })
+                      .then((res) => window.location.href = res.data.init_point)
+                    }}
+                >
+                  Comprar
+                </button>
+            </div>    
 
             <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
         </article>:null}

@@ -1,30 +1,40 @@
 const mercadopago = require('mercadopago');
+require('dotenv').config()
+
+const { KEYMERCADOPAGO } = process.env;
 
 const createOrder = async (req, res) => {
+    const { titulo, imagen, descripcion, stock, precio } = req.body; 
+    console.log(req.body)
+    
     mercadopago.configure({
-        access_token: 'TEST-5573342297173515-060809-5931e0c896c00a652adc937525513ce2-1393822223'
+        access_token: KEYMERCADOPAGO
     })
-
+    
     const result = await mercadopago.preferences.create({
+        
         items: [
             {
-                title: "Laptop hp",
-                unit_price: 300,
-                currency_id: "ARS",
-                quantity: 1,
+                title: titulo,
+                currency_id: 'ARS',
+                picture_url: imagen,
+                quantity: stock,
+                unit_price: precio,
             }
         ],
+
         back_urls: {
-            success: "http://localhost:3000/pago/routerPago/success",
-            failure: "http://localhost:3000/pago/routerPagofailure",
-            pending: "http://localhost:3000/pago/routerPagopending",
+            success: "http://localhost:3001/pago/success",
+            failure: "http://localhost:3001/pago/failure",
+            pending: "http://localhost:3001/pago/pending",
         },
+
         notification_url: 'https://011b-200-115-58-192.sa.ngrok.io/webhook'
     })
 
     // console.log(result);
 
-    res.send(result.body)
+    return res.send(result.body)
 }
 
 

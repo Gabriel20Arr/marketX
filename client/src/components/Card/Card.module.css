@@ -6,7 +6,8 @@
     padding: 2px;
     padding-top: 0;
 
-    height: 29.5em;
+    height: 35em;
+    /* height: 29.5em; */
     width: 19.5em;
 
     margin: 15px;
@@ -147,4 +148,12 @@
     box-shadow: 0 0  10px black;
 
     color: gray;
+}
+
+
+.btnPagar{
+
+    width: 5em;
+    font-size: 20px;
+
 }
