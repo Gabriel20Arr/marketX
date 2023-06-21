@@ -65,6 +65,8 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	if (isLoading || isFetching) return <p>Loading...</p>;
 	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
 
+	
+
 	const handlePageChange = ({ selected }) => {
 		setCurrentPage(selected);
 		window.scrollTo(0, 0);

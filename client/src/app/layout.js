@@ -1,10 +1,11 @@
 "use client";
 
+import { StoreProvider } from '../utils/Store';
 import { Providers } from '../redux/Providers/Providers';
 import NavBar from '../components/NavBar/NavBar';
 import { usePathname } from 'next/navigation';
 import { Cairo } from 'next/font/google'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Share_Tech } from "next/font/google";
 
 const inter = Share_Tech({
@@ -34,12 +35,20 @@ export default function RootLayout({children}){
         {/* <link rel='stylesheet' href='https://bootswatch.com/5/vapor/bootstrap.min.css' /> */}
       </head>
         <body className={cairo.className}>
+
+        <StoreProvider>
+          
           <Providers>
-           {(router !='/' && router!='/loging' && router!='/registrarse')? <NavBar currentPath={router}/>:''}
-            <div>
-              {children}
-            </div>
+            
+              {(router !='/' && router!='/loging' && router!='/registrarse')? <NavBar currentPath={router}/>:''}
+                <div>
+                  {children}
+                </div>
+
           </Providers>
+          
+        </StoreProvider>
+        
         </body>
     </html>
   );

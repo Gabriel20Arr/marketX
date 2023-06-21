@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import style from "./Card.module.css";
+import Link from "next/link";
 
 export default function Card({item}) {
   const router = useRouter();
@@ -22,6 +23,12 @@ export default function Card({item}) {
             </div>
 
             <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar más</h3>
+
+            {/* <Link>
+              <button>
+                
+              </button>
+            </Link> */}
         </article>:null}
     </div>
   )

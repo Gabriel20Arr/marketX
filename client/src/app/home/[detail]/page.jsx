@@ -3,13 +3,31 @@
 import { useGetProductsByIdQuery } from "@/src/redux/services/productApi";
 import styles from './detail.module.css';
 import Link from "next/link";
+import React, { useContext } from 'react';
+import { StoreContext } from "@/src/utils/Store";
 
 export default function Detail({ params }) {
+
+  const {state, dispatch} = useContext(StoreContext);
+
   const { detail } = params;
   const {data,error, isLoading, isFetching}=useGetProductsByIdQuery({ id: detail });
   if(isLoading || isFetching) return <p>Loading...</p>
   if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
- 
+  
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find(index => index.id === data.id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    // if(data.stock < quantity) {
+    //   alert('Lo sentimos, no hay stock de este producto');
+    //   return;
+    // }
+
+    dispatch({type: 'CARD_ADD_ITEM', payload:{ ...data, quantity }})
+  }
+
+
   return (
     <div className={styles.countForm}>
 
@@ -52,6 +70,8 @@ export default function Detail({ params }) {
       {/* <div>
         <h2 className={styles.btn} > cantidadVenta: {data.cantidadVenta}</h2>
       </div> */}
+
+      <button className="btn btn-primary mt-2" onClick={addToCartHandler}>Agregar al carrito</button>
 
     </div>
 

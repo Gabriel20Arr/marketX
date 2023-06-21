@@ -4,9 +4,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../images/MarketX-newlogo (2).png';
 import styles from "./NavBar.module.css";
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import { Cart4 } from 'react-bootstrap-icons';
+import { StoreContext } from '@/src/utils/Store';
 
 export default function Navigation({ currentPath }){
+
+  const { state, dispatch } = useContext(StoreContext);
+
+  const { cart } = state;
+
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0)) 
+  }, [cart.cartItems])
+  
 
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -76,7 +89,13 @@ export default function Navigation({ currentPath }){
                       <Link style={{ textDecoration: "none", color: "inherit" }} href="/">Salir</Link>
                     </li>
                   </ul>
-        </div>
+                </div>
+
+                <div>
+                  <Link style={{ textDecoration: "none", color: "inherit" }} href="/cart">
+                    <Cart4 size={30} /> <span className='text-white bg-danger rounded p-1'>{cartItemsCount}</span>
+                  </Link>
+                </div>
 
                 {/* <form className="d-flex" role="search">
                   <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
