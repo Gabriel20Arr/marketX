@@ -33,9 +33,15 @@ const ProductoSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: Usuario,
 	},
+<<<<<<< HEAD
 	stock: {
 		type: Number,
 		require: true,
+=======
+	categorias: {
+		type: Array,
+		default:[]
+>>>>>>> 0c2cd85e7bea89d1d559dadbb9eeb8bfe7efb3e6
 	}
 });
 
