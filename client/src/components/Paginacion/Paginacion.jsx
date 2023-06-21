@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import {
 	useGetProductsQuery,
@@ -54,7 +53,6 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 
 	const { data, error, isLoading, isFetching, refetch } =
 		useGetProductsQuery(selectedCategory);
-
 	const apiProductos = data || [];
 	const items = [...apiProductos, ...productos];
 

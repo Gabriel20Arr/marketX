@@ -1,14 +1,14 @@
 const Producto = require("../../models/Producto");
-const Usuario = require("../../models/Usuario");
 const productoCreado = async (
   titulo,
   categoria,
   imagen,
   descripcion,
   precio,
-  cantidadVenta
+  cantidadVenta,
+  usuario,
+  categorias
 ) => {
-  const usuario = await Usuario.findOne({});
   const nuevoProducto = new Producto({
     titulo,
     categoria,
@@ -16,9 +16,9 @@ const productoCreado = async (
     descripcion,
     precio,
     cantidadVenta,
-    // usuario: usuario._id,
+    usuario,
+    categorias
   });
-  console.log(usuario);
 
   nuevoProducto.save();
 };

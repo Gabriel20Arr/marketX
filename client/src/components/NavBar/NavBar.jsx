@@ -7,8 +7,16 @@ import styles from "./NavBar.module.css";
 import React, {useContext, useEffect, useState} from 'react';
 import { Cart4 } from 'react-bootstrap-icons';
 import { StoreContext } from '@/src/utils/Store';
+import { useRouter } from 'next/navigation';
+import React, {useState} from 'react';
 
-export default function Navigation({ currentPath }){
+  
+  export default function Navigation({ currentPath }){
+  const router = useRouter();
+  const handelrRouter = (value)=>{
+    localStorage.clear();
+    router.push(`/${value}`)
+  }
 
   const { state, dispatch } = useContext(StoreContext);
 
@@ -21,6 +29,14 @@ export default function Navigation({ currentPath }){
   }, [cart.cartItems])
   
 
+  const routerHome = ()=>{
+    router.push('/home')
+  }
+
+  const routerMisProductos = ()=>{
+    router.push('/misProductos')
+  }
+ 
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -32,9 +48,7 @@ export default function Navigation({ currentPath }){
 
               <div className={styles.NavConteiner} >
                 <div>
-                  <Link href="/home">
-                    <Image src={logo} className={styles.logo}/>
-                  </Link>
+                    <Image src={logo} className={styles.logo} onClick={routerHome}/>
                 </div>
 
                   {/* <li className="nav-item">
@@ -74,19 +88,23 @@ export default function Navigation({ currentPath }){
                       </h2>
                     </button>
                   <ul className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}>
-                    <li className={styles.dropdownItem}>
-                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/loging">Iniciar sesión</Link>
+                    <li 
+                    className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }} 
+                    onClick={()=>handelrRouter('loging')}>Iniciar sesión
                     </li>
-                    <li className={styles.dropdownItem}>
-                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/registrarse">Registrarse</Link>
+                    <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+                    onClick={()=>handelrRouter('registrarse')} >Registrarse
                     </li>
                     {/* { currentPath !== '/about' && (
                     <li className={styles.dropdownItem}>
                       <Link style={{ textDecoration: "none", color: "inherit" }} href="/about">Sobre MarketX</Link>
                     </li>
                     )} */}
-                    <li className={styles.dropdownItem}>
-                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/">Salir</Link>
+                    <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+                    onClick={()=>handelrRouter('')} >Salir
+                    </li>
+                    <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+                    onClick={routerMisProductos}>mis productos
                     </li>
                   </ul>
                 </div>

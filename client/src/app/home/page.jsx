@@ -25,6 +25,10 @@ export default function HomePage() {
 		setCurrentPage(0);
 	};
 
+	const usuarioJSON = localStorage.getItem('usuario');
+	const usuario = JSON.parse(usuarioJSON);
+	console.log(usuario);
+
 	return (
 		<div>
 			<div>
