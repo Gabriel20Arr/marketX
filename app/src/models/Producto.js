@@ -33,6 +33,10 @@ const ProductoSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: Usuario,
 	},
+	categorias: {
+		type: Array,
+		default:[]
+	}
 });
 
 module.exports = model('Producto', ProductoSchema);

@@ -9,6 +9,8 @@ import Image from "next/image";
 import logo from "../../images/MarketX-newlogo.png";
 
 export default function CrearProducto() {
+	const usuarioJSON = localStorage.getItem('usuario');
+	const usuario = JSON.parse(usuarioJSON);
 	const [form, setForm] = useState({
 		titulo: '',
 		categoria: '',
@@ -16,6 +18,8 @@ export default function CrearProducto() {
 		descripcion: '',
 		precio: '',
 		cantidadVenta: '0',
+		usuario:usuario._id,
+		categorias:[usuario.correo]
 	});
 
 	const [errors, setErrors] = useState({
@@ -46,6 +50,8 @@ export default function CrearProducto() {
 				descripcion: '',
 				precio: '',
 				cantidadVenta: '',
+				usuario:usuario._id,
+				categorias:[usuario.nombre]
 			});
 			alert('Creacion Exitosa ');
 		} catch (error) {

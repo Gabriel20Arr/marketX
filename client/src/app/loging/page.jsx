@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import { useRouter } from "next/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+     
 export default function Registrarse() {
   const [showPass, setShowPass] = useState(false)
   
@@ -15,21 +15,15 @@ export default function Registrarse() {
     correo: "",
     contraseña: "",
   });
-
   const [error, setError] = useState({
     correo: "",
     contraseña: "",
   });
-  const { data, refetch } = useGetUsersQuery(null);
+  const {data, refetch} = useGetUsersQuery(null);
+  useEffect(()=>{
+    refetch();
+  },[])
   const router = useRouter();
-  
-  useEffect(()=> {
-    refetch();
-  }, [])
-
-  useEffect(() => {
-    refetch();
-  }, [])
 
   const handlerUsuario = (e) => {
     const { value, name } = e.target;
@@ -46,7 +40,6 @@ export default function Registrarse() {
       const guardado = data.find((user)=>user.correo === usuario.correo);
       const guardadoString = JSON.stringify(guardado);
       localStorage.setItem('usuario', guardadoString);
-
       setUsuario({
         correo: "",
         contraseña: "",
@@ -57,7 +50,7 @@ export default function Registrarse() {
         contraseña: "",
       });
       alert("Se inicio sesion correctamente");
-      router.push("/home");
+      router.replace("/home");
     } else {
       setError((prevError) => ({
         ...prevError,
