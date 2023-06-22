@@ -4,8 +4,7 @@ require('dotenv').config()
 const { KEYMERCADOPAGO } = process.env;
 
 const createOrder = async (req, res) => {
-    const { titulo, imagen, stock, precio } = req.body; 
-    console.log(req.body)
+    const { titulo, imagen, stock, precio, descripcion } = req.body; 
     
     mercadopago.configure({
         access_token: KEYMERCADOPAGO

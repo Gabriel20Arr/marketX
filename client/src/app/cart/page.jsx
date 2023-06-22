@@ -1,9 +1,12 @@
 'use client'
 
 import { Store } from '@/src/utils/Store'
-import Link from 'next/link';
 import React, { useContext } from 'react'
 import { Trash3 } from 'react-bootstrap-icons';
+import Link from 'next/link';
+import axios from "axios";
+
+import style from './cart.module.css'
 
 export default function Cart() {
 
@@ -17,7 +20,34 @@ export default function Cart() {
   const updateCartHandler = (item, cantidad) => {
     const quantity = Number(cantidad)
     dispatch({type: 'CARD_ADD_ITEM', payload: {...item, quantity}})
-  }
+  }  
+
+  
+  // console.log('SHOW: ', cartItems)
+
+  // const createOrderHandler = async () => {
+  //   const items = cartItems.map(item => {
+  //     return {
+  //       title: item.titulo,
+  //       currency_id: 'ARS',
+  //       picture_url: item.imagen,
+  //       quantity: item.stock,
+  //       unit_price: item.precio,
+  //     };
+  //   });
+
+  //   try {
+  //     const response = await axios.post("http://localhost:3001/pago/createorder", { items }, {
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       }
+  //     });
+  //     const { init_point } = response.data;
+  //     window.location.href = init_point;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div>
@@ -52,7 +82,7 @@ export default function Cart() {
                           {item.titulo}
                         </td>
                         <td>
-                          <select value={item.quantity} onChange={(event => updateCartHandler(item, event.target.value))}>
+                          <select value={item.stock} onChange={(event => updateCartHandler(item, event.target.value))}>
                             {
                               [...Array(item.stock).keys()].map(index => (
                                 <option key={index+1} value={index+1}>
@@ -78,6 +108,16 @@ export default function Cart() {
                     Subtotal: ({cartItems.reduce((a,c) => a + c.quantity, 0)}) : $ {cartItems.reduce((a, c) => a + c.quantity * c.precio, 0)}
                   </div>
 
+                  <div className={style.contenedorComprar}>
+                    <button  
+                        className={style.comprar} 
+                        id="buttomPagar"
+                        onClick={createOrderHandler}
+                    >
+                      Comprar
+                    </button>
+                  </div> 
+
                 </div>
               )
           }
@@ -85,3 +125,4 @@ export default function Cart() {
     </div>
   )
 }
+

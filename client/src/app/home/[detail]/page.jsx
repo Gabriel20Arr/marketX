@@ -13,11 +13,11 @@ export default function Detail({ params }) {
   const {state, dispatch} = useContext(Store);
 
   const { detail } = params;
-  const {data,error, isLoading, isFetching} = useGetProductsByIdQuery({ id: detail });
+  const {data, error, isLoading, isFetching} = useGetProductsByIdQuery({ id: detail });
   if(isLoading || isFetching) return <p>Loading...</p>
   if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
 
-  console.log('DATO: ', data);
+  // console.log('DATO: ', data);
 
   const router = useRouter()
 
