@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Style from "./Loging.module.css";
 import logo from "../../images/MarketX-newlogo.png";
 import Image from "next/image";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import { useRouter } from "next/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Store } from "@/src/utils/Store";
      
 export default function Registrarse() {
   const [showPass, setShowPass] = useState(false)
@@ -29,7 +30,8 @@ export default function Registrarse() {
     const { value, name } = e.target;
     setUsuario({ ...usuario, [name]: value });
   };
-
+  const {dispatch} = useContext(Store);
+  
   const handlerSubmit = (e) => {
     e.preventDefault();
     const correos =
@@ -40,6 +42,7 @@ export default function Registrarse() {
       const guardado = data.find((user)=>user.correo === usuario.correo);
       const guardadoString = JSON.stringify(guardado);
       localStorage.setItem('usuario', guardadoString);
+      dispatch({type: 'INICIAL', payload: guardado.carrito})
       setUsuario({
         correo: "",
         contraseña: "",

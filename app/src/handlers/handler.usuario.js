@@ -33,9 +33,9 @@ const HandlerUserById = async(req, res) =>{
 }
 
 const HandlerUserCar = async(req, res) =>{
-    const {idUsuario, idProducto, idProductoDelete} = req.body;
+    const {cartItems, usuario} = req.body;
     try {
-        const result = await usuarioCarrito(idUsuario,idProducto,idProductoDelete);
+        const result = await usuarioCarrito(usuario, cartItems);
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json({error:error.message});

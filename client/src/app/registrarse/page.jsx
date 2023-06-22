@@ -49,7 +49,7 @@ export default function Registrarse() {
     e.preventDefault();
     const result = await dispatch(postRequestAsync(usuario));
     const asunto = "Bienvenido a Market X";
-    const mensaje = "Su cuaneta se ha creado correctamente";
+    const mensaje = "Su cuenta se ha creado correctamente";
     const correoEnviado = enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje);
     console.log(result, correoEnviado);
     setUsuario({

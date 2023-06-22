@@ -10,13 +10,16 @@ export default function Cart() {
   const { state, dispatch } = useContext(Store);
   const { cartItems } = state.cart;
 
+  const usuarioJSON = localStorage.getItem('usuario');
+	const usuario = JSON.parse(usuarioJSON);
+
   const removeCartHandler = (item) => {
-    dispatch({type: 'CART_REMOVE_ITEM', payload: item})
+    dispatch({type: 'CART_REMOVE_ITEM', payload: item, usuario:usuario._id})
   }
 
   const updateCartHandler = (item, cantidad) => {
     const quantity = Number(cantidad)
-    dispatch({type: 'CARD_ADD_ITEM', payload: {...item, quantity}})
+    dispatch({type: 'CARD_ADD_ITEM', payload: {...item, quantity,usuario:usuario._id}})
   }
 
   return (
