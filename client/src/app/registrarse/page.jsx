@@ -50,16 +50,25 @@ export default function Registrarse() {
       correo: "",
       contraseña: "",
       confirme_su_contraseña: "",
+      provincia: "",
+      codigo_postal: "",
+      direccion: "",
+      telefono: "",
       // rol: "",
     });
     router.push("/loging");
   };
+
   const buttonHablitado = () => {
     if (
       usuario.nombre === "" ||
       usuario.correo === "" ||
       usuario.contraseña === "" ||
-      usuario.confirme_su_contraseña === ""
+      usuario.confirme_su_contraseña === "" || 
+      usuario.provincia === "" ||
+      usuario.codigo_postal === "" || 
+      usuario.direccion === "" ||
+      usuario.telefono === ""
     ) {
       return true;
     } else {
@@ -82,7 +91,7 @@ export default function Registrarse() {
             <form onSubmit={handlerSubmit}>
               <div className="mb-2">
                 <label className="form-label" htmlFor="nombre">
-                  Nombre y apellido:
+                  Nombre:
                 </label>
                 <input
                   className="form-control"
@@ -188,6 +197,70 @@ export default function Registrarse() {
                   {error.confirme_su_contraseña
                     ? error.confirme_su_contraseña
                     : ""}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <label className="form-label" htmlFor="provincia">
+                  Provincia:
+                </label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="provincia"
+                  onChange={handlerUsuario}
+                  value={usuario.provincia}
+                />
+                <p className="form-text text-danger">
+                  {error.nombre ? error.nombre : ""}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <label className="form-label" htmlFor="codigo_postal">
+                  Codigo postal:
+                </label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="codigo_postal"
+                  onChange={handlerUsuario}
+                  value={usuario.codigo_postal}
+                />
+                <p className="form-text text-danger">
+                  {error.nombre ? error.nombre : ""}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <label className="form-label" htmlFor="direccion">
+                  Direccion:
+                </label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="direccion"
+                  onChange={handlerUsuario}
+                  value={usuario.direccion}
+                />
+                <p className="form-text text-danger">
+                  {error.nombre ? error.nombre : ""}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <label className="form-label" htmlFor="telefono">
+                  Telefono:
+                </label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="telefono"
+                  onChange={handlerUsuario}
+                  value={usuario.telefono}
+                />
+                <p className="form-text text-danger">
+                  {error.nombre ? error.nombre : ""}
                 </p>
               </div>
 

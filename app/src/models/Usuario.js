@@ -18,6 +18,22 @@ const UsuarioSchema = new Schema(
     rol: {
       type: String,
     },
+    provincia: {
+      type: String,
+      require: true
+    },
+    codigo_postal: {
+      type: Number,
+      require: true
+    },
+    direccion: {
+      type: String,
+      require: true
+    },
+    telefono: {
+      type: Number,
+      require: true
+    },
   },
   {
     timestamps: true,
