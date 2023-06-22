@@ -5,8 +5,8 @@ const allProductos = async () => {
     const productoDB = await Producto.find();
     if(productoDB.length > 0) {
         const result =productoDB.map(producto => {
-          const {_id,categoria,descripcion,imagen,precio,titulo}=producto;
-          return {id:_id,categoria,descripcion,imagen,precio,titulo};
+          const {_id,categoria,descripcion,imagen,precio,titulo, stock}=producto;
+          return {id:_id,categoria,descripcion,imagen,precio,titulo, stock};
         })
         return result;
     } else {

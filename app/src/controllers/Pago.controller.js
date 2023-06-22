@@ -4,7 +4,7 @@ require('dotenv').config()
 const { KEYMERCADOPAGO } = process.env;
 
 const createOrder = async (req, res) => {
-    const { titulo, imagen, descripcion, stock, precio } = req.body; 
+    const { titulo, imagen, stock, precio } = req.body; 
     console.log(req.body)
     
     mercadopago.configure({
@@ -38,7 +38,9 @@ const createOrder = async (req, res) => {
 }
 
 
-const success = (req, res) => res.send('success')
+const success = (req, res) => {
+  res.redirect('http://localhost:3000/home');
+};
 
 const webhook = async (req, res) => {
     const payment = req.query;

@@ -10,6 +10,8 @@ import Link from "next/link";
 export default function Detail({ params }) {
   const { detail } = params;
   const {data, error, isLoading, isFetching}=useGetProductsByIdQuery({ id: detail });
+
+  // console.log("DATA: ", data)
   
   if (isLoading || isFetching) return <p>Loading...</p>;
   if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;

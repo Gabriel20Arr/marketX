@@ -19,7 +19,7 @@ const productoActualizado = async (
       imagen,
       descripcion,
       precio,
-      cantidadVenta,
+      cantidadVenta
     },
     { new: true } // Esto devuelve el documento actualizado en lugar del antiguo
   );

@@ -56,6 +56,8 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	const apiProductos = data || [];
 	const items = [...apiProductos, ...productos];
 
+	// console.log('dataa',data);
+	
 	useEffect(() => {
 		refetch();
 	}, []);

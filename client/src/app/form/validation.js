@@ -22,6 +22,9 @@ const validation = (form) => {
     if(!form.precio){
         errors.precio = '*';
     }
+    if(!form.stock){
+        errors.precio = '*';
+    }
     
     return errors;
 }

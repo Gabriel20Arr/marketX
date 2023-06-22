@@ -2,14 +2,14 @@ import { useRouter } from "next/navigation";
 import style from "./Card.module.css";
 import axios from "axios";
 
-// import productos from "@/src/api/api"; // arays de objetos
-
 export default function Card({item}) {
   const router = useRouter();
   
   const handlerDetail = ()=>{
     (item.id || item._id)?router.push(`/home/${item.id || item._id}`):console.log('no');
   }
+  
+  // console.log('PRODUCTOS :', item);
   
   return (
     <div className={style.cont}>
@@ -24,6 +24,10 @@ export default function Card({item}) {
             
             <div className={style.Countprecio}>
               <h2 className={style.precio}> ${item.precio}</h2>
+            </div>
+
+            <div className={style.Countprecio}>
+              <h2 className={style.precio}> Stock: {item.stock}</h2>
             </div>
 
             <div className={style.Pagar}>

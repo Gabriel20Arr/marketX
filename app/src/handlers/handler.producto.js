@@ -34,10 +34,10 @@ const HandlerIdProductos = async (req, res) => {
 //-------------Crear Productos--------------------------------->
 
 const HandlerProducto = async (req, res) => {
-  const { titulo, categoria, imagen, descripcion, precio, cantidadVenta, usuario, categorias } =
+  const { titulo, categoria, imagen, descripcion, precio, cantidadVenta, usuario, categorias, stock } =
     req.body;
   try {
-    if (!titulo || !categoria || !imagen || !descripcion || !precio || !usuario)
+    if (!titulo || !categoria || !imagen || !descripcion || !precio || !usuario || !stock)
       throw new Error(
         "Se necesita tener todo los campos completos para crear un Producto"
       );
@@ -49,7 +49,8 @@ const HandlerProducto = async (req, res) => {
       precio,
       cantidadVenta,
       usuario,
-      categorias
+      categorias,
+      stock
     );
     res.status(201).send("Se creo con exito el Producto");
   } catch (error) {
@@ -60,7 +61,7 @@ const HandlerProducto = async (req, res) => {
 //--------------------Actualizar Producto --------------------------->
 
 const HadlerActualizar = async (req, res) => {
-  const { id, titulo, categoria, imagen, descripcion, precio, cantidadVenta } =
+  const { id, titulo, categoria, imagen, descripcion, precio, cantidadVenta} =
     req.body;
   try {
     if (!id)
