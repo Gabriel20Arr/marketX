@@ -15,7 +15,9 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "mercadopago": "^1.5.16",
-    "mongoose": "^7.2.4"
+    "googleapis": "^118.0.0",
+    "mongoose": "^7.2.4",
+    "nodemailer": "^6.9.3"
   },
   "devDependencies": {
     "morgan": "^1.10.0",

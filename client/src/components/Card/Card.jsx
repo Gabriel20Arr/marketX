@@ -11,6 +11,8 @@ export default function Card({item}) {
   }
   
   
+  console.log(item);
+  
   return (
     <div className={style.cont}>
         {(item.id || item._id)?

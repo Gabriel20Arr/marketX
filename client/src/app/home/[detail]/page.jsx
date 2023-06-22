@@ -10,14 +10,15 @@ import { useRouter } from "next/navigation";
 
 export default function Detail({ params }) {
 
-  const {state, dispatch} = useContext(Store);
+  const {state, dispatch} =useContext(Store);
 
   const { detail } = params;
   const {data, error, isLoading, isFetching} = useGetProductsByIdQuery({ id: detail });
   if(isLoading || isFetching) return <p>Loading...</p>
   if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
 
-  // console.log('DATO: ', data);
+  const usuarioJSON = localStorage.getItem('usuario');
+	const usuario = JSON.parse(usuarioJSON);
 
   const router = useRouter()
 
@@ -30,7 +31,7 @@ export default function Detail({ params }) {
       return;
     }
 
-    dispatch({type: 'CARD_ADD_ITEM', payload:{ ...data, quantity }})
+    dispatch({type: 'CARD_ADD_ITEM', payload:{ ...data, quantity, usuario:usuario._id }})
     router.push('/cart');
   }
 

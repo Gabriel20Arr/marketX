@@ -27,7 +27,7 @@ const ProductoSchema = new Schema({
 		required: true,
 	},
 	cantidadVenta: {
-		type: String,
+		type: Number,
 	},
 	usuario: {
 		type: Schema.Types.ObjectId,

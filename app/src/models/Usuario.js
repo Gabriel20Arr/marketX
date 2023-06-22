@@ -34,6 +34,10 @@ const UsuarioSchema = new Schema(
       type: Number,
       require: true
     },
+    carrito:{
+      type: Array,
+      default:[]
+    }
   },
   {
     timestamps: true,

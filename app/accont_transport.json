@@ -1,0 +1,10 @@
+{
+    "service":"gmail",
+    "auth":{
+        "type":"OAuth2",
+        "user":"marketx34@gmail.com",
+        "clientId":"915560654490-ui3hmu9n91u90pueh6leedph5kdrkrg8.apps.googleusercontent.com",
+        "clientSecret":"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",
+        "refreshToken":"1//04Xsr_4WuapTqCgYIARAAGAQSNwF-L9IrBrGUXROC3GsrThlC2vjDxVvGkyOS-8uRtXMKf2Sc-5aJJF0p5f2oUirtwJY0GRGKqds"
+    }
+}

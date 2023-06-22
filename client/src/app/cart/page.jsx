@@ -13,41 +13,45 @@ export default function Cart() {
   const { state, dispatch } = useContext(Store);
   const { cartItems } = state.cart;
 
+  const usuarioJSON = localStorage.getItem('usuario');
+	const usuario = JSON.parse(usuarioJSON);
+
   const removeCartHandler = (item) => {
-    dispatch({type: 'CART_REMOVE_ITEM', payload: item})
+    dispatch({type: 'CART_REMOVE_ITEM', payload: item, usuario:usuario._id})
   }
 
   const updateCartHandler = (item, cantidad) => {
     const quantity = Number(cantidad)
-    dispatch({type: 'CARD_ADD_ITEM', payload: {...item, quantity}})
+    dispatch({type: 'CARD_ADD_ITEM', payload: {...item, quantity, usuario:usuario._id}})
   }  
 
   
-  // console.log('SHOW: ', cartItems)
+  // console.log('SHOW: ', cartItems[0].quantity)
 
-  // const createOrderHandler = async () => {
-  //   const items = cartItems.map(item => {
-  //     return {
-  //       title: item.titulo,
-  //       currency_id: 'ARS',
-  //       picture_url: item.imagen,
-  //       quantity: item.stock,
-  //       unit_price: item.precio,
-  //     };
-  //   });
+  const createOrderHandler = async () => {
+    const cualquiera = {precio: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0)}
+    // const items = cartItems.map(item => {
+    //   return {
+    //     title: "Productos del carrito",
+    //     currency_id: 'ARS',
+    //     picture_url: item.imagen,
+    //     quantity: 1,
+    //     unit_price: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0),
+    //   };
+    // };
 
-  //   try {
-  //     const response = await axios.post("http://localhost:3001/pago/createorder", { items }, {
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     });
-  //     const { init_point } = response.data;
-  //     window.location.href = init_point;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+    try {
+      const response = await axios.post("http://localhost:3001/pago/createorder", cualquiera , {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const { init_point } = response.data;
+      window.location.href = init_point;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -105,14 +109,14 @@ export default function Cart() {
                   </table>
 
                   <div>
-                    Subtotal: ({cartItems.reduce((a,c) => a + c.quantity, 0)}) : $ {cartItems.reduce((a, c) => a + c.quantity * c.precio, 0)}
+                    Subtotal: ({cartItems.reduce((a,c) => a + c.quantity, 0)}) : $ {cartItems.reduce((a, c) => a + c.quantity * c.precio, 0)} 
                   </div>
 
                   <div className={style.contenedorComprar}>
                     <button  
                         className={style.comprar} 
                         id="buttomPagar"
-                        onClick={createOrderHandler}
+                        onClick={() => {createOrderHandler()}}
                     >
                       Comprar
                     </button>
