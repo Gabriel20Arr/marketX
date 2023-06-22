@@ -8,7 +8,7 @@ type Product = {
     descripcion: string,
     precio: string,
     cantidadVenta: string,
-    stock: string
+    stock: number
 }
 
 export const productsApi = createApi({

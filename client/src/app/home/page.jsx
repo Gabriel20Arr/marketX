@@ -39,8 +39,8 @@ export default function HomePage() {
 					<option value='Motherboard'>Motherboards</option>
 				</select>
 				
-				<button className={style.orfilbtn} onClick={() => handleSortOrder('title')}>A-Z</button>
-				<button className={style.orfilbtn} onClick={() => handleSortOrder('reverse')}>Z-A</button>
+				{/* <button className={style.orfilbtn} onClick={() => handleSortOrder('title')}>A-Z</button>
+				<button className={style.orfilbtn} onClick={() => handleSortOrder('reverse')}>Z-A</button> */}
 				<button className={style.orfilbtn} onClick={() => handleSortOrder('price')}>
 					MENOR A MAYOR PRECIO
 				</button>

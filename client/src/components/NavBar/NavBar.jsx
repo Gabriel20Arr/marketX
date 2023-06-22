@@ -4,8 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../images/MarketX-newlogo (2).png';
 import styles from "./NavBar.module.css";
+import React, {useContext, useEffect, useState} from 'react';
+import { Cart4 } from 'react-bootstrap-icons';
+import { Store } from '@/src/utils/Store';
 import { useRouter } from 'next/navigation';
-import React, {useState} from 'react';
 
   
   export default function Navigation({ currentPath }){
@@ -14,6 +16,17 @@ import React, {useState} from 'react';
     localStorage.clear();
     router.push(`/${value}`)
   }
+
+  const { state, dispatch } = useContext(Store);
+
+  const { cart } = state;
+
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0)) 
+  }, [cart.cartItems])
+  
 
   const routerHome = ()=>{
     router.push('/home')
@@ -93,7 +106,13 @@ import React, {useState} from 'react';
                     onClick={routerMisProductos}>mis productos
                     </li>
                   </ul>
-        </div>
+                </div>
+
+                <div>
+                  <Link style={{ textDecoration: "none", color: "inherit" }} href="/cart">
+                    <Cart4 size={30} /> <span className='text-white bg-danger rounded p-1'>{cartItemsCount}</span>
+                  </Link>
+                </div>
 
                 {/* <form className="d-flex" role="search">
                   <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

@@ -3,19 +3,38 @@
 import { useGetProductsByIdQuery } from "@/src/redux/services/productApi";
 import styles from './detail.module.css';
 import Link from "next/link";
-// import axios from "axios";
+import React, { useContext } from 'react';
+import { Store } from "@/src/utils/Store";
+import { useRouter } from "next/navigation";
 
-// import productos from "@/src/api/api";
 
 export default function Detail({ params }) {
-  const { detail } = params;
-  const {data, error, isLoading, isFetching}=useGetProductsByIdQuery({ id: detail });
 
-  // console.log("DATA: ", data)
-  
-  if (isLoading || isFetching) return <p>Loading...</p>;
-  if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
- 
+  const {state, dispatch} = useContext(Store);
+
+  const { detail } = params;
+  const {data,error, isLoading, isFetching} = useGetProductsByIdQuery({ id: detail });
+  if(isLoading || isFetching) return <p>Loading...</p>
+  if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
+
+  console.log('DATO: ', data);
+
+  const router = useRouter()
+
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find(index => index.id === data.id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if(data.stock < quantity) {
+      alert('Lo sentimos, no hay stock de este producto');
+      return;
+    }
+
+    dispatch({type: 'CARD_ADD_ITEM', payload:{ ...data, quantity }})
+    router.push('/cart');
+  }
+
+
   return (
     <div className={styles.countForm}>
 
@@ -61,6 +80,10 @@ export default function Detail({ params }) {
       {/* <div>
         <h2 className={styles.btn} > cantidadVenta: {data.cantidadVenta}</h2>
       </div> */}
+
+      <p>{data.stock > 0 ? "In stock":"Unavailable"}</p>  
+
+      <button className="btn btn-primary mt-2" disabled={data.stock === 0} onClick={addToCartHandler}>Agregar al carrito</button>
 
     </div>
 

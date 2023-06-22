@@ -10,7 +10,7 @@
     /* height: 29.5em; */
     width: 19.5em;
 
-    margin: 15px;
+    margin: 10px;
 
     overflow: hidden;
 
@@ -82,8 +82,8 @@
     justify-content: center;
     align-items: center; */
     background-color: white;
-    width: 93%;
-    height: 200px;
+    width: 90%;
+    height: 240px;
     border-radius: 10%;
     border: solid 2px black;
 
@@ -132,7 +132,7 @@
     
     width: fit-content;
     max-height: fit-content; 
-    font-size: small;
+    font-size: 15px;
  
     color: black;
     
@@ -144,9 +144,10 @@
 .detalle:hover{
     cursor: pointer;
 
-    /* background-color:grey; */
-    box-shadow: 0 0  10px black;
+    background-color:#0df3ff;
+    box-shadow: 0 0  10px #0df3ff;
 
+<<<<<<< HEAD
     color: gray;
 }
 
@@ -156,4 +157,7 @@
     width: 5em;
     font-size: 20px;
 
+=======
+    /* color: gray; */
+>>>>>>> e76f0f78709005e8e56bd9c08c1a84fd3e4fd01a
 }
