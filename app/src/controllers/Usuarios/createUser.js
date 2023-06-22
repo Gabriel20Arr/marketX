@@ -2,15 +2,26 @@ const db = require("../../database/index");
 const Usuario = require("../../models/Usuario");
 const categorias = require('../../models/Categoria');
 
-const createUser = async ({ nombre, correo, contraseña, provincia, codigo_postal, direccion, telefono }) => {
+const createUser = async ({ nombre, correo, contraseña, provincia, codigo_postal, direccion, telefono, rol }) => {
+  
   if (!nombre || !correo || !contraseña || !provincia || !codigo_postal || !direccion || !telefono) {
     throw new Error("Faltan datos");
   }
+  // console.log(rol);
 
   await db();
 
   try {
-    const usuario = new Usuario({ nombre, correo, contraseña, provincia, codigo_postal, direccion, telefono });
+    // const usuario = new Usuario({ nombre, correo, contraseña, rol, provincia, codigo_postal, direccion, telefono });
+
+    let usuario;
+    
+    if (rol === "admin") {
+      usuario = new Usuario({ nombre, correo, contraseña, rol, provincia, codigo_postal, direccion, telefono  });
+    } else {
+      usuario = new Usuario({ nombre, correo, contraseña, provincia, codigo_postal, direccion, telefono  });
+    }
+
     const savedUser = await usuario.save();
     const categoria = new categorias({nombre:correo});
     await categoria.save();

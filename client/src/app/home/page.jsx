@@ -27,7 +27,7 @@ export default function HomePage() {
 
 	const usuarioJSON = localStorage.getItem('usuario');
 	const usuario = JSON.parse(usuarioJSON);
-	console.log(usuario);
+	// console.log(usuario);
 
 	return (
 		<div>

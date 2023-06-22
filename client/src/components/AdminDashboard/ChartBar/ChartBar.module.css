@@ -1,0 +1,15 @@
+.container {
+	width: 100%;
+	column-span: 2;
+}
+
+.chartContainer {
+	position: relative;
+	height: 70vh;
+	min-height: 50vh;
+	margin: auto;
+	padding: 4px;
+	border: 1px solid;
+	border-radius: 0.25rem;
+	background-color: white;
+}

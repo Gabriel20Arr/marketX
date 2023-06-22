@@ -30,6 +30,7 @@ export default function Registrarse() {
     const { value, name } = e.target;
     setUsuario({ ...usuario, [name]: value });
   };
+
   const {dispatch} = useContext(Store);
   
   const handlerSubmit = (e) => {
@@ -47,6 +48,7 @@ export default function Registrarse() {
         correo: "",
         contraseña: "",
       });
+      
       setError({
         correo: "",
         contraseña: "",

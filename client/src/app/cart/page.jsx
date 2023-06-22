@@ -26,19 +26,8 @@ export default function Cart() {
   }  
 
   
-  // console.log('SHOW: ', cartItems[0].quantity)
-
   const createOrderHandler = async () => {
     const cualquiera = {precio: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0)}
-    // const items = cartItems.map(item => {
-    //   return {
-    //     title: "Productos del carrito",
-    //     currency_id: 'ARS',
-    //     picture_url: item.imagen,
-    //     quantity: 1,
-    //     unit_price: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0),
-    //   };
-    // };
 
     try {
       const response = await axios.post("http://localhost:3001/pago/createorder", cualquiera , {

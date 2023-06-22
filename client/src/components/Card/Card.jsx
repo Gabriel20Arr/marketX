@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import style from "./Card.module.css";
 import axios from "axios";
-import Link from "next/link";
+// import Link from "next/link";
 
 export default function Card({item}) {
   const router = useRouter();
@@ -10,8 +10,6 @@ export default function Card({item}) {
     (item.id || item._id)?router.push(`/home/${item.id || item._id}`):console.log('no');
   }
   
-  
-  console.log(item);
   
   return (
     <div className={style.cont}>

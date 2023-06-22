@@ -1,0 +1,44 @@
+.container {
+	background-color: #eeee;
+	display: flex;
+	min-height: 100vh;
+}
+
+.sideBar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+}
+
+.content {
+	margin-left: 200px; /* Ancho de la SideBar */
+	flex: 1;
+	padding-top: 10px;
+}
+
+.header {
+	margin-left: 10px; /* Margen a la izquierda de la SideBar */
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+}
+
+.topCharts {
+	margin-left: 10px; /* Margen a la izquierda de la SideBar */
+}
+
+.chartAndOrders {
+	display: flex;
+	margin-left: 10px; /* Margen a la izquierda de la SideBar */
+}
+
+.chartBar {
+	flex: 3; /* Ocupa 3/4 del ancho restante */
+}
+
+.recentOrders {
+	flex: 1; /* Ocupa 1/4 del ancho restante */
+}

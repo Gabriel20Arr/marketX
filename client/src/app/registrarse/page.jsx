@@ -20,14 +20,14 @@ export default function Registrarse() {
     correo: "",
     contraseña: "",
     confirme_su_contraseña: "",
-    // rol: "",
+    rol: "",
   });
   const [error, setError] = useState({
     nombre: "",
     correo: "",
     contraseña: "",
     confirme_su_contraseña: "",
-    // rol: "",
+    rol: "",
   });
 
   const dispatch = useAppDispatch();
@@ -58,7 +58,7 @@ export default function Registrarse() {
       codigo_postal: "",
       direccion: "",
       telefono: "",
-      // rol: "",
+      rol: "",
     });
     router.push("/loging");
   };
@@ -271,9 +271,9 @@ export default function Registrarse() {
               </div>
 
 
-              {/* Este select lo utilizaremos cuando le podamos dar funcionalidad*/}
-              {/* <span>rol: </span> */}
-              {/* <select
+              {/* Este select lo utilizaremos cuando le podamos dar funcionalidad */}
+              {/* <span>rol: </span>
+              <select
            name="rol"
            id=""
            defaultValue={"comprador"}
@@ -281,8 +281,8 @@ export default function Registrarse() {
             >
              <option value="vendedor">vendedor</option>
              <option value="comprador">comprador</option>
-            </select>
-           <br></br> */}
+            </select> */}
+           {/* <br></br> */}
               <div class="d-grid gap-2 col-6 mx-auto mb-3">
                 {existeError ? null : (
                   <button

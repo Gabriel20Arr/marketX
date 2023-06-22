@@ -1,7 +1,8 @@
-'use client'
+'use client';
 
-import { useGetProductsByIdQuery } from "@/src/redux/services/productApi";
+import { useGetProductsByIdQuery } from '@/src/redux/services/productApi';
 import styles from './detail.module.css';
+<<<<<<< HEAD
 import Link from "next/link";
 import React, { useContext } from 'react';
 import { Store } from "@/src/utils/Store";
@@ -38,30 +39,44 @@ export default function Detail({ params }) {
 
   return (
     <div className={styles.countForm}>
+=======
+import Link from 'next/link';
 
-      <div className={styles.CountAll}>
+export default function Detail({ params }) {
+	const { detail } = params;
+	const { data, error, isLoading, isFetching } = useGetProductsByIdQuery({
+		id: detail,
+	});
+>>>>>>> ed050be13c08f11e6782020d757f2ccf97fedec8
 
-        <Link href={'/home'} style={{ textDecoration: "none", color: "inherit" }} >
-          <div className={styles.btnAtras}>Atrás</div>
-        </Link>
+	if (isLoading || isFetching) return <p>Loading...</p>;
+	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
 
-        <div className={styles.CountImg}>
-        
-          <div className={styles.btn2}>
-            <img className={styles.btnImagen} src={data.imagen} alt="" />
-          </div>
-        
-        </div>
+	return (
+		<div className={styles.container}>
+			<div className={styles.backLink}>
+				<Link href='/home'>Atrás</Link>
+			</div>
 
-      </div>
-    
+			<div className={styles.image}>
+				<img src={data.imagen} alt='error cargando la imagen' />
+			</div>
 
-    <div className={styles.CountDes}>
+			<div className={styles.details}>
+				<div>
+					<p className={styles.title}>{data.titulo}</p>
+				</div>
 
-      <div className={styles.btn}>
-        <h2 className={styles.btnTitulo}>{data.titulo}</h2>
-      </div>
+				<div>
+					<p className={styles.price}>Precio: ${data.precio}</p>
+				</div>
 
+				<div>
+					<p className={styles.category}>Categoría: {data.categoria}</p>
+				</div>
+			</div>
+
+<<<<<<< HEAD
       <div className={styles.btn}>
         <h2 className={styles.btnPrecio}> Precio: ${data.precio}</h2>
       </div>
@@ -90,4 +105,12 @@ export default function Detail({ params }) {
 
     </div>
   );
+=======
+			<div className={styles.description}>
+				<p>Descripción:</p>
+				<p>{data.descripcion}</p>
+			</div>
+		</div>
+	);
+>>>>>>> ed050be13c08f11e6782020d757f2ccf97fedec8
 }
