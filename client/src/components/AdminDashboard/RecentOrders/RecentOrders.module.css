@@ -1,0 +1,75 @@
+.container {
+	width: 100%;
+	position: relative;
+	height: 70vh;
+	min-height: 50vh;
+	margin: auto;
+	padding: 4px;
+	border: 1px solid;
+	border-radius: 0.25rem;
+	background-color: white;
+	grid-column: span 1;
+	overflow-y: scroll;
+}
+
+.orderItem {
+	background-color: #f9fafb;
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+	padding: 0.5rem;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.hoverItem:hover {
+	background-color: #f7fafc;
+}
+
+.rounded {
+	border-radius: 0.5rem;
+}
+
+.bgPurple {
+	background-color: #f3ebff;
+}
+
+.p3 {
+	padding: 0.75rem;
+}
+
+.textPurple {
+	color: #6b46c1;
+}
+
+.pl4 {
+	padding-left: 1rem;
+}
+
+.textGray800 {
+	color: #2d3748;
+}
+
+.fontBold {
+	font-weight: bold;
+}
+
+.textGray400 {
+	color: #a0aec0;
+}
+
+.textSm {
+	font-size: 0.875rem;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.right6 {
+	right: 1.5rem;
+}
+
+.date {
+	margin-left: auto;
+}

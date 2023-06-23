@@ -48,8 +48,8 @@ function reducer(state, action){
         return { ...state, cart:{...state.cart, cartItems:action.payload} }
     }
 
-    default:
-      return state;
+        default:
+        return state;
   }
 }
 

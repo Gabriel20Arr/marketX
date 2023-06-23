@@ -1,10 +1,17 @@
+'use client'
+
 import image from '../images/MarketX-newlogo.png';
 import Link from 'next/link';
 import Style from './landing.module.css';
 import  Image from 'next/image'
+import { useRouter } from 'next/navigation';
 
 export default function Landing() {
-
+  const router = useRouter();
+  const home = (e)=>{
+    e.preventDefault
+    router.push('/home')
+  }
   return (
     <div className={Style.formAll}>
 
@@ -21,12 +28,10 @@ export default function Landing() {
         <Link style={{ textDecoration: "none", color: "inherit" }} href='/registrarse'><button className={Style.registrar1}>Registrarse gratis</button></Link>
 
         <div className={Style.iniciarSesion}>
-          {/* <h3 className={Style.iniciarSesion}> */}
-            <h3 className={Style.iniciarSesionFondo}> 
+            <h4 className={Style.iniciarSesionFondo}> 
               ¿Ya tienes cuenta?  
               <Link href='/loging'>INICIA SESION</Link> 
-            </h3>
-          {/* </h3> */}
+            </h4>
         </div>
         
         {/* <button className={Style.divR}>
@@ -39,10 +44,10 @@ export default function Landing() {
 
         </button>  */}
 
-        <span className={Style.invitadoCount}> 
-          <Link className={Style.invitado} href={"/home"} style={{ textDecoration: "none", color: "inherit" }}>
+        <span className={Style.invitadoCount} > 
+          <button className={Style.invitado} onClick={home}>
             Ingresar como Invitado
-          </Link>
+          </button>
         </span>   
 
       </div>
