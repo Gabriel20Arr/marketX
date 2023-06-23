@@ -202,20 +202,6 @@ export default function Registrarse() {
               </div>
 
               </div>
-
-
-              {/* Este select lo utilizaremos cuando le podamos dar funcionalidad*/}
-              {/* <span>rol: </span> */}
-              {/* <select
-           name="rol"
-           id=""
-           defaultValue={"comprador"}
-           onChange={handlerUsuario}
-            >
-             <option value="vendedor">vendedor</option>
-             <option value="comprador">comprador</option>
-            </select>
-           <br></br> */}
               <div class="d-grid gap-2 col-6 mx-auto mb-3">
                 {existeError ? null : (
                   <button
@@ -227,12 +213,6 @@ export default function Registrarse() {
                   </button>
                 )}
               </div>
-
-              {/* <div class="d-flex align-items-center justify-content-center">
-                <div class="border-bottom flex-grow-1"></div>
-                <div class="px-3">O</div>
-                <div class="border-bottom flex-grow-1"></div>
-              </div> */}
             </form>
           </div>
         </div>
