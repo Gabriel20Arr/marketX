@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
 	useGetProductsQuery,
@@ -57,15 +57,13 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	const items = [...apiProductos, ...productos];
 
 	// console.log('dataa',data);
-	
+
 	useEffect(() => {
 		refetch();
 	}, []);
 
 	if (isLoading || isFetching) return <p>Loading...</p>;
 	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
-
-	
 
 	const handlePageChange = ({ selected }) => {
 		setCurrentPage(selected);
@@ -110,7 +108,6 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 			/>
 		</>
 	);
-
 };
 
 export default Paginacion;
