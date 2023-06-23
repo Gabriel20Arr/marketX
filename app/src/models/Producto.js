@@ -39,8 +39,8 @@ const ProductoSchema = new Schema({
 	},
 	categorias: {
 		type: Array,
-		default:[]
-	}
+		default: [],
+	},
 });
 
 module.exports = model('Producto', ProductoSchema);

@@ -1,67 +1,66 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import {useGetUsersQuery} from "../../../redux/services/userApi"
+import { useGetUsersQuery } from '../../../redux/services/userApi';
+import styles from './users.module.css';
+import Link from 'next/link';
 
 const UserList = () => {
 	const [users, setUsers] = useState([]);
 
+	const { data, refetch } = useGetUsersQuery(null);
 	useEffect(() => {
-		fetchUsers();
+		refetch();
 	}, []);
+	console.log(data);
 
-	const fetchUsers = async () => {
-		try {
-			const response = await axios.get('http://localhost:3001/Usuario'); // Ruta de la API para obtener la lista de usuarios
-			setUsers(response.data);
-		} catch (error) {
-			console.error('Error fetching users:', error);
-		}
-	};
-
-	const {data, refetch} = useGetUsersQuery(null);
-  useEffect(()=>{
-    refetch();
-  },[])
-  console.log(data);
-
-	// const deleteUser = async (userId) => {
-	// 	try {
-	// 		await axios.delete(`http://localhost:3001/eliminar/${userId}`); // Ruta de la API para eliminar un usuario
-	// 		fetchUsers(); // Actualiza la lista de usuarios después de eliminar uno
-	// 	} catch (error) {
-	// 		console.error('Error deleting user:', error);
-	// 	}
-	// };
-
-	// const deleteUser = async (userId) => {
-	// 	try {
-	// 	  await axios.delete(`http://localhost:3001/eliminar/${userId}`);
-	// 	  fetchUsers();
-	// 	} catch (error) {
-	// 	  console.error('Error deleting user:', error);
-	// 	}
-	//   };
-
-
-
-	  return (
+	return (
 		<div>
-		  <h1>User List</h1>
-		  <button onClick={() => console.log('Add User')}>Add User</button>
-		  <ul>
-			{data?.map((user) => (
-			  <li key={user._id}> {/* Utilizar user._id en lugar de user.id */}
-				<p>{user.correo}</p>
-				<button onClick={() => console.log('Edit User:', user._id)}>Edit</button>
-				<button onClick={() => console.log('View Details:', user._id)}>View Details</button>
-				<button onClick={() => deleteUser(user._id)}>Delete</button> {/* Utilizar user._id en deleteUser */}
-			  </li>
-			))}
-		  </ul>
+			<Link href='/admin' className={styles.link}>
+				Volver
+			</Link>
+			<h1>Lista de Usuarios</h1>
+			<div className={styles.addButtonContainer}>
+				<button
+					className={styles.addButton}
+					onClick={() => console.log('Add User')}
+				>
+					Add User
+				</button>
+			</div>
+			<table className={styles.userTable}>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>NOMBRE</th>
+						<th>CORREO</th>
+						<th>ROL</th>
+						<th>TELÉFONO</th>
+						<th>DIRECCIÓN</th>
+						<th>CP</th>
+						<th>ACCIONES</th>
+					</tr>
+				</thead>
+				<tbody>
+					{data?.map((user) => (
+						<tr key={user._id}>
+							<td>{user._id}</td>
+							<td>{user.nombre}</td>
+							<td>{user.correo}</td>
+							<td>{user.rol}</td>
+							<td>{user.telefono}</td>
+							<td>{user.direccion}</td>
+							<td>{user.codigo_postal}</td>
+							<td>
+								<button onClick={() => editUser(user._id)}>Editar</button>
+								<button onClick={() => blockUser(user._id)}>Bloquear</button>
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
 		</div>
-	  );
+	);
 };
 
 export default UserList;
