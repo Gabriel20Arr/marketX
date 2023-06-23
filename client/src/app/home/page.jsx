@@ -18,21 +18,20 @@ export default function HomePage() {
     correo: session?.user.email,
     contraseña: "65564521-44654894sda",
   };
-  console.log(objeto);
-
+  
   const { data, refetch } = useGetUsersQuery(null);
-
+  
   useEffect(() => {
     refetch();
   }, []);
-
   const existente = data?.find((user) => user.correo === session?.user.email);
-
+  
   const google = async () => {
     if (existente) {
       const guardadoString = JSON.stringify(existente);
       localStorage.setItem("usuario", guardadoString);
     } else {
+      console.log('entra', objeto);
       const url = await axios
         .post("http://localhost:3001/usuario", objeto)
         .then((result) => {
@@ -50,8 +49,6 @@ export default function HomePage() {
   if (!usuario) {
     google();
   }
-
-  console.log(usuario);
 
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(0);

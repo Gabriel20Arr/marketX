@@ -28,10 +28,10 @@ export default function Card({item}) {
             </div>
 
             <div className={style.Countprecio}>
-              <h2 className={style.precio}> Stock: {item.stock}</h2>
+              <h2 className={style.precio}> Disponibles: {item.stock}</h2>
             </div>
 
-            <div className={style.Pagar}>
+            {/* <div className={style.Pagar}>
                 <button  
                     className={style.btnPagar} 
                     id="buttomPagar"
@@ -46,7 +46,7 @@ export default function Card({item}) {
                 >
                   Comprar
                 </button>
-            </div>    
+            </div>     */}
 
             <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
 

@@ -61,19 +61,19 @@ const UsuarioSchema = new Schema(
     },
     provincia: {
       type: String,
-      require: true
+      default: 'google'
     },
     codigo_postal: {
       type: Number,
-      require: true
+      default: 'google'
     },
     direccion: {
       type: String,
-      require: true
+      default: 'google'
     },
     telefono: {
       type: Number,
-      require: true
+      default: 'google'
     },
     carrito:{
       type: Array,

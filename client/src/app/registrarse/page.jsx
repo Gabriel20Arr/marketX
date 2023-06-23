@@ -39,6 +39,7 @@ export default function Registrarse() {
     const { value, name } = e.target;
     setUsuario({ ...usuario, [name]: value });
   };
+  
   useEffect(() => {
     setError(validate(usuario, data));
   }, [usuario]);
@@ -176,16 +177,6 @@ export default function Registrarse() {
                     />
 
               <div className={Style.inputs}>
-
-                <input
-                  className="form-control"
-                  type={showPass2 ? "text" : "password"}
-                  name="confirme_su_contraseña"
-                  onChange={handlerUsuario}
-                  value={usuario.confirme_su_contraseña}
-                />
-
-
               <div onClick={() => setShowPass2(!showPass2)}>
                   { 
                     

@@ -55,7 +55,6 @@ export default function Navigation({ currentPath }) {
 
   const usuarioJSON = localStorage.getItem('usuario');
   const usuario = JSON.parse(usuarioJSON);
-  // console.log(usuario.rol)
 
   return (
     <nav className={styles.container}>
@@ -94,20 +93,24 @@ export default function Navigation({ currentPath }) {
               onClick={() => handelrRouter('registrarse')} >Registrarse
             </li>
 
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+            {/* <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
               onClick={() => handelrRouter('')} >Salir
+            </li> */}
+            
+            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })
+                    }
+            >
+              Cerrar sesión
             </li>
 
             <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
               onClick={routerMisProductos}>mis productos
             </li>
 
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
-              onClick={signOut({callbackUrl: "http://localhost:3000"}) }>Cerrar Session
-            </li>
 
             {
-              usuario.rol == 'admin' ?
+              usuario?.rol == 'admin' ?
                 <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
                   onClick={routerDashBoard}>Dashboard
                 </li>
@@ -119,14 +122,14 @@ export default function Navigation({ currentPath }) {
         </div>
 
           <div>
-            <Link style={{ textDecoration: "none", color: "inherit" }} href="/cart">
+            <Link style={{ textDecoration: "none", color: "inherit" }} href={usuario?`/cart`:'/home'}>
                 <Cart4 size={30} /> <span className='text-white bg-danger rounded p-1'>{cartItemsCount}</span>
             </Link>
           </div>
 
         {!session ? null : (
-            <div>
-              <img src={session.user.image} alt="image" />
+            <div >
+              <img className={styles.img} src={session.user.image} alt="logo" />
             </div>
           )}
 

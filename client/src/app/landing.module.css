@@ -112,21 +112,17 @@
 
 .divR {
 	display: flex;
-	justify-content: space-around;
-
 	border-radius: 10px;
 
-	width: 25em;
+	width: 30em;
+	height: auto;
 
 	font-size: 10px;
 
-	padding: 5px;
 }
 
 .divR:hover {
 	border-radius: 10px;
-
-	/* background-color: rgb(143, 136, 136); */
 
 	font-size: 11px;
 

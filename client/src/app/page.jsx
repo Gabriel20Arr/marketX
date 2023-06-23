@@ -1,10 +1,18 @@
+'use client'
+
 import image from '../images/MarketX-newlogo.png';
 import Link from 'next/link';
 import Style from './landing.module.css';
 import  Image from 'next/image'
+import { useRouter } from 'next/navigation';
+import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
 
 export default function Landing() {
-
+  const router = useRouter();
+  const home = (e)=>{
+    e.preventDefault
+    router.push('/home')
+  }
   return (
     <div className={Style.formAll}>
 
@@ -27,20 +35,14 @@ export default function Landing() {
             </h4>
         </div>
         
-        {/* <button className={Style.divR}>
-            
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO0u4dr5oCgDbhigc4GH5o4PMEZGwVaHabRg&usqp=CAU" alt="" className={Style.logo}
-          />                  
-          <span className={Style.registrar}> 
-            Inicia con google
-          </span>
+        <div>
+            <BtnGoogle className={Style.divR}/>
+        </div> 
 
-        </button>  */}
-
-        <span className={Style.invitadoCount}> 
-          <Link className={Style.invitado} href={"/home"} style={{ textDecoration: "none", color: "inherit" }}>
+        <span className={Style.invitadoCount} > 
+          <button className={Style.invitado} onClick={home}>
             Ingresar como Invitado
-          </Link>
+          </button>
         </span>   
 
       </div>

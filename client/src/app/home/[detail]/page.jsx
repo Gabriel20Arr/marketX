@@ -73,8 +73,7 @@ export default function Detail({ params }) {
       {/* <div>
         <h2 className={styles.btn} > cantidadVenta: {data.cantidadVenta}</h2>
       </div> */}
-
-      <p>{data.stock > 0 ? "In stock":"Unavailable"}</p>  
+ 
 
       <button className="btn btn-primary mt-2" disabled={data.stock === 0} onClick={addToCartHandler}>Agregar al carrito</button>
 

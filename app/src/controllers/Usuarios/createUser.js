@@ -4,7 +4,7 @@ const categorias = require('../../models/Categoria');
 
 const createUser = async ({ nombre, correo, contraseña, provincia, codigo_postal, direccion, telefono, rol }) => {
   
-  if (!nombre || !correo || !contraseña || !provincia || !codigo_postal || !direccion || !telefono) {
+  if (!nombre || !correo || !contraseña ) {
     throw new Error("Faltan datos");
   }
   // console.log(rol);
