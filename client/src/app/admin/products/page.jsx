@@ -34,22 +34,26 @@ const ProductList = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{data?.map((prod) => (
-						<tr key={prod._id}>
-							<td>{prod.titulo}</td>
-							<td>{prod.categoria}</td>
-							<td>{prod.precio}</td>
-							<td>{prod.cantidadVenta}</td>
-							<td>{prod.stock}</td>
-							<td>{prod.usuario}</td>
-							<td>
-								<button onClick={() => editProduct(user._id)}>Editar</button>
-								<button onClick={() => deleteProduct(user._id)}>
-									Eliminar
-								</button>
-							</td>
-						</tr>
-					))}
+					{data?.map((prod) => {
+						console.log(prod.usuario); // Agregamos el console.log para mostrar el contenido de prod.usuario
+						return (
+							<tr key={prod._id}>
+								<td>{prod.titulo}</td>
+								<td>{prod.categoria}</td>
+								<td>{prod.precio}</td>
+								<td>{prod.cantidadVenta}</td>
+								<td>{prod.stock}</td>
+								<td>{prod.usuario}</td>{' '}
+								{/* Reemplaza 'nombre' con la propiedad real en tu modelo de usuario */}
+								<td>
+									<button onClick={() => editProduct(user._id)}>Editar</button>
+									<button onClick={() => deleteProduct(user._id)}>
+										Eliminar
+									</button>
+								</td>
+							</tr>
+						);
+					})}
 				</tbody>
 			</table>
 		</div>

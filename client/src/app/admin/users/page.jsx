@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useGetUsersQuery } from '../../../redux/services/userApi';
 import styles from './users.module.css';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { addBlockedUser } from '../../../redux/features/blockedUsersSlice';
 
 const UserList = () => {
 	const [users, setUsers] = useState([]);
@@ -13,6 +15,15 @@ const UserList = () => {
 		refetch();
 	}, []);
 	console.log(data);
+
+	const dispatch = useDispatch();
+
+	const blockUser = (userId, userEmail) => {
+		// Lógica para bloquear al usuario
+
+		// Guardar el correo electrónico bloqueado en el estado global
+		dispatch(addBlockedUser(userEmail));
+	};
 
 	return (
 		<div>
@@ -53,7 +64,9 @@ const UserList = () => {
 							<td>{user.codigo_postal}</td>
 							<td>
 								<button onClick={() => editUser(user._id)}>Editar</button>
-								<button onClick={() => blockUser(user._id)}>Bloquear</button>
+								<button onClick={() => blockUser(user._id, user.correo)}>
+									Bloquear
+								</button>
 							</td>
 						</tr>
 					))}
