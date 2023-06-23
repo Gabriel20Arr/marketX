@@ -1,6 +1,6 @@
-import axios from 'axios';
+const axios = require( "axios");
 
-export const enviarNotificacionPorCorreo = async (correo, asunto, mensaje) => {
+const enviarNotificacionPorCorreo = async (correo, asunto, mensaje) => {
   const notificación = {correo, asunto, mensaje};
 
   const result =  axios.post('http://localhost:3001/notificaciones', notificación)
@@ -9,5 +9,6 @@ export const enviarNotificacionPorCorreo = async (correo, asunto, mensaje) => {
   return result;
 };
 
+module.exports = {enviarNotificacionPorCorreo}
 
   

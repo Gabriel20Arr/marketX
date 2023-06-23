@@ -1,127 +1,139 @@
 .container {
-	padding: 5em;
+	display: flex;
+	justify-content: space-between;
 	
-	display: grid;
-	grid-template-columns: 2fr 1fr; /* 2/3 y 1/3 del ancho */
-	grid-template-rows: repeat(4, auto); /* 4 filas de altura automática */
-	grid-gap: 20px;
-	margin-bottom: 20px;
+	margin: 30px;
+
+	padding: 10px;
+	
+	background-color: #eeee;
+	border-radius: 10px;
+
+	height: 70vh;
 }
 
-.backLink {
-	grid-column: 1 / span 2; /* Ocupa 2 columnas */
-	grid-row: 1; /* Se ubica en la primera fila */
-
-	border: 2px solid black;	
+.link {
+	margin-top: 2%;
+	margin-left: 2.5%;
+	padding: 3px 10px;
+	
+	
+	text-decoration: none;
+	
+	border: 1px solid black;
+	border-radius: 5px;
+	
 	width: fit-content;
-	padding: 2px 10px;
-	font-size: 25px;
+	
+	background-color: #eeee;
 }
 
-.CountAll{
-    
-    border: 2px solid rgb(29, 0, 63);
-    border-radius: 20px;
-    /* width: ; */
-    
-    padding: 15px 40px;
-    
+.link2 {
+	font-weight: bold;
+	font-size: 15px;
+	text-decoration: none;
+	color: black;
 }
 
-.CountImg{
-    
-    /* border: 2px solid; */
-
-    height: 500px;
-    width: 300px;
-    
-    margin: 25px 40px;
-    padding: 15px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+.innerContainer {
+	display: flex;
 }
 
-.btn{
-    border: 1px solid rgb(29, 0, 63);
-    border-radius: 10px;
-    
-    display: flex;
-    justify-content: start;
-    
-    width: 100%;
-    
-    padding: 0 5px;
+.imageContainer {
+	display: flex;
+	justify-items: center;
+	
+	width: 50%;
+	
+	
+	padding: none;
 }
 
-.details {
-	display: grid;
-	grid-gap: 10px;
-	border-left: 2px solid black;	
-	padding: 25px;
+.image {
+	border-radius: 10px;
+	width: 90%;
+	transition: transform 0.2s ease-in-out;
+	margin: 0;
 }
 
-.btnTitulo{
-    /* border: 1px solid black; */
-    
-    display: flex;
-    justify-content: center;
+.image:hover {
+	transform: scale(1.2);
+}
 
-    width: fit-content;
+.detailsContainer {
+	flex: 1;
+		
+	/* width: 40%; */
+	height: 99%;
 
-    font-size: xx-large;
+	
+	padding: 10px 30px;
+	padding-top: 50px;
+	
+	border-left: 3px solid black;
+	/* border: 3px solid black; */
+}
 
-    padding: auto;
+.title {
+	font-weight: bold;
+	font-size: 20px;
+	border-bottom: 1px solid;
 }
 
 .price {
-	font-size: 18px;
+	display: flex;
+	justify-content: flex-start;
+	font-size: 26px;
+}
+
+.categoryC {
+	display: flex;
+	font-size: 15px;
 	font-weight: bold;
-	border-bottom: 1px solid black;	
+	margin-right: 5px;
+	/* border: 1px solid; */
 }
 
 .category {
-	font-size: 16px;
-	border-bottom: 1px solid black;				
+	display: flex;
+	justify-content: flex-start;
+	font-size: 15px;
+	/* border: 1px solid; */
+}
+
+.stock {
+	display: flex;
+	justify-content: flex-start;
+	font-weight: bold;
+	/* border: 1px solid; */
+}
+
+.descriptionTitle {
+	color: black;
+	text-align: center;
+	/* border: 1px solid; */
+	
 }
 
 .description {
-	grid-column: 1 / span 2; /* Ocupa 2 columnas */
+	color: gray;
+}
+
+.contenedorCart{
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-	text-align: center;
+
+	margin-top: 50px;
 }
 
-.description p:first-child {
-	text-decoration: underline;
-	margin-bottom: 10px;
-}
+.addButton {
+	background-color: blue;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3px 6px;
 
-.description p:last-child {
-	text-decoration: none;
-}
-
-/* Estilos para el enlace de "Atrás" */
-.backLink a {
-	color: #000;
-	text-decoration: none;
 	font-weight: bold;
-}
-
-.backLink a:hover {
-	text-decoration: underline;
-}
-
-.sub {
-	text-decoration: underline;
-}
-
-.btnPagar{
-    width: 5em;
-
-    font-size: 30px;
 }
