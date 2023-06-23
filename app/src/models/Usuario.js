@@ -78,6 +78,14 @@ const UsuarioSchema = new Schema(
     carrito:{
       type: Array,
       default:[]
+    },
+    comprado:{
+      type:Array,
+      default:[]
+    },
+    vendido:{
+      type:Array,
+      default:[]
     }
   },
   {

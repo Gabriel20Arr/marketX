@@ -1,17 +1,18 @@
 const mercadopago = require('mercadopago');
 require('dotenv').config()
+const {allProductos, productoActualizado} = require('./Productos/index.js');
+const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarCorreo.js')
 
 const { KEYMERCADOPAGO } = process.env;
 
 const createOrder = async (req, res) => {
-    console.log("SHOW ",req.body);
-    
-    const { precio } = req.body; 
+    const { precio, usuario, cartItems } = req.body; 
+
+
     
     mercadopago.configure({
         access_token: KEYMERCADOPAGO
     })
-    
     const result = await mercadopago.preferences.create({
         
         items: [
@@ -22,27 +23,31 @@ const createOrder = async (req, res) => {
                 unit_price: precio,
             }
         ],
-
+        
         back_urls: {
-            success: "http://localhost:3001/pago/success",
+            success: `http://localhost:3001/pago/success?usuario=${usuario.correo}`,
             failure: "http://localhost:3001/pago/failure",
             pending: "",
         },
         notification_url: 'https://011b-200-115-58-192.sa.ngrok.io/webhook'
     })
-
-    console.log(result);
-
+    
     return res.send(result.body)
 }
 
 
-const success = (req, res) => {
+const success = async(req, res) => {
+    const {usuario} = req.query;
+    console.log(usuario)
+    const asunto = "Mercado Pago";
+    const mensaje = "Su compra se realizó correctamente";
+   await enviarNotificacionPorCorreo(usuario,asunto,mensaje)
   res.redirect('http://localhost:3000/home');
 };
 
 const failure = (req, res) => {
-  res.send("HOLA MUNDOOO")
+    res.redirect('http://localhost:3000/home');
+  //res.send("HOLA MUNDOOO")
 };
 
 const webhook = async (req, res) => {

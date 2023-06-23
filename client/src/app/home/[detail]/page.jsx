@@ -3,7 +3,7 @@
 import { useGetProductsByIdQuery } from '@/src/redux/services/productApi';
 import styles from './detail.module.css';
 import Link from "next/link";
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Store } from "@/src/utils/Store";
 import { useRouter } from "next/navigation";
 
@@ -16,14 +16,15 @@ export default function Detail({ params }) {
   const {data, error, isLoading, isFetching} = useGetProductsByIdQuery({ id: detail });
   if(isLoading || isFetching) return <p>Loading...</p>
   if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
-
+  
+  console.log(state, 'data', data);
   const usuarioJSON = localStorage.getItem('usuario');
 	const usuario = JSON.parse(usuarioJSON);
 
   const router = useRouter()
 
   const addToCartHandler = () => {
-    const existItem = state.cart.cartItems.find(index => index.id === data.id);
+    const existItem = state.cart.cartItems.find(index => index._id === data._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if(data.stock < quantity) {
