@@ -2,7 +2,6 @@
 
 import { useGetProductsByIdQuery } from '@/src/redux/services/productApi';
 import styles from './detail.module.css';
-<<<<<<< HEAD
 import Link from "next/link";
 import React, { useContext } from 'react';
 import { Store } from "@/src/utils/Store";
@@ -10,7 +9,6 @@ import { useRouter } from "next/navigation";
 
 
 export default function Detail({ params }) {
-
   const {state, dispatch} =useContext(Store);
 
   const { detail } = params;
@@ -36,23 +34,10 @@ export default function Detail({ params }) {
     router.push('/cart');
   }
 
-
-  return (
-    <div className={styles.countForm}>
-=======
-import Link from 'next/link';
-
-export default function Detail({ params }) {
-	const { detail } = params;
-	const { data, error, isLoading, isFetching } = useGetProductsByIdQuery({
-		id: detail,
-	});
->>>>>>> ed050be13c08f11e6782020d757f2ccf97fedec8
-
 	if (isLoading || isFetching) return <p>Loading...</p>;
 	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
 
-	return (
+  return (
 		<div className={styles.container}>
 			<div className={styles.backLink}>
 				<Link href='/home'>Atrás</Link>
@@ -74,24 +59,16 @@ export default function Detail({ params }) {
 				<div>
 					<p className={styles.category}>Categoría: {data.categoria}</p>
 				</div>
+
+        <div className={styles.btn}>
+          <h2 className={styles.btnPrecio}> Stock: {data.stock}</h2>
+        </div>
+        
+        <div className={styles.btn}>
+          <h2 className={styles.description}>{data.descripcion}</h2>
+        </div>  
+      
 			</div>
-
-<<<<<<< HEAD
-      <div className={styles.btn}>
-        <h2 className={styles.btnPrecio}> Precio: ${data.precio}</h2>
-      </div>
-
-      <div className={styles.btn}>
-        <h2 className={styles.btnPrecio}> Stock: {data.stock}</h2>
-      </div>
-      
-      <div className={styles.btn}>
-        <h2 className={styles.btnCategoria}>Categoria: {data.categoria}</h2>
-      </div>
-      
-      <div className={styles.btn}>
-        <h2 className={styles.btnDescripcion}>{data.descripcion}</h2>
-      </div>  
       
       {/* <div>
         <h2 className={styles.btn} > cantidadVenta: {data.cantidadVenta}</h2>
@@ -103,14 +80,5 @@ export default function Detail({ params }) {
 
     </div>
 
-    </div>
   );
-=======
-			<div className={styles.description}>
-				<p>Descripción:</p>
-				<p>{data.descripcion}</p>
-			</div>
-		</div>
-	);
->>>>>>> ed050be13c08f11e6782020d757f2ccf97fedec8
 }

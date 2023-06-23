@@ -227,7 +227,7 @@ export default function Registrarse() {
                 <p className="form-text text-danger">
                   {error.nombre ? error.nombre : ""}
                 </p>
-              </div> //holaaaaaaaaaaaaaaa
+              </div>
 
               <div className="mb-2">
                 <label className="form-label" htmlFor="codigo_postal">
