@@ -1,21 +1,24 @@
-'use client'
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import logo from '../../images/MarketX-newlogo (2).png';
+import Link from "next/link";
+import Image from "next/image";
+import logo from "../../images/MarketX-newlogo (2).png";
 import styles from "./NavBar.module.css";
 import React, {useContext, useEffect, useState} from 'react';
 import { Cart4 } from 'react-bootstrap-icons';
 import { Store } from '@/src/utils/Store';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 
 
 export default function Navigation({ currentPath }) {
+
+  const { data: session, status } = useSession();
   const router = useRouter();
   const handelrRouter = (value) => {
     localStorage.clear();
-    router.push(`/${value}`)
-  }
+    router.push(`/${value}`);
+  };
 
   const { state, dispatch } = useContext(Store);
 
@@ -46,6 +49,9 @@ export default function Navigation({ currentPath }) {
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
+  if (status === "loading") {
+    return null;
+  }
 
   const usuarioJSON = localStorage.getItem('usuario');
   const usuario = JSON.parse(usuarioJSON);
@@ -58,10 +64,6 @@ export default function Navigation({ currentPath }) {
         <div>
           <Image src={logo} className={styles.logo} onClick={routerHome} />
         </div>
-
-        {/* <li className="nav-item">
-          <Link className="nav-link" href="/favoritos">Productos favoritos</Link>
-        </li> */}
 
         {currentPath !== '/form' && (
           <div className={styles.btn}>
@@ -77,18 +79,6 @@ export default function Navigation({ currentPath }) {
         )
         }
 
-                  {/* <div className={styles.btn}>
-                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/loging">Iniciar sesión</Link>
-                  </div>
-
-                  <div className={styles.btn}>
-                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/registrarse">Registrarse</Link>
-                  </div>
-        
-                  <div className={styles.btnExit}>
-                    <Link style={{ textDecoration: "none", color: "inherit" }} href="/">Salir</Link>
-                  </div> */}
-
         <div className={styles.dropdown}>
           <button className={styles.dropdownToggle} onClick={toggleMenu}>
             <h2>
@@ -97,22 +87,23 @@ export default function Navigation({ currentPath }) {
           </button>
           <ul className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}>
             <li
-              className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+              className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
               onClick={() => handelrRouter('loging')}>Iniciar sesión
             </li>
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
               onClick={() => handelrRouter('registrarse')} >Registrarse
             </li>
-            {/* { currentPath !== '/about' && (
-                    <li className={styles.dropdownItem}>
-                      <Link style={{ textDecoration: "none", color: "inherit" }} href="/about">Sobre MarketX</Link>
-                    </li>
-                    )} */}
+
             <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
               onClick={() => handelrRouter('')} >Salir
             </li>
+
             <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
               onClick={routerMisProductos}>mis productos
+            </li>
+
+            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+              onClick={signOut({callbackUrl: "http://localhost:3000"}) }>Cerrar Session
             </li>
 
             {
@@ -132,6 +123,12 @@ export default function Navigation({ currentPath }) {
                 <Cart4 size={30} /> <span className='text-white bg-danger rounded p-1'>{cartItemsCount}</span>
             </Link>
           </div>
+
+        {!session ? null : (
+            <div>
+              <img src={session.user.image} alt="image" />
+            </div>
+          )}
 
       </div>
         {/* <form className="d-flex" role="search">

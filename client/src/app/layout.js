@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Cairo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Share_Tech } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Share_Tech({
 	weight: ['400'],
@@ -39,14 +40,14 @@ export default function RootLayout({ children }) {
 
 			<body className={cairo.className}>
 				<StoreProvider>
-				
 					<Providers>
-						{(!isAdminRoute && router !='/' && router!='/loging' && router!='/registrarse')? <NavBar currentPath={router}/>:''}
-						<div>
-							{children}
-						</div>
+						<SessionProvider>
+							{(!isAdminRoute && router !='/' && router!='/loging' && router!='/registrarse')? <NavBar currentPath={router}/>:''}
+							<div>
+								{children}
+							</div>
+						</SessionProvider>
 					</Providers>
-					
 				</StoreProvider>
 			</body>
 		</html>

@@ -10,11 +10,12 @@ import { validate } from "../../hooks/registrarseValidar";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {enviarNotificacionPorCorreo} from '../../hooks/enviarCorreo';
+import BtnGoogle from "../../components/BtnGoogle/BtnGoogle";
 
 export default function Registrarse() {
   const [showPass, setShowPass] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
-  
+
   const [usuario, setUsuario] = useState({
     nombre: "",
     correo: "",
@@ -122,7 +123,6 @@ export default function Registrarse() {
                 <p className="form-text text-danger">
                   {error.correo ? error.correo : ""}
                 </p>
-
               </div>
 
               <div className=" mb-2">
@@ -131,14 +131,13 @@ export default function Registrarse() {
                 </label>
 
                 <div className={Style.inputs}>
-                
-                <input
-                  className="form-control"
-                  type={showPass ? "text" : "password"}
-                  name="contraseña"
-                  onChange={handlerUsuario}
-                  value={usuario.contraseña}
-                />
+                  <input
+                    className="form-control"
+                    type={showPass ? "text" : "password"}
+                    name="contraseña"
+                    onChange={handlerUsuario}
+                    value={usuario.contraseña}
+                  />
 
               <div onClick={() => setShowPass(!showPass)}>
                   { 
@@ -154,17 +153,27 @@ export default function Registrarse() {
                       </svg>
                   }
               </div>
+              </div>
+              
 
               </div>
                 <p className="form-text text-danger">
                   {error.contraseña ? error.contraseña : ""}
                 </p>
 
+                <div className="mb-3">
+                  <label className="form-label" htmlFor="confirmar contraseña">
+                    Confirmar Contraseña :
+                  </label>
 
-              <div className="mb-3">
-                <label className="form-label" htmlFor="confirmar contraseña">
-                  Confirmar Contraseña :
-                </label>
+                  <div className={Style.inputs}>
+                    <input
+                      className="form-control"
+                      type={showPass2 ? "text" : "password"}
+                      name="confirme_su_contraseña"
+                      onChange={handlerUsuario}
+                      value={usuario.confirme_su_contraseña}
+                    />
 
               <div className={Style.inputs}>
 
@@ -218,7 +227,7 @@ export default function Registrarse() {
                 <p className="form-text text-danger">
                   {error.nombre ? error.nombre : ""}
                 </p>
-              </div>
+              </div> //holaaaaaaaaaaaaaaa
 
               <div className="mb-2">
                 <label className="form-label" htmlFor="codigo_postal">
@@ -271,18 +280,6 @@ export default function Registrarse() {
               </div>
 
 
-              {/* Este select lo utilizaremos cuando le podamos dar funcionalidad */}
-              {/* <span>rol: </span>
-              <select
-           name="rol"
-           id=""
-           defaultValue={"comprador"}
-           onChange={handlerUsuario}
-            >
-             <option value="vendedor">vendedor</option>
-             <option value="comprador">comprador</option>
-            </select> */}
-           {/* <br></br> */}
               <div class="d-grid gap-2 col-6 mx-auto mb-3">
                 {existeError ? null : (
                   <button
@@ -295,11 +292,14 @@ export default function Registrarse() {
                 )}
               </div>
 
-              {/* <div class="d-flex align-items-center justify-content-center">
-                <div class="border-bottom flex-grow-1"></div>
-                <div class="px-3">O</div>
-                <div class="border-bottom flex-grow-1"></div>
-              </div> */}
+              <div className="d-flex align-items-center justify-content-center">
+                <div className="border-bottom flex-grow-1"></div>
+                <div className="px-3">O</div>
+                <div className="border-bottom flex-grow-1"></div>
+              </div>
+              <div className="d-flex align-items-center justify-content-center mt-4">
+                <BtnGoogle />
+              </div>
             </form>
           </div>
         </div>
