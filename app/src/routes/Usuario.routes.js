@@ -10,6 +10,7 @@ UsuarioRouter.get("/", HandlerAllUsuarios);
 
 UsuarioRouter.get("/:id", HandlerUserById);
 
+// UsuarioRouter.delete("/eliminar/:id", HandlerEliminar);
 // UsuarioRouter.post("/", () => {});
 
 module.exports = UsuarioRouter;
