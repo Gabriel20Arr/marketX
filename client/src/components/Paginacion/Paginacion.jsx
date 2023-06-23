@@ -10,7 +10,7 @@ import ReactPaginate from 'react-paginate';
 import style from './Paginacion.module.css';
 import Cards from '../Cards/Cards';
 
-import productos from '../../../../client/src/api/api';
+const productos = [];
 
 const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	const sortOrder = useSelector((state) => state.sort.sortOrder);
@@ -56,6 +56,8 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	const apiProductos = data || [];
 	const items = [...apiProductos, ...productos];
 
+	// console.log('dataa',data);
+	
 	useEffect(() => {
 		refetch();
 	}, []);

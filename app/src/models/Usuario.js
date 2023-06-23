@@ -22,6 +22,26 @@ const UsuarioSchema = new Schema(
       enum: ["admin", "usuario"],
       default: "usuario",
     },
+    provincia: {
+      type: String,
+      default: 'google'
+    },
+    codigo_postal: {
+      type: Number,
+      default: 'google'
+    },
+    direccion: {
+      type: String,
+      default: 'google'
+    },
+    telefono: {
+      type: Number,
+      default: 'google'
+    },
+    carrito:{
+      type: Array,
+      default:[]
+    }
   },
   {
     timestamps: true,

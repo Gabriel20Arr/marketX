@@ -7,7 +7,8 @@ const productoCreado = async (
   precio,
   cantidadVenta,
   usuario,
-  categorias
+  categorias,
+  stock
 ) => {
   const nuevoProducto = new Producto({
     titulo,
@@ -17,7 +18,8 @@ const productoCreado = async (
     precio,
     cantidadVenta,
     usuario,
-    categorias
+    categorias,
+    stock
   });
 
   nuevoProducto.save();

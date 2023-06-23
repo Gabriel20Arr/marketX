@@ -18,8 +18,15 @@ export const userApi = createApi({
         }),
         getUserById: builder.query<User, {id:string}>({
             query:({id})=> `Usuario/${id}`
+        }),
+        putUserCar: builder.mutation<void, { body: User }>({
+            query: ({ body }) => ({
+              url: `Usuario`,
+              method: 'PUT',
+              body,
+            }),
         })
     })
 })
 
-export const {useGetUsersQuery, useGetUserByIdQuery}=userApi; 
+export const {useGetUsersQuery, useGetUserByIdQuery, usePutUserCarMutation}=userApi; 

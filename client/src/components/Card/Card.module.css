@@ -7,10 +7,10 @@
 	padding: 2px;
 	padding-top: 0;
 
-	height: 29.5em;
-	width: 19.5em;
+    height: 29.5em;
+    width: 19.5em;
 
-	margin: 15px;
+    margin: 15px;
 
 	overflow: hidden;
 
@@ -80,11 +80,12 @@
 	/* display: flex;
     justify-content: center;
     align-items: center; */
-	background-color: white;
-	width: 93%;
-	height: 200px;
-	border-radius: 10%;
-	border: solid 2px black;
+    background-color: white;
+    width: 93%;
+    height: 200px;
+    border-radius: 10%;
+    border: solid 2px black;
+
 }
 
 .Countprecio {
@@ -116,33 +117,33 @@
 }
 
 .detalle {
-	background-color: aliceblue;
+    background-color: aliceblue;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-	border: solid 2px black;
-	border-radius: 10px;
+    border: solid 2px black;
+    border-radius: 10px;
 
-	/* width: 95%; */
+    /* width: 95%; */
 
-	width: fit-content;
-	max-height: fit-content;
-	font-size: small;
+    width: fit-content;
+    max-height: fit-content;
+    font-size: small;
 
-	color: black;
+    color: black;
 
-	padding: 2px;
+    padding: 2px;
 
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .detalle:hover {
 	cursor: pointer;
 
-	/* background-color:grey; */
-	box-shadow: 0 0 10px black;
+    /* background-color:grey; */
+    box-shadow: 0 0 10px black;
 
 	color: gray;
 }

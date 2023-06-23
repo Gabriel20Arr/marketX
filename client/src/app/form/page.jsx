@@ -19,7 +19,8 @@ export default function CrearProducto() {
 		precio: '',
 		cantidadVenta: '0',
 		usuario:usuario._id,
-		categorias:[usuario.correo]
+		categorias:[usuario.correo],
+		stock: 0
 	});
 
 	const [errors, setErrors] = useState({
@@ -29,6 +30,7 @@ export default function CrearProducto() {
 		descripcion: '',
 		precio: '',
 		cantidadVenta: '',
+		stock: ''
 	});
 
 	const changeHandler = (event) => {
@@ -51,7 +53,8 @@ export default function CrearProducto() {
 				precio: '',
 				cantidadVenta: '',
 				usuario:usuario._id,
-				categorias:[usuario.nombre]
+				categorias:[usuario.nombre],
+				stock: 0
 			});
 			alert('Creacion Exitosa ');
 		} catch (error) {
@@ -126,6 +129,21 @@ export default function CrearProducto() {
 							<span className={style.errors}>{errors.precio}</span>
 						)}
 					</div>
+					
+					<div>
+						<label htmlFor=''>Stock: </label>
+						<input
+							type='number'
+							name='stock'
+							className={style.formInput}
+							value={form.stock}
+							onChange={changeHandler}
+						/>
+						{errors.precio && (
+							<span className={style.errors}>{errors.precio}</span>
+						)}
+					</div>
+
 					<div>
 						<p>Descripción del producto: </p>
 						<textarea
