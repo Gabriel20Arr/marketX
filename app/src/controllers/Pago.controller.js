@@ -1,15 +1,17 @@
 const mercadopago = require('mercadopago');
 require('dotenv').config()
-const {allProductos, productoActualizado} = require('./Productos/index.js');
+const {productoActualizado} = require('./Productos/index.js');
 const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarCorreo.js')
+const {UsuarioActualizado} = require('./Usuarios/usuarioActualizado.js');
+const getUsuarioById = require('./Usuarios/usuariosById.js')
+const allUsuario = require('./Usuarios/usuarios.js');
 
 const { KEYMERCADOPAGO } = process.env;
-
+var body;
 const createOrder = async (req, res) => {
-    const { precio, usuario, cartItems } = req.body; 
-
-
+    const { precio} = req.body; 
     
+    body = req.body
     mercadopago.configure({
         access_token: KEYMERCADOPAGO
     })
@@ -25,7 +27,7 @@ const createOrder = async (req, res) => {
         ],
         
         back_urls: {
-            success: `http://localhost:3001/pago/success?usuario=${usuario.correo}`,
+            success: `http://localhost:3001/pago/success`,
             failure: "http://localhost:3001/pago/failure",
             pending: "",
         },
@@ -37,12 +39,29 @@ const createOrder = async (req, res) => {
 
 
 const success = async(req, res) => {
-    const {usuario} = req.query;
-    console.log(usuario)
+    const {usuario, precio, cartItems} = body;
+
+    cartItems.forEach(element => {
+        productoActualizado(element._id,{stock:element.stock-element.quantity})
+    });
+
+    const fecha = new Date();
+
+    const object = {valor:precio, fecha};
+    const user = await getUsuarioById(usuario._id)
+    await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+    
+    cartItems.forEach(async element => {
+        const usuarios = await allUsuario();
+        const vendedor = usuarios.find(use =>use.correo === element.categorias[0]);
+        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,object]});
+    });
+
+
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
-   await enviarNotificacionPorCorreo(usuario,asunto,mensaje)
-  res.redirect('http://localhost:3000/home');
+    await enviarNotificacionPorCorreo(usuario.correo,asunto,mensaje)
+    res.redirect('http://localhost:3000/home');
 };
 
 const failure = (req, res) => {
