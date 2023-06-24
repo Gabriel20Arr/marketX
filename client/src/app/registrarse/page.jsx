@@ -288,9 +288,11 @@ export default function Registrarse() {
                 <div className="px-3">O</div>
                 <div className="border-bottom flex-grow-1"></div>
               </div>
+
               <div className="d-flex align-items-center justify-content-center mt-4">
                 <BtnGoogle />
               </div>
+              
             </form>
           </div>
         </div>

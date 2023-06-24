@@ -51,9 +51,11 @@
 
 .image {
 	border-radius: 10px;
-	width: 90%;
+	width: 95%;
+	height: 75%;
 	transition: transform 0.2s ease-in-out;
 	margin: 0;
+	margin-top: 8%;
 }
 
 .image:hover {
@@ -63,12 +65,10 @@
 .detailsContainer {
 	flex: 1;
 		
-	/* width: 40%; */
 	height: 99%;
 
-	
 	padding: 10px 30px;
-	padding-top: 50px;
+	padding-top: 8%;
 	
 	border-left: 3px solid black;
 	/* border: 3px solid black; */

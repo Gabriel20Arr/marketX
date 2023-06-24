@@ -18,7 +18,7 @@ function reducer(state, action){
         case 'CARD_ADD_ITEM': {
             const newItem = action.payload
             const existItem = state.cart.cartItems.find(
-                (item => item.id === newItem.id)
+                (item => item._id === newItem._id)
                 )
                 
             //una condicion para actualizar si existe el item o guardar si no existe
@@ -36,7 +36,7 @@ function reducer(state, action){
     case 'CART_REMOVE_ITEM' :{
         const usuario = state.cart.cartItems[0].usuario;
         const cartItems = state.cart.cartItems.filter(
-            (item) => item.id !== action.payload.id
+            (item) => item._id !== action.payload._id
         )
         const back =axios.put('http://localhost:3001/Usuario', {cartItems, usuario})
         .then(result=>result.data).catch(err=>err);

@@ -1,26 +1,19 @@
 .cont {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 
-	padding: 2px;
-	padding-top: 0;
+    height: 30em;
+    width: 28em;
 
-    height: 29.5em;
-    width: 19.5em;
+    margin: 10px;
 
-    margin: 15px;
 
 	overflow: hidden;
 
 	background-color: #030a32;
-	/* background: linear-gradient(to bottom, #f6c176dd, #ffa600, #ffa6009d, #f6c176dd, 
-      #ffa600, #ffa600, #f6c176dd, #ffa600,
-      #ffa600); */
 
-	border: solid 3px black;
-	border-radius: 15px;
+	border: 1px solid  #030a32;
+	/* border-radius: 15px; */
 
 	-moz-osx-fond-smoothing: grayscale;
 
@@ -33,25 +26,22 @@
 }
 
 .name {
-	background-color: aliceblue;
-
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	text-align: center;
 
-	border: solid 2px black;
-	border-radius: 10px;
+	/* border: solid 2px white; */
 
-	width: 93%;
+	width: 100%;
 	max-height: fit-content;
-	font-size: larger;
+	font-size: large;
+	font-weight: bold;
 
-	color: black;
+	color: white;
 
 	padding: 5px 5px;
 	margin: 0;
 	margin-bottom: 10px;
-	margin-top: 10%;
 }
 
 .contT {
@@ -66,54 +56,100 @@
 
 .Countimg {
 	display: flex;
-	justify-content: center;
 
-	margin-bottom: 1px;
+	height: 18em;
+	width: 100%;
+	
 }
 
 .img {
-	/* position: absolute; */
+	display: flex;
+	height: 100%;
+	width: 100%;
 
-	/* top: 25%; */
-	/* left: 3%; */
-
-	/* display: flex;
-    justify-content: center;
-    align-items: center; */
     background-color: white;
-    width: 93%;
-    height: 200px;
-    border-radius: 10%;
-    border: solid 2px black;
 
+    /* border: solid 2px green; */
+
+}
+
+.contenedorCart{
+	border-top: none;
+	border-right: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+
+}
+
+.addButton{
+	border: 1px solid black;
+	border-top: none;
+	border-left: none;
+	background-color: white;
+	height: 2em;
+
+	font-weight: bold;
+}
+
+.addButton:hover{
+	border: 1px solid black;
+	border-top: none;
+	border-left: none;
+	background-color: #eeee;
+	
+	font-size: larger;
+	font-weight: bolder;
+
+}
+
+.disponible{
+	width: fit-content;
+}
+
+.dis{
+	border-radius: 5px;
+	border-top: none;
+	border-right: none;
+	color: white;
+
+	padding: 1px;
+	
+	font-weight: bold;
+	height: 1em;
 }
 
 .Countprecio {
-	/* border: solid 2px black; */
 
-	width: 95%;
+
+	width: 100%;
 
 	display: flex;
-	justify-content: flex-end;
-	/* padding: 1px; */
+	justify-content: space-around;
+	align-items: center;
 
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 .precio {
+	border-radius: 5px;
+	border-top: none;
+	border-right: none;
+	/* background-color: white; */
+	color: white;
+
+	padding: 1px;
+
+	font-weight: bold;
+	height: 1em;
+}
+
+.Cdetalle{
 	display: flex;
+    justify-content: center;
+    align-items: center;
 
-	margin: 0;
-	/* padding: 2px; */
-
-	/* border: solid 1px black; */
-
-	border-radius: 9px;
-
-	color: aliceblue;
-
-	/* background-color: aliceblue; */
-	text-shadow: 3px 3px 2px black;
+	margin: 10px;
 }
 
 .detalle {
@@ -123,12 +159,10 @@
     justify-content: center;
     align-items: center;
 
-    border: solid 2px black;
+    /* border: solid 2px red; */
     border-radius: 10px;
 
-    /* width: 95%; */
-
-    width: fit-content;
+    width: 80%;
     max-height: fit-content;
     font-size: small;
 
@@ -137,6 +171,7 @@
     padding: 2px;
 
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .detalle:hover {

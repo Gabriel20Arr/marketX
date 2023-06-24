@@ -35,20 +35,20 @@ export default function Navigation({ currentPath }) {
     router.push('/home')
   }
 
-  const routerDashBoard = () => {
-    router.push('/admin')
-  }
+  // const routerDashBoard = () => {
+  //   router.push('/admin')
+  // }
 
+  // const routerMisProductos = () => {
+  //   router.push('/misProductos')
+  // }
 
-  const routerMisProductos = () => {
-    router.push('/misProductos')
-  }
+  // const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  // const toggleMenu = () => {
+  //   setMenuOpen(!isMenuOpen);
+  // };
 
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
   if (status === "loading") {
     return null;
   }
@@ -78,7 +78,7 @@ export default function Navigation({ currentPath }) {
         )
         }
 
-        <div className={styles.dropdown}>
+        {/* <div className={styles.dropdown}>
           <button className={styles.dropdownToggle} onClick={toggleMenu}>
             <h2>
               |||
@@ -93,21 +93,26 @@ export default function Navigation({ currentPath }) {
               onClick={() => handelrRouter('registrarse')} >Registrarse
             </li>
 
-            {/* <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
               onClick={() => handelrRouter('')} >Salir
-            </li> */}
+            </li>
             
             <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
               onClick={() => signOut({ callbackUrl: "http://localhost:3000" })
                     }
             >
-              Cerrar sesión
+              Sali
             </li>
 
             <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
               onClick={routerMisProductos}>mis productos
             </li>
-
+            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
+              onClick={() =>{
+                localStorage.clear();
+                signOut({ callbackUrl: "http://localhost:3000/" })}
+                }>cerrar sesion
+            </li>
 
             {
               usuario?.rol == 'admin' ?
@@ -119,7 +124,7 @@ export default function Navigation({ currentPath }) {
           </ul>
 
           
-        </div>
+        </div> */}
 
           <div>
             <Link style={{ textDecoration: "none", color: "inherit" }} href={usuario?`/cart`:'/home'}>

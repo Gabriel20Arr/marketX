@@ -1,17 +1,16 @@
-// const {useGetUsersQuery} = require("../../../client/src/redux/hooks/hooks")  
-const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarCorreo')
 const mercadopago = require('mercadopago');
 require('dotenv').config()
+// const {allProductos, productoActualizado} = require('./Productos/index.js');
+const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarCorreo.js')
 
 const { KEYMERCADOPAGO } = process.env;
 
 const createOrder = async (req, res) => {
-    const { precio, usuario } = req.body; 
-    
+    const { usuario, precio} = req.body; 
+
     mercadopago.configure({
         access_token: KEYMERCADOPAGO
     })
-    
     const result = await mercadopago.preferences.create({
         
         items: [
@@ -22,33 +21,29 @@ const createOrder = async (req, res) => {
                 unit_price: precio,
             }
         ],
-
+        
         back_urls: {
-            success: "http://localhost:3001/pago/success",
+            success: `http://localhost:3001/pago/success?correo=${usuario.correo}`,
             failure: "http://localhost:3001/pago/failure",
             pending: "",
         },
         notification_url: 'https://011b-200-115-58-192.sa.ngrok.io/webhook'
     })
-
-    // console.log("HOLAA ",result.status);
-
+    
     return res.send(result.body)
 }
 
 
-const success = async (req, res) => {
-    const {body} = req.query;
-    
-    // const asunto = "Mercado Pago";
-    // const mensaje = "Su compra se realizó correctamente";
-    // await  enviarNotificacionPorCorreo(body.correo, asunto, mensaje);
-    
-    res.redirect('http://localhost:3000/home');
+const success = async(req, res) => {
+    const {correo} = req.query;
+    const asunto = "Mercado Pago";
+    const mensaje = "Su compra se realizó correctamente";
+   await enviarNotificacionPorCorreo(correo, asunto, mensaje)
+  res.redirect('http://localhost:3000/home');
 };
 
 const failure = (req, res) => {
-  res.redirect('http://localhost:3000/failure');
+    res.redirect('http://localhost:3000/failure');
 };
 
 const webhook = async (req, res) => {

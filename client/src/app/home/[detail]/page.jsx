@@ -15,14 +15,15 @@ export default function Detail({ params }) {
   const {data, error, isLoading, isFetching} = useGetProductsByIdQuery({ id: detail });
   if(isLoading || isFetching) return <p>Loading...</p>
   if(error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>
-
+  
+  console.log(state, 'data', data);
   const usuarioJSON = localStorage.getItem('usuario');
 	const usuario = JSON.parse(usuarioJSON);
 
   const router = useRouter()
 
   const addToCartHandler = () => {
-    const existItem = state.cart.cartItems.find(index => index.id === data.id);
+    const existItem = state.cart.cartItems.find(index => index._id === data._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if(data.stock < quantity) {
@@ -31,7 +32,7 @@ export default function Detail({ params }) {
     }
 
     dispatch({type: 'CARD_ADD_ITEM', payload:{ ...data, quantity, usuario:usuario._id }})
-    router.push('/cart');
+    // router.push('/cart');
   }
 
 	if (isLoading || isFetching) return <p>Loading...</p>;

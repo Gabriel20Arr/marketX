@@ -15,23 +15,26 @@ export default function Card({item}) {
     <div className={style.cont}>
         {(item.id || item._id)?
         <article>
+
+            <div className={style.Countimg}>
+              <img className={style.img} src={item.imagen} alt={item.titulo} style={{width:"100%", height:"100%"}} />
+            </div>
+
             <div className={style.contT}>
               <h2 className={style.name} >{item.titulo}</h2>
             </div>            
-
-            <div className={style.Countimg}>
-              <img className={style.img} src={item.imagen} alt={item.titulo} />
-            </div>
             
             <div className={style.Countprecio}>
+
+            <div className={style.disponible}>
+              <h2 className={style.dis}> Stock: {item.stock}</h2>
+            </div>
+            
               <h2 className={style.precio}> ${item.precio}</h2>
+
             </div>
 
-            <div className={style.Countprecio}>
-              <h2 className={style.precio}> Disponibles: {item.stock}</h2>
-            </div>
-
-            <div className={style.Pagar}>
+            {/* <div className={style.Pagar}>
                 <button  
                     className={style.btnPagar} 
                     id="buttomPagar"
@@ -46,9 +49,20 @@ export default function Card({item}) {
                 >
                   Comprar
                 </button>
-            </div>    
+            </div>     */}
+            <div className={style.Cdetalle}>
+              <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
+            </div>
 
-            <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
+                  <div className={style.contenedorCart}>
+                    <button
+                      className={style.addButton}
+                      // disabled={data.stock === 0}
+                      // onClick={addToCartHandler}
+                    >
+                      Agregar al carrito
+                    </button>
+                  </div>
 
         </article>:null}
     </div>

@@ -73,7 +73,7 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	};
 
 	const sortedProducts = sortProducts(items);
-	const itemsPerPage = 12;
+	const itemsPerPage = 9;
 	const offset = currentPage * itemsPerPage;
 	const currentItems = sortedProducts.slice(offset, offset + itemsPerPage);
 	const pageCount = Math.ceil(sortedProducts.length / itemsPerPage);
