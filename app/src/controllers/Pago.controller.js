@@ -5,6 +5,7 @@ const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarC
 const {UsuarioActualizado} = require('./Usuarios/usuarioActualizado.js');
 const getUsuarioById = require('./Usuarios/usuariosById.js')
 const allUsuario = require('./Usuarios/usuarios.js');
+const crearVenta = require('./ventas/crearVenta.js');
 
 const { KEYMERCADOPAGO } = process.env;
 var body;
@@ -40,23 +41,29 @@ const createOrder = async (req, res) => {
 
 const success = async(req, res) => {
     const {usuario, precio, cartItems} = body;
-
-    cartItems.forEach(element => {
-        productoActualizado(element._id,{stock:element.stock-element.quantity})
+    const fecha = new Date();
+    
+    cartItems.forEach(async element => {
+       await productoActualizado(element._id,{stock:element.stock-element.quantity})
+       
+       const usuarios = await allUsuario();
+       const vendedor = usuarios.find(use =>use.correo === element.categorias[0]);
+       
+       const venta = {
+           monto: element.precio * (element.quantity),
+           valor: element.precio,
+           fecha, vendedor,
+           comprador:usuario
+       }
+       
+       await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});
+       await crearVenta(venta);
     });
 
-    const fecha = new Date();
 
     const object = {valor:precio, fecha};
     const user = await getUsuarioById(usuario._id)
     await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
-    
-    cartItems.forEach(async element => {
-        const usuarios = await allUsuario();
-        const vendedor = usuarios.find(use =>use.correo === element.categorias[0]);
-        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,object]});
-    });
-
 
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";

@@ -101,7 +101,10 @@ export default function Navigation({ currentPath }) {
               onClick={routerMisProductos}>mis productos
             </li>
             <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() =>signOut({ callbackUrl: "http://localhost:3000" })}>cerrar sesion
+              onClick={() =>{
+                localStorage.clear();
+                signOut({ callbackUrl: "http://localhost:3000" })}
+                }>cerrar sesion
             </li>
 
             {
