@@ -1,13 +1,18 @@
 const mercadopago = require('mercadopago');
 require('dotenv').config()
-// const {allProductos, productoActualizado} = require('./Productos/index.js');
+const {productoActualizado} = require('./Productos/index.js');
 const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarCorreo.js')
+const {UsuarioActualizado} = require('./Usuarios/usuarioActualizado.js');
+const getUsuarioById = require('./Usuarios/usuariosById.js')
+const allUsuario = require('./Usuarios/usuarios.js');
+const crearVenta = require('./ventas/crearVenta.js');
 
 const { KEYMERCADOPAGO } = process.env;
-
+var body;
 const createOrder = async (req, res) => {
-    const { usuario, precio} = req.body; 
-
+    const { precio} = req.body; 
+    
+    body = req.body
     mercadopago.configure({
         access_token: KEYMERCADOPAGO
     })
@@ -23,7 +28,7 @@ const createOrder = async (req, res) => {
         ],
         
         back_urls: {
-            success: `http://localhost:3001/pago/success?correo=${usuario.correo}`,
+            success: `http://localhost:3001/pago/success`,
             failure: "http://localhost:3001/pago/failure",
             pending: "",
         },
@@ -35,11 +40,35 @@ const createOrder = async (req, res) => {
 
 
 const success = async(req, res) => {
-    const {correo} = req.query;
+    const {usuario, precio, cartItems} = body;
+    const fecha = new Date();
+    
+    cartItems.forEach(async element => {
+       await productoActualizado(element._id,{stock:element.stock-element.quantity})
+       
+       const usuarios = await allUsuario();
+       const vendedor = usuarios.find(use =>use.correo === element.categorias[0]);
+       
+       const venta = {
+           monto: element.precio * (element.quantity),
+           valor: element.precio,
+           fecha, vendedor,
+           comprador:usuario
+       }
+       
+       await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});
+       await crearVenta(venta);
+    });
+
+
+    const object = {valor:precio, fecha};
+    const user = await getUsuarioById(usuario._id)
+    await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
-   await enviarNotificacionPorCorreo(correo, asunto, mensaje)
-  res.redirect('http://localhost:3000/home');
+    await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
+    res.redirect('http://localhost:3000/home');
 };
 
 const failure = (req, res) => {
@@ -53,7 +82,7 @@ const webhook = async (req, res) => {
         if (req.query.type === "payment" && paymentId) {
             const data = await mercadopago.payment.findById(paymentId);
             console.log("Payment data:", data);
-            alert("Compra realizada correctamente");
+            console.log("Compra realizada correctamente");
         }
 
         res.sendStatus(204);
