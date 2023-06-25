@@ -8,6 +8,7 @@ import { Cairo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Share_Tech } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
+import Script from 'next/script';
 
 const inter = Share_Tech({
 	weight: ['400'],
@@ -36,6 +37,8 @@ export default function RootLayout({ children }) {
 		<html lang='en' className={inter.className}>
 			<head>
 				{/* <link rel='stylesheet' href='https://bootswatch.com/5/vapor/bootstrap.min.css' /> */}
+				{/* <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">  
+				</Script> */}
 			</head>
 
 			<body className={cairo.className}>

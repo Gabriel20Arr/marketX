@@ -54,7 +54,7 @@ export default function Card({item}) {
               <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
             </div>
 
-                  <div className={style.contenedorCart}>
+                  {/* <div className={style.contenedorCart}>
                     <button
                       className={style.addButton}
                       // disabled={data.stock === 0}
@@ -62,7 +62,7 @@ export default function Card({item}) {
                     >
                       Agregar al carrito
                     </button>
-                  </div>
+                  </div> */}
 
         </article>:null}
     </div>

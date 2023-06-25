@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import styles from "./Admin.module.css";
 import Header from "../../components/AdminDashboard/Header/Header";

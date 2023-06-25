@@ -8,7 +8,6 @@ import axios from "axios";
 import { useGetUsersQuery } from '@/src/redux/services/userApi';
 
 import style from './cart.module.css'
-import { log } from 'util';
 
 export default function Cart() {
 
@@ -83,11 +82,11 @@ export default function Cart() {
                           {item.titulo}
                         </td>
                         <td>
-                          <select value={item.stock} onChange={(event => updateCartHandler(item, event.target.value))}>
+                          <select defaultValue={item.quantity} onChange={(event => updateCartHandler(item, event.target.value))}>
                             {
                               [...Array(item.stock).keys()].map(index => (
                                 <option key={index+1} value={index+1}>
-                                  {index + 1}
+                                  {index+1}
                                 </option>
                               ))
                             }
