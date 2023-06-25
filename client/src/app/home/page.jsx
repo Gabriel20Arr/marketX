@@ -5,11 +5,12 @@ import { useDispatch } from "react-redux";
 import { setSortOrder } from "../../redux/features/sortSlice";
 import Paginacion from "../../components/Paginacion/Paginacion";
 import style from "./home.module.css";
+import { useSession } from "next-auth/react";
 import Loader from "../../components/Loaders/Loaders";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -32,6 +33,7 @@ export default function HomePage() {
       const guardadoString = JSON.stringify(existente);
       localStorage.setItem("usuario", guardadoString);
     } else {
+      console.log("entra", objeto);
       const url = await axios
         .post("http://localhost:3001/usuario", objeto)
         .then((result) => {

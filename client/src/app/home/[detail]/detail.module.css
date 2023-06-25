@@ -1,11 +1,11 @@
 .container {
 	display: flex;
 	justify-content: space-between;
-	
+
 	margin: 30px;
 
 	padding: 10px;
-	
+
 	background-color: #eeee;
 	border-radius: 10px;
 
@@ -16,15 +16,15 @@
 	margin-top: 2%;
 	margin-left: 2.5%;
 	padding: 3px 10px;
-	
-	
+
+
 	text-decoration: none;
-	
+
 	border: 1px solid black;
 	border-radius: 5px;
-	
+
 	width: fit-content;
-	
+
 	background-color: #eeee;
 }
 
@@ -42,10 +42,10 @@
 .imageContainer {
 	display: flex;
 	justify-items: center;
-	
+
 	width: 50%;
-	
-	
+
+
 	padding: none;
 }
 
@@ -64,12 +64,12 @@
 
 .detailsContainer {
 	flex: 1;
-		
+
 	height: 99%;
 
 	padding: 10px 30px;
 	padding-top: 8%;
-	
+
 	border-left: 3px solid black;
 	/* border: 3px solid black; */
 }
@@ -94,11 +94,13 @@
 	/* border: 1px solid; */
 }
 
-.category {
+.btnCategoria {
+	/* border: 1px solid black; */
+
 	display: flex;
-	justify-content: flex-start;
-	font-size: 15px;
-	/* border: 1px solid; */
+	justify-content: center;
+
+	width: fit-content;
 }
 
 .stock {
@@ -112,14 +114,14 @@
 	color: black;
 	text-align: center;
 	/* border: 1px solid; */
-	
+
 }
 
 .description {
 	color: gray;
 }
 
-.contenedorCart{
+.contenedorCart {
 	display: flex;
 	justify-content: center;
 	align-items: center;
