@@ -23,15 +23,23 @@ const ProductoSchema = new Schema({
 		maxlength: [400, 'Se esta excediendo la longitud maxima de 400 caracteres'],
 	},
 	precio: {
-		type: String,
+		type: Number,
 		required: true,
 	},
 	cantidadVenta: {
-		type: String,
+		type: Number,
 	},
 	usuario: {
 		type: Schema.Types.ObjectId,
 		ref: Usuario,
+	},
+	stock: {
+		type: Number,
+		require: true,
+	},
+	categorias: {
+		type: Array,
+		default: [],
 	},
 });
 
