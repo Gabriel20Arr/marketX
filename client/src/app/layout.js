@@ -9,6 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Share_Tech } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import Script from 'next/script';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:3001'
 
 const inter = Share_Tech({
 	weight: ['400'],
