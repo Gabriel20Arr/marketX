@@ -1,20 +1,21 @@
 const { Schema, model } = require("mongoose");
-const Usuario = require("./Usuario");
-const Producto = require("./Producto");
 
 const VentaSchema = new Schema({
+  vendedor: {
+    type: Schema.Types.Mixed,
+    required: true,
+  },
+  comprador: {
+    type: Schema.Types.Mixed,
+    required: true,
+  },
+  monto: {
+    type: String,
+    required: true,
+  },
   fecha: {
     type: Date,
-    default: Date.now,
-  },
-  valorTotal: Number,
-  cliente: {
-    type: Schema.Types.ObjectId,
-    ref: Usuario,
-  },
-  producto: {
-    type: Schema.Types.ObjectId,
-    ref: Producto,
+    required: true,
   },
 });
 

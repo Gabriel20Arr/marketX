@@ -1,167 +1,141 @@
-.countForm{
-    display: flex;
-    justify-content: left;
+.container {
+	display: flex;
+	justify-content: space-between;
 
-    height: 100vh;
+	margin: 30px;
 
-    /* padding: 20px; */
+	padding: 10px;
 
-    /* background-color: gray; */
+	background-color: #eeee;
+	border-radius: 10px;
 
-    /* border: 1px solid black; */
+	height: 70vh;
 }
 
-.CountDes{
-    
-    /* border: 2px solid; */
-    /* width: ; */
-    
-    margin: 1px;
-    padding: 15px;
+.link {
+	margin-top: 2%;
+	margin-left: 2.5%;
+	padding: 3px 10px;
 
-    background-color: aliceblue;
-    
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
 
+	text-decoration: none;
+
+	border: 1px solid black;
+	border-radius: 5px;
+
+	width: fit-content;
+
+	background-color: #eeee;
 }
 
-.CountAll{
-    
-    border: 2px solid rgb(29, 0, 63);
-    border-radius: 20px;
-    /* width: ; */
-    
-    padding: 15px 40px;
-    
+.link2 {
+	font-weight: bold;
+	font-size: 15px;
+	text-decoration: none;
+	color: black;
 }
 
-.CountImg{
-    
-    /* border: 2px solid; */
-
-    height: 500px;
-    width: 300px;
-    
-    margin: 25px 40px;
-    padding: 15px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+.innerContainer {
+	display: flex;
 }
 
-.btn{
-    border: 1px solid rgb(29, 0, 63);
-    border-radius: 10px;
-    
-    display: flex;
-    justify-content: start;
-    
-    width: 100%;
-    
-    padding: 0 5px;
+.imageContainer {
+	display: flex;
+	justify-items: center;
+
+	width: 50%;
+
+
+	padding: none;
 }
 
-.btn2{
-    /* border: 1px solid black; */
-
-    
-    display: flex;
-    justify-content: center;
-    
-    width: 100%;
-    
-    padding: 0 5px;
+.image {
+	border-radius: 10px;
+	width: 95%;
+	height: 75%;
+	transition: transform 0.2s ease-in-out;
+	margin: 0;
+	margin-top: 8%;
 }
 
-.btnTitulo{
-    /* border: 1px solid black; */
-    
-    display: flex;
-    justify-content: center;
-
-    width: fit-content;
-
-    font-size: xx-large;
-
-    padding: auto;
+.image:hover {
+	transform: scale(1.2);
 }
 
-.btnPrecio{
-    /* border: 1px solid black; */
-    
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
+.detailsContainer {
+	flex: 1;
 
-    width: fit-content;
+	height: 99%;
+
+	padding: 10px 30px;
+	padding-top: 8%;
+
+	border-left: 3px solid black;
+	/* border: 3px solid black; */
 }
 
-.btnCategoria{
-    /* border: 1px solid black; */
-    
-    display: flex;
-    justify-content: center;
-
-    width: fit-content;
+.title {
+	font-weight: bold;
+	font-size: 20px;
+	border-bottom: 1px solid;
 }
 
-.btnDescripcion{
-    /* border: 1px solid black; */
-    
-    display: flex;
-    justify-content: center;
-
-    width: fit-content;
-    font-style: italic;
+.price {
+	display: flex;
+	justify-content: flex-start;
+	font-size: 26px;
 }
 
-.btnImagen{
-    /* border: 1px solid black; */
-    
-    display: flex;
-    justify-content: center;
+.categoryC {
+	display: flex;
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 5px;
+	/* border: 1px solid; */
+}
 
-    height: 280px;
-    /* width: 300px; */
+.btnCategoria {
+	/* border: 1px solid black; */
+
+	display: flex;
+	justify-content: center;
+
+	width: fit-content;
+}
+
+.stock {
+	display: flex;
+	justify-content: flex-start;
+	font-weight: bold;
+	/* border: 1px solid; */
+}
+
+.descriptionTitle {
+	color: black;
+	text-align: center;
+	/* border: 1px solid; */
 
 }
 
-.btnImagen:hover {
-    height: 320px;
-    cursor: zoom-in;
-
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+.description {
+	color: gray;
 }
 
-.btnAtras{
-    border: 1px solid rgb(29, 0, 63);
-    /* background-color: rgba(0, 0, 255, 0.646); */
-    background-color: aliceblue;
-    color: rgb(29, 0, 63);
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    font-size: large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.contenedorCart {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    width: 3.5em;
-    height: 1.5em;
+	margin-top: 50px;
+}
 
-    border-radius: 5px;
-} 
+.addButton {
+	background-color: blue;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3px 6px;
 
-.btnAtras:hover{
-    font-style: italic;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-
-    border: 3px solid rgb(29, 0, 63);
+	font-weight: bold;
 }

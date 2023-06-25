@@ -1,0 +1,68 @@
+.container{
+    /* border: 1px solid black; */
+    
+    height: 60vh;
+    
+    margin: 10px;
+    
+    border-radius: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container2{
+    /* border: 1px solid black; */
+    background-color: #eeee;
+
+    height: 50vh;
+    width: 70em;
+
+    margin: 10px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerX{
+    display: flex;
+    justify-content: flex-end;
+    
+    /* border: 1px solid; */
+    width: 90%;
+    height: 2em;
+    /* transform: translateX(425px); */
+    transform: translateY(50px);
+}
+
+
+.x{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    
+    text-decoration: none;
+
+    color: black;
+    
+    width: 2.5em;
+    
+    border: 1px solid black;
+    border-radius: 50%;
+    
+    font-weight: bold;
+
+    padding: auto;
+}
+
+.rechazo{
+    font-weight: bold;
+    font-size: 25px;
+}

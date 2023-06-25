@@ -1,0 +1,31 @@
+.contenedorComprar{
+    /* border: 1px solid blue; */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 3em;
+    
+}
+
+.comprar{
+    border: 1px solid black;
+    border-radius: 20px;
+    
+    width: 7em;
+    height: 1.8em;
+    
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    
+    background-color: #0df3ff;
+    
+}
+
+.comprar:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 2px 4px #0df3ff;
+}
