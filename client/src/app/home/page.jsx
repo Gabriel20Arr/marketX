@@ -25,7 +25,7 @@ export default function HomePage() {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
   const existente = data?.find((user) => user.correo === session?.user.email);
 
   const google = async () => {
