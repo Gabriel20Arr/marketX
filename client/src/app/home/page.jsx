@@ -44,9 +44,12 @@ export default function HomePage() {
         .catch((error) => error);
     }
   };
-
-  const usuarioJSON = localStorage.getItem("usuario");
-  const usuario = JSON.parse(usuarioJSON);
+  var usuario= 0;
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+    const usuarioJSON = localStorage.getItem("usuario") ?? null;
+    usuario = JSON.parse(usuarioJSON);
+  }
 
   if (!usuario) {
     google();

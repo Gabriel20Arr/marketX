@@ -13,15 +13,21 @@ export default function Cart() {
 
   const { state, dispatch } = useContext(Store);
   const { cartItems } = state.cart;
-
-  const usuarioJSON = localStorage.getItem('usuario');
-	const usuarioLocal = JSON.parse(usuarioJSON);
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+  }
+  var usuarioLocal = {}
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+    const usuarioJSON = localStorage.getItem('usuario');
+    usuarioLocal = JSON.parse(usuarioJSON);
+  }
 
   const {data, refetch} = useGetUsersQuery(null);
   useEffect(()=>{
     refetch()
   },[])
-  const usuario = data?.find(user=>user._id===usuarioLocal._id)
+  const usuario = data?.find(user=>user._id===usuarioLocal?._id)
   console.log("holaa", usuario);
 
   const removeCartHandler = (item) => {

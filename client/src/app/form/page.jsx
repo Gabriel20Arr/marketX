@@ -12,8 +12,12 @@ import "sweetalert2/src/sweetalert2.scss";
 // import CloudinaryWidget from '../../components/cloudinaryWidget/CloudinaryWidget';
 
 export default function CrearProducto() {
-	const usuarioJSON = localStorage.getItem('usuario');
-	const usuario = JSON.parse(usuarioJSON);
+	var usuario = 0
+	if (typeof window !== 'undefined') {
+		// Código que accede a localStorage aquí
+		const usuarioJSON = localStorage.getItem('usuario');
+		usuario = JSON.parse(usuarioJSON);
+	  }
 	const [form, setForm] = useState({
 		titulo: '',
 		categoria: '',
