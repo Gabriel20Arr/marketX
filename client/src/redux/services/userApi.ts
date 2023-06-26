@@ -43,7 +43,7 @@ type User = {
 export const userApi = createApi({
 	reducerPath: 'userAPI',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:3001/',
+		baseUrl: 'marketx-production.up.railway.app/',
 	}),
 	endpoints: (builder) => ({
 		getUsers: builder.query<User[], null>({
