@@ -155,7 +155,7 @@ export default function HomePage() {
                 style={{ textDecoration: "none", color: "inherit" }}
                 onClick={() => {
                   localStorage.clear();
-                  signOut({ callbackUrl: "http://localhost:3000/" });
+                  signOut({ callbackUrl: "https://marketx-doploy-git-gabriel-gabriel20arr.vercel.app/" });
                 }}
               >
                 cerrar sesion
