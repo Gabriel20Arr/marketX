@@ -11,7 +11,7 @@ const ProductList = () => {
 	const { data, refetch } = useGetProductsQuery(null);
 	useEffect(() => {
 		refetch();
-	}, []);
+	}, [refetch]);
 	console.log(data);
 
 	return (

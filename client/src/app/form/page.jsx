@@ -12,8 +12,13 @@ import "sweetalert2/src/sweetalert2.scss";
 // import CloudinaryWidget from '../../components/cloudinaryWidget/CloudinaryWidget';
 
 export default function CrearProducto() {
-	const usuarioJSON = localStorage.getItem('usuario');
-	const usuario = JSON.parse(usuarioJSON);
+	var usuario = 0
+    if (typeof window !== 'undefined') {
+        // Código que accede a localStorage aquí
+        const usuarioJSON = localStorage.getItem('usuario');
+        usuario = JSON.parse(usuarioJSON);
+      }
+
 	const [form, setForm] = useState({
 		titulo: '',
 		categoria: '',
@@ -76,7 +81,7 @@ export default function CrearProducto() {
 			formData.append('categorias', form.categorias);
 			formData.append('stock', form.stock);
 
-			const resul = await axios.post('http://localhost:3001/Producto/crearProductos', formData, {
+			const resul = await axios.post('marketx-production.up.railway.app/Producto/crearProductos', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data' // Establece el tipo de contenido como 'multipart/form-data'
 				}

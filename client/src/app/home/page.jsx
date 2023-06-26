@@ -35,7 +35,7 @@ export default function HomePage() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("http://localhost:3001/usuario", objeto)
+        .post("marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
@@ -45,8 +45,12 @@ export default function HomePage() {
     }
   };
 
-  const usuarioJSON = localStorage.getItem("usuario");
-  const usuario = JSON.parse(usuarioJSON);
+  var usuario= 0;
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+    const usuarioJSON = localStorage.getItem("usuario") ?? null;
+    usuario = JSON.parse(usuarioJSON);
+  }
 
   if (!usuario) {
     google();
