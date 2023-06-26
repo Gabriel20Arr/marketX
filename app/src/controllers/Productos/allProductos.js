@@ -12,11 +12,6 @@ const allProductos = async () => {
         return console.log('Producto no existente');
     }
 
-		if (productoDB.length > 0) {
-			return productoDB;
-		} else {
-			return console.log('Producto no existente');
-		}
 	} catch (error) {
 		throw new Error('Error al buscar el producto');
 	}
