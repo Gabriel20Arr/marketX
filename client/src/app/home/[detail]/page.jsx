@@ -5,8 +5,10 @@ import styles from "./detail.module.css";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { Store } from "@/src/utils/Store";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Loading from "../../../components/Loaders/Loaders";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 export default function Detail({ params }) {
   const { state, dispatch } = useContext(Store);
@@ -15,8 +17,8 @@ export default function Detail({ params }) {
   const { data, error, isLoading, isFetching } = useGetProductsByIdQuery({
     id: detail,
   });
-  if (isLoading || isFetching) return <p>Loading...</p>;
-  if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
+  // if (isLoading || isFetching) return <p>Loading...</p>;
+  // if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
 
   console.log(state, "data", data);
   const usuarioJSON = localStorage.getItem("usuario");
@@ -43,7 +45,11 @@ export default function Detail({ params }) {
   };
 
   if (isLoading || isFetching) return <Loading />;
-  if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
+  if (error) return Swal.fire({
+      title: "Oops, algo salió mal",
+      text: "Intentelo mas tarde",
+      icon: "error",
+    });;
 
   return (
     <>
