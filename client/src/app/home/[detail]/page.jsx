@@ -22,7 +22,7 @@ export default function Detail({ params }) {
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find(
