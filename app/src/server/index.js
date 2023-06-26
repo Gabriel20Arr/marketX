@@ -1,7 +1,10 @@
 const app = require('./server');
 const db = require('../database/index');
+require('dotenv').config()
 
-app.listen(3001, () => {
+const { PORT } = process.env
+
+app.listen(PORT, () => {
 	console.log('Servidor Corriendo');
 	db();
 });
