@@ -1,7 +1,7 @@
 const mercadopago = require('mercadopago');
 require('dotenv').config()
 const {productoActualizado} = require('./Productos/index.js');
-const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarCorreo.js')
+const {enviarNotificacionPorCorreo} = require('./enviarCorreo.js')
 const {UsuarioActualizado} = require('./Usuarios/usuarioActualizado.js');
 const getUsuarioById = require('./Usuarios/usuariosById.js')
 const allUsuario = require('./Usuarios/usuarios.js');
