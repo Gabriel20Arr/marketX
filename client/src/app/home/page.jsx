@@ -35,7 +35,7 @@ export default function HomePage() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("https://marketx-production.up.railway.app/usuario", objeto)
+        .post("/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
@@ -155,7 +155,7 @@ export default function HomePage() {
                 style={{ textDecoration: "none", color: "inherit" }}
                 onClick={() => {
                   localStorage.clear();
-                  signOut({ callbackUrl: "https://client-ten-sandy.vercel.app/" });
+                  signOut({ callbackUrl: "https://client-ten-sandy.vercel.app" });
                 }}
               >
                 cerrar sesion
