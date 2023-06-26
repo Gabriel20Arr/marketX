@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mercadopago = require("mercadopago");
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
