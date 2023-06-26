@@ -155,7 +155,7 @@ export default function HomePage() {
                 style={{ textDecoration: "none", color: "inherit" }}
                 onClick={() => {
                   localStorage.clear();
-                  signOut({ callbackUrl: "https://marketx-doploy-git-gabriel-gabriel20arr.vercel.app/" });
+                  signOut({ callbackUrl: "https://client-ten-sandy.vercel.app/" });
                 }}
               >
                 cerrar sesion
@@ -198,7 +198,7 @@ export default function HomePage() {
             <li
               className={style.dropdownItem3}
               style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+              onClick={() => signOut({ callbackUrl: "https://client-ten-sandy.vercel.app/" })}
             >
               Salir
             </li>
