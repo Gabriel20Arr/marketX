@@ -28,8 +28,8 @@ const createOrder = async (req, res) => {
         ],
         
         back_urls: {
-            success: `http://localhost:3001/pago/success`,
-            failure: "http://localhost:3001/pago/failure",
+            success: `https://marketx-production.up.railway.app/pago/success`,
+            failure: "https://marketx-production.up.railway.app/pago/failure",
             pending: "",
         },
         notification_url: 'https://011b-200-115-58-192.sa.ngrok.io/webhook'
