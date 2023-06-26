@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mercadopago = require("mercadopago");
 const fileUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
 
 const app = express();
 
