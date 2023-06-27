@@ -142,7 +142,7 @@ export default function HomePage() {
                 style={{ textDecoration: "none", color: "inherit" }}
                 onClick={() => {
                   localStorage.clear();
-                  signOut({ callbackUrl: "http://localhost:3000/" });
+                  signOut({ callbackUrl: "https://marketx-doploy.vercel.app/" });
                 }}
               >
                 cerrar sesion
@@ -185,7 +185,7 @@ export default function HomePage() {
             <li
               className={style.dropdownItem3}
               style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: "https://client-ten-sandy.vercel.app/" })}
+              onClick={() => signOut({ callbackUrl: "https://marketx-doploy.vercel.app/" })}
             >
               Salir
             </li>

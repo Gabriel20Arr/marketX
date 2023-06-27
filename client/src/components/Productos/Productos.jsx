@@ -14,7 +14,7 @@ export default function Productos(){
         {
           data?.map((producto) => (
             <li key={producto.id} onClick={() => {
-              router.push(`/productos/${producto.id}`)
+              router.push(`https://marketx-doploy.vercel.app/productos/${producto.id}`)
               }}>
               <div>
                 <h5>#{producto.id}</h5>
