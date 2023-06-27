@@ -33,6 +33,8 @@ export default function Registrarse() {
 		refetch();
 	}, []);
 
+	console.log(data);
+
 	const router = useRouter();
 	const { dispatch } = useContext(Store);
 

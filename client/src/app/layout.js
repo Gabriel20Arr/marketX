@@ -11,9 +11,6 @@ import { SessionProvider } from "next-auth/react";
 import Script from 'next/script';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.baseURL = 'marketx-production.up.railway.app'
-
 const inter = Share_Tech({
 	weight: ['400'],
 	size: 'xx-Larger',

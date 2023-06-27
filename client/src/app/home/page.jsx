@@ -35,7 +35,7 @@ export default function HomePage() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("marketx-production.up.railway.app/usuario", objeto)
+        .post("https://marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
@@ -108,18 +108,6 @@ export default function HomePage() {
 
           <button
             className={style.orfilbtn}
-            onClick={() => handleSortOrder("title")}
-          >
-            A-Z
-          </button>
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("reverse")}
-          >
-            Z-A
-          </button>
-          <button
-            className={style.orfilbtn}
             onClick={() => handleSortOrder("price")}
           >
             MENOR A MAYOR PRECIO
@@ -154,7 +142,7 @@ export default function HomePage() {
                 style={{ textDecoration: "none", color: "inherit" }}
                 onClick={() => {
                   localStorage.clear();
-                  signOut({ callbackUrl: "http://localhost:3000/" });
+                  signOut({ callbackUrl: "http://localhost:3000/" });  //!Cambio urgente................
                 }}
               >
                 cerrar sesion
