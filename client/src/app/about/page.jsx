@@ -43,7 +43,7 @@ export default function About() {
         </p>
       </div>
       <div className={style.imgContainer}>
-        <Image src={logo} alt="imagen"/>
+        <Image src={logo} alt="logo" />
       </div>
     </div>
   );

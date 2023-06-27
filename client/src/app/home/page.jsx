@@ -35,7 +35,7 @@ export default function HomePage() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("http://localhost:3001/usuario", objeto)
+        .post("marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);

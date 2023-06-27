@@ -14,7 +14,7 @@ type Product = {
 export const productsApi = createApi({
     reducerPath: 'productAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3001/'
+        baseUrl: 'marketx-production.up.railway.app/'
     }),
     endpoints: (builder) => ({
         getProducts: builder.query<Product[], null>({

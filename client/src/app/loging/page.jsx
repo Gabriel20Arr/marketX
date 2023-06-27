@@ -9,6 +9,8 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Store } from '@/src/utils/Store';
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 export default function Registrarse() {
 	const [showPass, setShowPass] = useState(false);
@@ -73,7 +75,14 @@ export default function Registrarse() {
 				blocked: '',
 			});
 
-			alert('Se inició sesión correctamente');
+			Swal.fire({
+				position: "center",
+				icon: "success",
+				title: "Se Inicio Sesion Correctamente",
+				showConfirmButton: false,
+				timer: 1500,
+      		});
+			
 			router.replace('/home');
 		} else {
 			setError((prevError) => ({

@@ -13,9 +13,6 @@ export default function Cart() {
 
   const { state, dispatch } = useContext(Store);
   const { cartItems } = state.cart;
-  if (typeof window !== 'undefined') {
-    // Código que accede a localStorage aquí
-  }
   var usuarioLocal = {}
   if (typeof window !== 'undefined') {
     // Código que accede a localStorage aquí
@@ -43,7 +40,7 @@ export default function Cart() {
     const cualquiera = {precio: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0), usuario, cartItems}
 
     try {
-      const response = await axios.post("http://localhost:3001/pago/createorder", cualquiera , {
+      const response = await axios.post("/createorder", cualquiera , {
         headers: {
           'Content-Type': 'application/json'
         }

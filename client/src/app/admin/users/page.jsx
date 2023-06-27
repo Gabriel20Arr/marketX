@@ -61,7 +61,7 @@ const UserList = () => {
       await updateUser({ id: editingUserId, body: editedUser }); // Cambiamos el orden de los parámetros
 
       // Realiza una solicitud HTTP al backend para guardar los cambios
-      await axios.put(`http://localhost:3001/users/${editingUserId}`, editedUser); // Actualizamos la URL de la solicitud
+      await axios.put(`marketx-production.up.railway.app/users/${editingUserId}`, editedUser); // Actualizamos la URL de la solicitud
 
       setEditingUserId(null);
       setEditedUser({
@@ -104,7 +104,7 @@ const UserList = () => {
   const saveNewUser = async () => {
     try {
       // Realiza una solicitud HTTP al backend para guardar el nuevo usuario
-      await axios.post('http://localhost:3001/users', newUser);
+      await axios.post('marketx-production.up.railway.app/users', newUser);
 
       setNewUser({
         nombre: '',
