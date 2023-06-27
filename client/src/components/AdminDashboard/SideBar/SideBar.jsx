@@ -1,12 +1,13 @@
 'use client'
 import React from 'react';
 import Link from 'next/link';
-import { RxDashboard, RxPerson } from 'react-icons/rx';
+import Image from 'next/image';
+import { RxSketchLogo, RxDashboard, RxPerson } from 'react-icons/rx';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 import { FiSettings } from 'react-icons/fi';
 import { FaBoxOpen } from 'react-icons/fa';
-import styles from './SideBar.module.css';
 
+import styles from './SideBar.module.css';
 
 const Sidebar = ({ children }) => {
 	return (

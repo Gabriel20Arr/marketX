@@ -6,7 +6,6 @@ import { Trash3 } from 'react-bootstrap-icons';
 import Link from 'next/link';
 import axios from "axios";
 import { useGetUsersQuery } from '@/src/redux/services/userApi';
-import Image from 'next/image';
 
 import style from './cart.module.css'
 
@@ -39,7 +38,7 @@ export default function Cart() {
   
   const createOrderHandler = async () => {
     const cualquiera = {precio: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0), usuario, cartItems}
-
+    console.log(cualquiera);
     try {
       const response = await axios.post("https://marketx-production.up.railway.app/pago/createorder", cualquiera , {
         headers: {
@@ -81,7 +80,7 @@ export default function Cart() {
                       {cartItems.map(item => (
                         <tr key={item.id}>
                         <td>
-                          <Image src={item.imagen} width={70} height={70}/>
+                          <img src={item.imagen} width={70} height={70}/>
                           &nbsp;
                           {item.titulo}
                         </td>

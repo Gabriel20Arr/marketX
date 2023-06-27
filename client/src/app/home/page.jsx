@@ -25,7 +25,7 @@ export default function HomePage() {
 
   useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, []);
   const existente = data?.find((user) => user.correo === session?.user.email);
 
   const google = async () => {
@@ -35,7 +35,7 @@ export default function HomePage() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("https://marketx-production.up.railway.app/usuario", objeto)
+        .post("marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
@@ -106,6 +106,18 @@ export default function HomePage() {
             <option value="Motherboard">Motherboards</option>
           </select>
 
+          <button
+            className={style.orfilbtn}
+            onClick={() => handleSortOrder("title")}
+          >
+            A-Z
+          </button>
+          <button
+            className={style.orfilbtn}
+            onClick={() => handleSortOrder("reverse")}
+          >
+            Z-A
+          </button>
           <button
             className={style.orfilbtn}
             onClick={() => handleSortOrder("price")}
@@ -185,7 +197,7 @@ export default function HomePage() {
             <li
               className={style.dropdownItem3}
               style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: "https://client-ten-sandy.vercel.app/" })}
+              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
             >
               Salir
             </li>
