@@ -81,7 +81,7 @@ export default function CrearProducto() {
 			formData.append('categorias', form.categorias);
 			formData.append('stock', form.stock);
 
-			const resul = await axios.post('https://marketx-production.up.railway.app/producto/crearProductos', formData, {
+			const resul = await axios.post('https://marketx-production.up.railway.app/Producto/crearProductos', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data' // Establece el tipo de contenido como 'multipart/form-data'
 				}
