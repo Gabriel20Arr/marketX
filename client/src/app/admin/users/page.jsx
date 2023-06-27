@@ -104,7 +104,7 @@ const UserList = () => {
   const saveNewUser = async () => {
     try {
       // Realiza una solicitud HTTP al backend para guardar el nuevo usuario
-      await axios.post('marketx-production.up.railway.app/users', newUser);
+      await axios.post('/users', newUser);
 
       setNewUser({
         nombre: '',

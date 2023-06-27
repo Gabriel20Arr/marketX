@@ -6,6 +6,7 @@ import { Trash3 } from 'react-bootstrap-icons';
 import Link from 'next/link';
 import axios from "axios";
 import { useGetUsersQuery } from '@/src/redux/services/userApi';
+import Image from 'next/image';
 
 import style from './cart.module.css'
 
@@ -80,7 +81,7 @@ export default function Cart() {
                       {cartItems.map(item => (
                         <tr key={item.id}>
                         <td>
-                          <img src={item.imagen} width={70} height={70}/>
+                          <Image src={item.imagen} width={70} height={70}/>
                           &nbsp;
                           {item.titulo}
                         </td>

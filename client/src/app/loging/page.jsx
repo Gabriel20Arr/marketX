@@ -31,7 +31,7 @@ export default function Registrarse() {
 	const { data, refetch } = useGetUsersQuery(null);
 	useEffect(() => {
 		refetch();
-	}, []);
+	}, [refetch]);
 
 	console.log(data);
 
