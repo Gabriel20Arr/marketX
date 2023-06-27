@@ -68,11 +68,11 @@ const success = async(req, res) => {
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
-    res.redirect('https://client-ten-sandy.vercel.app/home');
+    res.redirect('http://localhost:3000/home');
 };
 
 const failure = (req, res) => {
-    res.redirect('https://client-ten-sandy.vercel.app/failure');
+    res.redirect('http://localhost:3000/failure');
 };
 
 const webhook = async (req, res) => {

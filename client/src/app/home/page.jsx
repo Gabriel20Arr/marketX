@@ -91,6 +91,12 @@ export default function HomePage() {
     return <Loader />;
   }
 
+  const handlerSalir =()=>{
+    signOut({ callbackUrl: "http://localhost:3000" })
+    localStorage.clear()
+    router.push('/')
+  }
+
   return (
     <div className={style.contenedor1}>
       <div className={style.contenedor2}>
@@ -152,10 +158,7 @@ export default function HomePage() {
               <li
                 className={style.dropdownItem5}
                 style={{ textDecoration: "none", color: "inherit" }}
-                onClick={() => {
-                  localStorage.clear();
-                  signOut({ callbackUrl: "http://localhost:3000/" });
-                }}
+                onClick={handlerSalir}
               >
                 cerrar sesion
               </li>
@@ -197,7 +200,7 @@ export default function HomePage() {
             <li
               className={style.dropdownItem3}
               style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+              onClick={handlerSalir}
             >
               Salir
             </li>

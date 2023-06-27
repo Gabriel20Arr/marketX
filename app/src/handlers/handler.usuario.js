@@ -2,6 +2,7 @@ const createUser = require("../controllers/Usuarios/createUser");
 const allUsuario = require("../controllers/Usuarios/usuarios");
 const getUsuarioById = require('../controllers/Usuarios/usuariosById');
 const usuarioCarrito = require('../controllers/Usuarios/usuarioCarrito');
+const {UsuarioActualizado} = require('../controllers/Usuarios/usuarioActualizado');
 
 const HandlerCrearUsuario = async(req, res) => {
     const user = req.body;
@@ -42,5 +43,18 @@ const HandlerUserCar = async(req, res) =>{
     }
 }
 
+const HandlerEditUser = async(req,res) =>{
+    const {_id}=req.body;
 
-module.exports = { HandlerCrearUsuario, HandlerAllUsuarios, HandlerUserById, HandlerUserCar }
+    try {
+        const result = UsuarioActualizado(_id,req.body);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(400).json({message:error.message});
+    }
+}
+
+
+
+
+module.exports = { HandlerCrearUsuario, HandlerAllUsuarios, HandlerUserById, HandlerUserCar, HandlerEditUser }
