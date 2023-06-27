@@ -31,10 +31,8 @@ export default function Registrarse() {
 	const { data, refetch } = useGetUsersQuery(null);
 	useEffect(() => {
 		refetch();
-	}, [refetch]);
-
+	}, []);
 	console.log(data);
-
 	const router = useRouter();
 	const { dispatch } = useContext(Store);
 

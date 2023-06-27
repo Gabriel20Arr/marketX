@@ -51,11 +51,12 @@
 
 .image {
 	border-radius: 10px;
-	width: 95%;
+	width: auto;
 	height: 75%;
 	transition: transform 0.2s ease-in-out;
 	margin: 0;
 	margin-top: 8%;
+
 }
 
 .image:hover {

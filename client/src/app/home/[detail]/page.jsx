@@ -9,7 +9,6 @@ import { Store } from "@/src/utils/Store";
 import Loading from "../../../components/Loaders/Loaders";
 import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
-import Image from "next/image";
 
 export default function Detail({ params }) {
   const { state, dispatch } = useContext(Store);
@@ -63,7 +62,7 @@ export default function Detail({ params }) {
       <div className={styles.container}>
         <div className={styles.innerContainer}>
           <div className={styles.imageContainer}>
-            <Image
+            <img
               src={data.imagen}
               alt="error cargando la imagen"
               className={styles.image}
