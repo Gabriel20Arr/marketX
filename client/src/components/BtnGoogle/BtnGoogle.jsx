@@ -10,7 +10,7 @@ const BtnGoogle = () => {
       className="btn btn-primary"
       onClick={() =>
         signIn("google", {
-          callbackUrl: "https://client-ten-sandy.vercel.app/home",
+          callbackUrl: "https://marketx-doploy.vercel.app/home",
         })
       }
     >
