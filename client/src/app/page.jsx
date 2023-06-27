@@ -10,7 +10,7 @@ import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
 export default function Landing() {
   const router = useRouter();
   const home = (e)=>{
-    e.preventDefault
+    e.preventDefault()
     router.push('/home')
   }
   return (

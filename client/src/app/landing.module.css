@@ -157,7 +157,7 @@
   
   .invitado{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     
     border-radius: 10px;
 

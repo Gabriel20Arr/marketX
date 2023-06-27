@@ -6,6 +6,7 @@ import { Trash3 } from 'react-bootstrap-icons';
 import Link from 'next/link';
 import axios from "axios";
 import { useGetUsersQuery } from '@/src/redux/services/userApi';
+import Image from 'next/image';
 
 import style from './cart.module.css'
 
@@ -13,7 +14,6 @@ export default function Cart() {
 
   const { state, dispatch } = useContext(Store);
   const { cartItems } = state.cart;
-
   var usuarioLocal = {}
   if (typeof window !== 'undefined') {
     // Código que accede a localStorage aquí
@@ -25,7 +25,7 @@ export default function Cart() {
   useEffect(()=>{
     refetch()
   },[])
-  const usuario = data?.find(user=>user._id===usuarioLocal._id)
+  const usuario = data?.find(user=>user._id===usuarioLocal?._id)
   console.log("holaa", usuario);
 
   const removeCartHandler = (item) => {
@@ -41,7 +41,7 @@ export default function Cart() {
     const cualquiera = {precio: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0), usuario, cartItems}
 
     try {
-      const response = await axios.post("/createorder", cualquiera , {
+      const response = await axios.post("https://marketx-production.up.railway.app/pago/createorder", cualquiera , {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -81,7 +81,7 @@ export default function Cart() {
                       {cartItems.map(item => (
                         <tr key={item.id}>
                         <td>
-                          <img src={item.imagen} width={70} height={70}/>
+                          <Image src={item.imagen} width={70} height={70}/>
                           &nbsp;
                           {item.titulo}
                         </td>

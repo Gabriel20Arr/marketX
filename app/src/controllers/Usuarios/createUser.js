@@ -22,6 +22,8 @@ const createUser = async ({ nombre, correo, contraseña, provincia, codigo_posta
       usuario = new Usuario({ nombre, correo, contraseña, provincia, codigo_postal, direccion, telefono  });
     }
 
+    console.log(usuario);
+
     const savedUser = await usuario.save();
     const categoria = new categorias({nombre:correo});
     await categoria.save();

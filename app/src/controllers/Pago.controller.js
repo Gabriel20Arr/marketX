@@ -1,7 +1,7 @@
 const mercadopago = require('mercadopago');
 require('dotenv').config()
 const {productoActualizado} = require('./Productos/index.js');
-const {enviarNotificacionPorCorreo} = require('../../../client/src/hooks/enviarCorreo.js')
+const {enviarNotificacionPorCorreo} = require('./enviarCorreo.js')
 const {UsuarioActualizado} = require('./Usuarios/usuarioActualizado.js');
 const getUsuarioById = require('./Usuarios/usuariosById.js')
 const allUsuario = require('./Usuarios/usuarios.js');
@@ -28,8 +28,8 @@ const createOrder = async (req, res) => {
         ],
         
         back_urls: {
-            success: `http://localhost:3001/pago/success`,
-            failure: "http://localhost:3001/pago/failure",
+            success: `https://marketx-production.up.railway.app/pago/success`,
+            failure: "https://marketx-production.up.railway.app/pago/failure",
             pending: "",
         },
         notification_url: 'https://011b-200-115-58-192.sa.ngrok.io/webhook'
@@ -68,11 +68,11 @@ const success = async(req, res) => {
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
-    res.redirect('http://localhost:3000/home');
+    res.redirect('https://client-ten-sandy.vercel.app/home');
 };
 
 const failure = (req, res) => {
-    res.redirect('http://localhost:3000/failure');
+    res.redirect('https://client-ten-sandy.vercel.app/failure');
 };
 
 const webhook = async (req, res) => {
