@@ -3,6 +3,9 @@ import { signIn } from "next-auth/react";
 import googleIcon from "../../../public/icons/google (1).png";
 import Image from "next/image";
 import styles from "./BtnGoogle.module.css";
+require('dotenv').config()
+
+const {  LOCALHOST } = process.env;
 
 const BtnGoogle = () => {
   return (
@@ -10,7 +13,7 @@ const BtnGoogle = () => {
       className="btn btn-primary"
       onClick={() =>
         signIn("google", {
-          callbackUrl: "https://marketx-doploy.vercel.app/home",
+          callbackUrl: `${LOCALHOST}/home`,
         })
       }
     >

@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 require('dotenv').config()
 
-// const { MONGODB_URI } = process.env;
+const {  LOCALHOST } = process.env;
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -95,7 +95,7 @@ export default function HomePage() {
   }
 
   const handlerSalir =()=>{
-    signOut({ callbackUrl: "https://marketx-doploy.vercel.app/" })
+    signOut({ callbackUrl: `${LOCALHOST}/` })
     localStorage.clear()
     router.push('/')
   }
