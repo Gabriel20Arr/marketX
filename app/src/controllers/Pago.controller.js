@@ -54,17 +54,19 @@ const success = async(req, res) => {
            valor: element.precio,
            fecha, vendedor,
            comprador:usuario
-       }
+        }
        
        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});
        await crearVenta(venta);
     });
 
+    console.log(cartItems);
+
     const user = await getUsuarioById(usuario._id)
     
     cartItems.forEach( async (elem) => {
         const object = {valor: (elem.precio * elem.quantity), fecha, producto: elem.id};
-        
+
         await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
     } )
 
