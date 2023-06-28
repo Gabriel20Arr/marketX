@@ -14,4 +14,4 @@ const UsuarioActualizado = async (id,datosModificados) => {
   return resultado;
 };
 
-module.exports = { UsuarioActualizado };
+module.exports = {UsuarioActualizado };

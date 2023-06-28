@@ -1,6 +1,8 @@
 'use client'
+
 import { useRouter } from "next/navigation"
 import { useGetProductsQuery } from "@/src/redux/services/productApi";
+import Image from 'next/image'
 
 export default function Productos(){
   const router = useRouter();
@@ -14,14 +16,14 @@ export default function Productos(){
         {
           data?.map((producto) => (
             <li key={producto.id} onClick={() => {
-              router.push(`http://localhost:3000/productos/${producto.id}`)
+              router.push(`/productos/${producto.id}`)
               }}>
               <div>
                 <h5>#{producto.id}</h5>
                 <h2>{producto.title}</h2>
                 <h3>{producto.precio}</h3>
               </div>
-              <img src={producto.imagen} alt={producto.id} />
+              <Image src={producto.imagen} alt={producto.id} />
             </li>
           ))
         }

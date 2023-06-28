@@ -32,20 +32,6 @@ export default function Navigation({ currentPath }) {
     router.push("/home");
   };
 
-  // const routerDashBoard = () => {
-  //   router.push('/admin')
-  // }
-
-  // const routerMisProductos = () => {
-  //   router.push('/misProductos')
-  // }
-
-  // const [isMenuOpen, setMenuOpen] = useState(false);
-
-  // const toggleMenu = () => {
-  //   setMenuOpen(!isMenuOpen);
-  // };
-
   if (status === "loading") {
     return null;
   }
@@ -82,60 +68,12 @@ export default function Navigation({ currentPath }) {
           </div>
         )}
 
-        {/* <div className={styles.dropdown}>
-          <button className={styles.dropdownToggle} onClick={toggleMenu}>
-            <h2>
-              |||
-            </h2>
-          </button>
-          <ul className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}>
-            <li
-              className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
-              onClick={() => handelrRouter('loging')}>Iniciar sesión
-            </li>
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
-              onClick={() => handelrRouter('registrarse')} >Registrarse
-            </li>
-
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => handelrRouter('')} >Salir
-            </li>
-            
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })
-                    }
-            >
-              Sali
-            </li>
-
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
-              onClick={routerMisProductos}>mis productos
-            </li>
-            <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() =>{
-                localStorage.clear();
-                signOut({ callbackUrl: "http://localhost:3000/" })}
-                }>cerrar sesion
-            </li>
-
-            {
-              usuario?.rol == 'admin' ?
-                <li className={styles.dropdownItem} style={{ textDecoration: "none", color: "inherit" }}
-                  onClick={routerDashBoard}>Dashboard
-                </li>
-                : null
-            }
-          </ul>
-
-          
-        </div> */}
-
         <div>
           <Link
             style={{ textDecoration: "none", color: "inherit" }}
             href={usuario ? `/cart` : "/home"}
           >
-            <Cart4 size={30} />{" "}
+            <Cart4 size={30} />
             <span className="text-white bg-danger rounded p-1">
               {cartItemsCount}
             </span>
@@ -144,14 +82,10 @@ export default function Navigation({ currentPath }) {
 
         {!session ? null : (
           <div>
-            <img className={styles.img} src={session.user.image} alt="logo" />
+            <Image className={styles.img} src={session.user.image} alt="logo" />
           </div>
         )}
       </div>
-      {/* <form className="d-flex" role="search">
-                  <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                  <button className="btn btn-outline-success" type="submit">Search</button>
-                </form> */}
     </nav>
   );
 }

@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 require('dotenv').config()
 
-const { MONGODB_URI } = process.env;
+// const { MONGODB_URI } = process.env;
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -28,7 +28,7 @@ export default function HomePage() {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
   const existente = data?.find((user) => user.correo === session?.user.email);
 
   const google = async () => {
@@ -94,6 +94,12 @@ export default function HomePage() {
     return <Loader />;
   }
 
+  const handlerSalir =()=>{
+    signOut({ callbackUrl: "https://marketx-doploy.vercel.app/" })
+    localStorage.clear()
+    router.push('/')
+  }
+
   return (
     <div className={style.contenedor1}>
       <div className={style.contenedor2}>
@@ -104,23 +110,11 @@ export default function HomePage() {
             onChange={handleCategoryChange}
           >
             <option value="">Todas las categorías</option>
-            <option value="Placas de video">Placas de video</option>
+            <option value="Placas de Video">Placas de video</option>
             <option value="Procesadores">Procesadores</option>
             <option value="Motherboard">Motherboards</option>
           </select>
 
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("title")}
-          >
-            A-Z
-          </button>
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("reverse")}
-          >
-            Z-A
-          </button>
           <button
             className={style.orfilbtn}
             onClick={() => handleSortOrder("price")}
@@ -155,10 +149,7 @@ export default function HomePage() {
               <li
                 className={style.dropdownItem5}
                 style={{ textDecoration: "none", color: "inherit" }}
-                onClick={() => {
-                  localStorage.clear();
-                  signOut({ callbackUrl: "http://localhost:3000" });
-                }}
+                onClick={handlerSalir}
               >
                 cerrar sesion
               </li>
@@ -197,7 +188,6 @@ export default function HomePage() {
             >
               mis productos
             </li>
-            
             {usuario?.rol == "admin" ? (
               <li
                 className={style.dropdownItem6}
@@ -207,11 +197,11 @@ export default function HomePage() {
                 Dashboard
               </li>
             ) : null}
-
+            
             <li
               className={style.dropdownItem3}
               style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: MONGODB_URI })}
+              onClick={handlerSalir}
             >
               Salir
             </li>

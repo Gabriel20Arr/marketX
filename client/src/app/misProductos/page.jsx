@@ -8,7 +8,7 @@ export default function MisProductos() {
   const { data, refetch } = useGetProductsUsersQuery();
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
   var usuario = {};
   if (typeof window !== 'undefined') {
     // Código que accede a localStorage aquí

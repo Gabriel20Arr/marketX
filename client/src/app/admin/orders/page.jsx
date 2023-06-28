@@ -1,21 +1,21 @@
 'use client'
 
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styles from "./orders.module.css"
 import {useGetVentasQuery} from "../../../redux/services/ventasApi"
 import Link from 'next/link';
 
-function page() {
+function Page() {
 	const { data, refetch } = useGetVentasQuery(null);
 	
-	const ventas = data?.result
+	const ventas = data?.result;
 	
 	useEffect(() => {
 		refetch();
 	}, [refetch]);
 
 	
-	console.log("data: ", ventas);
+	// console.log("data: ", ventas);
 	  return (
     <div>
       <Link href='/admin' className={styles.link}>
@@ -44,7 +44,7 @@ function page() {
       </table>
       
     </div>
-  );;
+  );
 }
 
-export default page;
+export default Page;
