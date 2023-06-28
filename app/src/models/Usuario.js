@@ -56,7 +56,7 @@ const UsuarioSchema = new Schema(
     },
     rol: {
       type: String,
-      enum: ["admin", "usuario"],
+      enum: ["admin", "usuario", "baneado"],
       default: "usuario",
     },
     provincia: {
