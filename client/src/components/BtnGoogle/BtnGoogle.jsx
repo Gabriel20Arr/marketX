@@ -1,7 +1,6 @@
 import React from "react";
 import { signIn } from "next-auth/react";
 import googleIcon from "../../../public/icons/google (1).png";
-import Image from "next/image";
 import styles from "./BtnGoogle.module.css";
 require('dotenv').config()
 
@@ -18,7 +17,7 @@ const BtnGoogle = () => {
       }
     >
       <div className="d-flex aling-items-center">
-        <Image
+        <img
           src={googleIcon}
           alt="Google"
           className={styles.icon}
