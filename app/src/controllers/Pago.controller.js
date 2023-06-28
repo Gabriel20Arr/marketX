@@ -7,7 +7,7 @@ const getUsuarioById = require('./Usuarios/usuariosById.js')
 const allUsuario = require('./Usuarios/usuarios.js');
 const crearVenta = require('./ventas/crearVenta.js');
 
-const { KEYMERCADOPAGO } = process.env;
+const { KEYMERCADOPAGO, LOCALHOST } = process.env;
 var body;
 const createOrder = async (req, res) => {
     const { precio} = req.body; 
@@ -68,11 +68,11 @@ const success = async(req, res) => {
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
-    res.redirect('https://marketx-doploy.vercel.app/home');
+    res.redirect(`${LOCALHOST}/home`);
 };
 
 const failure = (req, res) => {
-    res.redirect('https://marketx-doploy.vercel.app/failure');
+    res.redirect(`${LOCALHOST}/failure`);
 };
 
 const webhook = async (req, res) => {
