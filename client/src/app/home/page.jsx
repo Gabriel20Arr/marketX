@@ -11,6 +11,9 @@ import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+require('dotenv').config()
+
+// const { MONGODB_URI } = process.env;
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -25,7 +28,7 @@ export default function HomePage() {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
   const existente = data?.find((user) => user.correo === session?.user.email);
 
   const google = async () => {
@@ -35,7 +38,7 @@ export default function HomePage() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("marketx-production.up.railway.app/usuario", objeto)
+        .post("https://marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
@@ -92,7 +95,7 @@ export default function HomePage() {
   }
 
   const handlerSalir =()=>{
-    signOut({ callbackUrl: "http://localhost:3000" })
+    signOut({ callbackUrl: "https://marketx-doploy.vercel.app/" })
     localStorage.clear()
     router.push('/')
   }
@@ -107,23 +110,11 @@ export default function HomePage() {
             onChange={handleCategoryChange}
           >
             <option value="">Todas las categorías</option>
-            <option value="Placas de video">Placas de video</option>
+            <option value="Placas de Video">Placas de video</option>
             <option value="Procesadores">Procesadores</option>
             <option value="Motherboard">Motherboards</option>
           </select>
 
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("title")}
-          >
-            A-Z
-          </button>
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("reverse")}
-          >
-            Z-A
-          </button>
           <button
             className={style.orfilbtn}
             onClick={() => handleSortOrder("price")}
@@ -197,14 +188,6 @@ export default function HomePage() {
             >
               mis productos
             </li>
-            <li
-              className={style.dropdownItem3}
-              style={{ textDecoration: "none", color: "inherit" }}
-              onClick={handlerSalir}
-            >
-              Salir
-            </li>
-
             {usuario?.rol == "admin" ? (
               <li
                 className={style.dropdownItem6}
@@ -214,6 +197,15 @@ export default function HomePage() {
                 Dashboard
               </li>
             ) : null}
+            
+            <li
+              className={style.dropdownItem3}
+              style={{ textDecoration: "none", color: "inherit" }}
+              onClick={handlerSalir}
+            >
+              Salir
+            </li>
+
           </div>
         </div>
       </div>

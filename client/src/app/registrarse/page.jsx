@@ -46,7 +46,7 @@ export default function Registrarse() {
 
   useEffect(() => {
     setError(validate(usuario, data));
-  }, [usuario]);
+  }, [usuario, data]);
 
   const handlerSubmit = async (e) => {
     e.preventDefault();

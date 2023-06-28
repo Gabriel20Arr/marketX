@@ -5,8 +5,8 @@ const allProductos = async () => {
     const productoDB = productoD.filter(producto=>producto.stock>=1);
     if(productoDB.length > 0) {
         const result =productoDB.map(producto => {
-          const {_id,categoria,descripcion,imagen,precio,titulo, stock}=producto;
-          return {id:_id,categoria,descripcion,imagen,precio,titulo, stock};
+          const {_id, categoria, descripcion, imagen, precio, titulo, stock } = producto;
+          return {id:_id, categoria, descripcion, imagen, precio, titulo, stock };
         })
         return result;
     } else {

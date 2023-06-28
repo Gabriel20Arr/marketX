@@ -1,7 +1,5 @@
 import { useRouter } from "next/navigation";
 import style from "./Card.module.css";
-import axios from "axios";
-// import Link from "next/link";
 
 export default function Card({item}) {
   const router = useRouter();
@@ -17,7 +15,7 @@ export default function Card({item}) {
         <article>
 
             <div className={style.Countimg}>
-              <img className={style.img} src={item.imagen} alt={item.titulo} style={{width:"100%", height:"100%"}} />
+              <img alt='img' className={style.img} src={item.imagen}  style={{width:"100%", height:"100%"}} />
             </div>
 
             <div className={style.contT}>
@@ -33,23 +31,6 @@ export default function Card({item}) {
               <h2 className={style.precio}> ${item.precio}</h2>
 
             </div>
-
-            {/* <div className={style.Pagar}>
-                <button  
-                    className={style.btnPagar} 
-                    id="buttomPagar"
-                    onClick={() => {
-                      axios.post("http://localhost:3001/pago/createorder", item, {
-                        headers: {
-                          'Content-Type': 'application/json'
-                        }
-                      })
-                      .then((res) => window.location.href = res.data.init_point)
-                    }}
-                >
-                  Comprar
-                </button>
-            </div>     */}
             <div className={style.Cdetalle}>
               <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
             </div>

@@ -41,6 +41,10 @@ const ProductoSchema = new Schema({
 		type: Array,
 		default: [],
 	},
+	accion: {
+		type: Boolean,
+		default: true
+	}
 });
 
 module.exports = model('Producto', ProductoSchema);

@@ -5,7 +5,6 @@ import styles from "./detail.module.css";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { Store } from "@/src/utils/Store";
-// import { useRouter } from "next/navigation";
 import Loading from "../../../components/Loaders/Loaders";
 import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";

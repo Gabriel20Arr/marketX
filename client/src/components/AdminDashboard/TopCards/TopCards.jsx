@@ -5,15 +5,13 @@ import styles from './TopCards.module.css';
 import { useGetUsersQuery } from '../../../redux/services/userApi';
 
 function TopCards() {
-	const [users, setUsers] = useState([]);
 	const [previousUserCount, setPreviousUserCount] = useState(0);
 	const [roundedPercentageChange, setRoundedPercentageChange] = useState(0);
 
 	const { data, refetch } = useGetUsersQuery(null);
 	useEffect(() => {
 		refetch();
-	}, []);
-	console.log(data);
+	}, [refetch]);
 
 	useEffect(() => {
 		if (data) {
@@ -25,7 +23,7 @@ function TopCards() {
 			}
 			// Round to 1 decimal place
 			const roundedPercentageChange = Math.round(percentageChange * 10) / 10;
-			console.log(roundedPercentageChange);
+			// console.log(roundedPercentageChange);
 			setRoundedPercentageChange(roundedPercentageChange);
 			setPreviousUserCount(currentUserCount);
 		}
