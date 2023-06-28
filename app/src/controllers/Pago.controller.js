@@ -60,7 +60,6 @@ const success = async(req, res) => {
        await crearVenta(venta);
     });
 
-    console.log("hola: ",cartItems);
 
     const user = await getUsuarioById(usuario._id)
     

@@ -8,6 +8,8 @@ import { Store } from "@/src/utils/Store";
 import Loading from "../../../components/Loaders/Loaders";
 import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 
 export default function Detail({ params }) {
   const { state, dispatch } = useContext(Store);
@@ -16,14 +18,16 @@ export default function Detail({ params }) {
   const { data, error, isLoading, isFetching } = useGetProductsByIdQuery({
     id: detail,
   });
-  // if (isLoading || isFetching) return <p>Loading...</p>;
-  // if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;
 
-  console.log(state, "data", data);
+  const puntuaciones2 = data?.puntuaciones || [];
+
+  const promedio = puntuaciones2.map( el => +(el.puntuacion) )
+
+  const sum = promedio.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const average = sum / promedio.length;
+
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
-
-  // const router = useRouter();
 
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find(
@@ -32,7 +36,13 @@ export default function Detail({ params }) {
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if (data.stock < quantity) {
-      alert("Lo sentimos, no hay stock de este producto");
+        Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "Lo sentimos, no hay mas stock disponible",
+				showConfirmButton: false,
+				timer: 1500,
+      	});
       return;
     }
 
@@ -76,6 +86,16 @@ export default function Detail({ params }) {
               <div className={styles.categoryC}>Categoría:</div>
               {data.categoria}
             </p>
+
+              <div className={styles.contenedorRating}>
+                <span className={styles.promedio}>{average? average : 0}</span>
+                <Rating
+                  value={average}
+                  precision={0.1}
+                  emptyIcon={<StarIcon />}
+                />
+            </div>
+            <span className={styles.calificaciones}> {puntuaciones2.length} calificaciones</span>
 
             <div className={styles.descriptionTitle}>
               Descripcion
