@@ -60,10 +60,13 @@ const success = async(req, res) => {
        await crearVenta(venta);
     });
 
-
-    const object = {valor:precio, fecha};
     const user = await getUsuarioById(usuario._id)
-    await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+    
+    cartItems.forEach( async (elem) => {
+        const object = {valor: (elem.precio * elem.quantity), fecha, producto: elem.id};
+        
+        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+    } )
 
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";

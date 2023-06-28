@@ -44,6 +44,10 @@ const ProductoSchema = new Schema({
 	accion: {
 		type: Boolean,
 		default: true
+	},
+	puntuaciones: {
+		type: Array,
+		default: []
 	}
 });
 
