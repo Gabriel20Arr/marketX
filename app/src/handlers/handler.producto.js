@@ -1,3 +1,5 @@
+const uploadImage = require('../cloudinary/index');
+
 const {
 	allProductos,
 	productoId,
@@ -34,45 +36,38 @@ const HandlerIdProductos = async (req, res) => {
 //-------------Crear Productos--------------------------------->
 
 const HandlerProducto = async (req, res) => {
-	const {
-		titulo,
-		categoria,
-		imagen,
-		descripcion,
-		precio,
-		cantidadVenta,
-		usuario,
-		categorias,
-		stock,
-	} = req.body;
-	try {
-		if (
-			!titulo ||
-			!categoria ||
-			!imagen ||
-			!descripcion ||
-			!precio ||
-			!usuario ||
-			!stock
-		)
-			throw new Error(
-				'Se necesita tener todo los campos completos para crear un Producto'
-			);
-		const nuevoProducto = await productoCreado(
-			titulo,
-			categoria,
-			imagen,
-			descripcion,
-			precio,
-			cantidadVenta,
-			usuario,
-			categorias,
-			stock
-		);
-		res.status(201).send('Se creo con exito el Producto');
-	} catch (error) {
-		res.status(500).send(error.message);
-	}
+  let { titulo, categoria, imagen, descripcion, precio, cantidadVenta, usuario, categorias, stock } =
+    req.body;
+  try {
+    // if (!titulo || !categoria || !imagen || !descripcion || !precio || !usuario || !stock)
+    //   throw new Error(
+    //     "Se necesita tener todo los campos completos para crear un Producto"
+    //   );
+
+    console.log(req.files);
+
+    if (req.files?.imagen) {
+      const result = await uploadImage(req.files.imagen.tempFilePath);
+      imagen = result.secure_url;
+    }
+
+    const nuevoProducto = await productoCreado(
+      titulo,
+      categoria,
+      imagen,
+      descripcion,
+      precio,
+      cantidadVenta,
+      usuario,
+      categorias,
+      stock
+    );
+    console.log(nuevoProducto);
+    res.status(201).send("Se creo con exito el Producto");
+  } catch (error) {
+    console.log(error)
+    res.status(500).send(error.message);
+  }
 };
 
 //--------------------Actualizar Producto --------------------------->

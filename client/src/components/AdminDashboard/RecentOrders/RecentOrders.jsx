@@ -1,15 +1,26 @@
-import React from 'react';
-import { data } from '../../../api/data';
+import React, { useEffect } from 'react';
 import { FaShoppingBag } from 'react-icons/fa';
 import styles from './RecentOrders.module.css';
+import { useGetVentasQuery } from '../../../redux/services/ventasApi';
+import { formatDistanceToNow } from 'date-fns';
 
 const RecentOrders = () => {
+	const { data, refetch } = useGetVentasQuery();
+	const ventas = data?.result;
+
+	useEffect(() => {
+		refetch();
+	}, [refetch]);
+
+	// Ordenar las fechas en orden inverso
+	const ventasOrdenadas = ventas?.slice().reverse();
+
 	return (
 		<div className={`${styles.container} ${styles.scrollContainer}`}>
-			<h1>Recent Orders</h1>
+			<h1>Ultimas Ventas</h1>
 			<ul>
-				{data.map((order, id) => (
-					<li key={id} className={`${styles.orderItem} ${styles.hoverItem}`}>
+				{ventasOrdenadas?.map((venta, index) => (
+					<li key={index} className={`${styles.orderItem} ${styles.hoverItem}`}>
 						<div
 							className={`${styles.bgPurple} ${styles.rounded} ${styles.p3}`}
 						>
@@ -17,16 +28,16 @@ const RecentOrders = () => {
 						</div>
 						<div className={`${styles.pl4}`}>
 							<p className={`${styles.textGray800} ${styles.fontBold}`}>
-								${order.total}
+								${venta.monto}
 							</p>
 							<p className={`${styles.textGray400} ${styles.textSm}`}>
-								{order.name.first}
+								{venta.comprador.nombre}
 							</p>
 						</div>
 						<p
 							className={`${styles.date} ${styles.textGray400} ${styles.textSm} ${styles.absolute} ${styles.right6}`}
 						>
-							{order.date}
+							{formatDistanceToNow(new Date(venta.fecha), { addSuffix: true })}
 						</p>
 					</li>
 				))}

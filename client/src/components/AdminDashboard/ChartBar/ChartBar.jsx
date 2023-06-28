@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
 	Chart as ChartJS,
@@ -11,7 +11,7 @@ import {
 	Tooltip,
 	Legend,
 } from 'chart.js';
-import { useEffect, useState } from 'react';
+import { useGetVentasQuery } from '../../../redux/services/ventasApi';
 import styles from './ChartBar.module.css';
 
 ChartJS.register(
@@ -24,21 +24,46 @@ ChartJS.register(
 );
 
 function ChartBar() {
+	const { data, refetch } = useGetVentasQuery(null);
+	const ventas = data?.result;
+
 	const [chartData, setChartData] = useState({ datasets: [] });
 	const [chartOptions, setChartOptions] = useState({});
 
 	useEffect(() => {
-		setChartData({
-			labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
-			datasets: [
-				{
-					label: 'Sales $',
-					data: [18127, 22201, 19490, 17938, 24182, 17842, 22475],
-					borderColor: 'rgb(53, 162, 235)',
-					backgroundColor: 'rgb(53, 162, 235, 0.4',
-				},
-			],
-		});
+		refetch();
+	}, [refetch]);
+
+	useEffect(() => {
+		if (ventas) {
+			const ventasPorDia = {};
+			ventas.forEach((venta) => {
+				const fecha = new Date(venta.fecha).toLocaleDateString('es-ES');
+				const monto = +venta.monto;
+
+				if (ventasPorDia[fecha]) {
+					ventasPorDia[fecha] += monto;
+				} else {
+					ventasPorDia[fecha] = monto;
+				}
+			});
+
+			const labels = Object.keys(ventasPorDia);
+			const datos = Object.values(ventasPorDia);
+
+			setChartData({
+				labels: labels,
+				datasets: [
+					{
+						label: 'Ventas $',
+						data: datos,
+						borderColor: 'rgb(53, 162, 235)',
+						backgroundColor: 'rgb(53, 162, 235, 0.4)',
+					},
+				],
+			});
+		}
+
 		setChartOptions({
 			plugins: {
 				legend: {
@@ -46,20 +71,16 @@ function ChartBar() {
 				},
 				title: {
 					display: true,
-					text: 'Daily Revenue',
+					text: 'Ventas Diarias',
 				},
 			},
-			// maintainAspectRatio: false,
-			// responsive: true,
 		});
-	}, []);
+	}, [ventas]);
 
 	return (
-		<>
-			<div className={`${styles.container} ${styles.chartContainer}`}>
-				<Bar data={chartData} options={chartOptions} />
-			</div>
-		</>
+		<div className={`${styles.container} ${styles.chartContainer}`}>
+			<Bar data={chartData} options={chartOptions} />
+		</div>
 	);
 }
 

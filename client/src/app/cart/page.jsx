@@ -1,20 +1,30 @@
 'use client'
 
 import { Store } from '@/src/utils/Store'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Trash3 } from 'react-bootstrap-icons';
 import Link from 'next/link';
 import axios from "axios";
-
+import { useGetUsersQuery } from '@/src/redux/services/userApi';
 import style from './cart.module.css'
 
 export default function Cart() {
 
   const { state, dispatch } = useContext(Store);
   const { cartItems } = state.cart;
+  var usuarioLocal = {}
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+    const usuarioJSON = localStorage.getItem('usuario');
+    usuarioLocal = JSON.parse(usuarioJSON);
+  }
 
-  const usuarioJSON = localStorage.getItem('usuario');
-	const usuario = JSON.parse(usuarioJSON);
+  const {data, refetch} = useGetUsersQuery(null);
+  useEffect(()=>{
+    refetch()
+  },[refetch])
+  const usuario = data?.find(user=>user._id===usuarioLocal?._id)
+  console.log("holaa", usuario);
 
   const removeCartHandler = (item) => {
     dispatch({type: 'CART_REMOVE_ITEM', payload: item, usuario:usuario._id})
@@ -24,13 +34,11 @@ export default function Cart() {
     const quantity = Number(cantidad)
     dispatch({type: 'CARD_ADD_ITEM', payload: {...item, quantity, usuario:usuario._id}})
   }  
-
   
   const createOrderHandler = async () => {
-    const cualquiera = {precio: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0)}
-
+    const cualquiera = {precio: cartItems.reduce((a, c) => a + c.quantity * c.precio, 0), usuario, cartItems}
     try {
-      const response = await axios.post("http://localhost:3001/pago/createorder", cualquiera , {
+      const response = await axios.post("https://marketx-production.up.railway.app/pago/createorder", cualquiera , {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -70,16 +78,16 @@ export default function Cart() {
                       {cartItems.map(item => (
                         <tr key={item.id}>
                         <td>
-                          <img src={item.imagen} width={70} height={70}/>
+                          <img src={item.imagen} alt='imagen' width={70} a height={70}/>
                           &nbsp;
                           {item.titulo}
                         </td>
                         <td>
-                          <select value={item.stock} onChange={(event => updateCartHandler(item, event.target.value))}>
+                          <select defaultValue={item.quantity} onChange={(event => updateCartHandler(item, event.target.value))}>
                             {
                               [...Array(item.stock).keys()].map(index => (
                                 <option key={index+1} value={index+1}>
-                                  {index + 1}
+                                  {index+1}
                                 </option>
                               ))
                             }

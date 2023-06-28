@@ -1,6 +1,8 @@
 'use client'
+
 import { useRouter } from "next/navigation"
-import { useGetProductsQuery, useGetProductsByIdQuery } from "@/src/redux/services/productApi";
+import { useGetProductsQuery } from "@/src/redux/services/productApi";
+import Image from 'next/image'
 
 export default function Productos(){
   const router = useRouter();
@@ -21,7 +23,7 @@ export default function Productos(){
                 <h2>{producto.title}</h2>
                 <h3>{producto.precio}</h3>
               </div>
-              <img src={producto.imagen} alt={producto.id} />
+              <Image src={producto.imagen} alt={producto.id} />
             </li>
           ))
         }

@@ -7,10 +7,18 @@ import Link from 'next/link';
 import style from './Form.module.css';
 import Image from "next/image";
 import logo from "../../images/MarketX-newlogo.png";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+// import CloudinaryWidget from '../../components/cloudinaryWidget/CloudinaryWidget';
 
 export default function CrearProducto() {
-	const usuarioJSON = localStorage.getItem('usuario');
-	const usuario = JSON.parse(usuarioJSON);
+	var usuario = 0
+    if (typeof window !== 'undefined') {
+        // Código que accede a localStorage aquí
+        const usuarioJSON = localStorage.getItem('usuario');
+        usuario = JSON.parse(usuarioJSON);
+      }
+
 	const [form, setForm] = useState({
 		titulo: '',
 		categoria: '',
@@ -33,18 +41,52 @@ export default function CrearProducto() {
 		stock: ''
 	});
 
+	// const [imagesUploadedList, setImagesUploadedList] = useState([]);
+
+	// const cld = new Cloudinary({
+	//   cloud: {
+	// 	cloud_name: "dmtzjtgy8", //Your cloud name
+	// 	upload_preset: "marketx" //Create an unsigned upload preset and update this
+	//   }
+	// });
+  
+	// const onImageUploadHandler = (publicId) => {
+	//   setImagesUploadedList((prevState) => [...prevState, publicId]);
+	// };
+
 	const changeHandler = (event) => {
 		const property = event.target.name;
 		const value = event.target.value;
 
-		setForm({ ...form, [property]: value });
+		if (event.target.name === 'imagen') {
+			setForm({ ...form, imagen: event.target.files[0] }); // Actualiza el estado de la imagen con el archivo seleccionado
+		  } else {
+			setForm({ ...form, [property]: value });
+		  }
 		setErrors(validation({ ...form, [property]: value }));
 	};
 
 	const submitHandler = async (event) => {
 		event.preventDefault();
 		try {
-			await axios.post('http://localhost:3001/Producto/crearProductos', form);
+			const formData = new FormData()
+
+			formData.append('titulo', form.titulo);
+			formData.append('categoria', form.categoria);
+			formData.append('imagen', form.imagen);
+			formData.append('descripcion', form.descripcion);
+			formData.append('precio', form.precio);
+			formData.append('cantidadVenta', form.cantidadVenta);
+			formData.append('usuario', form.usuario);
+			formData.append('categorias', form.categorias);
+			formData.append('stock', form.stock);
+
+			const resul = await axios.post('https://marketx-production.up.railway.app/Producto/crearProductos', formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data' // Establece el tipo de contenido como 'multipart/form-data'
+				}
+			});
+
 			setForm({
 				titulo: '',
 				categoria: '',
@@ -56,9 +98,23 @@ export default function CrearProducto() {
 				categorias:[usuario.nombre],
 				stock: 0
 			});
-			alert('Creacion Exitosa ');
+			if (resul.status === 201) {
+				Swal.fire({
+				  position: "center",
+				  icon: "success",
+				  title: "Producto Creado Correctamente",
+				  showConfirmButton: false,
+				  timer: 1500,
+				});
+			  } else {
+				Swal.fire({
+				  icon: "error",
+				  title: "Oops...",
+				  text: "Algo salio Mal!",
+				});
+			  }
 		} catch (error) {
-			alert('Esta actividad ya esta creada');
+			console.log(error);
 		}
 	};
 
@@ -104,12 +160,19 @@ export default function CrearProducto() {
 						)}
 					</div>
 					<div>
-						<label htmlFor=''>Imagen: </label>
+						<label htmlFor='file'>Imagen: </label>
+
+						{/* <CloudinaryWidget
+							cloud_name={cld.cloudinaryConfig.cloud.cloud_name}
+							upload_preset={cld.cloudinaryConfig.cloud.upload_preset}
+							onImageUpload={(publicId) => onImageUploadHandler(publicId)}
+						/> */}
+
 						<input
-							type='text'
+							accept='image/*'
+							type='file'
 							name='imagen'
 							className={style.formInput}
-							value={form.imagen}
 							onChange={changeHandler}
 						/>
 						{errors.imagen && (
@@ -179,10 +242,11 @@ export default function CrearProducto() {
 				<h1 className={style.text}>
 					Publique y venda un producto de forma gratuita
 				</h1>
-				<Image src={logo} className={style.img} />
+				<Image src={logo} className={style.img}  alt='logo'/>
 			</div>
 			
 		</div>
+
 		</div>
 	);
 }

@@ -1,23 +1,18 @@
 const Producto = require('../../models/Producto');
-const productos = require('../../../../client/src/api/api');
 const allProductos = async () => {
   try {
-    const productoDB = await Producto.find();
+    const productoD = await Producto.find();
+    const productoDB = productoD.filter(producto=>producto.stock>=1 && producto.accion === true);
     if(productoDB.length > 0) {
         const result =productoDB.map(producto => {
-          const {_id,categoria,descripcion,imagen,precio,titulo, stock}=producto;
-          return {id:_id,categoria,descripcion,imagen,precio,titulo, stock};
+          const {_id, categoria, descripcion, imagen, precio, titulo, stock, accion } = producto;
+          return {id:_id, categoria, descripcion, imagen, precio, titulo, stock, accion };
         })
         return result;
     } else {
         return console.log('Producto no existente');
     }
 
-		if (productoDB.length > 0) {
-			return productoDB;
-		} else {
-			return console.log('Producto no existente');
-		}
 	} catch (error) {
 		throw new Error('Error al buscar el producto');
 	}

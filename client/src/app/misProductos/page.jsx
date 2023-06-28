@@ -8,9 +8,13 @@ export default function MisProductos() {
   const { data, refetch } = useGetProductsUsersQuery();
   useEffect(() => {
     refetch();
-  }, []);
-  const usuarioJSON = localStorage.getItem("usuario");
-  const usuario = JSON.parse(usuarioJSON);
+  }, [refetch]);
+  var usuario = {};
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+    const usuarioJSON = localStorage.getItem("usuario");
+    usuario = JSON.parse(usuarioJSON);
+  }
   const productos = data && data.find((use) => use.nombre === usuario?.correo);
   const apiProductos = productos ? productos.productos : [];
   return (
