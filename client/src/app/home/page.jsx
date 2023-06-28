@@ -11,6 +11,9 @@ import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+require('dotenv').config()
+
+const { MONGODB_URI } = process.env;
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -35,7 +38,7 @@ export default function HomePage() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("marketx-production.up.railway.app/usuario", objeto)
+        .post("https://marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
@@ -194,14 +197,7 @@ export default function HomePage() {
             >
               mis productos
             </li>
-            <li
-              className={style.dropdownItem3}
-              style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
-            >
-              Salir
-            </li>
-
+            
             {usuario?.rol == "admin" ? (
               <li
                 className={style.dropdownItem6}
@@ -211,6 +207,15 @@ export default function HomePage() {
                 Dashboard
               </li>
             ) : null}
+
+            <li
+              className={style.dropdownItem3}
+              style={{ textDecoration: "none", color: "inherit" }}
+              onClick={() => signOut({ callbackUrl: MONGODB_URI })}
+            >
+              Salir
+            </li>
+
           </div>
         </div>
       </div>

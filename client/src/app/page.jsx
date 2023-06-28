@@ -10,7 +10,7 @@ import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
 export default function Landing() {
   const router = useRouter();
   const home = (e)=>{
-    e.preventDefault
+    e.preventDefault()
     router.push('/home')
   }
   return (
@@ -21,7 +21,7 @@ export default function Landing() {
     <div className={Style.container}>
 
       <div className={Style.image}>
-        <Image src={image} width={350}  alt="" className={Style.imgMarketX}/>
+        <Image src={image} width={350}  alt="img" className={Style.imgMarketX}/>
       </div>
 
       <div className={Style.form}>

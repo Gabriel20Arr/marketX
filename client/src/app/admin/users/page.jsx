@@ -9,7 +9,9 @@ import axios from 'axios';
 
 const UserList = () => {
   const { data, isLoading, isError, refetch } = useGetUsersQuery(); // Eliminamos el valor null en useGetUsersQuery
+
   const [editingUserId, setEditingUserId] = useState(null);
+
   const [editedUser, setEditedUser] = useState({
     nombre: '',
     correo: '',
@@ -18,6 +20,7 @@ const UserList = () => {
     direccion: '',
     codigo_postal: '',
   });
+  
   const [addingUser, setAddingUser] = useState(false);
   const [newUser, setNewUser] = useState({
     nombre: '',
@@ -32,9 +35,10 @@ const UserList = () => {
   const [updateUser] = usePutUserCarMutation();
 
   const blockUser = (userId, userEmail) => {
-    // Lógica para bloquear al usuario
+    dispatch(addBlockedUser(userEmail));
+  };
 
-    // Guardar el correo electrónico bloqueado en el estado global
+  const desblockUser = (userId, userEmail) => {
     dispatch(addBlockedUser(userEmail));
   };
 
@@ -56,13 +60,11 @@ const UserList = () => {
     });
   };
 
-  const saveChanges = async () => {
+  const saveChanges = async (e) => {
     try {
-      await updateUser({ id: editingUserId, body: editedUser }); // Cambiamos el orden de los parámetros
-
-      // Realiza una solicitud HTTP al backend para guardar los cambios
-      await axios.put(`https://marketx-production.up.railway.app/users/${editingUserId}`, editedUser); // Actualizamos la URL de la solicitud
-
+      e.preventDefault()
+      await axios.put(`https://marketx-production.up.railway.app/usuario/editar`, {...editedUser, _id: editingUserId})
+      
       setEditingUserId(null);
       setEditedUser({
         nombre: '',
@@ -72,7 +74,7 @@ const UserList = () => {
         direccion: '',
         codigo_postal: '',
       });
-      refetch();
+      refetch()
     } catch (error) {
       console.log('Error updating user:', error);
     }

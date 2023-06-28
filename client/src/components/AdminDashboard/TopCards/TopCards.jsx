@@ -13,7 +13,6 @@ function TopCards() {
 	useEffect(() => {
 		refetch();
 	}, []);
-	console.log(data);
 
 	useEffect(() => {
 		if (data) {

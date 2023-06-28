@@ -8,7 +8,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Cart4 } from "react-bootstrap-icons";
 import { Store } from "@/src/utils/Store";
 import { useRouter } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Navigation({ currentPath }) {
   const { data: session, status } = useSession();
@@ -52,13 +52,12 @@ export default function Navigation({ currentPath }) {
 
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
-  console.log(usuario);
 
   return (
     <nav className={styles.container}>
       <div className={styles.NavConteiner}>
         <div>
-          <Image src={logo} className={styles.logo} onClick={routerHome} />
+          <Image src={logo} alt="logo" className={styles.logo} onClick={routerHome} />
         </div>
 
         {currentPath !== "/form" && (

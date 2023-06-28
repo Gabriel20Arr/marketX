@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation"
-import { useGetProductsQuery, useGetProductsByIdQuery } from "@/src/redux/services/productApi";
+import { useGetProductsQuery } from "@/src/redux/services/productApi";
 
 export default function Productos(){
   const router = useRouter();
@@ -14,7 +14,7 @@ export default function Productos(){
         {
           data?.map((producto) => (
             <li key={producto.id} onClick={() => {
-              router.push(`https://marketx-doploy.vercel.app/productos/${producto.id}`)
+              router.push(`http://localhost:3000/productos/${producto.id}`)
               }}>
               <div>
                 <h5>#{producto.id}</h5>
