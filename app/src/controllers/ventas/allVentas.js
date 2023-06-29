@@ -11,7 +11,7 @@ const allVentas  = async () => {
 
 const ventasActualizado = async (_id, datosModificados) => {
   if (!_id ) throw new Error("Se necesita el Id para poder actualizar la venta");
-  if (id.length < 24) throw new Error("El id proporcionado no existe");
+  if (_id.length < 24) throw new Error("El id proporcionado no existe");
 
   const resultado = await Ventas.findByIdAndUpdate(
     _id,{ $set: datosModificados },
