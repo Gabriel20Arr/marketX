@@ -1,55 +1,84 @@
-'use client'
+"use client";
+import logo from "../images/MarketX-newlogo (2).png";
+import style from "./landing.module.css";
+import Frame from "./Landing/Frame";
+import Ellipse6 from "./Landing/Ellipse6";
+import pcGamer from "../images/pCGAMER1.jpg";
+import Arg from "./Landing/Arg";
+import Col from "./Landing/Col";
+import Mex from "./Landing/Mex";
 
-import image from '../images/MarketX-newlogo.png';
-import Link from 'next/link';
-import Style from './landing.module.css';
-import  Image from 'next/image'
-import { useRouter } from 'next/navigation';
-import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+// import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
 
-export default function Landing() {
+const Landing = () => {
   const router = useRouter();
-  const home = (e)=>{
-    e.preventDefault()
-    router.push('/home')
-  }
+
+  const home = (event) => {
+    event.preventDefault();
+    router.push("/home");
+  };
   return (
-    <div className={Style.formAll}>
-
-    <h1 className={Style.formT}>Bienvenido a MarketX</h1>
-
-    <div className={Style.container}>
-
-      <div className={Style.image}>
-        <Image src={image} width={350}  alt="img" className={Style.imgMarketX}/>
-      </div>
-
-      <div className={Style.form}>
-
-        <Link style={{ textDecoration: "none", color: "inherit" }} href='/registrarse'><button className={Style.registrar1}>Registrarse gratis</button></Link>
-
-        <div className={Style.iniciarSesion}>
-            <h4 className={Style.iniciarSesionFondo}> 
-              ¿Ya tienes cuenta?  
-              <Link href='/loging'>INICIA SESION</Link> 
-            </h4>
+    <div>
+      <nav className={style.nav}>
+        <div className={style.contenedorLogo}>
+          <Image src={logo} alt="logo" width="105" height="100" />
         </div>
-        
-        <div>
-            <BtnGoogle className={Style.divR}/>
-        </div> 
+        <div className={style.links}>
+          <div className={style.enlaces}>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              href={"/loging"}
+            >
+              <h6>Inicia Sesion</h6>
+            </Link>
 
-        <span className={Style.invitadoCount} > 
-          <button className={Style.invitado} onClick={home}>
-            Ingresar como Invitado
-          </button>
-        </span>   
-
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              href={"/registrarse"}
+            >
+              <h6>Registrase</h6>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              href={"/home"}
+              onClick={home}
+            >
+              <h6>Entrar como Invitado</h6>
+            </Link>
+            {/* <BtnGoogle /> */}
+          </div>
+          <div className={style.paises}>
+            <Arg className={style.pais} />
+            <Col className={style.pais} />
+            <Mex className={style.pais} />
+          </div>
+        </div>
+      </nav>
+      <div className={style.cuerpo}>
+        <div className={style.titulo}>
+          <div className={style.contenedorTitulo}>
+            <h1> MARKET-X</h1>
+            <h1>TU COMPRA MAS SEGURA</h1>
+            <h3> MAS QUE UN MERCADO</h3>
+          </div>
+          <div className={style.frame14}>
+            <Frame />
+          </div>
+        </div>
+        <div className={style.frame15}>
+          <div className={style.ellipse6}>
+            <Ellipse6 className={style.icono2} />
+          </div>
+          <div className={style.ellipse5}>
+            <Image className={style.pcGamer} src={pcGamer} alt="ss" />
+          </div>
+        </div>
       </div>
-
-    </div>  
-
     </div>
-  )
-}
+  );
+};
 
+export default Landing;

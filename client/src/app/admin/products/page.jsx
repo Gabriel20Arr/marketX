@@ -12,6 +12,16 @@ const ProductList = () => {
 	const products = data?.flatMap(user => (
 		user.productos
 	))
+
+	const banear = async (_id) => {
+		 await axios.put(`https://marketx-production.up.railway.app/producto/actualizar`, {_id, accion: false})
+		 refetch();
+	}
+
+	const desbanear = async (_id) => {
+		 await axios.put(`https://marketx-production.up.railway.app/producto/actualizar`, {_id, accion: true})
+		 refetch();
+	}
 	
 
   	const handleDeleteProduct = async (id) => {
@@ -19,7 +29,7 @@ const ProductList = () => {
 		if(confirme) {
 			try {
 				await axios.delete(`https://marketx-production.up.railway.app/producto/eliminar/${id}`)
-				refetch()
+				refetch();
 			} catch (error) {
 				console.log(error);
 			}
@@ -48,6 +58,7 @@ const ProductList = () => {
 						<th>PRECIO</th>
 						<th>STOCK</th>
 						<th>USUARIO</th>
+						<th>ACCION</th>
 						<th>ACCIONES</th>
 					</tr>
 				</thead>
@@ -60,10 +71,20 @@ const ProductList = () => {
 								<td>{prod.precio}</td>
 								<td>{prod.stock}</td>
 								<td>{prod.categorias[0]}</td>
+								<td>{prod.accion}</td>
 								<td>
 									<button onClick={() => handleDeleteProduct(prod._id)}>
 										Eliminar
 									</button>
+
+									{(prod.accion === false) ?
+									<button onClick={() => desbanear(prod._id)}>
+										Desbanear
+									</button>
+										:
+									<button onClick={() => banear(prod._id)}>
+										Banear
+									</button>}
 								</td>
 							</tr>
 						);

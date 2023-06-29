@@ -3,11 +3,12 @@ import Card from '../Card/Card';
 import style from "./Cards.module.css";
 
 export default function Cards({ currentItems }) {
+	
 	return (
 		<div className={style.contt}>
 			{currentItems.map((item) => (
 				<div key={item.id || item._id}>
-					<Card item={item} />
+					<Card item={item}/>
 				</div>
 			))}
 		</div>

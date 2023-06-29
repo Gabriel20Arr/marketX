@@ -60,7 +60,7 @@ function TopCards() {
 				const fecha = new Date(venta.fecha).toLocaleDateString('es-ES');
 
 				if (fecha === currentDate) {
-					totalDailyIncome += venta.monto;
+					totalDailyIncome += parseFloat(venta.monto);
 				}
 			});
 

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import logo from "../../images/MarketX-newlogo (2).png";
 import styles from "./NavBar.module.css";
 import React, { useContext, useEffect, useState } from "react";
@@ -9,6 +8,8 @@ import { Cart4 } from "react-bootstrap-icons";
 import { Store } from "@/src/utils/Store";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+
 
 export default function Navigation({ currentPath }) {
   const { data: session, status } = useSession();
@@ -82,7 +83,7 @@ export default function Navigation({ currentPath }) {
 
         {!session ? null : (
           <div>
-            <Image className={styles.img} src={session.user.image} alt="logo" />
+            <img className={styles.img} src={session.user.image} alt="logo" />
           </div>
         )}
       </div>
