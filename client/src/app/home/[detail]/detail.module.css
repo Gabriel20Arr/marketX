@@ -10,6 +10,8 @@
 	border-radius: 10px;
 
 	height: 70vh;
+
+	overflow: hidden;
 }
 
 .link {
@@ -142,4 +144,37 @@
 	padding: 3px 6px;
 
 	font-weight: bold;
+}
+
+.contenedorRating{
+	/* border: 1px solid black; */
+	display: flex;
+	width: fit-content;
+	align-items: center;
+	
+}
+
+.promedio{
+	/* border: 1px solid black; */
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+	margin: none;
+	margin-right: 5px;
+
+	font-size: 35px;
+	font-weight: bolder;
+}
+
+.calificaciones{
+	/* border: 1px solid black; */
+	display: flex;
+	margin-left: 4.7em;
+	/* width: fit-content; */
+	height: auto;
+
+	position: relative;
+	bottom: 20px;
 }

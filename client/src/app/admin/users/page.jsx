@@ -6,6 +6,9 @@ import styles from './users.module.css';
 import { useDispatch } from 'react-redux';
 import { addBlockedUser } from '../../../redux/features/blockedUsersSlice';
 import axios from 'axios';
+require('dotenv').config()
+
+const { LOCALHOST } = process.env;
 
 const UserList = () => {
   const { data, isLoading, isError, refetch } = useGetUsersQuery(); // Eliminamos el valor null en useGetUsersQuery
@@ -31,16 +34,18 @@ const UserList = () => {
     codigo_postal: '',
   });
 
-  const dispatch = useDispatch();
   const [updateUser] = usePutUserCarMutation();
 
-  const blockUser = (userId, userEmail) => {
-    dispatch(addBlockedUser(userEmail));
+  const blockUser = async (_id) => {
+    await axios.put(`https://marketx-production.up.railway.app/usuario/editar`, {_id, rol: 'baneado'})
+    refetch();
   };
 
-  const desblockUser = (userId, userEmail) => {
-    dispatch(addBlockedUser(userEmail));
+  const desbanearUser = async (_id) => {
+    await axios.put(`https://marketx-production.up.railway.app/usuario/editar`, {_id, rol: 'usuario'})
+    refetch();
   };
+
 
   const editUser = (userId) => {
     setEditingUserId(userId);
@@ -158,7 +163,12 @@ const UserList = () => {
             <td>{user.codigo_postal}</td>
             <td>
               <button onClick={() => editUser(user._id)}>Editar</button>
-              <button onClick={() => blockUser(user._id, user.correo)}>Bloquear</button>
+              { (user.rol === "baneado") ?
+              <button onClick={() => desbanearUser(user._id)}>Desbanear</button>
+                : 
+              <button onClick={() => blockUser(user._id)}>Banear</button> 
+
+              }
             </td>
           </tr>
         ))}

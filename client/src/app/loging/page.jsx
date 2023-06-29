@@ -45,21 +45,17 @@ export default function Registrarse() {
 		e.preventDefault();
 		const correos =
 			data && data.map((user) => user.correo).includes(usuario.correo);
+
 		const contraseñas =
 			data && data.map((user) => user.contraseña).includes(usuario.contraseña);
+			
+		const correo2 =
+			data && data.find((user) => user.correo === usuario.correo)
+
 
 		if (correos && contraseñas) {
+			if(correo2.rol !== "baneado") {
 			const guardado = data.find((user) => user.correo === usuario.correo);
-
-			if (blockedUsers.includes(usuario.correo)) {
-				setError({
-					correo:
-						'Error: no puedes acceder con un correo electrónico bloqueado',
-					contraseña: '',
-					blocked: '',
-				});
-				return;
-			}
 
 			const guardadoString = JSON.stringify(guardado);
 			localStorage.setItem('usuario', guardadoString);
@@ -84,6 +80,15 @@ export default function Registrarse() {
       		});
 			
 			router.replace('/home');
+			} else{
+				Swal.fire({
+				position: "top",
+				icon: "warning",
+				title: "Usuario baneado",
+				showConfirmButton: false,
+				timer: 1500,
+      		});
+			}
 		} else {
 			setError((prevError) => ({
 				...prevError,
