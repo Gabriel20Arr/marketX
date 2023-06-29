@@ -9,12 +9,12 @@ const allVentas  = async () => {
   }
 };
 
-const ventasActualizado = async (_id, datosModificados) => {
+const ventasActualizado = async (_id, despachado) => {
   // if (!_id ) throw new Error("Se necesita el Id para poder actualizar la venta");
   // if (_id.length < 24) throw new Error("El id proporcionado no existe");
 
   const resultado = await Ventas.findByIdAndUpdate(
-    _id,{ $set: datosModificados },
+    _id,{ $set: despachado },
     { new: true } // Esto devuelve el documento actualizado en lugar del antiguo
   );
 
