@@ -9,10 +9,19 @@ import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
 
 export default function Landing() {
   const router = useRouter();
-  const home = (e)=>{
-    e.preventDefault()
-    router.push('/home')
-  }
+  // const home = (e)=>{
+  //   e.preventDefault()
+  //   router.push('/home')
+  // }
+  const home = (e) => {
+    e.preventDefault();
+    const usuarioInvitado = {
+      _id: undefined, // Puedes usar un ID único para los usuarios invitados
+      rol: undefined,
+    };
+    localStorage.setItem('usuario', JSON.stringify(usuarioInvitado));
+    router.push('/home');
+  };
   return (
     <div className={Style.formAll}>
 
