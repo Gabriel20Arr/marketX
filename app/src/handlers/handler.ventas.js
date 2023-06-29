@@ -10,14 +10,14 @@ const HandlerAllVentas = async(req, res) =>{
 }
 
 const HandlerActualizar = async (req, res) => {
-	const { _id } = req.body;
-	// delete req.body._id;
-	try {
-		await ventasActualizado(_id);
-		res.status(200).send('Se actualizó correctamente');
-	} catch (error) {
-		res.status(422).send(error.message);
-	}
+  const { _id, datosModificados } = req.body;
+  try {
+    await ventasActualizado(_id, datosModificados);
+    res.status(200).send('Se actualizó correctamente');
+  } catch (error) {
+    res.status(422).send(error.message);
+  }
 };
+
 
 module.exports= {HandlerAllVentas, HandlerActualizar};
