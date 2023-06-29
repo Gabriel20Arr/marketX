@@ -66,3 +66,9 @@
   border-left: none;
   height: 2.5em;
 }
+
+.google{
+  /* border-top: 1px solid black; */
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}

@@ -10,8 +10,9 @@
 }
 
 .contenedorLogo img {
-	padding-bottom: 3px;
-	border-radius: 50px;
+	margin-top: 5px;
+	/* padding-bottom: 3px; */
+	/* border-radius: 50px; */
 	background-color: #0B2447;
 }
 
