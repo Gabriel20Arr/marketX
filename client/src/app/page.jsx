@@ -1,5 +1,5 @@
 "use client";
-import logo from "../images/logo4.png";
+import logo from "../images/MarketX-newlogo (2).png";
 import style from "./landing.module.css";
 import Frame from "./Landing/Frame";
 import Ellipse6 from "./Landing/Ellipse6";
@@ -11,7 +11,7 @@ import Mex from "./Landing/Mex";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
+// import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
 
 const Landing = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const Landing = () => {
     <div>
       <nav className={style.nav}>
         <div className={style.contenedorLogo}>
-          <Image src={logo} alt="logo" width="160" height="71" />
+          <Image src={logo} alt="logo" width="105" height="100" />
         </div>
         <div className={style.links}>
           <div className={style.enlaces}>
@@ -34,6 +34,7 @@ const Landing = () => {
             >
               <h6>Inicia Sesion</h6>
             </Link>
+
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
               href={"/registrarse"}
@@ -47,7 +48,7 @@ const Landing = () => {
             >
               <h6>Entrar como Invitado</h6>
             </Link>
-            <BtnGoogle />
+            {/* <BtnGoogle /> */}
           </div>
           <div className={style.paises}>
             <Arg className={style.pais} />
@@ -72,7 +73,7 @@ const Landing = () => {
             <Ellipse6 className={style.icono2} />
           </div>
           <div className={style.ellipse5}>
-            <Image className={style.pcGamer} src={pcGamer} alt="" />
+            <Image className={style.pcGamer} src={pcGamer} alt="ss" />
           </div>
         </div>
       </div>

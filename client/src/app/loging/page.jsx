@@ -11,6 +11,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Store } from '@/src/utils/Store';
 import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import BtnGoogle from "../../components/BtnGoogle/BtnGoogle";
+
+
 
 export default function Registrarse() {
 	const [showPass, setShowPass] = useState(false);
@@ -154,7 +157,14 @@ export default function Registrarse() {
 								{error.contraseña}
 								{error.blocked}
 							</p>
+
+							<div className={Style.google}>
+            				    <BtnGoogle />
+							</div>
+
+							
 						</div>
+
 						<button
 							type='submit'
 							className='btn btn-primary btn-lg w-100'
@@ -162,6 +172,7 @@ export default function Registrarse() {
 						>
 							Iniciar Sesión
 						</button>
+						
 					</form>
 				</div>
 			</div>
