@@ -10,9 +10,9 @@ const HandlerAllVentas = async(req, res) =>{
 }
 
 const HandlerActualizar = async (req, res) => {
-  const { _id, despachado} = req.body;
+  const { _id } = req.body;
   try {
-    await ventasActualizado(_id, despachado);
+    await ventasActualizado(_id, req.body);
     res.status(200).send('Se actualizó correctamente');
   } catch (error) {
     res.status(422).send(error.message);

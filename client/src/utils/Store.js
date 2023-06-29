@@ -26,7 +26,7 @@ function reducer(state, action){
             
             //de lo contrario si no existe entonces guardamos el primero
             : [...state.cart.cartItems, newItem]
-            const back =axios.put('/Usuario', {cartItems, usuario:cartItems[0].usuario})
+            const back =axios.put('https://marketx-production.up.railway.app/Usuario', {cartItems, usuario:cartItems[0].usuario})
             .then(result=>result.data).catch(err=>err);
 
             return {...state, cart:{...state.cart, cartItems}}
@@ -38,7 +38,7 @@ function reducer(state, action){
         const cartItems = state.cart.cartItems.filter(
             (item) => item._id !== action.payload._id
         )
-        const back = axios.put('/Usuario', {cartItems, usuario})
+        const back = axios.put('https://marketx-production.up.railway.app/Usuario', {cartItems, usuario})
         .then(result=>result.data).catch(err=>err);
 
         return { ...state, cart:{...state.cart, cartItems} }

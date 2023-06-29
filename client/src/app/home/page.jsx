@@ -11,7 +11,7 @@ import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-require('dotenv').config()
+require('dotenv').config();
 
 const {  LOCALHOST } = process.env;
 
