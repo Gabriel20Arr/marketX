@@ -23,3 +23,22 @@
 	text-decoration: none;
 	align-items: end;
 }
+
+.container {
+	background-color: #eeee;
+	padding: 20px;
+}
+
+.link {
+	/* Estilos para el enlace Volver */
+}
+
+.userTable {
+	/* Estilos para la tabla */
+	margin: 20px 0;
+}
+
+.despachadoRow {
+	background-color: green;
+	color: white;
+}

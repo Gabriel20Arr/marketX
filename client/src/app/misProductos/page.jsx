@@ -31,7 +31,12 @@ function MisProductos() {
 		usuario = JSON.parse(usuarioJSON);
 	}
 
-	const productos = data && data.find((use) => use.nombre === usuario?.correo);
+	const productos = data && data.find((use) => use.nombre === usuario.correo);
+
+	console.log('data:', data);
+	console.log('user: ', usuario);
+	console.log('mail: ', usuario.correo);
+	console.log('prod: ', productos);
 
 	const editProduct = (productId) => {
 		setEditingProductId(productId);

@@ -68,12 +68,11 @@ function Page() {
 	};
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<Link href='/home' className={styles.link}>
 				Volver
 			</Link>
 			<h1>Lista de Ventas</h1>
-			<div className={styles.addButtonContainer}></div>
 			<table className={styles.userTable}>
 				<thead>
 					<tr>
@@ -86,12 +85,15 @@ function Page() {
 						<th>PROVINCIA</th>
 						<th>CÓDIGO POSTAL</th>
 						<th>TELÉFONO</th>
-						<th>DESPACHADO</th>
+						<th>ESTADO</th>
 					</tr>
 				</thead>
 				<tbody>
 					{misVentas.map((venta, index) => (
-						<tr key={index}>
+						<tr
+							key={index}
+							className={venta.despachado ? styles.despachadoRow : ''}
+						>
 							<td>{venta.titulo}</td>
 							<td>{venta.cantidad}</td>
 							<td>{venta.comprador.correo}</td>
@@ -105,12 +107,12 @@ function Page() {
 								{venta.despachado ? (
 									'Despachado'
 								) : (
-									<input
-										type='checkbox'
-										checked={false}
-										disabled={false}
-										onChange={() => marcarComoDespachado(venta._id)}
-									/>
+									<button
+										className={styles.despacharButton}
+										onClick={() => marcarComoDespachado(venta._id)}
+									>
+										Despachar
+									</button>
 								)}
 							</td>
 						</tr>
