@@ -19,14 +19,14 @@ function reducer(state, action){
             const newItem = action.payload
             const existItem = state.cart.cartItems.find(
                 (item => item._id === newItem._id)
-                )
+                ) 
                 
             //una condicion para actualizar si existe el item o guardar si no existe
             const cartItems = existItem ? state.cart.cartItems.map((item) => item.titulo === existItem.titulo ? newItem : item)
             
             //de lo contrario si no existe entonces guardamos el primero
             : [...state.cart.cartItems, newItem]
-            const back =axios.put('/Usuario', {cartItems, usuario:cartItems[0].usuario})
+            const back =axios.put('https://marketx-production.up.railway.app/Usuario', {cartItems, usuario:cartItems[0].usuario})
             .then(result=>result.data).catch(err=>err);
 
             return {...state, cart:{...state.cart, cartItems}}
@@ -38,16 +38,19 @@ function reducer(state, action){
         const cartItems = state.cart.cartItems.filter(
             (item) => item._id !== action.payload._id
         )
-        const back = axios.put('/Usuario', {cartItems, usuario})
+        const back = axios.put('https://marketx-production.up.railway.app/Usuario', {cartItems, usuario})
         .then(result=>result.data).catch(err=>err);
 
-        return { ...state, cart:{...state.cart, cartItems} }
+        return { ...state, cart:{cartItems} }
     }
     
     case 'INICIAL':{
         return { ...state, cart:{...state.cart, cartItems:action.payload} }
     }
 
+    case "RETOMANDO_DATO":{
+        return {cart:{cartItems:[]}} 
+    } 
         default:
         return state;
   }
@@ -59,4 +62,4 @@ function StoreProvider({children}){
   return <Store.Provider value={value}>{children}</Store.Provider>
 }
 
-export { Store, StoreProvider };
+export { Store, StoreProvider };  

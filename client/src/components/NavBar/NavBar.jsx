@@ -9,25 +9,42 @@ import { Store } from "@/src/utils/Store";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useGetUserByIdQuery } from "@/src/redux/services/userApi";
 
 
 export default function Navigation({ currentPath }) {
+  var usuario= 0;
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+    const usuarioJSON = localStorage.getItem("usuario") ?? null;
+    usuario = JSON.parse(usuarioJSON) || 0;
+  }
+  const { state, dispatch} = useContext(Store);
   const { data: session, status } = useSession();
   const router = useRouter();
   const handelrRouter = (value) => {
     localStorage.clear();
     router.push(`/${value}`);
   };
-
-  const { state, dispatch } = useContext(Store);
-
   const { cart } = state;
-
+  
   const [cartItemsCount, setCartItemsCount] = useState(0);
 
+  const use = useGetUserByIdQuery({id:usuario._id})
+  useEffect(()=>{
+    use.refetch()
+  },[use.refetch])
+  
+  //console.log('.......................');
+  // if (usuario) { 
+  //   dispatch({
+  //     type: "RETOMANDO_DATOS",
+  //     payload: use.data,
+  //   });
+  // }
   useEffect(() => {
-    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
-  }, [cart.cartItems]);
+    setCartItemsCount(cart?.cartItems.reduce((a, c) => a + c.quantity, 0));
+  }, []);
 
   const routerHome = () => {
     router.push("/home");
@@ -37,15 +54,12 @@ export default function Navigation({ currentPath }) {
     return null;
   }
 
-  const usuarioJSON = localStorage.getItem("usuario");
-  const usuario = JSON.parse(usuarioJSON);
-
   return (
     <nav className={styles.container}>
       <div className={styles.NavConteiner}>
         <div>
           <Image src={logo} alt="logo" className={styles.logo} onClick={routerHome} />
-        </div>
+        </div> 
 
         {currentPath !== "/form" && (
           <div className={styles.btn}>
