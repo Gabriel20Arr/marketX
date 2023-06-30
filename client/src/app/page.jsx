@@ -11,13 +11,27 @@ import Mex from "./Landing/Mex";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext, useEffect } from "react";
+import { Store } from "@/src/utils/Store";
+import { useGetUsersQuery } from "@/src/redux/services/userApi";
 // import BtnGoogle from "../components/BtnGoogle/BtnGoogle";
 
 const Landing = () => {
   const router = useRouter();
+  const { dispatch } = useContext(Store);
+
+  const { data, refetch } = useGetUsersQuery(null);
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   const home = (event) => {
     event.preventDefault();
+    const guardado = data.find((user) => user.correo === "invitado@gmail.com");
+    const guardadoString = JSON.stringify(guardado);
+    localStorage.setItem("usuario", guardadoString);
+    dispatch({ type: "INICIAL", payload: guardado.carrito });
+
     router.push("/home");
   };
   return (
@@ -41,13 +55,17 @@ const Landing = () => {
             >
               <h6>Registrase</h6>
             </Link>
-            <Link
-              style={{ textDecoration: "none", color: "inherit" }}
-              href={"/home"}
+            <button
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                border: "none",
+                backgroundColor: "white",
+              }}
               onClick={home}
             >
               <h6>Entrar como Invitado</h6>
-            </Link>
+            </button>
             {/* <BtnGoogle /> */}
           </div>
           <div className={style.paises}>
