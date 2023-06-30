@@ -1,83 +1,82 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setSortOrder } from "../../redux/features/sortSlice";
-import Paginacion from "../../components/Paginacion/Paginacion";
+// import { useDispatch } from "react-redux";
+// import { setSortOrder } from "../../redux/features/sortSlice";
+// import Paginacion from "../../components/Paginacion/Paginacion";
 import style from "./home.module.css";
 import { useSession } from "next-auth/react";
 import Loader from "../../components/Loaders/Loaders";
-// import { useGetUsersQuery } from "@/src/redux/services/userApi";
-// import axios from "axios";
+import { useGetUsersQuery } from "@/src/redux/services/userApi";
+import axios from "axios";
 // import { useRouter } from "next/navigation";
 // import { signOut } from "next-auth/react";
 import Carousel from "../../components/Carousel/Carousel";
 import CardsCarousel from '../../components/CardsCarousel/CardsCarousel'
 import Link from "next/link";
-require('dotenv').config();
+// require('dotenv').config();
 
-const {  LOCALHOST } = process.env;
+// const {  LOCALHOST } = process.env;
 
 export default function HomePage() {
 	const { data: session, status } = useSession();
 
-  // const objeto = {
-  //   nombre: session?.user.name,
-  //   correo: session?.user.email,
-  //   contraseña: "65564521-44654894sda",
-  // };
+  const objeto = {
+    nombre: session?.user.name,
+    correo: session?.user.email,
+    contraseña: "65564521-44654894sda",
+  };
 
-  // const { data, refetch } = useGetUsersQuery(null);
+  const { data, refetch } = useGetUsersQuery(null);
 
-  // useEffect(() => {
-  //   refetch();
-  // }, []);
-  // const existente = data?.find((user) => user.correo === session?.user.email);
+  useEffect(() => {
+    refetch();
+  }, []);
+  const existente = data?.find((user) => user.correo === session?.user.email);
 
-  // const google = async () => {
-  //   if (existente) {
-  //     const guardadoString = JSON.stringify(existente);
-  //     localStorage.setItem("usuario", guardadoString);
-  //   } else {
-  //     console.log("entra", objeto);
-  //     const url = await axios
-  //       .post("http://localhost:3001/Usuario", objeto)
-  //       .then((result) => {
-  //         const guardadoString = JSON.stringify(url);
-  //         localStorage.setItem("usuario", guardadoString);
-  //         return result.data;
-  //       })
-  //       .catch((error) => error);
-  //   }
-  // };
-  // let usuario= 0;
-  // if (typeof window !== 'undefined') {
-  //   // Código que accede a localStorage aquí
-  //   const usuarioJSON = localStorage.getItem("usuario") ?? null;
-  //   usuario = JSON.parse(usuarioJSON);
-  // }
+  const google = async () => {
+    if (existente) {
+      const guardadoString = JSON.stringify(existente);
+      localStorage.setItem("usuario", guardadoString);
+    } else {
+      const url = await axios
+        .post("https://marketx-production.up.railway.app/Usuario", objeto)
+        .then((result) => {
+          const guardadoString = JSON.stringify(url);
+          localStorage.setItem("usuario", guardadoString);
+          return result.data;
+        })
+        .catch((error) => error);
+    }
+  };
+  let usuario= 0;
+  if (typeof window !== 'undefined') {
+    // Código que accede a localStorage aquí
+    const usuarioJSON = localStorage.getItem("usuario") ?? null;
+    usuario = JSON.parse(usuarioJSON);
+  }
 
-  // if (!usuario) {
-  //   google();
-  // }
+  if (!usuario) {
+    google();
+  }
 
-	const dispatch = useDispatch();
-	const [currentPage, setCurrentPage] = useState(0);
-	const [selectedCategory, setSelectedCategory] = useState('');
+	// const dispatch = useDispatch();
+	// const [currentPage, setCurrentPage] = useState(0);
+	// const [selectedCategory, setSelectedCategory] = useState('');
 
-	const handleSortOrder = (order) => {
-		if (order === 'restore') {
-			setSelectedCategory('');
-		} else {
-			dispatch(setSortOrder(order));
-		}
-		setCurrentPage(0);
-	};
+	// const handleSortOrder = (order) => {
+	// 	if (order === 'restore') {
+	// 		setSelectedCategory('');
+	// 	} else {
+	// 		dispatch(setSortOrder(order));
+	// 	}
+	// 	setCurrentPage(0);
+	// };
 
-	const handleCategoryChange = (event) => {
-		setSelectedCategory(event.target.value);
-		setCurrentPage(0);
-	};
+	// const handleCategoryChange = (event) => {
+	// 	setSelectedCategory(event.target.value);
+	// 	setCurrentPage(0);
+	// };
 
   // const router = useRouter();
   // const handelrRouter = (value) => {
@@ -101,9 +100,9 @@ export default function HomePage() {
 // 		router.push('/misCompras');
 // 	};
 
-// 	if (status === 'loading') {
-// 		return <Loader />;
-// 	}
+	if (status === 'loading') {
+		return <Loader />;
+	}
 
 //   const handlerSalir =()=>{
 //     signOut({ callbackUrl: `${LOCALHOST}/` })

@@ -11,7 +11,8 @@ import { useSession } from 'next-auth/react';
 import Loading from '../../components/Loaders/Loaders';
 
 const Admin = () => {
-	if (status === 'loading') {
+	const { state } = useSession();
+	if (state === 'loading') {
 		return <Loading />;
 	}
 

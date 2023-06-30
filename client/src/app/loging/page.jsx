@@ -87,7 +87,7 @@ export default function Registrarse() {
 				Swal.fire({
 				position: "top",
 				icon: "warning",
-				title: "Usuario baneado",
+				title: "Usuario bloqueado",
 				showConfirmButton: false,
 				timer: 1500,
       		});

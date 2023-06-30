@@ -24,7 +24,6 @@ export default function Cart() {
     refetch()
   },[refetch])
   const usuario = data?.find(user=>user._id===usuarioLocal?._id)
-  console.log("holaa", usuario);
 
   const removeCartHandler = (item) => {
     dispatch({type: 'CART_REMOVE_ITEM', payload: item, usuario:usuario._id})

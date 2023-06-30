@@ -14,7 +14,6 @@ function Page() {
 		refetch();
 	}, [refetch]);
 
-	// console.log("data: ", ventas);
 	return (
 		<div>
 			<Link href='/admin' className={styles.link}>

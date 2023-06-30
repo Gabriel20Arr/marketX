@@ -86,6 +86,14 @@ export default function Navigation() {
     router.push("/misProductos");
   };
 
+  const routerMisVentas = () => {
+		router.push('/misVentas');
+	};
+
+	const routerMisCompras = () => {
+		router.push('/misCompras');
+	};
+
   const handlerSalir =()=>{
     signOut({ callbackUrl: `${LOCALHOST}/` })
     localStorage.clear()
@@ -102,21 +110,6 @@ export default function Navigation() {
 
 
   return (
-    // <nav className={styles.container}>
-    //   <div className={styles.NavConteiner}>
-    //     <div>
-    //       <Image src={logo} className={styles.logo} onClick={routerHome} />
-    //     </div>
-
-
-
-
-
-
-
-
-    // </nav>
-
     <nav style={{backgroundColor: "#030a32", marginBottom: '10px'}} class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
         <div style={{paddingRight: '30px', borderRight: '2px solid white'}}>
@@ -124,9 +117,7 @@ export default function Navigation() {
             <img src={image} alt='Logo' width={'135'} height={'90'} />
           </Link>
         </div>
-        {/* <Link class="navbar-brand link-info" href="/home" style={{fontSize: '40px', marginLeft: '5px', fontStyle: 'italic'}}>
-          MarketX
-        </Link> */}
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -214,21 +205,41 @@ export default function Navigation() {
                     Mis productos
                   </NavDropdown.Item>
                   }
+
+                  <NavDropdown.Item 
+                    style={{fontSize: '20px'}} 
+                    onClick={routerMisVentas}
+                  >
+                    Mis Ventas
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item 
+                    style={{fontSize: '20px'}} 
+                    onClick={routerMisCompras}
+                  >
+                    Mis Compras
+                  </NavDropdown.Item>
+                  
                   {usuario?.rol == "admin" ? (
                     <NavDropdown.Item 
                       style={{fontSize: '20px'}} 
                       onClick={routerDashBoard}
                     >
-                      Admin-Dashboard
+                      Dashboard
                     </NavDropdown.Item>
                   ) : null}
-                  <NavDropdown.Divider />
+                  
+                  { (!usuario) ? 
+                  <NavDropdown.Divider /> &&
                   <NavDropdown.Item
                     style={{fontSize: '20px'}} 
                     onClick={() => signOut({ handlerSalir })}
                   >
                     Salir
                   </NavDropdown.Item>
+                  : null
+                  }
+
                 </NavDropdown>
             </li>
 
