@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
-
 export default function Navigation({ currentPath }) {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -20,6 +19,9 @@ export default function Navigation({ currentPath }) {
   };
 
   const { state, dispatch } = useContext(Store);
+  useEffect(() => {
+    dispatch({ type: "..." });
+  }, []);
 
   const { cart } = state;
 
@@ -44,7 +46,12 @@ export default function Navigation({ currentPath }) {
     <nav className={styles.container}>
       <div className={styles.NavConteiner}>
         <div>
-          <Image src={logo} alt="logo" className={styles.logo} onClick={routerHome} />
+          <Image
+            src={logo}
+            alt="logo"
+            className={styles.logo}
+            onClick={routerHome}
+          />
         </div>
 
         {currentPath !== "/form" && (

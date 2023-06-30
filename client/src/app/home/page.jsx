@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { setSortOrder } from "../../redux/features/sortSlice";
 import Paginacion from "../../components/Paginacion/Paginacion";
@@ -11,9 +11,11 @@ import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-require('dotenv').config()
+import { Store } from "../../utils/Store";
 
-const {  LOCALHOST } = process.env;
+require("dotenv").config();
+
+const { LOCALHOST } = process.env;
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -25,6 +27,7 @@ export default function HomePage() {
   };
 
   const { data, refetch } = useGetUsersQuery(null);
+  const { dispatch } = useContext(Store);
 
   useEffect(() => {
     refetch();
@@ -47,8 +50,8 @@ export default function HomePage() {
         .catch((error) => error);
     }
   };
-  var usuario= 0;
-  if (typeof window !== 'undefined') {
+  var usuario = 0;
+  if (typeof window !== "undefined") {
     // Código que accede a localStorage aquí
     const usuarioJSON = localStorage.getItem("usuario") ?? null;
     usuario = JSON.parse(usuarioJSON);
@@ -58,7 +61,7 @@ export default function HomePage() {
     google();
   }
 
-  const dispatch = useDispatch();
+  const dispatchs = useDispatch();
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -66,7 +69,7 @@ export default function HomePage() {
     if (order === "restore") {
       setSelectedCategory("");
     } else {
-      dispatch(setSortOrder(order));
+      dispatchs(setSortOrder(order));
     }
     setCurrentPage(0);
   };
@@ -79,6 +82,7 @@ export default function HomePage() {
   const router = useRouter();
   const handelrRouter = (value) => {
     localStorage.clear();
+    dispatch({ type: "INICIAL", payload: [] });
     router.push(`/${value}`);
   };
 
@@ -94,11 +98,12 @@ export default function HomePage() {
     return <Loader />;
   }
 
-  const handlerSalir =()=>{
-    signOut({ callbackUrl: `${LOCALHOST}/` })
-    localStorage.clear()
-    router.push('/')
-  }
+  const handlerSalir = () => {
+    signOut({ callbackUrl: `${LOCALHOST}/` });
+    localStorage.clear();
+    dispatch({ type: "INICIAL", payload: [] });
+    router.push("/");
+  };
 
   return (
     <div className={style.contenedor1}>
@@ -197,7 +202,7 @@ export default function HomePage() {
                 Dashboard
               </li>
             ) : null}
-            
+
             <li
               className={style.dropdownItem3}
               style={{ textDecoration: "none", color: "inherit" }}
@@ -205,7 +210,6 @@ export default function HomePage() {
             >
               Salir
             </li>
-
           </div>
         </div>
       </div>

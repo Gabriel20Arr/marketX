@@ -64,6 +64,7 @@ export default function Registrarse() {
         localStorage.setItem("usuario", guardadoString);
         dispatch({
           type: "INICIAL",
+          //guardar en el carrito del usuario
           payload: guardado.carrito.concat(guardadoInvitado.carrito),
         });
         axios.put("https://marketx-production.up.railway.app/usuario/editar", {

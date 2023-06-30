@@ -34,6 +34,8 @@ function reducer(state, action) {
         })
         .then((result) => result.data)
         .catch((err) => err);
+      const guardadoString = JSON.stringify(cartItems);
+      localStorage.setItem("carrito", guardadoString);
 
       return { ...state, cart: { ...state.cart, cartItems } };
     }
@@ -50,7 +52,8 @@ function reducer(state, action) {
         })
         .then((result) => result.data)
         .catch((err) => err);
-
+      const guardadoString = JSON.stringify(cartItems);
+      localStorage.setItem("carrito", guardadoString);
       return { ...state, cart: { ...state.cart, cartItems } };
     }
 
@@ -59,7 +62,18 @@ function reducer(state, action) {
     }
 
     default:
-      return state;
+      const carritoJSON =
+        typeof window !== "undefined" ? localStorage.getItem("carrito") : null;
+      const carrito = JSON.parse(carritoJSON) || [];
+      const guardadoString = JSON.stringify(state.cart.cartItems);
+      localStorage.setItem("carrito", guardadoString);
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          cartItems: state.cart.cartItems.concat(carrito),
+        },
+      };
   }
 }
 
