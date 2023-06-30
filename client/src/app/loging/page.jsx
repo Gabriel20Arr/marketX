@@ -158,9 +158,9 @@ export default function Registrarse() {
 								{error.blocked}
 							</p>
 
-							<div className={Style.google}>
+							{/* <div className={Style.google}>
             				    <BtnGoogle />
-							</div>
+							</div> */}
 
 							
 						</div>
