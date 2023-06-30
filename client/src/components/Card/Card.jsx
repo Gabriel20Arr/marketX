@@ -1,15 +1,85 @@
+'use client'
+
+import React, { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import style from "./Card.module.css";
-import axios from "axios";
-// import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useGetProductsByIdQuery } from "@/src/redux/services/productApi";
+import { Store } from "@/src/utils/Store";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import axios from "axios"
+import { useGetUserByIdQuery } from "@/src/redux/services/userApi";
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 
 export default function Card({item}) {
+  const { state, dispatch } = useContext(Store);
+  const { rating, setRating } = useState(0)
+
+  const usuarioJSON = localStorage.getItem("usuario");
+  const usuario = JSON.parse(usuarioJSON);
+
+  const nose2 = useGetUserByIdQuery({id: usuario._id})
+  const nose3 = nose2.data?.comprado.map(el => el.producto)
+
+  const nose4 = nose3?.includes(item.id)
+
+  // console.log(nose4);
+
+  const { data, refetch } = useGetProductsByIdQuery({
+    id: item.id
+  });
+  
+  const puntuaciones2 = data?.puntuaciones || [];
+  
+  
+  const handlerRating = async(e) => {
+    const {value} = e.target;
+
+    await axios.put(`https://marketx-production.up.railway.app/producto/actualizar`, {_id: item.id, puntuaciones: [...puntuaciones2, {usuario: usuario._id, puntuacion: value}]})
+    
+    refetch()
+    // setRating(rating)
+  }
+
+  
+  const existe = puntuaciones2.map( (elements) => elements.usuario ).includes(usuario._id)   
+  
+
+    const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find(
+      (index) => index._id === data?._id
+      );
+      // console.log(existItem);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (data?.stock < quantity) {
+        Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "Lo sentimos, no hay mas stock disponible",
+				showConfirmButton: false,
+				timer: 1500,
+      	});
+
+      return;
+    }
+
+    dispatch({
+      type: "CARD_ADD_ITEM",
+      payload: { ...data, quantity, usuario: usuario._id },
+    });
+    // router.push('/cart');
+  };
+
   const router = useRouter();
   
   const handlerDetail = ()=>{
     (item.id || item._id)?router.push(`/home/${item.id || item._id}`):console.log('no');
   }
   
+  const currenPath = usePathname()
   
   return (
     <div className={style.cont}>
@@ -17,7 +87,7 @@ export default function Card({item}) {
         <article>
 
             <div className={style.Countimg}>
-              <img className={style.img} src={item.imagen} alt={item.titulo} style={{width:"100%", height:"100%"}} />
+              <img alt='img' className={style.img} src={item.imagen}  style={{width:"100%", height:"100%"}} />
             </div>
 
             <div className={style.contT}>
@@ -29,40 +99,49 @@ export default function Card({item}) {
             <div className={style.disponible}>
               <h2 className={style.dis}> Stock: {item.stock}</h2>
             </div>
-            
-              <h2 className={style.precio}> ${item.precio}</h2>
+
+            <h2 className={style.precio}> ${item.precio}</h2> 
+
+          { (!existe && nose4) ?
+            <div>
+              <Rating
+                name="hover-feedback"
+                value={rating}
+                precision={0.5}
+                onChange={handlerRating}
+                emptyIcon={<StarIcon style={{ opacity: 0.55, color: "white" }} fontSize="inherit" />}
+              />
+            </div>
+            :
+            null
+          }
 
             </div>
 
-            {/* <div className={style.Pagar}>
-                <button  
-                    className={style.btnPagar} 
-                    id="buttomPagar"
-                    onClick={() => {
-                      axios.post("http://localhost:3001/pago/createorder", item, {
-                        headers: {
-                          'Content-Type': 'application/json'
-                        }
-                      })
-                      .then((res) => window.location.href = res.data.init_point)
-                    }}
-                >
-                  Comprar
-                </button>
-            </div>     */}
+            {(item.accion) ? 
+            
             <div className={style.Cdetalle}>
               <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
             </div>
-
-                  {/* <div className={style.contenedorCart}>
+            
+              :
+            
+            <h2 className={style.Cdetalle} style={{color: "white"}}>Baneado</h2>
+            }
+            
+            { (currenPath !== "/misProductos") ? 
+                  <div className={style.contenedorCart}>
                     <button
                       className={style.addButton}
-                      // disabled={data.stock === 0}
-                      // onClick={addToCartHandler}
+                      disabled={data?.stock === 0}
+                      onClick={addToCartHandler}
                     >
                       Agregar al carrito
                     </button>
-                  </div> */}
+                  </div>
+                  :
+                  null
+            }
 
         </article>:null}
     </div>

@@ -41,6 +41,14 @@ const ProductoSchema = new Schema({
 		type: Array,
 		default: [],
 	},
+	accion: {
+		type: Boolean,
+		default: true
+	},
+	puntuaciones: {
+		type: Array,
+		default: []
+	}
 });
 
 module.exports = model('Producto', ProductoSchema);

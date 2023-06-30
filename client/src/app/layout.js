@@ -33,7 +33,7 @@ const cairo = Cairo({
 
 export default function RootLayout({ children }) {
 	const router = usePathname();
-	console.log(router);
+	// console.log(router);
 
 	const isAdminRoute = router === '/admin';
 

@@ -39,11 +39,10 @@ export default function Navigation() {
     } else {
       console.log("entra", objeto);
       const url = await axios
-        .post("http://localhost:3001/Usuario", objeto)
+        .post("https://marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
-          console.log(objeto);
           return result.data;
         })
         .catch((error) => error);
@@ -87,6 +86,12 @@ export default function Navigation() {
     router.push("/misProductos");
   };
 
+  const handlerSalir =()=>{
+    signOut({ callbackUrl: `${LOCALHOST}/` })
+    localStorage.clear()
+    router.push('/')
+  }
+
   if (status === "loading") {
     return null;
   }
@@ -94,6 +99,7 @@ export default function Navigation() {
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
   console.log(usuario);
+
 
   return (
     // <nav className={styles.container}>
@@ -128,7 +134,7 @@ export default function Navigation() {
           <ul class="navbar-nav">
             <li class="nav-item">
             {path !== "/home" && (
-                <div className={styles.btn}>
+                <div>
                   <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none", marginLeft: '20px' }}
@@ -141,7 +147,7 @@ export default function Navigation() {
             </li>
             <li class="nav-item">
               {path !== "/form" && (
-                <div className={styles.btn}>
+                <div>
                   <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none", marginLeft: '30px' }}
@@ -154,7 +160,7 @@ export default function Navigation() {
             </li>
             <li class="nav-item">
               {path !== "/about" && (
-                <div className={styles.btn}>
+                <div>
                   <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none", marginLeft: '20px' }}
@@ -178,7 +184,7 @@ export default function Navigation() {
                     style={{fontSize: '20px'}}
                     onClick={() => {
                       localStorage.clear();
-                      signOut({ callbackUrl: "http://localhost:3000" });
+                      signOut({ handlerSalir });
                     }}
                   >
                     Cerrar sesión
@@ -219,7 +225,7 @@ export default function Navigation() {
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                     style={{fontSize: '20px'}} 
-                    onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+                    onClick={() => signOut({ handlerSalir })}
                   >
                     Salir
                   </NavDropdown.Item>

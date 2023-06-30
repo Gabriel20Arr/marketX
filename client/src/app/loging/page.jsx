@@ -11,6 +11,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Store } from '@/src/utils/Store';
 import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import BtnGoogle from "../../components/BtnGoogle/BtnGoogle";
+
+
 
 export default function Registrarse() {
 	const [showPass, setShowPass] = useState(false);
@@ -31,8 +34,8 @@ export default function Registrarse() {
 	const { data, refetch } = useGetUsersQuery(null);
 	useEffect(() => {
 		refetch();
-	}, []);
-	console.log(data);
+	}, [refetch]);
+
 	const router = useRouter();
 	const { dispatch } = useContext(Store);
 
@@ -45,21 +48,17 @@ export default function Registrarse() {
 		e.preventDefault();
 		const correos =
 			data && data.map((user) => user.correo).includes(usuario.correo);
+
 		const contraseñas =
 			data && data.map((user) => user.contraseña).includes(usuario.contraseña);
+			
+		const correo2 =
+			data && data.find((user) => user.correo === usuario.correo)
+
 
 		if (correos && contraseñas) {
+			if(correo2.rol !== "baneado") {
 			const guardado = data.find((user) => user.correo === usuario.correo);
-
-			if (blockedUsers.includes(usuario.correo)) {
-				setError({
-					correo:
-						'Error: no puedes acceder con un correo electrónico bloqueado',
-					contraseña: '',
-					blocked: '',
-				});
-				return;
-			}
 
 			const guardadoString = JSON.stringify(guardado);
 			localStorage.setItem('usuario', guardadoString);
@@ -84,6 +83,15 @@ export default function Registrarse() {
       		});
 			
 			router.replace('/home');
+			} else{
+				Swal.fire({
+				position: "top",
+				icon: "warning",
+				title: "Usuario baneado",
+				showConfirmButton: false,
+				timer: 1500,
+      		});
+			}
 		} else {
 			setError((prevError) => ({
 				...prevError,
@@ -149,7 +157,14 @@ export default function Registrarse() {
 								{error.contraseña}
 								{error.blocked}
 							</p>
+
+							<div className={Style.google}>
+            				    <BtnGoogle />
+							</div>
+
+							
 						</div>
+
 						<button
 							type='submit'
 							className='btn btn-primary btn-lg w-100'
@@ -157,6 +172,7 @@ export default function Registrarse() {
 						>
 							Iniciar Sesión
 						</button>
+						
 					</form>
 				</div>
 			</div>

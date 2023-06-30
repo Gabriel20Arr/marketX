@@ -242,7 +242,7 @@ export default function CrearProducto() {
 				<h1 className={style.text}>
 					Publique y venda un producto de forma gratuita
 				</h1>
-				<Image src={logo} className={style.img} />
+				<Image src={logo} className={style.img}  alt='logo'/>
 			</div>
 			
 		</div>

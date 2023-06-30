@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
 	useGetProductsQuery,
-	useGetProductsByIdQuery,
 } from '@/src/redux/services/productApi';
 import ReactPaginate from 'react-paginate';
 import style from './Paginacion.module.css';
@@ -56,11 +55,10 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 	const apiProductos = data || [];
 	const items = [...apiProductos, ...productos];
 
-	// console.log('dataa',data);
 
 	useEffect(() => {
 		refetch();
-	}, []);
+	}, [refetch]);
 
 	if (isLoading || isFetching) return <p>Loading...</p>;
 	if (error) return <p>Ha habido un error, vuelve a intentarlo más tarde</p>;

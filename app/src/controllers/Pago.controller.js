@@ -7,7 +7,7 @@ const getUsuarioById = require('./Usuarios/usuariosById.js')
 const allUsuario = require('./Usuarios/usuarios.js');
 const crearVenta = require('./ventas/crearVenta.js');
 
-const { KEYMERCADOPAGO } = process.env;
+const { KEYMERCADOPAGO, LOCALHOST } = process.env;
 var body;
 const createOrder = async (req, res) => {
     const { precio} = req.body; 
@@ -54,25 +54,29 @@ const success = async(req, res) => {
            valor: element.precio,
            fecha, vendedor,
            comprador:usuario
-       }
+        }
        
        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});
        await crearVenta(venta);
     });
 
 
-    const object = {valor:precio, fecha};
     const user = await getUsuarioById(usuario._id)
-    await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+    
+    cartItems.forEach( async (elem) => {
+        const object = {valor: (elem.precio * elem.quantity), fecha, producto: elem._id};
+
+        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+    } )
 
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
-    res.redirect('https://client-ten-sandy.vercel.app/home');
+    res.redirect(`${LOCALHOST}/home`);
 };
 
 const failure = (req, res) => {
-    res.redirect('https://client-ten-sandy.vercel.app/failure');
+    res.redirect(`${LOCALHOST}/failure`);
 };
 
 const webhook = async (req, res) => {

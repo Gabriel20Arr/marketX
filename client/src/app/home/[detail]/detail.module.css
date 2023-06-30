@@ -6,10 +6,12 @@
 
 	padding: 10px;
 
-	background-color: #eeee;
+	background-color:  #eeee;
 	border-radius: 10px;
 
 	height: 70vh;
+
+	overflow: hidden;
 }
 
 .link {
@@ -41,7 +43,7 @@
 
 .imageContainer {
 	display: flex;
-	justify-items: center;
+	align-items: center;
 
 	width: 50%;
 
@@ -50,12 +52,15 @@
 }
 
 .image {
+	display: flex;
+	align-items: center;
 	border-radius: 10px;
 	width: auto;
 	height: 75%;
 	transition: transform 0.2s ease-in-out;
-	margin: 0;
-	margin-top: 8%;
+	margin-top: 5%;
+
+	overflow: hidden;
 
 }
 
@@ -139,4 +144,37 @@
 	padding: 3px 6px;
 
 	font-weight: bold;
+}
+
+.contenedorRating{
+	/* border: 1px solid black; */
+	display: flex;
+	width: fit-content;
+	align-items: center;
+	
+}
+
+.promedio{
+	/* border: 1px solid black; */
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+	margin: none;
+	margin-right: 5px;
+
+	font-size: 35px;
+	font-weight: bolder;
+}
+
+.calificaciones{
+	/* border: 1px solid black; */
+	display: flex;
+	margin-left: 4.7em;
+	/* width: fit-content; */
+	height: auto;
+
+	position: relative;
+	bottom: 20px;
 }

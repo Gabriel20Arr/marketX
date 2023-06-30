@@ -13,6 +13,7 @@ import Loader from "../../components/Loaders/Loaders";
 // import { signOut } from "next-auth/react";
 import Carousel from "../../components/Carousel/Carousel";
 import CardsCarousel from '../../components/CardsCarousel/CardsCarousel'
+import Link from "next/link";
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -93,6 +94,12 @@ export default function HomePage() {
     return <Loader />;
   }
 
+  const handlerSalir =()=>{
+    signOut({ callbackUrl: `${LOCALHOST}/` })
+    localStorage.clear()
+    router.push('/')
+  }
+
   return (
     <div className={style.contenedor1}>
       <div className={style.contenedor2}>
@@ -105,23 +112,11 @@ export default function HomePage() {
             onChange={handleCategoryChange}
           >
             <option value="">Todas las categorías</option>
-            <option value="Placas de video">Placas de video</option>
+            <option value="Placas de Video">Placas de video</option>
             <option value="Procesadores">Procesadores</option>
             <option value="Motherboard">Motherboards</option>
           </select>
 
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("title")}
-          >
-            A-Z
-          </button>
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("reverse")}
-          >
-            Z-A
-          </button>
           <button
             className={style.orfilbtn}
             onClick={() => handleSortOrder("price")}
@@ -140,8 +135,11 @@ export default function HomePage() {
           {/* <button className={style.orfilbtn} onClick={() => handleSortOrder('restore')}>RESTORE</button> */}
         
         
-        <div>
+        <div className={style.contenedor3}>
           <h3 style={{marginLeft: '20px', fontWeight: 'bold'}}>Publicaciones recientes</h3>
+          <Link href={'/productos'}>
+            <button>Ver todos los productos</button>
+          </Link>
         </div>
 
           <CardsCarousel/>
@@ -167,10 +165,7 @@ export default function HomePage() {
               <li
                 className={style.dropdownItem5}
                 style={{ textDecoration: "none", color: "inherit" }}
-                onClick={() => {
-                  localStorage.clear();
-                  signOut({ callbackUrl: "http://localhost:3000/" });
-                }}
+                onClick={handlerSalir}
               >
                 cerrar sesion
               </li>
@@ -209,14 +204,6 @@ export default function HomePage() {
             >
               mis productos
             </li>
-            <li
-              className={style.dropdownItem3}
-              style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
-            >
-              Salir
-            </li>
-
             {usuario?.rol == "admin" ? (
               <li
                 className={style.dropdownItem6}
@@ -226,6 +213,15 @@ export default function HomePage() {
                 Dashboard
               </li>
             ) : null}
+            
+            <li
+              className={style.dropdownItem3}
+              style={{ textDecoration: "none", color: "inherit" }}
+              onClick={handlerSalir}
+            >
+              Salir
+            </li>
+
           </div>
         </div>
       </div> */}

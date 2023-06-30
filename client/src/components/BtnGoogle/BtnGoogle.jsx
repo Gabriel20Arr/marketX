@@ -1,8 +1,11 @@
 import React from "react";
 import { signIn } from "next-auth/react";
 import googleIcon from "../../../public/icons/google (1).png";
-import Image from "next/image";
 import styles from "./BtnGoogle.module.css";
+require('dotenv').config()
+import Image from "next/image";
+
+const {  LOCALHOST } = process.env;
 
 const BtnGoogle = () => {
   return (
@@ -10,7 +13,7 @@ const BtnGoogle = () => {
       className="btn btn-primary"
       onClick={() =>
         signIn("google", {
-          callbackUrl: "http://localhost:3000/home",
+          callbackUrl: `${LOCALHOST}/home`,
         })
       }
     >
