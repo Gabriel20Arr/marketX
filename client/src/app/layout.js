@@ -5,7 +5,7 @@ import { Providers } from '../redux/Providers/Providers';
 import NavBar from '../components/NavBar/NavBar';
 import { usePathname } from 'next/navigation';
 import { Cairo } from 'next/font/google'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Share_Tech } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import Script from 'next/script';
@@ -43,13 +43,15 @@ export default function RootLayout({ children }) {
 				{/* <link rel='stylesheet' href='https://bootswatch.com/5/vapor/bootstrap.min.css' /> */}
 				{/* <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">  
 				</Script> */}
+				<link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
+				<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
 			</head>
 
 			<body className={cairo.className}>
 				<StoreProvider>
 					<Providers>
 						<SessionProvider>
-							{(!isAdminRoute && router !='/' && router!='/loging' && router!='/registrarse')? <NavBar currentPath={router}/>:''}
+							{(!isAdminRoute && router !='/' && router!='/loging' && router!='/registrarse')? <NavBar className={inter.className}/>:''}
 							<div>
 								{children}
 							</div>

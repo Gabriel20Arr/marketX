@@ -6,31 +6,6 @@ import styles from './misProductos.module.css';
 import Link from 'next/link';
 import axios from 'axios';
 
-<<<<<<< HEAD
-export default function MisProductos() {
-  const { data, refetch } = useGetProductsUsersQuery();
-
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
-  
-  var usuario = {};
-  
-  if (typeof window !== 'undefined') {
-    // Código que accede a localStorage aquí
-    const usuarioJSON = localStorage.getItem("usuario");
-    usuario = JSON.parse(usuarioJSON);
-  }
-  
-  const productos = data && data.find((use) => use.nombre === usuario?.correo);
-  const apiProductos = productos ? productos.productos : [];
-
-  return (
-    <div>
-      <Cards currentItems={apiProductos} />
-    </div>
-  );
-=======
 function MisProductos() {
 	const { data, refetch } = useGetProductsUsersQuery();
 	const [isLoading, setIsLoading] = useState(true);
@@ -179,7 +154,6 @@ function MisProductos() {
 			)}
 		</div>
 	);
->>>>>>> 5edfdfcb81089019f17d718f478346bc1865e23f
 }
 
 export default MisProductos;

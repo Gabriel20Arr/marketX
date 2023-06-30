@@ -58,11 +58,11 @@ function Page() {
 			);
 
 			const { comprador } = ventaToEdit;
-			const correo2 = comprador.correo;
+			const correo = comprador.correo;
 
 			const asunto = 'Producto despachado';
 			const mensaje = 'Su producto ha sido despachado.';
-			await enviarNotificacionPorCorreo(correo2.correo, asunto, mensaje);
+			await enviarNotificacionPorCorreo(correo, asunto, mensaje);
 			refetch();
 		}
 	};
