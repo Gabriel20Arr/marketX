@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
 				<StoreProvider>
 					<Providers>
 						<SessionProvider>
-							{(!isAdminRoute && router !='/' && router!='/loging' && router!='/registrarse')? <NavBar className={inter.className}/>:''}
+							{(!isAdminRoute && router !='/' && router!='/login' && router!='/registrarse')? <NavBar className={inter.className}/>:''}
 							<div>
 								{children}
 							</div>

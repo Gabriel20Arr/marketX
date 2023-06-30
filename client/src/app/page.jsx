@@ -30,7 +30,7 @@ const Landing = () => {
           <div className={style.enlaces}>
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
-              href={"/loging"}
+              href={"/login"}
             >
               <h6>Inicia Sesion</h6>
             </Link>

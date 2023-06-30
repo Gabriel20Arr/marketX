@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import logo from "../../images/MarketX-newlogo (2).png";
 import styles from "./NavBar.module.css";
 import React, { useContext, useEffect, useState } from "react";
 import { Cart4 } from "react-bootstrap-icons";
@@ -37,7 +35,6 @@ export default function Navigation() {
       const guardadoString = JSON.stringify(existente);
       localStorage.setItem("usuario", guardadoString);
     } else {
-      console.log("entra", objeto);
       const url = await axios
         .post("https://marketx-production.up.railway.app/usuario", objeto)
         .then((result) => {
@@ -106,7 +103,6 @@ export default function Navigation() {
 
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
-  console.log(usuario);
 
 
   return (

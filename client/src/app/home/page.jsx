@@ -1,16 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { setSortOrder } from "../../redux/features/sortSlice";
-// import Paginacion from "../../components/Paginacion/Paginacion";
 import style from "./home.module.css";
 import { useSession } from "next-auth/react";
 import Loader from "../../components/Loaders/Loaders";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from "axios";
-// import { useRouter } from "next/navigation";
-// import { signOut } from "next-auth/react";
 import Carousel from "../../components/Carousel/Carousel";
 import CardsCarousel from '../../components/CardsCarousel/CardsCarousel'
 import Link from "next/link";
@@ -60,90 +55,14 @@ export default function HomePage() {
     google();
   }
 
-	// const dispatch = useDispatch();
-	// const [currentPage, setCurrentPage] = useState(0);
-	// const [selectedCategory, setSelectedCategory] = useState('');
-
-	// const handleSortOrder = (order) => {
-	// 	if (order === 'restore') {
-	// 		setSelectedCategory('');
-	// 	} else {
-	// 		dispatch(setSortOrder(order));
-	// 	}
-	// 	setCurrentPage(0);
-	// };
-
-	// const handleCategoryChange = (event) => {
-	// 	setSelectedCategory(event.target.value);
-	// 	setCurrentPage(0);
-	// };
-
-  // const router = useRouter();
-  // const handelrRouter = (value) => {
-  //   localStorage.clear();
-  //   router.push(`/${value}`);
-  // };
-
-  // const routerDashBoard = () => {
-  //   router.push("/admin");
-  // };
-
-  // const routerMisProductos = () => {
-  //   router.push("/misProductos");
-  // };
-
-// 	const routerMisVentas = () => {
-// 		router.push('/misVentas');
-// 	};
-
-// 	const routerMisCompras = () => {
-// 		router.push('/misCompras');
-// 	};
-
 	if (status === 'loading') {
 		return <Loader />;
 	}
-
-//   const handlerSalir =()=>{
-//     signOut({ callbackUrl: `${LOCALHOST}/` })
-//     localStorage.clear()
-//     router.push('/')
-//   }
 
   return (
     <div className={style.contenedor1}>
       <div className={style.contenedor2}>
       <Carousel/>
-
-        {/* <div className={style.contenedorFiltros}>
-          <select
-            className={style.orfilbtn}
-            value={selectedCategory}
-            onChange={handleCategoryChange}
-          >
-            <option value="">Todas las categorías</option>
-            <option value="Placas de Video">Placas de video</option>
-            <option value="Procesadores">Procesadores</option>
-            <option value="Motherboard">Motherboards</option>
-          </select>
-
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("price")}
-          >
-            MENOR A MAYOR PRECIO
-          </button>
-          <button
-            className={style.orfilbtn}
-            onClick={() => handleSortOrder("price-reverse")}
-          >
-            MAYOR A MENOR PRECIO
-          </button> */}
-          {/* <button onClick={() => handleSortOrder('quantitySold')}>
-              MÁS VENDIDO
-            </button> */}
-          {/* <button className={style.orfilbtn} onClick={() => handleSortOrder('restore')}>RESTORE</button> */}
-        
         
         <div className={style.contenedor3}>
           <h3 style={{marginLeft: '20px', fontWeight: 'bold'}}>Publicaciones recientes</h3>
@@ -156,81 +75,5 @@ export default function HomePage() {
         </div>
       </div>
   )
-
-
-
-         {/* <Paginacion
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          selectedCategory={selectedCategory}
-        />  */}
-
-      {/* <div className={style.contenedor3}>
-        <div className={style.panel}>
-          <div className={style.linea}></div>
-
-					<div className={style.panel2}>
-						<span className={style.dropdownItemMenu}>Menu</span>
-						{session ? (
-							<li
-								className={style.dropdownItem5}
-								style={{ textDecoration: 'none', color: 'inherit' }}
-								onClick={handlerSalir}
-							>
-								cerrar sesion
-							</li>
-						) : (
-							<>
-								<li
-									className={style.dropdownItem}
-									style={{
-										textDecoration: 'none',
-										color: 'inherit',
-										cursor: 'pointer',
-									}}
-									onClick={() => handelrRouter('loging')}
-								>
-									Iniciar sesión
-								</li>
-
-								<li
-									className={style.dropdownItem2}
-									style={{
-										textDecoration: 'none',
-										color: 'inherit',
-										cursor: 'pointer',
-									}}
-									onClick={() => handelrRouter('registrarse')}
-								>
-									Registrarse
-								</li>
-							</>
-						)}
-
-						<li
-							className={style.dropdownItem4}
-							style={{ textDecoration: 'none', color: 'inherit' }}
-							onClick={routerMisProductos}
-						>
-							mis productos
-						</li>
-						<li
-							className={style.dropdownItem4}
-							style={{ textDecoration: 'none', color: 'inherit' }}
-							onClick={routerMisVentas}
-						>
-							Mis Ventas
-						</li>
-						<li
-							className={style.dropdownItem4}
-							style={{ textDecoration: 'none', color: 'inherit' }}
-							onClick={routerMisCompras}
-						>
-							Mis Compras
-						</li>
-
-          </div>
-        </div>
-      </div> */}
 
 }
