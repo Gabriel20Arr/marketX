@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './misVentas.module.css';
 import { useGetVentasQuery } from '../../redux/services/ventasApi';
 import Link from 'next/link';
-import { enviarNotificacionPorCorreo } from '../../hooks/enviarCorreo';
+import { enviarNotificacionPorCorreo } from '../../hooks/enviarCorreo.js';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
 
@@ -58,13 +58,21 @@ function Page() {
 			);
 
 			const { comprador } = ventaToEdit;
+			console.log("COMPRADOR: ", comprador);
+			
 			const correo = comprador.correo;
+			console.log("CORREO: ", correo);
+
 			const asunto = 'Producto despachado';
 			const mensaje = 'Su producto ha sido despachado.';
 			await enviarNotificacionPorCorreo(correo, asunto, mensaje);
+			
 			refetch();
 		}
 	};
+
+	// console.log("VENTAS: ", ventas);
+	// console.log("USUARIOS: ", usuario);
 
 	return (
 		<div className={styles.container}>

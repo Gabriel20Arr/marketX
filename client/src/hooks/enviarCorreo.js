@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require("axios");
 
 const enviarNotificacionPorCorreo = async (correo, asunto, mensaje) => {
 	const notificación = { correo, asunto, mensaje };
