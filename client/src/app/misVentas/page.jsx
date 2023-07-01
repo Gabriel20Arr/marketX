@@ -76,13 +76,20 @@ function Page() {
 
 	return (
 		<div className={styles.container}>
-			<Link href='/home' className={styles.link}>
-				Volver
-			</Link>
-			<h1>Lista de Ventas</h1>
+
+			<div className={styles.Clink}>
+				<Link href='/home' className={styles.link}>
+					Volver
+				</Link>
+			</div>
+
+			<div className={styles.contenedorTitulo}>
+				<h1 className={styles.titulo}>Lista de Ventas</h1>
+			</div>
+
 			<table className={styles.userTable}>
 				<thead>
-					<tr>
+					<tr className={styles.tituloTabla}>
 						{/* <th>PRODUCTO</th>
 						<th>CANTIDAD</th> */}
 						<th>EMAIL COMPRADOR</th>

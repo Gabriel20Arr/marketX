@@ -42,11 +42,17 @@ function Page() {
 	: [];
 	
 	return (
-		<div>
-			<Link href='/home' className={styles.link}>
-				Volver
-			</Link>
-			<h1>Mis Compras</h1>
+		<div >
+			<div className={styles.Clink}>
+				<Link href='/home' className={styles.link}>
+					Volver
+				</Link>
+			</div>
+		<div className={styles.conteiner}>
+			<div className={styles.contenedorTitulo}>
+				<h1 className={styles.titulo}>Mis compras</h1>
+			</div>
+
 			<div className={styles.addButtonContainer}></div>
 			<table className={styles.userTable}>
 				<thead>
@@ -65,11 +71,14 @@ function Page() {
 							<td>{venta.vendedor.correo}</td>
 							<td>{venta.monto}</td>
 							<td>{new Date(venta.fecha).toLocaleDateString('es-ES')}</td>
-							<td>{venta.despachado ? 'Despachado' : 'Envio Pendiente'}</td>
+							<td className={styles.estados} style={{ color: venta.despachado ? 'green' : 'black' }}>
+        						{venta.despachado ? 'Despachado' : 'Envío Pendiente'}
+      						</td>
 						</tr>
 					))}
 				</tbody>
 			</table>
+			</div>
 		</div>
 	);
 }

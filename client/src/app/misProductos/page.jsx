@@ -5,6 +5,7 @@ import { useGetProductsUsersQuery } from '@/src/redux/services/productApi';
 import styles from './misProductos.module.css';
 import Link from 'next/link';
 import axios from 'axios';
+import Loading from '@/src/components/Loaders/Loaders';
 
 function MisProductos() {
 	const { data, refetch } = useGetProductsUsersQuery();
@@ -82,9 +83,12 @@ function MisProductos() {
 				Volver
 			</Link>
 
-			<h1>Mis Productos</h1>
+			<div className={styles.contenedorTitulo}>
+				<h1 className={styles.titulo}>Mis Productos</h1>
+			</div>
+			
 			{isLoading ? (
-				<p>Cargando productos...</p>
+				<Loading />
 			) : productos &&
 			  Array.isArray(productos.productos) &&
 			  productos.productos.length > 0 ? (
@@ -105,11 +109,11 @@ function MisProductos() {
 								<td>{producto.categoria}</td>
 								<td>{producto.precio}</td>
 								<td>{producto.stock}</td>
-								<td>
-									<button onClick={() => editProduct(producto._id)}>
+								<td className={styles.Cbtn} >
+									<button className={styles.btn}  onClick={() => editProduct(producto._id)}>
 										Editar
 									</button>
-									<button onClick={() => deleteProduct(producto._id)}>
+									<button className={styles.btn} onClick={() => deleteProduct(producto._id)}>
 										Eliminar
 									</button>
 								</td>

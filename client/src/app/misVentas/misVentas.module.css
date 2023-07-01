@@ -1,5 +1,5 @@
 .userTable {
-    width: 100%;
+    width: 99%;
     border-collapse: collapse;
 }
 
@@ -11,26 +11,58 @@
 }
 
 .userTable th {
-    background-color: #f2f2f2;
+    background-color: white;
 }
 
-.link {
-    margin-top: 50px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: black;
-    text-decoration: none;
-    align-items: end;
-}
 
 .container {
     background-color: #eeee;
     padding: 20px;
 }
 
-/* .link {
-} */
+.Clink{
+    /* border: 1px solid; */
+    display: flex;
+
+    height: 3em;
+    
+}
+
+.link {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 3.5em;
+    height: 2em;
+
+    background-color: white;
+    font-weight: bold;
+
+    color: black;
+    text-decoration: none;
+
+    border-radius: 3px;
+}
+
+.link:hover {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 3.7em;
+    height: 2.2em;
+
+    background-color: grey;
+    font-weight: bold;
+
+    color: black;
+    text-decoration: none;
+
+    border-radius: 3px;
+}
 
 .userTable { 
     margin: 20px 0;
@@ -39,4 +71,19 @@
 .despachadoRow {
     background-color: green;
     color: white;
+}
+
+.contenedorTitulo{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bolder;
+
+}
+
+.titulo{
+    border-bottom: 1px solid black;
+    display: flex;
 }
