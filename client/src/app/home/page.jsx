@@ -113,7 +113,12 @@ export default function HomePage() {
   return (
     <div className={style.contenedor1}>
       <div className={style.contenedor2}>
-      <Carousel/>
+
+      <div className={style.contenedor3}>
+          <h3 className={style.publiRecientes} style={{marginLeft: '20px', fontWeight: 'bold'}}>Marcas recomendadas</h3>
+        </div>
+
+        <Carousel/>
 
         {/* <div className={style.contenedorFiltros}>
           <select

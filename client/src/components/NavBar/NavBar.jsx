@@ -233,7 +233,7 @@ export default function Navigation() {
                   <NavDropdown.Divider /> &&
                   <NavDropdown.Item
                     style={{fontSize: '20px'}} 
-                    onClick={() => signOut({ handlerSalir })}
+                    onClick={ handlerSalir }
                   >
                     Salir
                   </NavDropdown.Item>

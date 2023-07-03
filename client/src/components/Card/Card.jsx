@@ -20,7 +20,7 @@ export default function Card({item}) {
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
 
-  const nose2 = useGetUserByIdQuery({id: usuario._id})
+  const nose2 = useGetUserByIdQuery({id: usuario?._id})
   const nose3 = nose2.data?.comprado.map(el => el.producto)
 
   const nose4 = nose3?.includes(item.id)
@@ -44,7 +44,7 @@ export default function Card({item}) {
   }
 
   
-  const existe = puntuaciones2.map( (elements) => elements.usuario ).includes(usuario._id)   
+  const existe = puntuaciones2.map( (elements) => elements.usuario ).includes(usuario?._id)   
   
 
     const addToCartHandler = () => {

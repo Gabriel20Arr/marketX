@@ -51,7 +51,7 @@ export default function CardsCarousel() {
   };
 
   return (
-    <div className={style.containerSlider} style={{ maxWidth: '100%', margin: '0 auto' }}>
+    <div className={style.containerSlider} >
       <Slider {...sliderSettings}>
         {cards.map((item) => (
           <div key={item.id || item._id}>

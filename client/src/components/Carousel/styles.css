@@ -20,8 +20,8 @@
   .swiper .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 500px;
-    height: 400px;
+    width: 700px;
+    height: 500px;
     border-radius: 10px;
     -webkit-box-reflect: below 1px
       linear-gradient(transparent, transparent, rgba(0, 0, 0, 0));
