@@ -217,14 +217,14 @@ export default function Navigation() {
                     Mis Compras
                   </NavDropdown.Item>
                   
-                  {usuario?.rol == "admin" ? (
+                  {/* {usuario?.rol == "admin" ? ( */}
                     <NavDropdown.Item 
                       style={{fontSize: '20px'}} 
                       onClick={routerDashBoard}
                     >
                       Dashboard
                     </NavDropdown.Item>
-                  ) : null}
+                  {/* ) : null} */}
                   
                   { (!usuario) ? 
                   <NavDropdown.Divider /> &&

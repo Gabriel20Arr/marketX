@@ -63,7 +63,7 @@ export default function Detail({ params }) {
   return (
     <>
       <div className={styles.link}>
-        <Link href="/home" className={styles.link2}>
+        <Link href="/productos" className={styles.link2}>
           Volver
         </Link>
       </div>

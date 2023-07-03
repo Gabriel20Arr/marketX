@@ -51,9 +51,9 @@ export default function Card({ item }) {
     // setRating(rating)
   };
 
-  const existe = puntuaciones2
-    .map((elements) => elements.usuario)
-    .includes(usuario?._id);
+  
+  const existe = puntuaciones2.map( (elements) => elements.usuario ).includes(usuario?._id)   
+  
 
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find(
@@ -93,24 +93,22 @@ export default function Card({ item }) {
 
   return (
     <div className={style.cont}>
-      {item.id || item._id ? (
-        <article>
-          <div className={style.Countimg}>
-            <img
-              alt="img"
-              className={style.img}
-              src={item.imagen}
-              style={{ width: "100%", height: "100%" }}
-            />
-          </div>
+        {/* {(item.id || item._id)? */}
+        <article className={style.article}>
 
-          <div className={style.contT}>
-            <h2 className={style.name}>{item.titulo}</h2>
-          </div>
+            <div className={style.imageContainer}>
+              <img alt='img' className={style.img} src={item.imagen}  style={{width:"100%", height:"100%"}} />
+            </div>
+
+            <div className={style.contT}>
+              <h2 className={style.name} >{item.titulo}</h2>
+            </div>            
+            
+            <div className={style.Countprecio}>
 
           <div className={style.Countprecio}>
             <div className={style.disponible}>
-              <h2 className={style.dis}> Stock: {item.stock}</h2>
+              <h5 className={style.dis}> Stock: {item.stock}</h5>
             </div>
 
             <h2 className={style.precio}> ${item.precio}</h2>
@@ -133,31 +131,36 @@ export default function Card({ item }) {
             ) : null}
           </div>
 
-          {item.accion ? (
-            <div className={style.Cdetalle}>
-              <h3 className={style.detalle} onClick={() => handlerDetail()}>
-                Mostrar mas
-              </h3>
             </div>
-          ) : (
-            <h2 className={style.Cdetalle} style={{ color: "white" }}>
-              Baneado
-            </h2>
-          )}
+            <div className={style.contButtons}>
+              {(item.accion) ? 
+              
 
-          {currenPath !== "/misProductos" ? (
-            <div className={style.contenedorCart}>
-              <button
-                className={style.addButton}
-                disabled={data?.stock === 0}
-                onClick={addToCartHandler}
-              >
-                Agregar al carrito
-              </button>
+                <button class="btn btn-outline-light" style={{fontSize: '20px', fontWeight: 'bold'}} onClick={()=>handlerDetail()}>Mostrar más</button>
+
+                :
+              
+                <h2 className={style.Cdetalle} style={{color: "white"}}>Baneado</h2>
+              }
+              
+              { (currenPath !== "/misProductos") ? 
+                    <div className={style.contenedorCart}>
+                      <button
+                        class="btn btn-success"
+                        disabled={data?.stock === 0}
+                        onClick={addToCartHandler}
+                        style={{fontSize: '20px', fontWeight: 'bold'}}
+                      >
+                        Agregar al carrito
+                      </button>
+                    </div>
+                    :
+                    null
+              }
             </div>
-          ) : null}
+
         </article>
-      ) : null}
+      {/* ) : null} */}
     </div>
-  );
+  )
 }

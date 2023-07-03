@@ -64,12 +64,17 @@ export default function HomePage() {
   return (
     <div className={style.contenedor1}>
       <div className={style.contenedor2}>
-      <Carousel/>
+
+      <div className={style.contenedor3}>
+          <h3 className={style.publiRecientes} style={{marginLeft: '20px', fontWeight: 'bold'}}>Marcas recomendadas</h3>
+        </div>
+
+        <Carousel/>
         
         <div className={style.contenedor3}>
-          <h3 style={{marginLeft: '20px', fontWeight: 'bold'}}>Publicaciones recientes</h3>
+          <h3 className={style.publiRecientes} style={{marginLeft: '20px', fontWeight: 'bold'}}>Publicaciones recientes</h3>
           <Link href={'/productos'}>
-            <button>Ver todos los productos</button>
+            <button type="button" class="btn btn-primary btn-lg" style={{marginRight: '20px', marginBottom: '10px', fontSize: '25px'}}> Ver todos los productos</button>
           </Link>
         </div>
 
