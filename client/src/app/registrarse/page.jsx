@@ -148,7 +148,10 @@ export default function Registrarse() {
                     value={usuario.contraseña}
                   />
 
-                  <div onClick={() => setShowPass(!showPass)}>
+                  <div
+                    className={Style.containerSvg}
+                    onClick={() => setShowPass(!showPass)}
+                  >
                     {showPass ? (
                       <svg
                         className={Style.svg1}
@@ -219,8 +222,11 @@ export default function Registrarse() {
                   />
 
                   <div className={Style.inputs}>
-                    <div onClick={() => setShowPass2(!showPass2)}>
-                      {showPass2 ? (
+                    <div
+                      className={Style.containerSvg}
+                      onClick={() => setShowPass2(!showPass2)}
+                    >
+                      {!showPass2 ? (
                         <svg
                           className={Style.svg1}
                           height="10px"
@@ -270,12 +276,12 @@ export default function Registrarse() {
                       )}
                     </div>
                   </div>
-                  <p className="form-text text-danger">
-                    {error.confirme_su_contraseña
-                      ? error.confirme_su_contraseña
-                      : ""}
-                  </p>
                 </div>
+                <p className="form-text text-danger">
+                  {error.confirme_su_contraseña
+                    ? error.confirme_su_contraseña
+                    : ""}
+                </p>
 
                 <div className="mb-2">
                   <label className="form-label" htmlFor="provincia">

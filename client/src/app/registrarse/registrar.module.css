@@ -40,33 +40,29 @@
   width: 450px;
 }
 
-.formInput2{
+.formInput2 {
   border: 1px solid black;
   height: 2.5em;
   width: 12.5em;
 }
 
-.inputs{
-  /* border: 1px solid black; */
-
-  width: 36.5em;
-
+.inputs {
   display: flex;
   align-items: center;
-
-  
 }
 
-.formInput{
+.formInput {
   border: 1px solid black;
   border-right: none;
   height: 2.5em;
   outline: none;
 }
 
-.svg1{
+.svg1 {
   height: 2.5em;
-
   transform: translate(-2.5rem);
+}
 
+.containerSvg {
+  width: 0px;
 }
