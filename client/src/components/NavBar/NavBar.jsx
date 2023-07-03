@@ -17,6 +17,8 @@ export default function Navigation() {
   const path = usePathname()
   const image = 'https://res.cloudinary.com/dmtzjtgy8/image/upload/v1687989698/MarketX-newlogo__2_-removebg-preview_jgi5mm.png'
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const objeto = {
     nombre: session?.user.name,
     correo: session?.user.email,
@@ -112,23 +114,25 @@ export default function Navigation() {
   return (
     <nav style={{backgroundColor: "#030a32", marginBottom: '10px'}} class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
-        <div style={{paddingRight: '30px', borderRight: '2px solid white'}}>
+        <div style={menuOpen ? {paddingLeft: '20px' ,paddingRight: '30px', paddingBottom: '20px', marginRight: '10px' } : {paddingRight: '30px', marginRight: '10px', borderRight: '2px solid white'}}>
           <Link href="/home">
             <img src={image} alt='Logo' width={'135'} height={'90'} />
           </Link>
         </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style={{fontSize: '24px', marginLeft: '15px', paddingLeft: '10px'}}>
-          <ul class="navbar-nav">
+
+        <div class={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id="navbarSupportedContent" style={menuOpen ? {fontSize: '24px', marginRight: '15px', paddingTop: '15px', paddingRight: '10px', display: 'flex', justifyContent: 'right', borderTop: '2px solid white'} : {fontSize: '24px', marginRight: '15px', paddingRight: '10px'}}>
+
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            {path !== "/home" && (
+              {path !== "/home" && (
                 <div>
                   <Link
                     class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none", marginLeft: '20px' }}
+                    style={{ textDecoration: "none", marginLeft: '20px', marginTop: '10px' }}
                     href="/home"
                   >
                     Home
@@ -141,7 +145,7 @@ export default function Navigation() {
                 <div>
                   <Link
                     class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none", marginLeft: '30px' }}
+                    style={{ textDecoration: "none", marginLeft: '20px' }}
                     href={usuario?.rol ? "/form" : "/registrarse"}
                   >
                     Publicar Producto
@@ -162,14 +166,25 @@ export default function Navigation() {
                 </div>
               )}
             </li>
-            {/* <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li> */}
           </ul>
 
           <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item d-flex" style={{marginRight: '10px'}}>
+                  <Link
+                    class="nav-link link-body-emphasis"
+                    style={{ textDecoration: "none" }}
+                    href={usuario ? `/cart` : "/home"}
+                  >
+                    <Cart4 size={30} />{" "}
+                    <span className="text-white bg-danger rounded p-1">
+                      {cartItemsCount}
+                    </span>
+                  </Link>
+              </li>
+
             <li class="nav-item">
-                <NavDropdown title="Menu" id="collasible-nav-dropdown" class="nav-link link-body-emphasis" style = {{marginRight: '20px', color: 'white'}}>
+                <NavDropdown title="Menu" id="collasible-nav-dropdown" class="nav-link link-body-emphasis" style = {{marginRight: '10px', color: 'white'}}>
                   {usuario ? (
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}}
@@ -248,18 +263,6 @@ export default function Navigation() {
                 )}
               </li>
 
-            <li class="nav-item d-flex">
-                  <Link
-                    class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none" }}
-                    href={usuario ? `/cart` : "/home"}
-                  >
-                    <Cart4 size={30} />{" "}
-                    <span className="text-white bg-danger rounded p-1">
-                      {cartItemsCount}
-                    </span>
-                  </Link>
-              </li>
           </ul>
         </div>
       </div>
