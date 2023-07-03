@@ -43,6 +43,7 @@ export default function RootLayout({ children }) {
 				{/* <link rel='stylesheet' href='https://bootswatch.com/5/vapor/bootstrap.min.css' /> */}
 				{/* <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">  
 				</Script> */}
+				<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 				<link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
 				<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
 			</head>

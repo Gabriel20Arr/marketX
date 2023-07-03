@@ -84,9 +84,9 @@ export default function Card({item}) {
   return (
     <div className={style.cont}>
         {(item.id || item._id)?
-        <article>
+        <article className={style.article}>
 
-            <div className={style.Countimg}>
+            <div className={style.imageContainer}>
               <img alt='img' className={style.img} src={item.imagen}  style={{width:"100%", height:"100%"}} />
             </div>
 
@@ -97,7 +97,7 @@ export default function Card({item}) {
             <div className={style.Countprecio}>
 
             <div className={style.disponible}>
-              <h2 className={style.dis}> Stock: {item.stock}</h2>
+              <h5 className={style.dis}> Stock: {item.stock}</h5>
             </div>
 
             <h2 className={style.precio}> ${item.precio}</h2> 
@@ -117,31 +117,32 @@ export default function Card({item}) {
           }
 
             </div>
+            <div className={style.contButtons}>
+              {(item.accion) ? 
+              
 
-            {(item.accion) ? 
-            
-            <div className={style.Cdetalle}>
-              <h3 className={style.detalle} onClick={()=>handlerDetail()}>Mostrar mas</h3>
+                <button class="btn btn-outline-light" style={{fontSize: '20px', fontWeight: 'bold'}} onClick={()=>handlerDetail()}>Mostrar más</button>
+
+                :
+              
+                <h2 className={style.Cdetalle} style={{color: "white"}}>Baneado</h2>
+              }
+              
+              { (currenPath !== "/misProductos") ? 
+                    <div className={style.contenedorCart}>
+                      <button
+                        class="btn btn-success"
+                        disabled={data?.stock === 0}
+                        onClick={addToCartHandler}
+                        style={{fontSize: '20px', fontWeight: 'bold'}}
+                      >
+                        Agregar al carrito
+                      </button>
+                    </div>
+                    :
+                    null
+              }
             </div>
-            
-              :
-            
-            <h2 className={style.Cdetalle} style={{color: "white"}}>Baneado</h2>
-            }
-            
-            { (currenPath !== "/misProductos") ? 
-                  <div className={style.contenedorCart}>
-                    <button
-                      className={style.addButton}
-                      disabled={data?.stock === 0}
-                      onClick={addToCartHandler}
-                    >
-                      Agregar al carrito
-                    </button>
-                  </div>
-                  :
-                  null
-            }
 
         </article>:null}
     </div>

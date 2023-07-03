@@ -13,5 +13,13 @@
 .contenedor3{
     display: flex;
     justify-content: space-between;
+}
 
+.publiRecientes{
+    margin-left: 20px;
+    color: #030a32;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 40px;
+	text-shadow: 2px 2px 4px rgba(0, 255, 234, 0.888);
 }
