@@ -342,7 +342,7 @@ export default function Registrarse() {
                 </div>
               </div>
 
-              <div class="d-grid gap-2 col-6 mx-auto mb-3">
+              <div className="d-grid gap-2 col-6 mx-auto mb-3">
                 {existeError ? null : (
                   <button
                     disabled={buttonHablitado()}
@@ -359,11 +359,10 @@ export default function Registrarse() {
                 <div className="px-3">O</div>
                 <div className="border-bottom flex-grow-1"></div>
               </div>
-
-              <div className="d-flex align-items-center justify-content-center mt-4">
-                <BtnGoogle />
-              </div>
             </form>
+            <div className="d-flex align-items-center justify-content-center mt-4">
+              <BtnGoogle />
+            </div>
           </div>
         </div>
       </div>

@@ -11,24 +11,5 @@ export default NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    // ...add more providers here
   ],
-  // callbacks: {
-  //   async signIn({ user, account, profile, email: profileEmail, credentials }) {
-  //     let { name, email: profileEmail, sessionToken } = profile;
-
-  //     let nombre = name;
-  //     let correo = profileEmail;
-  //     let contraseña = sessionToken;
-
-  //     const modifiedUser = {
-  //       ...user,
-  //       name: nombre,
-  //       email: correo,
-  //       sessionToken: contraseña,
-  //     };
-
-  //     return Promise.resolve(modifiedUser);
-  //   },
-  // },
 });
