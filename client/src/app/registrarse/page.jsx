@@ -51,6 +51,8 @@ export default function Registrarse() {
   const handlerSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(postRequestAsync(usuario));
+
+    
     const asunto = "Bienvenido a Market X";
     const mensaje = "Su cuenta se ha creado correctamente";
     const correoEnviado = enviarNotificacionPorCorreo(
@@ -70,7 +72,7 @@ export default function Registrarse() {
       telefono: "",
       rol: "",
     });
-    router.push("/loging");
+    router.push("/login");
   };
 
   const buttonHablitado = () => {
@@ -360,10 +362,10 @@ export default function Registrarse() {
                 <div className="border-bottom flex-grow-1"></div>
               </div>
 
+            </form>
               <div className="d-flex align-items-center justify-content-center mt-4">
                 <BtnGoogle />
               </div>
-            </form>
           </div>
         </div>
       </div>

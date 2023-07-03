@@ -1,0 +1,89 @@
+.userTable {
+    width: 99%;
+    border-collapse: collapse;
+}
+
+.userTable th,
+.userTable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.userTable th {
+    background-color: white;
+}
+
+
+.container {
+    background-color: #eeee;
+    padding: 20px;
+}
+
+.Clink{
+    /* border: 1px solid; */
+    display: flex;
+
+    height: 3em;
+    
+}
+
+.link {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 3.5em;
+    height: 2em;
+
+    background-color: white;
+    font-weight: bold;
+
+    color: black;
+    text-decoration: none;
+
+    border-radius: 3px;
+}
+
+.link:hover {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 3.7em;
+    height: 2.2em;
+
+    background-color: grey;
+    font-weight: bold;
+
+    color: black;
+    text-decoration: none;
+
+    border-radius: 3px;
+}
+
+.userTable { 
+    margin: 20px 0;
+}
+
+.despachadoRow {
+    background-color: green;
+    color: white;
+}
+
+.contenedorTitulo{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bolder;
+
+}
+
+.titulo{
+    border-bottom: 1px solid black;
+    display: flex;
+}

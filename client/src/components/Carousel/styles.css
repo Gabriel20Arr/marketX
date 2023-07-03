@@ -1,0 +1,28 @@
+.containerSwiper {
+    /* background: #111; */
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    height: 60vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper {
+    padding-top: 60px;
+    padding-bottom: 90px;
+  }
+  
+  .swiper .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 700px;
+    height: 500px;
+    border-radius: 10px;
+    -webkit-box-reflect: below 1px
+      linear-gradient(transparent, transparent, rgba(0, 0, 0, 0));
+  }
