@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import style from "./home.module.css";
 import { useSession } from "next-auth/react";
 import Loader from "../../components/Loaders/Loaders";
@@ -9,6 +9,7 @@ import axios from "axios";
 import Carousel from "../../components/Carousel/Carousel";
 import CardsCarousel from '../../components/CardsCarousel/CardsCarousel'
 import Link from "next/link";
+import { Store } from "@/src/utils/Store";
 // require('dotenv').config();
 
 // const {  LOCALHOST } = process.env;
@@ -23,6 +24,7 @@ export default function HomePage() {
   };
 
   const { data, refetch } = useGetUsersQuery(null);
+  const { dispatch } = useContext(Store);
 
   useEffect(() => {
     refetch();

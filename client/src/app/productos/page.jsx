@@ -58,6 +58,18 @@ export default function Productos() {
         >
           MAYOR A MENOR PRECIO
         </button>
+        <button
+            className={style.orfilbtn}
+            onClick={() => handleSortOrder("mejor valorado")}
+          >
+            MAYOR A MENOR REPUTACION
+          </button>
+          <button
+            className={style.orfilbtn}
+            onClick={() => handleSortOrder("peor valorado")}
+          >
+            MENOR A MAYOR REPUTACION
+          </button>
 
         <button
           className={style.orfilbtn}

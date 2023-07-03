@@ -62,6 +62,9 @@ export default function Navigation() {
   };
 
   const { state, dispatch } = useContext(Store);
+  useEffect(() => {
+    dispatch({ type: "..." });
+  }, []);
 
   const { cart } = state;
 
@@ -92,7 +95,8 @@ export default function Navigation() {
 	};
 
   const handlerSalir =()=>{
-    signOut({ callbackUrl: `${LOCALHOST}/` })
+    // signOut({ callbackUrl: `${LOCALHOST}/` })
+    // signOut({ callbackUrl: "http://localhost:3000" })
     localStorage.clear()
     router.push('/')
   }
@@ -169,10 +173,7 @@ export default function Navigation() {
                   {usuario ? (
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}}
-                    onClick={() => {
-                      localStorage.clear();
-                      signOut({ handlerSalir });
-                    }}
+                    onClick={ handlerSalir }
                   >
                     Cerrar sesión
                   </NavDropdown.Item>
@@ -180,13 +181,13 @@ export default function Navigation() {
                       <div>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter("loging")}
+                          onClick={() => handelrRouter}
                         >
                           Iniciar sesión
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter("registrarse")}
+                          onClick={() => handelrRouter}
                         >
                           Registrarse
                         </NavDropdown.Item>
@@ -229,7 +230,7 @@ export default function Navigation() {
                   <NavDropdown.Divider /> &&
                   <NavDropdown.Item
                     style={{fontSize: '20px'}} 
-                    onClick={() => signOut({ handlerSalir })}
+                    onClick={ handlerSalir }
                   >
                     Salir
                   </NavDropdown.Item>
