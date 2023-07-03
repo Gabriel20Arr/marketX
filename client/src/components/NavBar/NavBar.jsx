@@ -112,7 +112,7 @@ export default function Navigation() {
 
 
   return (
-    <nav style={{backgroundColor: "#030a32", marginBottom: '10px'}} class="navbar navbar-expand-lg" data-bs-theme="dark">
+    <nav style={{backgroundColor: "#030a32"}} class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
         <div style={menuOpen ? {paddingLeft: '20px' ,paddingRight: '30px', paddingBottom: '20px', marginRight: '10px' } : {paddingRight: '30px', marginRight: '10px', borderRight: '2px solid white'}}>
           <Link href="/home">
@@ -132,7 +132,7 @@ export default function Navigation() {
                 <div>
                   <Link
                     class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none", marginLeft: '20px', marginTop: '10px' }}
+                    style={{ textDecoration: "none", marginLeft: '20px' }}
                     href="/home"
                   >
                     Home

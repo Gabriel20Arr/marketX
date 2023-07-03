@@ -12,12 +12,15 @@ export default function About() {
     return <Loading />;
   }
   return (
+    
+    <div className={style.aboutContainer}>
+    <div className={style.atrasCont}>
+      <Link href={"/home"} className={style.atras}>
+        Atrás
+      </Link>
+    </div>
+    
     <div className={style.container}>
-      <div className={style.atrasCont}>
-        <Link href={"/home"} className={style.atras}>
-          Atrás
-        </Link>
-      </div>
 
       <div className={style.textContainer}>
         <h1 className={style.title}>Sobre nosotros</h1>
@@ -45,6 +48,7 @@ export default function About() {
       <div className={style.imgContainer}>
         <Image src={logo} alt="logo" />
       </div>
+    </div>
     </div>
   );
 }
