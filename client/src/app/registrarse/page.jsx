@@ -360,10 +360,10 @@ export default function Registrarse() {
                 <div className="border-bottom flex-grow-1"></div>
               </div>
 
+            </form>
               <div className="d-flex align-items-center justify-content-center mt-4">
                 <BtnGoogle />
               </div>
-            </form>
           </div>
         </div>
       </div>

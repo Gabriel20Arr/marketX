@@ -9,46 +9,39 @@ import { Store } from "@/src/utils/Store";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useGetUserByIdQuery } from "@/src/redux/services/userApi";
 
 
 export default function Navigation({ currentPath }) {
-  var usuario= 0;
-  if (typeof window !== 'undefined') {
-    // Código que accede a localStorage aquí
-    const usuarioJSON = localStorage.getItem("usuario") ?? null;
-    usuario = JSON.parse(usuarioJSON) || 0;
-  }
-  const { state, dispatch} = useContext(Store);
+
   const { data: session, status } = useSession();
-  const router = useRouter();
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  
   const handelrRouter = (value) => {
     localStorage.clear();
     router.push(`/${value}`);
   };
-  const { cart } = state;
-  
-  const [cartItemsCount, setCartItemsCount] = useState(0);
-
-  const use = useGetUserByIdQuery({id:usuario._id})
-  useEffect(()=>{
-    use.refetch()
-  },[use.refetch])
-  
-  //console.log('.......................');
-  // if (usuario) { 
-  //   dispatch({
-  //     type: "RETOMANDO_DATOS",
-  //     payload: use.data,
-  //   });
-  // }
-  useEffect(() => {
-    setCartItemsCount(cart?.cartItems.reduce((a, c) => a + c.quantity, 0));
-  }, []);
 
   const routerHome = () => {
     router.push("/home");
   };
+ 
+  const router = useRouter();
+  
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+  var usuario;
+  if(typeof window !== 'undefined'){
+    const usuarioJSON = localStorage.getItem("usuario");
+    usuario = JSON.parse(usuarioJSON) || 0;
+  }
+
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+  }, [cart.cartItems]); 
+
+  useEffect(()=>{
+    dispatch({type:'...'})
+  },[])
 
   if (status === "loading") {
     return null;
@@ -59,7 +52,7 @@ export default function Navigation({ currentPath }) {
       <div className={styles.NavConteiner}>
         <div>
           <Image src={logo} alt="logo" className={styles.logo} onClick={routerHome} />
-        </div> 
+        </div>
 
         {currentPath !== "/form" && (
           <div className={styles.btn}>

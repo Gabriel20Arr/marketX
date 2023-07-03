@@ -13,7 +13,7 @@ const BtnGoogle = () => {
       className="btn btn-primary"
       onClick={() =>
         signIn("google", {
-          callbackUrl: `${LOCALHOST}/home`,
+          callbackUrl: `https://marketx-doploy.vercel.app/home`,
         })
       }
     >

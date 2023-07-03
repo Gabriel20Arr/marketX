@@ -54,7 +54,7 @@ export default function HomePage() {
     usuario = JSON.parse(usuarioJSON);
   }
 
-  if (!usuario) {
+  if (!usuario && data  ) {
     google();
   }
 
@@ -126,6 +126,18 @@ export default function HomePage() {
             onClick={() => handleSortOrder("price-reverse")}
           >
             MAYOR A MENOR PRECIO
+          </button>
+          <button
+            className={style.orfilbtn}
+            onClick={() => handleSortOrder("mejor valorado")}
+          >
+            MAYOR A MENOR REPUTACION
+          </button>
+          <button
+            className={style.orfilbtn}
+            onClick={() => handleSortOrder("peor valorado")}
+          >
+            MENOR A MAYOR REPUTACION
           </button>
           {/* <button onClick={() => handleSortOrder('quantitySold')}>
               MÁS VENDIDO
