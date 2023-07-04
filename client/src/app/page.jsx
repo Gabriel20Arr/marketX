@@ -1,5 +1,5 @@
 "use client";
-import logo from "../images/MarketX-newlogo (2).png";
+import logo from "../images/MarketX-newlogo fondo blanco.png";
 import style from "./landing.module.css";
 import Frame from "./Landing/Frame";
 import Ellipse6 from "./Landing/Ellipse6";
@@ -44,7 +44,7 @@ const Landing = () => {
           <Image
             src={logo}
             alt="logo"
-            width="150"
+            width="100"
             height="60"
             style={{ borderRadius: "10px" }}
           />
