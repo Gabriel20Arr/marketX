@@ -1,4 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+require('dotenv').config()
+
+const { LOCALHOSTCLIENT } = process.env;
+
 
 type Ventas = {
     vendedor: object,
@@ -10,7 +14,7 @@ type Ventas = {
 export const ventasApi = createApi({
 	reducerPath: 'ventasApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://marketx-production.up.railway.app/',
+		baseUrl: "https://marketx-production.up.railway.app/",
 	}),
 	endpoints: (builder) => ({
 		getVentas: builder.query<Ventas[], null>({

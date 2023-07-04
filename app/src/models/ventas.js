@@ -20,6 +20,14 @@ const VentaSchema = new Schema({
   despachado: {
     type: Boolean,
     default: false
+  },
+  producto: {
+    type: String,
+    required: true,
+  },
+  cantidad:{
+    type:Number,
+    required:true,
   }
 });
 

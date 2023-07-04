@@ -1,5 +1,6 @@
 'use client';
 
+require('dotenv').config()
 import { useState } from 'react';
 import validation from './validation';
 import axios from 'axios';
@@ -10,6 +11,8 @@ import logo from "../../images/MarketX-newlogo.png";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 // import CloudinaryWidget from '../../components/cloudinaryWidget/CloudinaryWidget';
+
+const {LOCALHOSTCLIENT}= process.env;
 
 export default function CrearProducto() {
 	var usuario = 0
@@ -81,7 +84,7 @@ export default function CrearProducto() {
 			formData.append('categorias', form.categorias);
 			formData.append('stock', form.stock);
 
-			const resul = await axios.post('https://marketx-production.up.railway.app/Producto/crearProductos', formData, {
+			const resul = await axios.post("https://marketx-production.up.railway.app/Producto/crearProductos", formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data' // Establece el tipo de contenido como 'multipart/form-data'
 				}
