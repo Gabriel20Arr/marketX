@@ -142,9 +142,7 @@ export default function Registrarse() {
         <div className="d-flex align-items-center justify-content-center w-100  pb-5 mb-130 pr-145">
           <form className={Style.form} onSubmit={handlerSubmit}>
             <h1 className="mb-3 text-center">Bienvenido de vuelta</h1>
-            <h3 className="mb-4 mt-3 text-center">
-              Gracias por volvernos a elegir
-            </h3>
+            <h3 className="mb-4 mt-3 text-center">Gracias por elegirnos</h3>
             <div className="mb-2">
               <label htmlFor="correo" className="form-label">
                 Correo:
