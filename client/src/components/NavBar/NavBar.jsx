@@ -6,13 +6,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Cart4 } from "react-bootstrap-icons";
 import { Store } from "@/src/utils/Store";
 import { useRouter, usePathname } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
-require('dotenv').config()
 
-const { LOCALHOSTCLIENT } = process.env;
 
 
 export default function Navigation() {
@@ -20,6 +18,8 @@ export default function Navigation() {
   const router = useRouter();
   const path = usePathname()
   const image = 'https://res.cloudinary.com/dmtzjtgy8/image/upload/v1687989698/MarketX-newlogo__2_-removebg-preview_jgi5mm.png'
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const objeto = {
     nombre: session?.user.name,
@@ -99,8 +99,6 @@ export default function Navigation() {
 	};
 
   const handlerSalir =()=>{
-    // signOut({ callbackUrl: `${LOCALHOST}/` })
-    // signOut({ callbackUrl: "http://localhost:3000" })
     localStorage.clear()
     router.push('/')
   }
@@ -114,19 +112,21 @@ export default function Navigation() {
 
 
   return (
-    <nav style={{backgroundColor: "#030a32", marginBottom: '10px'}} class="navbar navbar-expand-lg" data-bs-theme="dark">
+    <nav style={{backgroundColor: "#030a32"}} class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
-        <div style={{paddingRight: '30px', borderRight: '2px solid white'}}>
+        <div style={menuOpen ? {paddingLeft: '20px' ,paddingRight: '30px', paddingBottom: '20px', marginRight: '10px' } : {paddingRight: '30px', marginRight: '10px', borderRight: '2px solid white'}}>
           <Link href="/home">
             <img src={image} alt='Logo' width={'135'} height={'90'} />
           </Link>
         </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style={{fontSize: '24px', marginLeft: '15px', paddingLeft: '10px'}}>
-          <ul class="navbar-nav">
+
+        <div class={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id="navbarSupportedContent" style={menuOpen ? {fontSize: '24px', marginRight: '15px', paddingTop: '15px', paddingRight: '10px', display: 'flex', justifyContent: 'right', borderTop: '2px solid white'} : {fontSize: '24px', marginRight: '15px', paddingRight: '10px'}}>
+
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item">
             {path !== "/home" && (
                 <div>
@@ -174,30 +174,6 @@ export default function Navigation() {
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <NavDropdown title="Menu" id="collasible-nav-dropdown" class="nav-link link-body-emphasis" style = {{marginRight: '20px', color: 'white'}}>
-                  {usuario ? (
-                  <NavDropdown.Item 
-                    style={{fontSize: '20px'}}
-                    onClick={ handlerSalir }
-                  >
-                    Cerrar sesión
-                  </NavDropdown.Item>
-                    ) : (
-                      <div>
-                        <NavDropdown.Item
-                          style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
-                        >
-                          Iniciar sesión
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
-                        >
-                          Registrarse
-                        </NavDropdown.Item>
-                      </div>
-                    )
-                  }
                   { usuario &&
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}} 
@@ -240,17 +216,34 @@ export default function Navigation() {
                   </NavDropdown.Item>
                   : null
                   }
+                  
+                  { (usuario || (usuario.direccion === "google")) ? (
+                  <NavDropdown.Item 
+                    style={{fontSize: '20px'}}
+                    onClick={ handlerSalir }
+                  >
+                    Cerrar sesión
+                  </NavDropdown.Item>
+                    ) : (
+                      <div>
+                        <NavDropdown.Item
+                          style={{fontSize: '20px'}} 
+                          onClick={() => handelrRouter}
+                        >
+                          Iniciar sesión
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          style={{fontSize: '20px'}} 
+                          onClick={() => handelrRouter}
+                        >
+                          Registrarse
+                        </NavDropdown.Item>
+                      </div>
+                    )
+                  }
 
                 </NavDropdown>
             </li>
-
-            <li>
-                {!session ? null : (
-                  <div>
-                    <img className={styles.img} src={session.user.image} alt="logo" />
-                  </div>
-                )}
-              </li>
 
             <li class="nav-item d-flex">
                   <Link
@@ -263,6 +256,14 @@ export default function Navigation() {
                       {cartItemsCount}
                     </span>
                   </Link>
+            </li>
+
+            <li>
+                {!session ? null : (
+                  <div>
+                    <img className={styles.img} src={session.user.image} alt="logo" />
+                  </div>
+                )}
               </li>
           </ul>
         </div>

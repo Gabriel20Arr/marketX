@@ -53,7 +53,6 @@ export default function HomePage() {
     const usuarioJSON = localStorage.getItem("usuario") ?? null;
     usuario = JSON.parse(usuarioJSON); 
   }
-  console.log((data && !usuario), (existente),  'existente');
   if (!usuario && data  ) {
     console.log((data && !usuario), (existente),  'existente');
     google();
