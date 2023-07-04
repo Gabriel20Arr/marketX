@@ -1,6 +1,5 @@
 'use client';
 
-require('dotenv').config()
 import { useState } from 'react';
 import validation from './validation';
 import axios from 'axios';
@@ -12,7 +11,6 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 // import CloudinaryWidget from '../../components/cloudinaryWidget/CloudinaryWidget';
 
-const {LOCALHOSTCLIENT}= process.env;
 
 export default function CrearProducto() {
 	var usuario = 0

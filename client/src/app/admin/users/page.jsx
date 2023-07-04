@@ -1,6 +1,5 @@
 'use client'
 
-require('dotenv').config()
 import React, { useState } from 'react';
 import { useGetUsersQuery, usePutUserCarMutation } from '../../../redux/services/userApi';
 import styles from './users.module.css';
@@ -12,7 +11,6 @@ import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import Link from 'next/link';
 
-const { LOCALHOSTCLIENT } = process.env;
 
 const UserList = () => {
   const { data, isLoading, isError, refetch } = useGetUsersQuery(); // Eliminamos el valor null en useGetUsersQuery

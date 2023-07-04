@@ -60,7 +60,6 @@ export default function Registrarse() {
       asunto,
       mensaje
     );
-    console.log(result, correoEnviado);
     setUsuario({
       nombre: "",
       correo: "",

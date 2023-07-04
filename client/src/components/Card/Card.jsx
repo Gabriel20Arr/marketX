@@ -12,9 +12,6 @@ import axios from "axios";
 import { useGetUserByIdQuery } from "@/src/redux/services/userApi";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
-require('dotenv').config()
-
-const {LOCALHOSTCLIENT} = process.env;
 
 
 export default function Card({ item }) {
