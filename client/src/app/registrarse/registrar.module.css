@@ -97,6 +97,11 @@
     sans-serif;
 }
 
+.form button {
+  font-family: 'Quicksand',
+    sans-serif;
+}
+
 .formInput2 {
   border: 1px solid black;
   height: 2.5em;

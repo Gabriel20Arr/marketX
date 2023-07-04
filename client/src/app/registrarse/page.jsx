@@ -381,7 +381,7 @@ export default function Registrarse() {
                     className="btn btn-success mt-1 mb-2 "
                     type="submit"
                   >
-                    Registrarse
+                    Crear Cuenta
                   </button>
                 )}
               </div>

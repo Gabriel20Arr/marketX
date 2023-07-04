@@ -7,17 +7,104 @@
 }
 
 .image {
-  overflow: hidden;
-  background-image: url("../../images/teclado-3.jpg");
-  object-fit: cover;
-  min-height: 95vh;
+  width: 1007px;
+  height: 100vh;
+  background-image: url("../../images/unsplashBd7gNnWJBkU.jpg");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.logo {
+  margin-top: 10px;
+  height: 70px;
+  width: 128px;
+  margin-left: 10px;
+}
+
+.sobreLogo {
+  background-color: #0b244759;
+  position: absolute;
+  top: 700px;
+  width: 1007px;
+  height: 240px;
+}
+
+.Publicidad {
+  color: #a5d7e8f2;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 15px;
+  width: 752px;
+  font-family: 'Quicksand',
+    sans-serif;
+  margin-left: 47px;
+}
+
+.Publicidad2 {
+  color: white;
+  font-family: 'Open Sans',
+    sans-serif;
+  width: 551px;
+  margin-left: 151px;
+  margin-top: 30px;
+  font-size: 2rem;
+
+}
+
+.lineal {
+  position: absolute;
+  left: 135px;
+  top: 78px;
+  width: 2px;
+  max-width: 100%;
+  height: 75px;
+  max-height: 100%;
+  background-color: #a5d7e8;
+}
+
+.back {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.back:hover {
+  background-color: #E5E5E5;
+  border-radius: 50%;
+
+}
+
+.form {
+  margin-top: 40px;
+}
+
+.form input {
+  background-color: #D9D9D9;
+}
+
+.form h1 {
+  font-family: 'Open Sans',
+    sans-serif;
+}
+
+.form h3 {
+  font-size: 20px;
+  font-family: 'Quicksand',
+    sans-serif;
+
+}
+
+.form label button {
+  font-family: 'Quicksand',
+    sans-serif;
+}
+
+.form button {
+  font-family: 'Quicksand',
+    sans-serif;
 }
 
 .Logo {
@@ -40,34 +127,31 @@
   margin-bottom: 150px;
 }
 
-.formInput2{
+.formInput2 {
   border: 1px solid black;
   height: 2.5em;
   width: 12.5em;
 }
 
-.inputs{
-  /* border: 1px solid black; */
-
+.inputs {
   display: flex;
   align-items: center;
-  
 }
 
-.formInput{
-  border: 1px solid black;
-  border-right: none;
+.formPassword {
+  display: flex;
+}
+
+.showPassword {
+  width: 0px;
+}
+
+.svg1 {
   height: 2.5em;
-  outline: none;
+  transform: translate(-2.5rem);
 }
 
-.svg1{
-  border: 1px solid black;
-  border-left: none;
-  height: 2.5em;
-}
-
-.google{
+.google {
   /* border-top: 1px solid black; */
   padding-bottom: 5px;
   margin-bottom: 5px;
