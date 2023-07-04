@@ -174,7 +174,7 @@ export default function Navigation() {
                   <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none" }}
-                    href={usuario ? `/cart` : "/home"}
+                    href={(usuario || user) ? `/cart` : "/home"}
                   >
                     <Cart4 size={30} />{" "}
                     <span className="text-white bg-danger rounded p-1">
@@ -185,7 +185,7 @@ export default function Navigation() {
 
             <li class="nav-item">
                 <NavDropdown title="Menu" id="collasible-nav-dropdown" class="nav-link link-body-emphasis" style = {{marginRight: '10px', color: 'white'}}>
-                  {usuario ? (
+                  {(usuario || user) ? (
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}}
                     onClick={ handlerSalir }
@@ -232,24 +232,24 @@ export default function Navigation() {
                     Mis Compras
                   </NavDropdown.Item>
                   
-                  {/* {usuario?.rol == "admin" ? ( */}
+                  {usuario?.rol == "admin" ? (
                     <NavDropdown.Item 
                       style={{fontSize: '20px'}} 
                       onClick={routerDashBoard}
                     >
                       Dashboard
                     </NavDropdown.Item>
-                  {/* ) : null} */}
+                  ) : null}
                   
-                  { (!usuario) ? 
-                  <NavDropdown.Divider /> &&
-                  <NavDropdown.Item
-                    style={{fontSize: '20px'}} 
-                    onClick={ handlerSalir }
-                  >
-                    Salir
-                  </NavDropdown.Item>
-                  : null
+                  { (usuario || user)
+                    ? null
+                    : <NavDropdown.Divider /> &&
+                        <NavDropdown.Item
+                        style={{fontSize: '20px'}} 
+                        onClick={ handlerSalir }
+                        >
+                          Salir
+                        </NavDropdown.Item>
                   }
 
                 </NavDropdown>
