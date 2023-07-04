@@ -155,9 +155,7 @@ export default function Cart() {
               <button
                 className={style.comprar}
                 id="buttomPagar"
-                onClick={() => {
-                  createOrderHandler();
-                }}
+                onClick={createOrderHandler}
               >
                 Comprar
               </button>

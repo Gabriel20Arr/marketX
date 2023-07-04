@@ -53,7 +53,8 @@ const success = async(req, res) => {
            monto: element.precio * (element.quantity),
            valor: element.precio,
            fecha, vendedor,
-           comprador:usuario, producto: element.titulo, cantidad: element.quantity
+           comprador:usuario
+        //    comprador:usuario, producto: element.titulo, cantidad: element.quantity
         }
        
        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});
@@ -66,7 +67,8 @@ const success = async(req, res) => {
     cartItems.forEach( async (elem) => {
         const object = {valor: (elem.precio * elem.quantity), fecha, producto: elem._id};
 
-        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object], carrito: []})
+        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+        // await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object], carrito: []})
     } )
 
     const asunto = "Mercado Pago";
