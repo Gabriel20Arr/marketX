@@ -42,9 +42,10 @@ const enviarCorreo = async ({ correo, asunto, mensaje }) => {
             body {
               font-family: Arial, sans-serif;
               background-color: #f2f2f2;
+              border: 1px solid #ffff
             }
             h2 {
-              color: #333;
+              color: #00ffff;
             }
             p {
               color: #555;

@@ -83,7 +83,7 @@ function MisProductos() {
 
 	return (
 		<div>
-			<Link href='/admin' className={styles.link}>
+			<Link href='/home' className={styles.link}>
 				Volver
 			</Link>
 
