@@ -35,17 +35,17 @@ const enviarCorreo = async ({ correo, asunto, mensaje }) => {
     from: accountTransport.auth.user,
     to: correo,
     subject: asunto,
-    html: `
-      <html>
+    html: 
+      `<html>
         <head>
           <style>
-            /* Agrega estilos CSS aquí */
             body {
               font-family: Arial, sans-serif;
               background-color: #f2f2f2;
+              border: 1px solid #ffff
             }
-            h1 {
-              color: #333;
+            h2 {
+              color: #00ffff;
             }
             p {
               color: #555;
@@ -56,8 +56,7 @@ const enviarCorreo = async ({ correo, asunto, mensaje }) => {
           <h1>${asunto}</h1>
           <p>${mensaje}</p>
         </body>
-      </html>
-    `
+      </html>`
   };
   
 

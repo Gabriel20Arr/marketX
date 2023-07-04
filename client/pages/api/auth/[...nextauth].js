@@ -10,14 +10,25 @@ export default NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),// ...add more providers here
+    }),
+    // ...add more providers here
   ],
-  callbacks: {
-    async signIn({ account, profile }) {
-      if (account.provider === "google") {
-        return profile.email_verified && profile.email.endsWith("@example.com")
-      }
-      return true // Do different verification for other providers that don't have `email_verified`
-    },
-  }
+  // callbacks: {
+  //   async signIn({ user, account, profile, email: profileEmail, credentials }) {
+  //     let { name, email: profileEmail, sessionToken } = profile;
+
+  //     let nombre = name;
+  //     let correo = profileEmail;
+  //     let contraseña = sessionToken;
+
+  //     const modifiedUser = {
+  //       ...user,
+  //       name: nombre,
+  //       email: correo,
+  //       sessionToken: contraseña,
+  //     };
+
+  //     return Promise.resolve(modifiedUser);
+  //   },
+  // },
 });

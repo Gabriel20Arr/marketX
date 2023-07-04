@@ -19,7 +19,11 @@ function Page() {
 			<Link href='/admin' className={styles.link}>
 				Volver
 			</Link>
-			<h1>Lista de Ventas</h1>
+			
+			<div className={styles.contenedorTitulo}>
+				<h1 className={styles.titulo}>Lista de Ventas</h1>
+			</div>
+			
 			<div className={styles.addButtonContainer}></div>
 			<table className={styles.userTable}>
 				<thead>

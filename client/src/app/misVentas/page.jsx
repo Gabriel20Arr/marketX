@@ -6,6 +6,10 @@ import Link from 'next/link';
 import { enviarNotificacionPorCorreo } from '../../hooks/enviarCorreo.js';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
+require('dotenv').config()
+
+const {LOCALHOSTCLIENT} = process.env;
+
 
 function Page() {
 	const { data, refetch, isLoading } = useGetVentasQuery(null);
@@ -53,15 +57,15 @@ function Page() {
 			const updatedVenta = { ...ventaToEdit, despachado: true };
 
 			await axios.put(
-				`https://marketx-production.up.railway.app/ventas/actualizar`,
+				"https://marketx-production.up.railway.app/ventas/actualizar",
 				updatedVenta
 			);
 
 			const { comprador } = ventaToEdit;
-			console.log("COMPRADOR: ", comprador);
+			// console.log("COMPRADOR: ", comprador);
 			
 			const correo = comprador.correo;
-			console.log("CORREO: ", correo);
+			// console.log("CORREO: ", correo);
 
 			const asunto = 'Producto despachado';
 			const mensaje = 'Su producto ha sido despachado.';
@@ -90,8 +94,8 @@ function Page() {
 			<table className={styles.userTable}>
 				<thead>
 					<tr className={styles.tituloTabla}>
-						{/* <th>PRODUCTO</th>
-						<th>CANTIDAD</th> */}
+						<th>PRODUCTO</th>
+						<th>CANTIDAD</th>
 						<th>EMAIL COMPRADOR</th>
 						<th>PRECIO</th>
 						<th>FECHA</th>
@@ -108,8 +112,8 @@ function Page() {
 							key={index}
 							className={venta.despachado ? styles.despachadoRow : ''}
 						>
-							{/* <td>{venta.titulo}</td>
-							<td>{venta.cantidad}</td> */}
+							<td>{venta.titulo}</td>
+							<td>{venta.cantidad}</td>
 							<td>{venta.comprador.correo}</td>
 							<td>{venta.monto}</td>
 							<td>{new Date(venta.fecha).toLocaleDateString('es-ES')}</td>

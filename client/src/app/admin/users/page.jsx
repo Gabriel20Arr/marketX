@@ -1,14 +1,18 @@
 'use client'
 
+require('dotenv').config()
 import React, { useState } from 'react';
 import { useGetUsersQuery, usePutUserCarMutation } from '../../../redux/services/userApi';
 import styles from './users.module.css';
 import { useDispatch } from 'react-redux';
 import { addBlockedUser } from '../../../redux/features/blockedUsersSlice';
 import axios from 'axios';
-require('dotenv').config()
+import Loading from '@/src/components/Loaders/Loaders';
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import Link from 'next/link';
 
-const { LOCALHOST } = process.env;
+const { LOCALHOSTCLIENT } = process.env;
 
 const UserList = () => {
   const { data, isLoading, isError, refetch } = useGetUsersQuery(); // Eliminamos el valor null en useGetUsersQuery
@@ -37,12 +41,12 @@ const UserList = () => {
   const [updateUser] = usePutUserCarMutation();
 
   const blockUser = async (_id) => {
-    await axios.put(`https://marketx-production.up.railway.app/usuario/editar`, {_id, rol: 'baneado'})
+    await axios.put("https://marketx-production.up.railway.app/usuario/editar", {_id, rol: 'baneado'})
     refetch();
   };
 
   const desbanearUser = async (_id) => {
-    await axios.put(`https://marketx-production.up.railway.app/usuario/editar`, {_id, rol: 'usuario'})
+    await axios.put("https://marketx-production.up.railway.app/usuario/editar", {_id, rol: 'usuario'})
     refetch();
   };
 
@@ -68,7 +72,7 @@ const UserList = () => {
   const saveChanges = async (e) => {
     try {
       e.preventDefault()
-      await axios.put(`https://marketx-production.up.railway.app/usuario/editar`, {...editedUser, _id: editingUserId})
+      await axios.put("https://marketx-production.up.railway.app/usuario/editar", {...editedUser, _id: editingUserId})
       
       setEditingUserId(null);
       setEditedUser({
@@ -111,7 +115,7 @@ const UserList = () => {
   const saveNewUser = async () => {
     try {
       // Realiza una solicitud HTTP al backend para guardar el nuevo usuario
-      await axios.post('https://marketx-production.up.railway.app/users', newUser);
+      await axios.post("https://marketx-production.up.railway.app/users", newUser);
 
       setNewUser({
         nombre: '',
@@ -135,24 +139,46 @@ const UserList = () => {
     });
   };
 
+  
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
-
+  
   if (isError) {
-    return <div>Error fetching users.</div>;
-  }
-
-  return (
+    return (
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error fetching users",
+        showConfirmButton: false,
+      })
+      )
+    }
+    
+    return (
     <div>
-      <h1>Lista de Usuarios</h1>
-      <div className={styles.addButtonContainer}>
-        <button className={styles.addButton} onClick={addUser}>
-          Add User
-        </button>
-      </div>
+    	
+      <Link href='/admin' className={styles.link}>
+				Volver
+			</Link>
+      
+      <div className={styles.contenedorTitulo}>
+				<h1 className={styles.titulo}>Lista de Usuarios</h1>
+			</div>
+ 
       <table className={styles.userTable}>
         {/* Renderizar la lista de usuarios */}
+        <thead>
+					<tr>
+						<th>Usuario</th>
+						<th>Email</th>
+						<th>Rol</th>
+						<th>Teléfono</th>
+						<th>Dirección</th>
+						<th>codigo Postal</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
         {data.map((user) => (
           <tr key={user._id}>
             <td>{user.nombre}</td>

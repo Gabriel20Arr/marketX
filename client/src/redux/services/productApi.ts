@@ -1,6 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import { METHODS } from 'http';
 import { url } from 'inspector';
+require('dotenv').config()
+
+const { LOCALHOSTCLIENT } = process.env;
+
 
 type Product = {
     id: string,
@@ -17,7 +21,7 @@ type Product = {
 export const productsApi = createApi({
     reducerPath: 'productAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://marketx-production.up.railway.app/'
+        baseUrl: "https://marketx-production.up.railway.app/"
     }),
     endpoints: (builder) => ({
         getProducts: builder.query<Product[], null>({

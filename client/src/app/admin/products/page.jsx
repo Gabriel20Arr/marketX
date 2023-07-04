@@ -14,21 +14,20 @@ const ProductList = () => {
 	))
 
 	const banear = async (_id) => {
-		 await axios.put(`https://marketx-production.up.railway.app/producto/actualizar`, {_id, accion: false})
+		 await axios.put("http://localhost:3001/producto/actualizar", {_id, accion: false})
 		 refetch();
 	}
 
 	const desbanear = async (_id) => {
-		 await axios.put(`https://marketx-production.up.railway.app/producto/actualizar`, {_id, accion: true})
+		 await axios.put("http://localhost:3001/producto/actualizar", {_id, accion: true})
 		 refetch();
 	}
-	
 
   	const handleDeleteProduct = async (id) => {
 		const confirme = window.confirm("Estas seguro de eliminar este producto?")
 		if(confirme) {
 			try {
-				await axios.delete(`https://marketx-production.up.railway.app/producto/eliminar/${id}`)
+				await axios.delete(`http://localhost:3001/producto/eliminar/${id}`)
 				refetch();
 			} catch (error) {
 				console.log(error);
@@ -46,9 +45,11 @@ const ProductList = () => {
 			<Link href='/admin' className={styles.link}>
 				Volver
 			</Link>
-			<div>
-				<h1>Lista de Productos</h1>
+
+			<div className={styles.contenedorTitulo}>
+				<h1 className={styles.titulo}>Lista de Productos</h1>
 			</div>
+
 			<div className={styles.addButtonContainer}></div>
 			<table className={styles.userTable}>
 				<thead>

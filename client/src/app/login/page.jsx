@@ -13,6 +13,10 @@ import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import BtnGoogle from "../../components/BtnGoogle/BtnGoogle";
 import axios from "axios";
+require('dotenv').config()
+
+const { LOCALHOSTCLIENT } = process.env;
+
 
 export default function Registrarse() {
   const [showPass, setShowPass] = useState(false);
@@ -90,7 +94,7 @@ export default function Registrarse() {
 				timer: 1500,
       		});
 			
-			router.replace('/home');
+			router.push('/home');
 			} else{
 				Swal.fire({
 				position: "top",
@@ -166,9 +170,6 @@ export default function Registrarse() {
                 {error.blocked}
               </p>
 
-              <div className={Style.google}>
-                <BtnGoogle />
-              </div>
             </div>
 
             <button
@@ -178,7 +179,11 @@ export default function Registrarse() {
             >
               Iniciar Sesión
             </button>
+            <br /><br />
+            <BtnGoogle />
           </form>
+          </div>
+          <div className={Style.google}>
         </div>
       </div>
     </div>

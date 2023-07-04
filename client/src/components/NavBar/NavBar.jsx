@@ -10,6 +10,10 @@ import { useSession, signOut } from "next-auth/react";
 import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
+require('dotenv').config()
+
+const { LOCALHOSTCLIENT } = process.env;
+
 
 export default function Navigation() {
   const { data: session, status } = useSession();
@@ -217,14 +221,14 @@ export default function Navigation() {
                     Mis Compras
                   </NavDropdown.Item>
                   
-                  {/* {usuario?.rol == "admin" ? ( */}
+                  {usuario?.rol == "admin" ? (
                     <NavDropdown.Item 
                       style={{fontSize: '20px'}} 
                       onClick={routerDashBoard}
                     >
                       Dashboard
                     </NavDropdown.Item>
-                  {/* ) : null} */}
+                  ) : null}
                   
                   { (!usuario) ? 
                   <NavDropdown.Divider /> &&
