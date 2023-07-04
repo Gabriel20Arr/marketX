@@ -3,7 +3,8 @@
 import { postRequestAsync } from "../../redux/services/userPost";
 import { useState, useEffect } from "react";
 import Style from "./registrar.module.css";
-import logo from "../../images/MarketX-newlogo.png";
+import logo from "../../images/logo4.png";
+import back from "../../images/back.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/src/redux/hooks/hooks";
@@ -91,18 +92,40 @@ export default function Registrarse() {
     }
   };
 
+  const handlerSalir = () => {
+    router.push("/");
+  };
+
   const existeError = Object.values(error).some((value) => value !== "");
   return (
     <div className={Style.container}>
-      <div className={Style.image}></div>
-      <div>
-        <div className={Style.containerTitulo}>
-          <Image className={Style.logo} src={logo} alt="Logo" />
-          <h3 className={Style.titulo}>Market X</h3>
+      <div className={Style.image}>
+        <Image className={Style.logo} src={logo} alt="Logo" />
+        <div className={Style.sobreLogo}>
+          <h2 className={Style.Publicidad}>
+            Las mejores piezas de computadora a tu alcance
+          </h2>
+          <h1 className={Style.Publicidad2}>
+            La evolucion tecnologica esta llegando ,no te quedes atras!!!
+          </h1>
+          <div className={Style.lineal}></div>
         </div>
-        <div className="bg-white d-flex aling-items-center justify-content-center w-100  pb-5">
+      </div>
+      <div>
+        <Image
+          onClick={() => handlerSalir()}
+          className={Style.back}
+          src={back}
+          alt="atras"
+        />
+        <div className="bg-white d-flex aling-items-center justify-content-center w-100 ">
           <div className={Style.form}>
-            <h2 className="mb-3 mt-3 text-center">Regístrese gratis</h2>
+            <h2 className="mb-3 mt-3 text-center">
+              Comienza ahora , que esperas !!
+            </h2>
+            <h3 className="mb-4 mt-3 text-center">
+              Ingresa la siguiente informacion para registrarse
+            </h3>
             <form onSubmit={handlerSubmit}>
               <div className="mb-2">
                 <label className="form-label" htmlFor="nombre">
@@ -283,69 +306,71 @@ export default function Registrarse() {
                     ? error.confirme_su_contraseña
                     : ""}
                 </p>
+                <div className={Style.dosInputs}>
+                  <div className="mb-2">
+                    <label className="form-label" htmlFor="provincia">
+                      Provincia:
+                    </label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="provincia"
+                      onChange={handlerUsuario}
+                      value={usuario.provincia}
+                    />
+                    <p className="form-text text-danger">
+                      {error.nombre ? error.nombre : ""}
+                    </p>
+                  </div>
 
-                <div className="mb-2">
-                  <label className="form-label" htmlFor="provincia">
-                    Provincia:
-                  </label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="provincia"
-                    onChange={handlerUsuario}
-                    value={usuario.provincia}
-                  />
-                  <p className="form-text text-danger">
-                    {error.nombre ? error.nombre : ""}
-                  </p>
+                  <div className="mb-2">
+                    <label className="form-label" htmlFor="codigo_postal">
+                      Codigo postal:
+                    </label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="codigo_postal"
+                      onChange={handlerUsuario}
+                      value={usuario.codigo_postal}
+                    />
+                    <p className="form-text text-danger">
+                      {error.nombre ? error.nombre : ""}
+                    </p>
+                  </div>
                 </div>
+                <div className={Style.dosInputs}>
+                  <div className="mb-2">
+                    <label className="form-label" htmlFor="direccion">
+                      Direccion:
+                    </label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="direccion"
+                      onChange={handlerUsuario}
+                      value={usuario.direccion}
+                    />
+                    <p className="form-text text-danger">
+                      {error.nombre ? error.nombre : ""}
+                    </p>
+                  </div>
 
-                <div className="mb-2">
-                  <label className="form-label" htmlFor="codigo_postal">
-                    Codigo postal:
-                  </label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="codigo_postal"
-                    onChange={handlerUsuario}
-                    value={usuario.codigo_postal}
-                  />
-                  <p className="form-text text-danger">
-                    {error.nombre ? error.nombre : ""}
-                  </p>
-                </div>
-
-                <div className="mb-2">
-                  <label className="form-label" htmlFor="direccion">
-                    Direccion:
-                  </label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="direccion"
-                    onChange={handlerUsuario}
-                    value={usuario.direccion}
-                  />
-                  <p className="form-text text-danger">
-                    {error.nombre ? error.nombre : ""}
-                  </p>
-                </div>
-
-                <div className="mb-2">
-                  <label className="form-label" htmlFor="telefono">
-                    Telefono:
-                  </label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="telefono"
-                    onChange={handlerUsuario}
-                    value={usuario.telefono}
-                  />
-                  <p className="form-text text-danger">
-                    {error.nombre ? error.nombre : ""}
-                  </p>
+                  <div className="mb-2">
+                    <label className="form-label" htmlFor="telefono">
+                      Telefono:
+                    </label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="telefono"
+                      onChange={handlerUsuario}
+                      value={usuario.telefono}
+                    />
+                    <p className="form-text text-danger">
+                      {error.nombre ? error.nombre : ""}
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -353,7 +378,7 @@ export default function Registrarse() {
                 {existeError ? null : (
                   <button
                     disabled={buttonHablitado()}
-                    className="btn btn-success mt-2 mb-3 "
+                    className="btn btn-success mt-1 mb-2 "
                     type="submit"
                   >
                     Registrarse
@@ -367,7 +392,7 @@ export default function Registrarse() {
                 <div className="border-bottom flex-grow-1"></div>
               </div>
             </form>
-            <div className="d-flex align-items-center justify-content-center mt-4">
+            <div className="d-flex align-items-center justify-content-center mt-3">
               <BtnGoogle />
             </div>
           </div>

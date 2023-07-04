@@ -41,7 +41,13 @@ const Landing = () => {
     <div>
       <nav className={style.nav}>
         <div className={style.contenedorLogo}>
-          <Image src={logo} alt="logo" width="200" height="150" style={{borderRadius: '10px'}} />
+          <Image
+            src={logo}
+            alt="logo"
+            width="150"
+            height="60"
+            style={{ borderRadius: "10px" }}
+          />
         </div>
         <div className={style.links}>
           <div className={style.enlaces}>
