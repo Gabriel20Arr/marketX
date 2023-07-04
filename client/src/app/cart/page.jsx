@@ -7,6 +7,9 @@ import Link from "next/link";
 import axios from "axios";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import style from "./cart.module.css";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import { useRouter } from "next/navigation";
 
 export default function Cart() {
   const { state, dispatch } = useContext(Store);
@@ -18,12 +21,13 @@ export default function Cart() {
     usuarioLocal = JSON.parse(usuarioJSON);
   }
 
-  const { data, refetch } = useGetUsersQuery(null);
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
-  const usuario = data?.find((user) => user._id === usuarioLocal?._id);
-  console.log("holaa", usuario);
+  const router = useRouter()
+
+  const {data, refetch} = useGetUsersQuery(null);
+  useEffect(()=>{
+    refetch()
+  },[refetch])
+  const usuario = data?.find(user=>user._id===usuarioLocal?._id)
 
   const removeCartHandler = (item) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item, usuario: usuario._id });
@@ -61,7 +65,19 @@ export default function Cart() {
         console.log(error);
       }
     } else {
-      alert("debe iniciar sesion");
+        Swal.fire({
+          title: 'Debes estar registrado e iniciar sesión para poder realizar la compra de tus productos',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Registrarse',
+          denyButtonText: `Iniciar Sesión`,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            router.push('/registrarse');
+          } else if (result.isDenied) {
+            router.push('/login');
+          }
+        });
     }
   };
 

@@ -41,13 +41,13 @@ const Landing = () => {
     <div>
       <nav className={style.nav}>
         <div className={style.contenedorLogo}>
-          <Image src={logo} alt="logo" width="105" height="100" />
+          <Image src={logo} alt="logo" width="200" height="150" style={{borderRadius: '10px'}} />
         </div>
         <div className={style.links}>
           <div className={style.enlaces}>
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
-              href={"/loging"}
+              href={"/login"}
             >
               <h6>Inicia Sesion</h6>
             </Link>

@@ -17,6 +17,10 @@ const VentaSchema = new Schema({
     type: Date,
     required: true,
   },
+  despachado: {
+    type: Boolean,
+    default: false
+  }
 });
 
 module.exports = model("Ventas", VentaSchema);

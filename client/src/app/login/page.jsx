@@ -82,32 +82,32 @@ export default function Registrarse() {
           blocked: "",
         });
 
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Se Inicio Sesion Correctamente",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-
-        router.replace("/home");
-      } else {
-        Swal.fire({
-          position: "top",
-          icon: "warning",
-          title: "Usuario baneado",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    } else {
-      setError((prevError) => ({
-        ...prevError,
-        correo: correos ? "" : "Correo no registrado",
-        contraseña: correos ? (contraseñas ? "" : "Contraseña incorrecta") : "",
-      }));
-    }
-  };
+			Swal.fire({
+				position: "center",
+				icon: "success",
+				title: "Se Inicio Sesion Correctamente",
+				showConfirmButton: false,
+				timer: 1500,
+      		});
+			
+			router.replace('/home');
+			} else{
+				Swal.fire({
+				position: "top",
+				icon: "warning",
+				title: "Usuario bloqueado",
+				showConfirmButton: false,
+				timer: 1500,
+      		});
+			}
+		} else {
+			setError((prevError) => ({
+				...prevError,
+				correo: correos ? '' : 'Correo no registrado',
+				contraseña: correos ? (contraseñas ? '' : 'Contraseña incorrecta') : '',
+			}));
+		}
+	};
 
   const habilitarBoton = () => {
     return usuario.contraseña === "" || usuario.correo === "";
