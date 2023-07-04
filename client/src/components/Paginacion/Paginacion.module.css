@@ -2,31 +2,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
   font-size: 20px;
-  color: white;
   list-style: none;
   font-style: italic;
+  font-size: 25px;
+  text-decoration: none;
 }
 
 .page-item {
   margin: 0 5px;
+  padding: 20px;
   list-style: none;
+  color: white;
 }
 
 .active {
   border: 3px solid #0df3ff;
-  font-weight: bold;
-  color: #0df3ff;
+  font-weight: bolder;
+  background-color: #0df3ff;
+  color: #030a32;
   list-style: none;
 }
 
 .pagination .page-item {
   display: inline-block;
   margin-right: 10px;
-  height: 40px;
-  width: 65px;
-  padding: 5px;
-  background-color: rgb(29, 0, 63);
+  height: 50px;
+  width: 75px;
+  background-color: #030a32;
+  color: white;
   list-style: none;
   border-radius: 15px
 }
@@ -41,10 +46,11 @@
   cursor: pointer;
   z-index: 1;
   list-style: none;
+  text-decoration: none;
 }
 
 .next{
-  background-color: #e2e2ee;
+  padding: 15px;
   z-index: 3;
   list-style: none;
 }
@@ -63,6 +69,8 @@
 .disable{
   text-decoration: none;
   list-style: none;
+  background-color: grey;
+  color: rgb(59, 59, 59);
 }
 
 .next:disabled::marker{
