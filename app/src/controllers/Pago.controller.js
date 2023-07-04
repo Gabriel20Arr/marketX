@@ -73,11 +73,11 @@ const success = async(req, res) => {
     const mensaje = "Su compra se realizó correctamente";
     console.log(usuario.correo);
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
-    res.redirect("https://marketx-production.up.railway.app/home");
+    res.redirect("http://localhost:3000/home");
 };
 
 const failure = (req, res) => {
-    res.redirect("https://marketx-production.up.railway.app/failure");
+    res.redirect("http://localhost:3000/failure");
 };
 
 const webhook = async (req, res) => {
