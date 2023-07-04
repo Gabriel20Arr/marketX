@@ -1,8 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-require('dotenv').config()
-
-const { LOCALHOSTCLIENT } = process.env;
 
 
 export const postRequestAsync = createAsyncThunk(

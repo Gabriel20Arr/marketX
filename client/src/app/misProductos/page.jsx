@@ -6,9 +6,6 @@ import styles from './misProductos.module.css';
 import Link from 'next/link';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
-require('dotenv').config()
-
-const {LOCALHOSTCLIENT} = process.env;
 
 
 function MisProductos() {

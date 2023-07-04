@@ -10,9 +10,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import CardsCarousel from '../../components/CardsCarousel/CardsCarousel'
 import Link from "next/link";
 import { Store } from "@/src/utils/Store";
-require('dotenv').config()
 
-const {LOCALHOSTCLIENT} = process.env;
 
 export default function HomePage() {
 	const { data: session, status } = useSession();
@@ -37,7 +35,7 @@ export default function HomePage() {
       localStorage.setItem("usuario", guardadoString);
     } else {
       const url = await axios
-        .post(`${LOCALHOSTCLIENT}/Usuario`, objeto)
+        .post("https://marketx-production.up.railway.app/Usuario", objeto)
         .then((result) => {
           const guardadoString = JSON.stringify(url);
           localStorage.setItem("usuario", guardadoString);
