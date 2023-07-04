@@ -30,10 +30,59 @@
 }
 
 .link {
-	margin-top: 50px;
-	margin-left: 10px;
-	margin-bottom: 20px;
-	font-size: 14px;
+	border: 1px solid black;
+	border-radius: 5px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 2em;
+	width: 3.5em;
+
+	margin-left: 30px;
+	margin-top: 20px;
+	
 	color: black;
 	text-decoration: none;
+
+	background-color: #eee;
+
+	font-weight: bolder;
+}
+
+.link:hover {
+	border: 1px solid black;
+	border-radius: 5px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 2.2em;
+	width: 3.7em;
+	
+	color: black;
+	text-decoration: none;
+
+	background-color: #eee;
+
+	font-weight: bolder;
+}
+
+.contenedorTitulo{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bolder;
+	margin: 10px;
+	margin-bottom: 20px;
+
+}
+
+.titulo{
+	border-bottom: 1px solid black;
+    display: flex;
 }

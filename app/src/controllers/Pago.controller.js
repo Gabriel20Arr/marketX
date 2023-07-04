@@ -7,7 +7,7 @@ const getUsuarioById = require('./Usuarios/usuariosById.js')
 const allUsuario = require('./Usuarios/usuarios.js');
 const crearVenta = require('./ventas/crearVenta.js');
 
-const { KEYMERCADOPAGO, LOCALHOST } = process.env;
+const { KEYMERCADOPAGO, LOCALHOST, LOCALHOSTAPP } = process.env;
 var body;
 const createOrder = async (req, res) => {
     const { precio} = req.body; 
@@ -28,7 +28,7 @@ const createOrder = async (req, res) => {
         ],
         
         back_urls: {
-            success: `https://marketx-production.up.railway.app/pago/success`,
+            success: "https://marketx-production.up.railway.app/pago/success",
             failure: "https://marketx-production.up.railway.app/pago/failure",
             pending: "",
         },
@@ -53,7 +53,7 @@ const success = async(req, res) => {
            monto: element.precio * (element.quantity),
            valor: element.precio,
            fecha, vendedor,
-           comprador:usuario
+           comprador:usuario, producto: element.titulo, cantidad: element.quantity
         }
        
        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});
@@ -66,18 +66,18 @@ const success = async(req, res) => {
     cartItems.forEach( async (elem) => {
         const object = {valor: (elem.precio * elem.quantity), fecha, producto: elem._id};
 
-        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
+        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object], carrito: []})
     } )
 
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
     console.log(usuario.correo);
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
-    res.redirect(`${LOCALHOST}/home`);
+    res.redirect("https://marketx-production.up.railway.app/home");
 };
 
 const failure = (req, res) => {
-    res.redirect(`${LOCALHOST}/failure`);
+    res.redirect("https://marketx-production.up.railway.app/failure");
 };
 
 const webhook = async (req, res) => {

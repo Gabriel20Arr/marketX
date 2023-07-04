@@ -6,6 +6,10 @@ import styles from './misProductos.module.css';
 import Link from 'next/link';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
+require('dotenv').config()
+
+const {LOCALHOSTCLIENT} = process.env;
+
 
 function MisProductos() {
 	const { data, refetch } = useGetProductsUsersQuery();
@@ -52,7 +56,7 @@ function MisProductos() {
 		try {
 			e.preventDefault();
 			await axios.put(
-				`https://marketx-production.up.railway.app/producto/actualizar`,
+				"https://marketx-production.up.railway.app/producto/actualizar",
 				{
 					...editedProduct,
 					_id: editingProductId,

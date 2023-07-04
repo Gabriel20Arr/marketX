@@ -13,6 +13,10 @@ import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import BtnGoogle from "../../components/BtnGoogle/BtnGoogle";
 import axios from "axios";
+require('dotenv').config()
+
+const { LOCALHOSTCLIENT } = process.env;
+
 
 export default function Registrarse() {
   const [showPass, setShowPass] = useState(false);
