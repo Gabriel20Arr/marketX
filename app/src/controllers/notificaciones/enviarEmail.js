@@ -35,8 +35,31 @@ const enviarCorreo = async ({ correo, asunto, mensaje }) => {
     from: accountTransport.auth.user,
     to: correo,
     subject: asunto,
-    text: mensaje
+    html: `
+      <html>
+        <head>
+          <style>
+            /* Agrega estilos CSS aquí */
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f2f2f2;
+            }
+            h1 {
+              color: #333;
+            }
+            p {
+              color: #555;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>${asunto}</h1>
+          <p>${mensaje}</p>
+        </body>
+      </html>
+    `
   };
+  
 
   try {
     const info = await transporter.sendMail(mailOptions);

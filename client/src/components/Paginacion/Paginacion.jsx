@@ -16,18 +16,19 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 
 	const sortProducts = (products) => {
 		let sortedProducts = [...products]?.map(p=>{
-			const {puntuaciones} = p;
-			var valor;
-			if (puntuaciones.length==0) {
-				valor=0;
-			}else{
-				const total = puntuaciones.reduce((accumulator, currentValue) => {
-					return accumulator + Number(currentValue.puntuacion);
-				  }, 0);
-				valor = total / puntuaciones.length;
-			}
-			return {...p, puntuaciones:valor};
-		});
+            const {puntuaciones} = p;
+            var valor;
+            if (puntuaciones.length==0) {
+                valor=0;
+            }else{
+                const total = puntuaciones.reduce((accumulator, currentValue) => {
+                    return accumulator + Number(currentValue.puntuacion);
+                  }, 0);
+                valor = total / puntuaciones.length;
+            }
+            return {...p, puntuaciones:valor};
+        });
+
 		if (selectedCategory !== '') {
 			sortedProducts = sortedProducts.filter(
 				(product) => product.categoria === selectedCategory
@@ -56,15 +57,15 @@ const Paginacion = ({ currentPage, setCurrentPage, selectedCategory }) => {
 				.sort((a, b) => parseInt(b.cantidadVenta) - parseInt(a.cantidadVenta));
 		} else if (sortOrder === 'reverse') {
 			return sortedProducts.slice().reverse();
-		} else if (sortOrder === 'mejor valorado') {
-			return sortedProducts
-				.slice()
-				.sort((a, b) => parseFloat(b.puntuaciones) - parseFloat(a.puntuaciones));
-		}else if (sortOrder === 'peor valorado') {
-			return sortedProducts
-				.slice()
-				.sort((a, b) => parseFloat(a.puntuaciones) - parseFloat(b.puntuaciones));
-		}
+		}else if (sortOrder === 'mejor valorado') {
+            return sortedProducts
+                .slice()
+                .sort((a, b) => parseFloat(b.puntuaciones) - parseFloat(a.puntuaciones));
+        }else if (sortOrder === 'peor valorado') {
+            return sortedProducts
+                .slice()
+                .sort((a, b) => parseFloat(a.puntuaciones) - parseFloat(b.puntuaciones));
+        }
 
 		return sortedProducts;
 	};

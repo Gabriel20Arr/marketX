@@ -43,8 +43,8 @@ const HandlerUserCar = async(req, res) =>{
     }
 }
 
-const HandlerEditUser = async(req,res) =>{
-    const {_id}=req.body;
+const HandlerEditUser = async(req, res) =>{
+    const {_id} = req.body;
 
     try {
         const result = UsuarioActualizado(_id,req.body);

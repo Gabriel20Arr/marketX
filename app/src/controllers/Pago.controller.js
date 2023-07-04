@@ -53,7 +53,9 @@ const success = async(req, res) => {
            monto: element.precio * (element.quantity),
            valor: element.precio,
            fecha, vendedor,
-           comprador:usuario
+           comprador:usuario,
+           producto:element.titulo,
+           cantidad:element.quantity
         }
        
        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});
@@ -71,6 +73,7 @@ const success = async(req, res) => {
 
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
+    console.log(usuario.correo);
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
     res.redirect(`${LOCALHOST}/home`);
 };

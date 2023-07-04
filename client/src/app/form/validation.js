@@ -4,8 +4,8 @@ const validation = (form) => {
   if (!form.titulo) {
     errors.titulo = "*";
   }
-  if (form.titulo.length < 4 || form.titulo.length > 140) {
-    errors.titulo = "El título debe tener entre 4 y 140 caracteres";
+  if (form.titulo.length < 4 || form.titulo.length > 40) {
+    errors.titulo = "El título debe tener entre 4 y 40 caracteres";
   }
   if (!form.imagen) {
     errors.imagen = "*";

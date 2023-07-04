@@ -1,4 +1,4 @@
-const allVentas = require('../controllers/ventas/allVentas');
+const {allVentas, ventasActualizado} = require('../controllers/ventas/allVentas');
 
 const HandlerAllVentas = async(req, res) =>{
     try {
@@ -9,4 +9,15 @@ const HandlerAllVentas = async(req, res) =>{
     }
 }
 
-module.exports= {HandlerAllVentas};
+const HandlerActualizar = async (req, res) => {
+  const { _id } = req.body;
+  try {
+    await ventasActualizado(_id, req.body);
+    res.status(200).send('Se actualizó correctamente');
+  } catch (error) {
+    res.status(422).send(error.message);
+  }
+};
+
+
+module.exports= {HandlerAllVentas, HandlerActualizar};

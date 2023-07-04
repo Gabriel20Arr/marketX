@@ -17,6 +17,18 @@ const VentaSchema = new Schema({
     type: Date,
     required: true,
   },
+  despachado: {
+    type: Boolean,
+    default: false
+  },
+  producto: {
+    type: String,
+    required: true,
+  },
+  cantidad:{
+    type:Number,
+    required:true,
+  }
 });
 
 module.exports = model("Ventas", VentaSchema);
