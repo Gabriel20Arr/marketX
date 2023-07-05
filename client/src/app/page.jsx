@@ -25,7 +25,7 @@ const Landing = () => {
     refetch();
   }, [refetch]);
   // console.log(data);
-
+  
   const home = (event) => {
     event.preventDefault();
     const guardado = data?.find((user) => user.correo === "invitado@gmail.com");

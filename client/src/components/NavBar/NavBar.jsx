@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
-
+import { signOut } from "next-auth/react"
 
 
 export default function Navigation() {
@@ -100,6 +100,7 @@ export default function Navigation() {
 
   const handlerSalir =()=>{
     localStorage.clear()
+    signOut()
     router.push('/')
   }
 
@@ -109,7 +110,6 @@ export default function Navigation() {
 
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
-
 
   return (
     <nav style={{backgroundColor: "#030a32"}} class="navbar navbar-expand-lg" data-bs-theme="dark">
