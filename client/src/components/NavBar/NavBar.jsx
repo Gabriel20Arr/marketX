@@ -159,14 +159,16 @@ const handlerSalir = async () => {
             <li class="nav-item">
               {path !== "/about" && (
                 <div>
-                  <Link
-                    class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none", marginLeft: '20px' }}
-                    href="/about"
-                  >
-                    Sobre MarketX
-                  </Link>
-                </div>
+                  <button>
+                      <Link
+                        class="nav-link link-body-emphasis"
+                        style={{ textDecoration: "none", marginLeft: '20px' }}
+                        href="/about"
+                      >
+                        Sobre MarketX
+                      </Link>
+                    </button>
+                  </div>
               )}
             </li>
             {/* <li class="nav-item">
@@ -220,7 +222,7 @@ const handlerSalir = async () => {
                   : null
                   }
                   
-                  { (usuario || (usuario.direccion === "google")) ? (
+                  { usuario ? (
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}}
                     onClick={ handlerSalir }
