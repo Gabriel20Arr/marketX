@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Cart4 } from "react-bootstrap-icons";
 import { Store } from "@/src/utils/Store";
 import { useRouter, usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
@@ -98,9 +98,11 @@ export default function Navigation() {
 		router.push('/misCompras');
 	};
 
-  const handlerSalir =()=>{
+  const handlerSalir =async ()=>{
+    await signOut()
     localStorage.clear()
     router.push('/')
+
   }
 
   if (status === "loading") {
@@ -217,7 +219,7 @@ export default function Navigation() {
                   : null
                   }
                   
-                  { (usuario || (usuario.direccion === "google")) ? (
+                  { (usuario || (usuario?.direccion === "google")) ? (
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}}
                     onClick={ handlerSalir }
@@ -228,13 +230,13 @@ export default function Navigation() {
                       <div>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
+                          onClick={() => handelrRouter('login')}
                         >
                           Iniciar sesión
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
+                          onClick={() => handelrRouter('registrarse')}
                         >
                           Registrarse
                         </NavDropdown.Item>
@@ -270,4 +272,4 @@ export default function Navigation() {
       </div>
     </nav>
   );
-}
+} 

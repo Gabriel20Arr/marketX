@@ -17,7 +17,7 @@ const HandlerCrearUsuario = async(req, res) => {
 const HandlerAllUsuarios = async (req, res) => {
     try {
         const ress = await allUsuario()
-        res.status(200).json(ress);
+        res.status(200).json({message:ress});
     } catch (error) {
         res.status(500).json({msg: error.message})
     }

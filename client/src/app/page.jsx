@@ -24,7 +24,7 @@ const Landing = () => {
   useEffect(() => {
     refetch();
   }, [refetch]);
-  // console.log(data);
+  console.log(data);
 
   const home = (event) => {
     event.preventDefault();
