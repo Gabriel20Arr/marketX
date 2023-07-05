@@ -5,7 +5,6 @@ import Style from "./Loging.module.css";
 import logo from "../../images/logo4.png";
 import Image from "next/image";
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Store } from "@/src/utils/Store";
@@ -24,18 +23,19 @@ export default function Registrarse() {
     contraseña: "",
   });
 
-  const blockedUsers = useSelector((state) => state.blockedUsers);
-
   const [errors, setError] = useState({
     correo: "",
     contraseña: "",
     blocked: "",
   });
-
+  
   const { data,error,isFetching,isLoading, refetch } = useGetUsersQuery(null);
+  const router = useRouter();
+  const { dispatch } = useContext(Store);
   useEffect(() => {
     refetch();
   }, [refetch]);
+
   if (isLoading || isFetching) {
     return <div>
       <Loader/>
@@ -47,8 +47,6 @@ export default function Registrarse() {
     </p>
   }
 
-  const router = useRouter();
-  const { dispatch } = useContext(Store);
 
   const handlerUsuario = (e) => {
     const { value, name } = e.target;
