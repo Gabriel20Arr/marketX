@@ -142,17 +142,17 @@ const handlerSalir = async () => {
             <li class="nav-item">
               {path !== "/form" && (
                 <div>
+                  <button 
+                    disabled={usuario.correo === "invitado@gmail.com"}
+                  >
                   <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none", marginLeft: '30px' }}
                     href={usuario?.rol ? "/form" : "/registrarse"}
                   >
-                  <button 
-                    disabled={usuario.correo === "invitado@gmail.com"}
-                  >
                      Publicar Producto
-                  </button>
                   </Link>
+                  </button>
                 </div>
               )}
             </li>
