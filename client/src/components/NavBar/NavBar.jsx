@@ -98,9 +98,9 @@ export default function Navigation() {
 	};
 
 const handlerSalir = async () => {
-  await signOut(); // Primero cerrar la sesión
   localStorage.clear(); // Luego borrar el localStorage
-  router.push('/'); // Por último, redirigir al landing
+  await signOut(); // Primero cerrar la sesión
+  // router.push('/'); // Por último, redirigir al landing
 };
 
   if (status === "loading") {
