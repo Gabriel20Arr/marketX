@@ -6,7 +6,8 @@ import styles from './misProductos.module.css';
 import Link from 'next/link';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+
 
 function MisProductos() {
 	const { data, refetch } = useGetProductsUsersQuery();
@@ -81,16 +82,24 @@ function MisProductos() {
 	};
 
 	const goBack = () => {
-    	router.back();
-  	};
+		router.back();
+	  };
 
 	return (
-		<div>
-			<button onClick={goBack} className={styles.link}>Volver</button>
+		<div className={styles.contenedor1}>
+
+			<div >
+       			 <button onClick={goBack} className={styles.link}>Volver</button>
+      		</div>
+			<div className={styles.contenedor1_1}>
 
 			<div className={styles.contenedorTitulo}>
 				<h1 className={styles.titulo}>Mis Productos</h1>
 			</div>
+			</div>
+
+			<div className={styles.contenedor2}>
+
 			
 			{isLoading ? (
 				<Loading />
@@ -130,43 +139,44 @@ function MisProductos() {
 				<p>No se encontraron productos.</p>
 			)}
 			{editingProductId && (
-				<div className={styles.editUserForm}>
-					<div className={styles.editUserForm2}>
-						<h2 className={styles.nameEdit}>Editar Producto</h2>
-						<form className={styles.editForm}>
-							<div className={styles.Edit}>
-								<label 
-								className={styles.EditLabel} 
-								htmlFor='precio'>Precio:</label>
-								<input
-									type='number'
-									id='precio'
-									name='precio'
-									value={editedProduct?.precio || ''}
-									onChange={handleInputChange}
-								/>
-							</div>
-							<div className={styles.Edit}>
-								<label 
-								className={styles.EditLabel} 
-								htmlFor='stock'>Stock:</label>
-								<input
-									type='number'
-									id='stock'
-									name='stock'
-									value={editedProduct?.stock || ''}
-									onChange={handleInputChange}
-								/>
-							</div>
+                <div className={styles.editUserForm}>
+                    <div className={styles.editUserForm2}>
+                        <h2 className={styles.nameEdit}>Editar Producto</h2>
+                        <form className={styles.editForm}>
+                            <div className={styles.Edit}>
+                                <label 
+                                className={styles.EditLabel} 
+                                htmlFor='precio'>Precio:</label>
+                                <input
+                                    type='number'
+                                    id='precio'
+                                    name='precio'
+                                    value={editedProduct?.precio ||  ''}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className={styles.Edit}>
+                                <label 
+                                className={styles.EditLabel} 
+                                htmlFor='stock'>Stock:</label>
+                                <input
+                                    type='number'
+                                    id='stock'
+                                    name='stock'
+                                    value={editedProduct?.stock || ''}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
 
-							<div>
-								<button className={styles.EditB}  onClick={saveChanges}>Guardar</button>
-								<button className={styles.EditB}  onClick={cancelEdit}>Cancelar</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			)}
+                            <div>
+                                <button className={styles.EditB}  onClick={saveChanges}>Guardar</button>
+                                <button className={styles.EditB}  onClick={cancelEdit}>Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+			</div>
 		</div>
 	);
 }

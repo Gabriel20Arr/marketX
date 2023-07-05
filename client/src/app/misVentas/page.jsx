@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { enviarNotificacionPorCorreo } from '../../hooks/enviarCorreo.js';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
+import { useRouter } from 'next/navigation';
 
 
 function Page() {
@@ -16,6 +17,8 @@ function Page() {
 	const [editedVenta, setEditedVenta] = useState({
 		despachado: '',
 	});
+
+	const router = useRouter();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -69,12 +72,14 @@ function Page() {
 		}
 	};
 
+	const goBack = () => {
+		router.back();
+	  };
+
 	return (
 		<div className={styles.container}>
-			<div className={styles.Clink}>
-				<Link href='/home' className={styles.link}>
-					Volver
-				</Link>
+			<div>
+			<button onClick={goBack} className={styles.link}>Volver</button>
 			</div>
 
 			<div className={styles.contenedorTitulo}>

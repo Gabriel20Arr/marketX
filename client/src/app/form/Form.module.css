@@ -1,158 +1,198 @@
-.cont{
-    padding-top: 5px;
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1.2fr;
+	height: 900px;
 }
 
-.container{
-    display: flex;
-    justify-content: space-around;
-
-    margin-right: 0;
-    padding-left: 0;
-    /* padding-right: 40px; */
-
-    /* border: 5px solid rgb(29, 0, 63); */
+.errors {
+	margin-left: 10px;
+	color: red;
+	font-size: 18px;
+	font-style: italic;
 }
 
-.atras{
-    margin-top: 5px;
-    margin-left: 5px;
-    padding: 5px 10px;
-    border: 2px solid #111033;
-    border-radius: 10px;
-    color: #111033;
-    text-decoration: none;
-    font-style: italic;
-    font-weight: bold;
+.errorsDesc {
+	margin-top: 0;
+	margin-left: 10px;
+	color: red;
+	font-size: 18px;
+	font-style: italic;
 }
 
-.atras:hover{
-    cursor: pointer;
-    box-shadow: 0 2px 4px #111033;
-    font-weight: bolder;
-    transition: 0.2s;
+.submitButton {
+	padding: 10px;
+	background-color: rgb(29, 0, 63);
+	color: rgb(40, 236, 239);
+	border-radius: 20px;
+	border: 3px solid rgb(40, 236, 239);
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+		'Lucida Sans', Arial, sans-serif;
+	font-size: 25px;
+	font-weight: bolder;
+
+	margin-bottom: 0;
 }
 
-.containerForm{
-    display: flex;
-    justify-content: center;
-    
-    margin-top: 10px;
-
-    padding: 60px;
-    padding-top: 10px;
-
-    border: 5px solid rgb(29, 0, 63);
-    border-radius: 20px;
+.submitButton:hover {
+	cursor: pointer;
+	transition: 0.1s;
+	background-color: rgb(40, 236, 239);
+	color: rgb(29, 0, 63);
+	border-color: rgb(29, 0, 63);
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+		'Lucida Sans', Arial, sans-serif;
+	font-weight: bolder;
 }
 
-.title{
-    font-size: 30px;
-    color: rgb(29, 0, 63);
-    font-style: italic;
-    text-shadow: 0 0 8px rgb(50, 173, 255);
+.submitButton:disabled {
+	background-color: rgba(255, 255, 255, 0.43);
+	color: rgb(64, 64, 64);
+	font-size: 20px;
+	box-shadow: 0;
+	border: 2px solid black;
 }
 
-.consigna{
-    color: rgb(29, 0, 63);
-    font-size: 1.3em;
-    font-weight: bolder;
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1.2fr;
+	height: 900px;
 }
 
-.formLabel{
-    font-size: 16px;
-    font-weight: bold;
+.image {
+	width: 1007px;
+	height: 100vh;
+	background-image: url('../../images/unsplashBd7gNnWJBkU.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-.formInput{
-    margin-left: 10px;
-    margin-bottom: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    font-size: 18px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.containerTitulo {
+	display: flex;
+	gap: 10px;
 }
 
-.errors{
-    margin-left: 10px;
-    color: red;
-    font-size: 18px;
-    font-style: italic;
+.titulo {
+	margin-top: 20px;
 }
 
-.errorsDesc{
-    margin-top: 0;
-    margin-left: 10px;
-    color: red;
-    font-size: 18px;
-    font-style: italic;
+.logo {
+	margin-top: 10px;
+	height: 70px;
+	width: 128px;
+	margin-left: 10px;
 }
 
-.submitButton{
-    padding: 10px;
-    background-color: rgb(29, 0, 63);
-    color: rgb(40, 236, 239);
-    border-radius: 20px;
-    border: 3px solid rgb(40, 236, 239);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 25px;
-    font-weight: bolder;
-
-    margin-bottom: 0;
+.sobreLogo {
+	background-color: #0b244759;
+	position: absolute;
+	top: 700px;
+	width: 1007px;
+	height: 240px;
 }
 
-.submitButton:hover{
-    cursor: pointer;
-    transition: 0.1s;
-    background-color: rgb(40, 236, 239);
-    color: rgb(29, 0, 63);
-    border-color: rgb(29, 0, 63);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bolder;
+.Publicidad {
+	color: #a5d7e8f2;
+	font-size: 25px;
+	text-align: center;
+	padding-top: 15px;
+	width: 752px;
+	font-family: 'Quicksand', sans-serif;
+	margin-left: 47px;
 }
 
-.submitButton:disabled{
-    background-color: rgba(255, 255, 255, 0.43);
-    color: rgb(64, 64, 64);
-    font-size: 20px;
-    box-shadow: 0;
-    border: 2px solid black;
+.Publicidad2 {
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	width: 551px;
+	margin-left: 151px;
+	margin-top: 30px;
+	font-size: 2rem;
 }
 
-.imgContainer{
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    padding-bottom: 50px;
-    border-radius: 20px;
-
-    width: 350px;
+.lineal {
+	position: absolute;
+	left: 135px;
+	top: 78px;
+	width: 2px;
+	max-width: 100%;
+	height: 75px;
+	max-height: 100%;
+	background-color: #a5d7e8;
 }
 
-.img{
-    margin-top: 0;
-    object-fit: contain;
-    width: 500px;
-    height: 500px;
-    border-radius: 20px;
+.form {
+	margin-top: 30px;
+	width: 450px;
 }
 
-.text{
-    display: flex;
-    justify-content: center;
-
-    color: rgb(29, 0, 63);
-    font-size: 30px;
-    font-style: italic;
-    text-shadow: 0 0 8px rgb(50, 173, 255);
-
-    /* padding: 0 45px; */
+.form h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
 }
 
+.form h3 {
+	font-size: 17px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.form input {
+	background-color: #d9d9d9;
+}
+
+.form label {
+	font-family: 'Quicksand', sans-serif;
+}
+
+.form button {
+	font-family: 'Quicksand', sans-serif;
+}
+
+.formInput2 {
+	border: 1px solid black;
+	height: 2.5em;
+	width: 12.5em;
+}
+
+.inputs {
+	display: flex;
+	align-items: center;
+}
+
+.dosInputs {
+	display: flex;
+	gap: 57px;
+}
+
+.dosInputs input {
+	width: 197px !important;
+}
+
+.formInput {
+	border: 1px solid black;
+	border-right: none;
+	height: 2.5em;
+	outline: none;
+}
+
+.back {
+	width: 40px;
+	height: 40px;
+	margin-left: 10px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.back:hover {
+	background-color: #e5e5e5;
+	border-radius: 50%;
+}
+
+.svg1 {
+	height: 2.5em;
+	transform: translate(-2.5rem);
+}
+
+.containerSvg {
+	width: 0px;
+}

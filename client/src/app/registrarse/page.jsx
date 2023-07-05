@@ -54,7 +54,7 @@ export default function Registrarse() {
     const result = await dispatch(postRequestAsync(usuario));
 
     const asunto = "Bienvenido a Market X";
-    const mensaje = "Su cuenta se ha creado correctamente";
+    const mensaje = `Estimado ${usuario.nombre}, ¡Nos complace darte la más cordial bienvenida a MarketX! Queremos agradecerte por unirte a nuestra comunidad, donde podrás encontrar los mejores productos gamer y tecnológicos, así como conectarte con entusiastas como tú. En MarketX, estamos comprometidos en ofrecerte una experiencia única y satisfactoria en tus compras y ventas. Nuestra plataforma ha sido diseñada pensando en tus necesidades, y estamos seguros de que encontrarás todo lo que buscas para mejorar tu experiencia gaming y tecnológica. Aquí, podrás explorar un amplio catálogo de productos de calidad. Nuestro objetivo es brindarte un espacio seguro y confiable donde puedas realizar transacciones de forma segura y disfrutar de una comunidad activa y amigable. Si en algún momento tienes preguntas, inquietudes o necesitas ayuda, nuestro equipo de soporte estará encantado de asistirte. Puedes contactarnos a través del correo electrónico atcliente.marketX@gmail.com. Una vez más, bienvenido a MarketX. Estamos emocionados de tenerte como parte de nuestra comunidad. Esperamos que disfrutes de tus experiencias de compra y venta, encuentres grandes ofertas y te conectes con otros apasionados de los videojuegos y la tecnología. ¡Que tengas excelentes transacciones!  Atentamente, MarketX;`;
     const correoEnviado = enviarNotificacionPorCorreo(
       usuario.correo,
       asunto,

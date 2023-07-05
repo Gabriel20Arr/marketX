@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import styles from "./NavBar.module.css";
@@ -97,11 +97,11 @@ export default function Navigation() {
 		router.push('/misCompras');
 	};
 
-const handlerSalir = async () => {
-  await signOut(); // Primero cerrar la sesión
-  localStorage.clear(); // Luego borrar el localStorage
-  // router.push('/'); // Por último, redirigir al landing
-};
+  const handlerSalir = async ()=>{
+    localStorage.clear()
+    await signOut()
+    router.push('/')
+  }
 
   if (status === "loading") {
     return null;
@@ -142,17 +142,13 @@ const handlerSalir = async () => {
             <li class="nav-item">
               {path !== "/form" && (
                 <div>
-                  <button 
-                    disabled={(usuario.correo === "invitado@gmail.com")}
+                  <Link
+                    class="nav-link link-body-emphasis"
+                    style={{ textDecoration: "none", marginLeft: '30px' }}
+                    href={usuario?.rol ? "/form" : "/registrarse"}
                   >
-                    <Link
-                      class="nav-link link-body-emphasis"
-                      style={{ textDecoration: "none", marginLeft: '30px' }}
-                      href={usuario?.rol ? "/form" : "/registrarse"}
-                    >
-                      Publicar Producto
-                    </Link>
-                  </button>
+                    Publicar Producto
+                  </Link>
                 </div>
               )}
             </li>
@@ -220,7 +216,7 @@ const handlerSalir = async () => {
                   : null
                   }
                   
-                  { usuario ? (
+                  { (usuario || (usuario.direccion === "google")) ? (
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}}
                     onClick={ handlerSalir }

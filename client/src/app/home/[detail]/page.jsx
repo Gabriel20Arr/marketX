@@ -54,6 +54,13 @@ export default function Detail({ params }) {
       type: "CARD_ADD_ITEM",
       payload: { ...data, quantity, usuario: usuario._id },
     });
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "El producto se ha agregado correctamente",
+      showConfirmButton: false,
+      timer: 1500,
+      });
     // router.push('/cart');
   };
 
@@ -70,8 +77,8 @@ export default function Detail({ params }) {
 
   return (
     <>
-      <div className={styles.link}>
-         <button onClick={goBack} className={styles.link2} >Volver</button>
+      <div>
+         <button onClick={goBack} className={styles.link} >Volver</button>
       </div>
 
       <div className={styles.container}>

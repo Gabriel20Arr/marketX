@@ -79,6 +79,13 @@ export default function Card({ item }) {
       type: "CARD_ADD_ITEM",
       payload: { ...data, quantity, usuario: usuario._id },
     });
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Se ha agregado el producto correctamente",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     // router.push('/cart');
   };
 
@@ -98,7 +105,7 @@ export default function Card({ item }) {
         <article className={style.article}>
 
             <div className={style.imageContainer}>
-              <img alt='img' className={style.img} src={item.imagen}  style={{width:"100%", height:"100%"}} />
+              <img alt='img' className={style.img} src={item.imagen}  style={{width:"100%", height:"100%"}} onClick={handlerDetail}/>
             </div>
 
             <div className={style.contT}>

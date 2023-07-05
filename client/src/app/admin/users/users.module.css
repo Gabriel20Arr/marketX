@@ -85,78 +85,77 @@
 .titulo{
 	border-bottom: 1px solid black;
     display: flex;
+	font-size: 60px;
 }
 
-/* users */
-
 .editUserForm{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	backdrop-filter: blur(2px);
-	z-index: 9999; 
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 9999; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .editUserForm2{
-	border: 1px solid black;
-	background-color: white;
+    border: 1px solid black;
+    background-color: white;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-	width: 35em;
-	height: 38em;
-	
-	padding: none;
+    width: 35em;
+    height: 38em;
+
+    padding: none;
 }
 
 .editForm{
-	/* border: 1px solid green; */
-	background-color: white;
+    background-color: white;
 
-	display: flex;
-	flex-direction: column;
-	/* justify-content: center; */
+    display: flex;
+    flex-direction: column;
 
-	width: 30em;
-	height: 28em;
+    width: 30em;
+    height: 28em;
 
-	padding-top: 30px;
-	padding-left: 30px;
+    padding-top: 30px;
+    padding-left: 30px;
 }
 
 
 .nameEdit{
-	/* border: 1px solid blue; */
-	margin: none;
-	font-weight: bolder;
-	border-bottom: 3px solid black;
+    margin: none;
+    font-weight: bolder;
+    border-bottom: 3px solid black;
 }
 
 .EditLabel{
-	padding-right: 10px;
+    padding-right: 10px;
 }
 
 .Edit{
-	/* border: 1px solid red; */
-	
-	display: flex;
 
-	font-size: 20px;
-	
-	margin-bottom: 10px;
-	padding: 2px;
+    display: flex;
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+    padding: 2px;
 }
 
 .EditB{
-	font-size: 20px;
-	font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container2{
+	margin: 0px 30px;
 }

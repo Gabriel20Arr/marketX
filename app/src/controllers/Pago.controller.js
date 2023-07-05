@@ -71,8 +71,9 @@ const success = async(req, res) => {
         await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object], carrito: []})
     } )
 
-    const asunto = "Mercado Pago";
-    const mensaje = "Su compra se realizó correctamente";
+    const asunto = "La compra ha sido exitosa";
+    const mensaje = `Estimado ${usuario.nombre}, ¡Es un placer escribirte para agradecerte por tu reciente compra en MarketX! Queremos felicitarte por haber completado con éxito tu transacción y por elegirnos como tu plataforma de compras de confianza. Nos complace informarte que tu compra ha sido procesada correctamente y que pronto recibirás tus productos en la dirección de envío proporcionada. Nos aseguraremos de que tu pedido sea entregado de manera segura y dentro de los plazos estimados. Queremos recordarte que en MarketX nos esforzamos por ofrecer solo productos de alta calidad y de las mejores marcas del mercado. Cada artículo es cuidadosamente seleccionado para garantizar que nuestros clientes disfruten de una experiencia satisfactoria y duradera. Si en algún momento tienes alguna pregunta o inquietud relacionada con tu compra, nuestro equipo de atención al cliente estará encantado de ayudarte. Puedes comunicarte con nosotros a través del correo electrónico atcliente.marketX@gmail.com. Estamos aquí para brindarte la asistencia que necesitas. Una vez más, queremos agradecerte por tu confianza en MarketX. Esperamos que disfrutes plenamente de tu nuevo producto y que te brinde muchas horas de diversión y entretenimiento. Tu satisfacción es nuestra máxima prioridad, y estamos comprometidos en brindarte una experiencia de compra excepcional. Esperamos verte pronto para tu próxima compra. ¡Que disfrutes de tu producto al máximo! Atentamente, MarketX.`;
+    // console.log(usuario.correo);
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
     res.redirect("https://marketx-doploy.vercel.app/home");
 };
