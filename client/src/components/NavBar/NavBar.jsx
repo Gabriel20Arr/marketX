@@ -97,9 +97,9 @@ export default function Navigation() {
 		router.push('/misCompras');
 	};
 
-  const handlerSalir =()=>{
+  const handlerSalir = async ()=>{
     localStorage.clear()
-    signOut()
+    await signOut()
     router.push('/')
   }
 
