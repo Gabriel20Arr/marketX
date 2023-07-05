@@ -145,13 +145,13 @@ const handlerSalir = async () => {
                   <button 
                     disabled={usuario.correo === "invitado@gmail.com"}
                   >
-                  <Link
-                    class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none", marginLeft: '30px' }}
-                    href={usuario?.rol ? "/form" : "/registrarse"}
-                  >
-                     Publicar Producto
-                  </Link>
+                    <Link
+                      class="nav-link link-body-emphasis"
+                      style={{ textDecoration: "none", marginLeft: '30px' }}
+                      href={usuario?.rol ? "/form" : "/registrarse"}
+                    >
+                      Publicar Producto
+                    </Link>
                   </button>
                 </div>
               )}
