@@ -10,6 +10,8 @@ import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
+import { useRouter } from "next/navigation";
+
 
 export default function Detail({ params }) {
   const { state, dispatch } = useContext(Store);
@@ -18,6 +20,8 @@ export default function Detail({ params }) {
   const { data, error, isLoading, isFetching } = useGetProductsByIdQuery({
     id: detail,
   });
+
+  const router = useRouter();
 
   const puntuaciones2 = data?.puntuaciones || [];
 
@@ -58,14 +62,16 @@ export default function Detail({ params }) {
       title: "Oops, algo salió mal",
       text: "Intentelo mas tarde",
       icon: "error",
-    });;
+    });
+
+  const goBack = () => {
+    router.back();
+  };
 
   return (
     <>
       <div className={styles.link}>
-        <Link href="/productos" className={styles.link2}>
-          Volver
-        </Link>
+         <button onClick={goBack} className={styles.link2} >Volver</button>
       </div>
 
       <div className={styles.container}>
@@ -81,31 +87,39 @@ export default function Detail({ params }) {
           <div className={styles.detailsContainer}>
             <p className={styles.title}>{data.titulo}</p>
             <p className={styles.price}>${data.precio}</p>
-            <p className={styles.stock}>Stock: {data.stock}</p>
-            <p className={styles.category}>
-              <div className={styles.categoryC}>Categoría:</div>
-              {data.categoria}
-            </p>
-
-              <div className={styles.contenedorRating}>
-                <span className={styles.promedio}>{average? average : 0}</span>
-                <Rating
-                  value={average}
-                  precision={0.1}
-                  emptyIcon={<StarIcon />}
-                />
+            <div className={styles.C2}>
+              <p className={styles.stock}>Stock: {data.stock}</p>
+              <p className={styles.category}>
+                <div className={styles.categoryC}>Categoría:</div>
+                {data.categoria}
+              </p>
             </div>
-            <span className={styles.calificaciones}> {puntuaciones2.length} calificaciones</span>
+
+              <div className={styles.contenedorRating1}>
+                <span className={styles.promedio}>{average? average : 0}</span>
+                  <div className={styles.contenedorRating}>
+                    <Rating
+                      value={average}
+                      precision={0.1}
+                      emptyIcon={<StarIcon />}
+                    />
+                    <span className={styles.calificaciones}> {puntuaciones2.length} calificaciones</span>
+                  </div>
+              </div>
 
             <div className={styles.descriptionTitle}>
+            <h2>
               Descripcion
-              <div>
+            </h2>
+              <div className={styles.descriptionTitle2}>
                 <p className={styles.description}>{data.descripcion}</p>
               </div>
             </div>
 
             <div className={styles.contenedorCart}>
               <button
+                class="btn btn-success"
+                style={{width:'15em'}}
                 className={styles.addButton}
                 disabled={data.stock === 0}
                 onClick={addToCartHandler}

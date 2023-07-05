@@ -103,3 +103,80 @@
 	font-size: 14px;
 }
 
+
+
+/* users */
+
+.editUserForm{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(2px);
+	z-index: 9999; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.editUserForm2{
+	border: 1px solid black;
+	background-color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	width: 30em;
+	height: 30em;
+	
+	padding: none;
+}
+
+.editForm{
+	background-color: white;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 25em;
+	height: 25em;
+
+	padding-top: 30px;
+}
+
+
+.nameEdit{
+	margin: none;
+	font-weight: bolder;
+	border-bottom: 3px solid black;
+
+	margin-bottom: 20px;
+	margin-top: 40px;
+}
+
+.EditLabel{
+	padding-right: 10px;
+}
+
+.Edit{
+	display: flex;
+
+	font-size: 20px;
+	
+	margin-bottom: 10px;
+	padding: 2px;
+}
+
+.EditB{
+	margin-top: 40px;
+	
+	font-size: 20px;
+	font-weight: bold;
+
+	padding: 5px;
+}

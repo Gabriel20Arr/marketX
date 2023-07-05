@@ -114,7 +114,7 @@ const handlerSalir = async () => {
     <nav style={{backgroundColor: "#030a32"}} class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
         <div style={menuOpen ? {paddingLeft: '20px' ,paddingRight: '30px', paddingBottom: '20px', marginRight: '10px' } : {paddingRight: '30px', marginRight: '10px', borderRight: '2px solid white'}}>
-          <Link href="/home">
+          <Link href="/">
             <img src={image} alt='Logo' width={'135'} height={'90'} />
           </Link>
         </div>
@@ -143,7 +143,7 @@ const handlerSalir = async () => {
               {path !== "/form" && (
                 <div>
                   <button 
-                    disabled={usuario.correo === "invitado@gmail.com"}
+                    disabled={(usuario.correo === "invitado@gmail.com")}
                   >
                     <Link
                       class="nav-link link-body-emphasis"
@@ -200,14 +200,14 @@ const handlerSalir = async () => {
                     Mis Compras
                   </NavDropdown.Item>
                   
-                  {usuario?.rol == "admin" ? (
+                  {/* {usuario?.rol == "admin" ? ( */}
                     <NavDropdown.Item 
                       style={{fontSize: '20px'}} 
                       onClick={routerDashBoard}
                     >
                       Dashboard
                     </NavDropdown.Item>
-                  ) : null}
+                  {/* ) : null} */}
                   
                   { (!usuario) ? 
                   <NavDropdown.Divider /> &&

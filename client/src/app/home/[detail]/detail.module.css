@@ -9,9 +9,11 @@
 	background-color:  #eeee;
 	border-radius: 10px;
 
-	height: 70vh;
+	height: fit-content;
 
 	overflow: hidden;
+
+	border: 1px solid blue;
 }
 
 .link {
@@ -54,9 +56,9 @@
 .image {
 	display: flex;
 	align-items: center;
-	border-radius: 10px;
+	border-radius: 20px;
 	width: auto;
-	height: 75%;
+	height: 700px;
 	transition: transform 0.2s ease-in-out;
 	margin-top: 5%;
 
@@ -82,37 +84,60 @@
 
 .title {
 	font-weight: bold;
-	font-size: 20px;
-	border-bottom: 1px solid;
+	font-size: 45px;
+	border-bottom: 5px solid black;
+	margin-top: 6%;
+
+	background-color: white;
+	border-radius: 10px;
+	padding: 5px;
 }
 
 .price {
 	display: flex;
-	justify-content: flex-start;
-	font-size: 26px;
+	justify-content: flex-end;
+	font-size: 45px;
+	font-weight: bolder;
+
+	margin-top: 30px;
+
+	/* border: 3px solid black; */
+}
+
+.C2{
+	background-color: white;
+	/* border: 1px solid black; */
+	display: flex;
+	justify-content: space-around;
+	margin-top: 40px;
+}
+
+.category {
+	/* border: 1px solid black; */
+
+	display: flex;
+	justify-content: flex-end;
+	font-size: 30px;
+
+	width: fit-content;
+	margin-right: 5px;
 }
 
 .categoryC {
 	display: flex;
-	font-size: 15px;
+	font-size: 30px;
 	font-weight: bold;
-	margin-right: 5px;
-	/* border: 1px solid; */
-}
+	margin-right: 10px;
 
-.btnCategoria {
-	/* border: 1px solid black; */
-
-	display: flex;
-	justify-content: center;
-
-	width: fit-content;
+	/* border-bottom: 1px solid black; */
 }
 
 .stock {
 	display: flex;
 	justify-content: flex-start;
-	font-weight: bold;
+	font-weight: bolder;
+	font-size: 30px;
+
 	/* border: 1px solid; */
 }
 
@@ -121,10 +146,24 @@
 	text-align: center;
 	/* border: 1px solid; */
 
+	text-justify: inter-word;
+	
+	font-size: 15px;
 }
 
+.descriptionTitle2 {
+	color: black;
+	text-align: center;
+
+	text-justify: inter-word;
+	
+	font-size: 15px;
+}
+
+
 .description {
-	color: gray;
+	color: black;
+	font-weight: bold;
 }
 
 .contenedorCart {
@@ -133,6 +172,7 @@
 	align-items: center;
 
 	margin-top: 50px;
+
 }
 
 .addButton {
@@ -142,39 +182,47 @@
 	justify-content: center;
 	align-items: center;
 	padding: 3px 6px;
-
+	
 	font-weight: bold;
 }
 
-.contenedorRating{
-	/* border: 1px solid black; */
+.contenedorRating1{
+	/* border: 1px solid green; */
 	display: flex;
 	width: fit-content;
+	/* justify-content: center; */
 	align-items: center;
+
+	margin-top: 30px;
+	margin-bottom: 30px;
 	
+	width: 23em;
+}
+
+.contenedorRating{
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+
+	margin-left: 7px;
 }
 
 .promedio{
-	/* border: 1px solid black; */
-
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	
 	margin: none;
-	margin-right: 5px;
 
-	font-size: 35px;
+	padding: 3px;
+
+	font-size: 75px;
 	font-weight: bolder;
 }
 
-.calificaciones{
-	/* border: 1px solid black; */
-	display: flex;
-	margin-left: 4.7em;
-	/* width: fit-content; */
-	height: auto;
 
-	position: relative;
-	bottom: 20px;
+.calificaciones{
+	display: flex;
+	font-size: 20px;
+	height: auto;
 }

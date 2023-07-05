@@ -104,6 +104,9 @@ export default function Registrarse() {
         correo: "",
         contraseña: "",
         blocked: "Usuario bloqueado",
+        customClass: {
+          popup: 'custom-alert-size',
+        },
       });
     }
   } else {

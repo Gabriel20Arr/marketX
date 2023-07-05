@@ -73,7 +73,6 @@ const success = async(req, res) => {
 
     const asunto = "Mercado Pago";
     const mensaje = "Su compra se realizó correctamente";
-    // console.log(usuario.correo);
     await enviarNotificacionPorCorreo(usuario.correo, asunto, mensaje)
     res.redirect("https://marketx-doploy.vercel.app/home");
 };
