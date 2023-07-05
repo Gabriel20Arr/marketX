@@ -159,7 +159,6 @@ const handlerSalir = async () => {
             <li class="nav-item">
               {path !== "/about" && (
                 <div>
-                  <button>
                       <Link
                         class="nav-link link-body-emphasis"
                         style={{ textDecoration: "none", marginLeft: '20px' }}
@@ -167,7 +166,6 @@ const handlerSalir = async () => {
                       >
                         Sobre MarketX
                       </Link>
-                    </button>
                   </div>
               )}
             </li>
