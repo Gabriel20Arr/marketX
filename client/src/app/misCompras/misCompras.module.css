@@ -32,46 +32,6 @@
 	margin-bottom: 20px;
 }
 
-.link {
-	border: 1px solid black;
-	border-radius: 5px;
-	
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	height: 2em;
-	width: 3.5em;
-
-	margin-left: 50px;
-	
-	color: black;
-	text-decoration: none;
-
-	background-color: #eee;
-
-	font-weight: bolder;
-}
-
-.link:hover {
-	border: 1px solid black;
-	border-radius: 5px;
-	
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	height: 2.2em;
-	width: 3.7em;
-	
-	color: black;
-	text-decoration: none;
-
-	background-color: #eee;
-
-	font-weight: bolder;
-}
-
 .contenedorTitulo{
     /* border: 1px solid black; */
     display: flex;
@@ -92,4 +52,26 @@
 .estados{
 	font-weight: bolder;
 	font-size: large;
+}
+
+.link {
+	margin-top: 2%;
+	margin-left: 2.5%;
+	padding: 3px 10px;
+
+
+	text-decoration: none;
+
+	border: 1px solid black;
+	border-radius: 5px;
+
+	width: fit-content;
+
+	background-color: #eeee;
+	font-size: 20px;
+}
+
+.link:hover{
+	font-size: 22px;
+	box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2);
 }

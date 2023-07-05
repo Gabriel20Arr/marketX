@@ -14,6 +14,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import BtnGoogle from "../../components/BtnGoogle/BtnGoogle";
 import axios from "axios";
 import back from "../../images/back.png";
+import Loader from '../../components/Loaders/Loaders'
 
 export default function Registrarse() {
   const [showPass, setShowPass] = useState(false);
@@ -25,16 +26,26 @@ export default function Registrarse() {
 
   const blockedUsers = useSelector((state) => state.blockedUsers);
 
-  const [error, setError] = useState({
+  const [errors, setError] = useState({
     correo: "",
     contraseña: "",
     blocked: "",
   });
 
-  const { data, refetch } = useGetUsersQuery(null);
+  const { data,error,isFetching,isLoading, refetch } = useGetUsersQuery(null);
   useEffect(() => {
     refetch();
   }, [refetch]);
+  if (isLoading || isFetching) {
+    return <div>
+      <Loader/>
+    </div>
+  }
+  if (error) {
+    return <p>
+      Oops, ha habido un error, vuelva a intentarlo más tarde
+    </p>
+  }
 
   const router = useRouter();
   const { dispatch } = useContext(Store);
@@ -45,7 +56,7 @@ export default function Registrarse() {
   };
 
   const handlerSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const correos =
       data && data.map((user) => user.correo).includes(usuario.correo);
 
@@ -158,8 +169,8 @@ export default function Registrarse() {
                 />
               </div>
               <p className="form-text text-danger">
-                {error.correo}
-                {error.blocked}
+                {errors.correo}
+                {errors.blocked}
               </p>
             </div>
             <div className="mb-3">
@@ -230,14 +241,14 @@ export default function Registrarse() {
               </div>
             </div>
             <p className="form-text text-danger">
-              {error.contraseña}
-              {error.blocked}
+              {errors.contraseña}
+              {errors.blocked}
             </p>
             <div className=" d-grid gap-2 col-6 mx-auto mb-3">
               <button
                 type="submit"
                 className="btn btn-success  w-250 mt-4 mb-2"
-                disabled={habilitarBoton()}
+                disabled={habilitarBoton}
               >
                 Ingresar
               </button>

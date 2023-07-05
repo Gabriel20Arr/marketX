@@ -2,9 +2,6 @@
 
 import { useReducer, createContext } from "react";
 import axios from "axios";
-require('dotenv').config()
-
-const { LOCALHOSTCLIENT } = process.env;
 
 
 const Store = createContext();
@@ -31,8 +28,8 @@ function reducer(state, action) {
           )
         : //de lo contrario si no existe entonces guardamos el primero
           [...state.cart.cartItems, newItem];
-      const back = axios
-        .put("https://marketx-production.up.railway.app/Usuario", {
+      const back = axios.put(
+        "https://marketx-production.up.railway.app/Usuario", {
           cartItems,
           usuario: cartItems[0].usuario,
         })

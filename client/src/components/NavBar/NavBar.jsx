@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import styles from "./NavBar.module.css";
@@ -6,11 +6,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Cart4 } from "react-bootstrap-icons";
 import { Store } from "@/src/utils/Store";
 import { useRouter, usePathname } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
-
 
 
 export default function Navigation() {
@@ -98,11 +97,10 @@ export default function Navigation() {
 		router.push('/misCompras');
 	};
 
-  const handlerSalir =async ()=>{
-    await signOut()
+  const handlerSalir = async ()=>{
     localStorage.clear()
-    router.push('/')
-
+    await signOut({ callbackUrl: 'http://localhost:3000/' })
+    // router.push('/')
   }
 
   if (status === "loading") {
@@ -111,7 +109,6 @@ export default function Navigation() {
 
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
-
 
   return (
     <nav style={{backgroundColor: "#030a32"}} class="navbar navbar-expand-lg" data-bs-theme="dark">
@@ -145,13 +142,16 @@ export default function Navigation() {
             <li class="nav-item">
               {path !== "/form" && (
                 <div>
-                  <Link
+                  {/* <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none", marginLeft: '30px' }}
-                    href={usuario?.rol ? "/form" : "/registrarse"}
+                    href={(usuario.correo === "invitado@gmail.com") ?  "/registrarse":"/form" }
                   >
                     Publicar Producto
-                  </Link>
+                  </Link> */}
+                  <button className={styles.publicar} onClick={()=>{router.push('/form')}} disabled={(usuario?.correo === "invitado@gmail.com")}>
+                    Publicar Producto
+                  </button>
                 </div>
               )}
             </li>
@@ -230,13 +230,13 @@ export default function Navigation() {
                       <div>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter('login')}
+                          onClick={() => handelrRouter}
                         >
                           Iniciar sesión
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter('registrarse')}
+                          onClick={() => handelrRouter}
                         >
                           Registrarse
                         </NavDropdown.Item>
@@ -272,4 +272,4 @@ export default function Navigation() {
       </div>
     </nav>
   );
-} 
+}

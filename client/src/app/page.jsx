@@ -24,8 +24,8 @@ const Landing = () => {
   useEffect(() => {
     refetch();
   }, [refetch]);
-  console.log(data);
-
+  // console.log(data);
+  
   const home = (event) => {
     event.preventDefault();
     const guardado = data?.find((user) => user.correo === "invitado@gmail.com");
@@ -33,7 +33,7 @@ const Landing = () => {
     localStorage.setItem("usuario", guardadoString);
     // guarda el carrito del invitado en el estado global
 
-    dispatch({ type: "INICIAL", payload: guardado.carrito });
+    dispatch({ type: "INICIAL", payload: guardado?.carrito });
 
     router.push("/home");
   };

@@ -6,9 +6,7 @@ import Link from 'next/link';
 import { enviarNotificacionPorCorreo } from '../../hooks/enviarCorreo.js';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
-require('dotenv').config()
-
-const {LOCALHOSTCLIENT} = process.env;
+import { useRouter } from 'next/navigation';
 
 
 function Page() {
@@ -17,8 +15,10 @@ function Page() {
 	const [ventas, setVentas] = useState([]);
 	const [usuario, setUsuario] = useState({});
 	const [editedVenta, setEditedVenta] = useState({
-		despachado: "",
+		despachado: '',
 	});
+
+	const router = useRouter();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -62,29 +62,24 @@ function Page() {
 			);
 
 			const { comprador } = ventaToEdit;
-			// console.log("COMPRADOR: ", comprador);
-			
-			const correo = comprador.correo;
-			// console.log("CORREO: ", correo);
 
+			const correo = comprador.correo;
 			const asunto = 'Producto despachado';
 			const mensaje = 'Su producto ha sido despachado.';
 			await enviarNotificacionPorCorreo(correo, asunto, mensaje);
-			
+
 			refetch();
 		}
 	};
 
-	// console.log("VENTAS: ", ventas);
-	// console.log("USUARIOS: ", usuario);
+	const goBack = () => {
+		router.back();
+	  };
 
 	return (
 		<div className={styles.container}>
-
-			<div className={styles.Clink}>
-				<Link href='/home' className={styles.link}>
-					Volver
-				</Link>
+			<div>
+			<button onClick={goBack} className={styles.link}>Volver</button>
 			</div>
 
 			<div className={styles.contenedorTitulo}>
@@ -112,7 +107,7 @@ function Page() {
 							key={index}
 							className={venta.despachado ? styles.despachadoRow : ''}
 						>
-							<td>{venta.titulo}</td>
+							<td>{venta.producto	}</td>
 							<td>{venta.cantidad}</td>
 							<td>{venta.comprador.correo}</td>
 							<td>{venta.monto}</td>

@@ -29,3 +29,34 @@
     transition: 0.2s;
     box-shadow: 0 2px 4px #0df3ff;
 }
+
+.carrito02{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-top: 25%;
+}
+
+
+.link {
+	margin-top: 2%;
+	margin-left: 2.5%;
+	padding: 3px 10px;
+
+
+	text-decoration: none;
+
+	border: 1px solid black;
+	border-radius: 5px;
+
+	width: fit-content;
+
+	background-color: #eeee;
+	font-size: 20px;
+}
+
+.link:hover{
+	font-size: 22px;
+	box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2);
+}
