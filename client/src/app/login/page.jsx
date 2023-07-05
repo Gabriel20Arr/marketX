@@ -44,34 +44,34 @@ export default function Registrarse() {
     setUsuario({ ...usuario, [name]: value });
   };
 
-  const handlerSubmit = (e) => {
-    e.preventDefault()
-    const correos =
-      data && data.map((user) => user.correo).includes(usuario.correo);
+  const handlerSubmit = async (e) => {
+  e.preventDefault();
 
-    const contraseñas =
-      data && data.map((user) => user.contraseña).includes(usuario.contraseña);
+  const correo2 = data && data.find((user) => user.correo === usuario.correo);
 
-    const correo2 = data && data.find((user) => user.correo === usuario.correo);
+  if (correo2) {
+    if (correo2.rol !== "baneado") {
+      if (correo2.contraseña === usuario.contraseña) {
+        const guardadoString = JSON.stringify(correo2);
+        localStorage.setItem("usuario", guardadoString);
 
-    if (correos && contraseñas) {
-      if (correo2.rol !== "baneado") {
-        const guardado = data?.find((user) => user.correo === usuario.correo);
-        const guardadoInvitado = data?.find(
+        const guardadoInvitado = data.find(
           (user) => user.correo === "invitado@gmail.com"
         );
 
-        const guardadoString = JSON.stringify(guardado);
-        localStorage.setItem("usuario", guardadoString);
         dispatch({
           type: "INICIAL",
-          //guardar en el carrito del usuario
-          payload: guardado.carrito.concat(guardadoInvitado.carrito),
+          payload: correo2.carrito.concat(guardadoInvitado.carrito),
         });
-        axios.put("https://marketx-production.up.railway.app/usuario/editar", {
-          _id: guardadoInvitado?._id,
-          carrito: [],
-        });
+
+        await axios.put(
+          "https://marketx-production.up.railway.app/usuario/editar",
+          {
+            _id: guardadoInvitado?._id,
+            carrito: [],
+          }
+        );
+
         setUsuario({
           correo: "",
           contraseña: "",
@@ -86,29 +86,101 @@ export default function Registrarse() {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Se Inicio Sesion Correctamente",
+          title: "Se inició sesión correctamente",
           showConfirmButton: false,
           timer: 1500,
         });
 
         router.replace("/home");
       } else {
-        Swal.fire({
-          position: "top",
-          icon: "warning",
-          title: "Usuario bloqueado",
-          showConfirmButton: false,
-          timer: 1500,
+        setError({
+          correo: "",
+          contraseña: "Contraseña incorrecta",
+          blocked: "",
         });
       }
     } else {
-      setError((prevError) => ({
-        ...prevError,
-        correo: correos ? "" : "Correo no registrado",
-        contraseña: correos ? (contraseñas ? "" : "Contraseña incorrecta") : "",
-      }));
+      setError({
+        correo: "",
+        contraseña: "",
+        blocked: "Usuario bloqueado",
+      });
     }
-  };
+  } else {
+    setError({
+      correo: "Correo no registrado",
+      contraseña: "",
+      blocked: "",
+    });
+  }
+};
+
+  // ok
+  // const handlerSubmit = (e) => {
+  //   e.preventDefault()
+  //   const correos =
+  //     data && data.map((user) => user.correo).includes(usuario.correo);
+
+  //   const contraseñas =
+  //     data && data.map((user) => user.contraseña).includes(usuario.contraseña);
+
+  //   const correo2 = data && data.find((user) => user.correo === usuario.correo);
+
+  //   if (correos && contraseñas) {
+  //     if (correo2.rol !== "baneado") {
+  //       const guardado = data?.find((user) => user.correo === usuario.correo);
+  //       const guardadoInvitado = data?.find(
+  //         (user) => user.correo === "invitado@gmail.com"
+  //       );
+
+  //       const guardadoString = JSON.stringify(guardado);
+  //       localStorage.setItem("usuario", guardadoString);
+  //       dispatch({
+  //         type: "INICIAL",
+  //         //guardar en el carrito del usuario
+  //         payload: guardado.carrito.concat(guardadoInvitado.carrito),
+  //       });
+  //       axios.put("https://marketx-production.up.railway.app/usuario/editar", {
+  //         _id: guardadoInvitado?._id,
+  //         carrito: [],
+  //       });
+  //       setUsuario({
+  //         correo: "",
+  //         contraseña: "",
+  //       });
+
+  //       setError({
+  //         correo: "",
+  //         contraseña: "",
+  //         blocked: "",
+  //       });
+
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "success",
+  //         title: "Se Inicio Sesion Correctamente",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+
+  //       router.replace("/home");
+  //     } else {
+  //       Swal.fire({
+  //         position: "top",
+  //         icon: "warning",
+  //         title: "Usuario bloqueado",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //     }
+  //   } else {
+  //     setError((prevError) => ({
+  //       ...prevError,
+  //       correo: correos ? "" : "Correo no registrado",
+  //       contraseña: correos ? (contraseñas ? "" : "Contraseña incorrecta") : "",
+  //     }));
+  //   }
+  // };
 
   const habilitarBoton = () => {
     return usuario.contraseña === "" || usuario.correo === "";

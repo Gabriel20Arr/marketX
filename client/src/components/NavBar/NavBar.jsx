@@ -97,11 +97,11 @@ export default function Navigation() {
 		router.push('/misCompras');
 	};
 
-  const handlerSalir = async () => {
-    await signOut(); // Primero cerrar la sesión
-    localStorage.clear(); // Luego borrar el localStorage
-    router.push('/'); // Por último, redirigir al home
-  };
+const handlerSalir = async () => {
+  await signOut(); // Primero cerrar la sesión
+  localStorage.clear(); // Luego borrar el localStorage
+  router.push('/'); // Por último, redirigir al landing
+};
 
   if (status === "loading") {
     return null;
