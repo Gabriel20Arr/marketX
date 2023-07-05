@@ -10,9 +10,7 @@ import style from "./cart.module.css";
 import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { useRouter } from "next/navigation";
-require('dotenv').config()
 
-const { LOCALHOSTCLIENT }= process.env;
 
 export default function Cart() {
   const { state, dispatch } = useContext(Store);

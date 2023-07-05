@@ -1,7 +1,4 @@
 const axios = require("axios");
-require('dotenv').config()
-
-const { LOCALHOSTCLIENT } = process.env;
 
 
 const enviarNotificacionPorCorreo = async (correo, asunto, mensaje) => {
