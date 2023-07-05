@@ -45,7 +45,7 @@ export default function Registrarse() {
   };
 
   const handlerSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const correos =
       data && data.map((user) => user.correo).includes(usuario.correo);
 
@@ -237,7 +237,7 @@ export default function Registrarse() {
               <button
                 type="submit"
                 className="btn btn-success  w-250 mt-4 mb-2"
-                disabled={habilitarBoton()}
+                disabled={habilitarBoton}
               >
                 Ingresar
               </button>
