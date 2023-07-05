@@ -10,9 +10,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import CardsCarousel from '../../components/CardsCarousel/CardsCarousel'
 import Link from "next/link";
 import { Store } from "@/src/utils/Store";
-// require('dotenv').config();
 
-// const {  LOCALHOST } = process.env;
 
 export default function HomePage() {
 	const { data: session, status } = useSession();
@@ -22,38 +20,40 @@ export default function HomePage() {
     correo: session?.user.email,
     contraseña: "65564521-44654894sda",
   };
-
+  
   const { data, refetch } = useGetUsersQuery(null);
   const { dispatch } = useContext(Store);
 
   useEffect(() => {
     refetch();
   }, []);
-  const existente = data?.find((user) => user.correo === session?.user.email);
 
+  const existente = data?.find((user) => user.correo === session?.user.email) || 0;
+  
   const google = async () => {
     if (existente) {
       const guardadoString = JSON.stringify(existente);
       localStorage.setItem("usuario", guardadoString);
     } else {
       const url = await axios
-        .post("https://marketx-production.up.railway.app/Usuario", objeto)
-        .then((result) => {
-          const guardadoString = JSON.stringify(url);
-          localStorage.setItem("usuario", guardadoString);
-          return result.data;
-        })
-        .catch((error) => error);
+
+      .post(`https://marketx-production.up.railway.app/Usuario`, objeto)
+      .then((result) => {
+        const guardadoString = JSON.stringify(url);
+        localStorage.setItem("usuario", guardadoString);
+        return result.data;
+      })
+      .catch((error) => error);
     }
   };
   let usuario= 0;
   if (typeof window !== 'undefined') {
     // Código que accede a localStorage aquí
     const usuarioJSON = localStorage.getItem("usuario") ?? null;
-    usuario = JSON.parse(usuarioJSON);
+    usuario = JSON.parse(usuarioJSON); 
   }
-
-  if (!usuario) {
+  if (!usuario && data  ) {
+    console.log((data && !usuario), (existente),  'existente');
     google();
   }
 
@@ -69,7 +69,7 @@ export default function HomePage() {
           <h3 className={style.publiRecientes} style={{marginLeft: '20px', fontWeight: 'bold'}}>Marcas recomendadas</h3>
         </div>
 
-        <Carousel/>
+        <Carousel/> 
         
         <div className={style.contenedor3}>
           <h3 className={style.publiRecientes} style={{marginLeft: '20px', fontWeight: 'bold'}}>Publicaciones recientes</h3>

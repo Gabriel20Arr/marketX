@@ -11,6 +11,7 @@ import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
 
+
 export default function Navigation() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -96,10 +97,9 @@ export default function Navigation() {
 		router.push('/misCompras');
 	};
 
-  const handlerSalir =()=>{
-    // signOut({ callbackUrl: `${LOCALHOST}/` })
-    // signOut({ callbackUrl: "http://localhost:3000" })
+  const handlerSalir = async ()=>{
     localStorage.clear()
+    await signOut()
     router.push('/')
   }
 
@@ -109,7 +109,6 @@ export default function Navigation() {
 
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
-
 
   return (
     <nav style={{backgroundColor: "#030a32"}} class="navbar navbar-expand-lg" data-bs-theme="dark">
@@ -128,7 +127,7 @@ export default function Navigation() {
 
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              {path !== "/home" && (
+            {path !== "/home" && (
                 <div>
                   <Link
                     class="nav-link link-body-emphasis"
@@ -145,7 +144,7 @@ export default function Navigation() {
                 <div>
                   <Link
                     class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none", marginLeft: '20px' }}
+                    style={{ textDecoration: "none", marginLeft: '30px' }}
                     href={usuario?.rol ? "/form" : "/registrarse"}
                   >
                     Publicar Producto
@@ -166,49 +165,14 @@ export default function Navigation() {
                 </div>
               )}
             </li>
+            {/* <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li> */}
           </ul>
 
           <ul class="navbar-nav ms-auto">
-
-          <li class="nav-item d-flex" style={{marginRight: '10px'}}>
-                  <Link
-                    class="nav-link link-body-emphasis"
-                    style={{ textDecoration: "none" }}
-                    href={(usuario || user) ? `/cart` : "/home"}
-                  >
-                    <Cart4 size={30} />{" "}
-                    <span className="text-white bg-danger rounded p-1">
-                      {cartItemsCount}
-                    </span>
-                  </Link>
-              </li>
-
             <li class="nav-item">
-                <NavDropdown title="Menu" id="collasible-nav-dropdown" class="nav-link link-body-emphasis" style = {{marginRight: '10px', color: 'white'}}>
-                  {(usuario || user) ? (
-                  <NavDropdown.Item 
-                    style={{fontSize: '20px'}}
-                    onClick={ handlerSalir }
-                  >
-                    Cerrar sesión
-                  </NavDropdown.Item>
-                    ) : (
-                      <div>
-                        <NavDropdown.Item
-                          style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
-                        >
-                          Iniciar sesión
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
-                        >
-                          Registrarse
-                        </NavDropdown.Item>
-                      </div>
-                    )
-                  }
+                <NavDropdown title="Menu" id="collasible-nav-dropdown" class="nav-link link-body-emphasis" style = {{marginRight: '20px', color: 'white'}}>
                   { usuario &&
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}} 
@@ -241,18 +205,56 @@ export default function Navigation() {
                     </NavDropdown.Item>
                   ) : null}
                   
-                  { (usuario || user)
-                    ? null
-                    : <NavDropdown.Divider /> &&
+                  { (!usuario) ? 
+                  <NavDropdown.Divider /> &&
+                  <NavDropdown.Item
+                    style={{fontSize: '20px'}} 
+                    onClick={ handlerSalir }
+                  >
+                    Salir
+                  </NavDropdown.Item>
+                  : null
+                  }
+                  
+                  { (usuario || (usuario.direccion === "google")) ? (
+                  <NavDropdown.Item 
+                    style={{fontSize: '20px'}}
+                    onClick={ handlerSalir }
+                  >
+                    Cerrar sesión
+                  </NavDropdown.Item>
+                    ) : (
+                      <div>
                         <NavDropdown.Item
-                        style={{fontSize: '20px'}} 
-                        onClick={ handlerSalir }
+                          style={{fontSize: '20px'}} 
+                          onClick={() => handelrRouter}
                         >
-                          Salir
+                          Iniciar sesión
                         </NavDropdown.Item>
+                        <NavDropdown.Item
+                          style={{fontSize: '20px'}} 
+                          onClick={() => handelrRouter}
+                        >
+                          Registrarse
+                        </NavDropdown.Item>
+                      </div>
+                    )
                   }
 
                 </NavDropdown>
+            </li>
+
+            <li class="nav-item d-flex">
+                  <Link
+                    class="nav-link link-body-emphasis"
+                    style={{ textDecoration: "none" }}
+                    href={usuario ? `/cart` : "/home"}
+                  >
+                    <Cart4 size={30} />{" "}
+                    <span className="text-white bg-danger rounded p-1">
+                      {cartItemsCount}
+                    </span>
+                  </Link>
             </li>
 
             <li>
@@ -262,7 +264,6 @@ export default function Navigation() {
                   </div>
                 )}
               </li>
-
           </ul>
         </div>
       </div>

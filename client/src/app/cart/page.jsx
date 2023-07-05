@@ -11,6 +11,7 @@ import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { useRouter } from "next/navigation";
 
+
 export default function Cart() {
   const { state, dispatch } = useContext(Store);
   const { cartItems } = state.cart;
@@ -152,9 +153,7 @@ export default function Cart() {
               <button
                 className={style.comprar}
                 id="buttomPagar"
-                onClick={() => {
-                  createOrderHandler();
-                }}
+                onClick={createOrderHandler}
               >
                 Comprar
               </button>

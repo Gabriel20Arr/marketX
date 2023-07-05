@@ -1,5 +1,5 @@
 "use client";
-import logo from "../images/MarketX-newlogo (2).png";
+import logo from "../images/MarketX-newlogo fondo blanco.png";
 import style from "./landing.module.css";
 import Frame from "./Landing/Frame";
 import Ellipse6 from "./Landing/Ellipse6";
@@ -24,16 +24,16 @@ const Landing = () => {
   useEffect(() => {
     refetch();
   }, [refetch]);
-  console.log(data);
-
+  // console.log(data);
+  
   const home = (event) => {
     event.preventDefault();
-    const guardado = data.find((user) => user.correo === "invitado@gmail.com");
+    const guardado = data?.find((user) => user.correo === "invitado@gmail.com");
     const guardadoString = JSON.stringify(guardado);
     localStorage.setItem("usuario", guardadoString);
     // guarda el carrito del invitado en el estado global
 
-    dispatch({ type: "INICIAL", payload: guardado.carrito });
+    dispatch({ type: "INICIAL", payload: guardado?.carrito });
 
     router.push("/home");
   };
@@ -41,7 +41,13 @@ const Landing = () => {
     <div>
       <nav className={style.nav}>
         <div className={style.contenedorLogo}>
-          <Image src={logo} alt="logo" width="200" height="150" style={{borderRadius: '10px'}} />
+          <Image
+            src={logo}
+            alt="logo"
+            width="100"
+            height="60"
+            style={{ borderRadius: "10px" }}
+          />
         </div>
         <div className={style.links}>
           <div className={style.enlaces}>

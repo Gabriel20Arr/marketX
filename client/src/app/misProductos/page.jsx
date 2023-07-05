@@ -7,6 +7,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
 
+
 function MisProductos() {
 	const { data, refetch } = useGetProductsUsersQuery();
 	const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +53,7 @@ function MisProductos() {
 		try {
 			e.preventDefault();
 			await axios.put(
-				`https://marketx-production.up.railway.app/producto/actualizar`,
+				"https://marketx-production.up.railway.app/producto/actualizar",
 				{
 					...editedProduct,
 					_id: editingProductId,
@@ -79,7 +80,7 @@ function MisProductos() {
 
 	return (
 		<div>
-			<Link href='/admin' className={styles.link}>
+			<Link href='/home' className={styles.link}>
 				Volver
 			</Link>
 

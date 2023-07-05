@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+
 type Ventas = {
     vendedor: object,
     comprador: object,
@@ -10,7 +11,7 @@ type Ventas = {
 export const ventasApi = createApi({
 	reducerPath: 'ventasApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://marketx-production.up.railway.app/',
+		baseUrl: "https://marketx-production.up.railway.app",
 	}),
 	endpoints: (builder) => ({
 		getVentas: builder.query<Ventas[], null>({

@@ -2,6 +2,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import { METHODS } from 'http';
 import { url } from 'inspector';
 
+
 type Product = {
     id: string,
     titulo: string,
@@ -17,7 +18,7 @@ type Product = {
 export const productsApi = createApi({
     reducerPath: 'productAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://marketx-production.up.railway.app/'
+        baseUrl: "https://marketx-production.up.railway.app"
     }),
     endpoints: (builder) => ({
         getProducts: builder.query<Product[], null>({

@@ -13,6 +13,7 @@ import { useGetUserByIdQuery } from "@/src/redux/services/userApi";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 
+
 export default function Card({ item }) {
   const { state, dispatch } = useContext(Store);
   const { rating, setRating } = useState(0);
@@ -37,7 +38,7 @@ export default function Card({ item }) {
     const { value } = e.target;
 
     await axios.put(
-      `https://marketx-production.up.railway.app/producto/actualizar`,
+      "https://marketx-production.up.railway.app/producto/actualizar",
       {
         _id: item.id,
         puntuaciones: [
