@@ -6,11 +6,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Cart4 } from "react-bootstrap-icons";
 import { Store } from "@/src/utils/Store";
 import { useRouter, usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
-import { signOut } from "next-auth/react"
 
 
 export default function Navigation() {
