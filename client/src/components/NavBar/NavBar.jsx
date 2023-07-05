@@ -77,9 +77,9 @@ export default function Navigation() {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
 
-  const routerHome = () => {
-    router.push("/home");
-  };
+  // const routerHome = () => {
+  //   router.push("/home");
+  // };
 
   const routerDashBoard = () => {
     router.push("/admin");
@@ -145,6 +145,7 @@ const handlerSalir = async () => {
                   <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none", marginLeft: '30px' }}
+                    disabled={usuario.correo === "invitado@gmail.com"}
                     href={usuario?.rol ? "/form" : "/registrarse"}
                   >
                     Publicar Producto
@@ -238,6 +239,7 @@ const handlerSalir = async () => {
                           Registrarse
                         </NavDropdown.Item>
                       </div>
+                      
                     )
                   }
 
