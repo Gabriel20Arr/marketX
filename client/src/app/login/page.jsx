@@ -45,7 +45,7 @@ export default function Registrarse() {
   };
 
   const handlerSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault()
     const correos =
       data && data.map((user) => user.correo).includes(usuario.correo);
 
