@@ -98,8 +98,8 @@ export default function Navigation() {
 	};
 
 const handlerSalir = async () => {
-  localStorage.clear(); // Luego borrar el localStorage
   await signOut(); // Primero cerrar la sesión
+  localStorage.clear(); // Luego borrar el localStorage
   // router.push('/'); // Por último, redirigir al landing
 };
 
