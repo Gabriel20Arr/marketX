@@ -53,9 +53,8 @@ const success = async(req, res) => {
            monto: element.precio * (element.quantity),
            valor: element.precio,
            fecha, vendedor,
-           comprador:usuario,
-           producto:element.titulo,
-           cantidad:element.quantity
+        //    comprador:usuario
+           comprador:usuario, producto: element.titulo, cantidad: element.quantity
         }
        
        await UsuarioActualizado(vendedor._id,{vendido:[...vendedor.vendido,venta]});

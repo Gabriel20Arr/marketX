@@ -58,7 +58,6 @@ const enviarCorreo = async ({ correo, asunto, mensaje }) => {
         </body>
       </html>`
   };
-  
 
   try {
     const info = await transporter.sendMail(mailOptions);
