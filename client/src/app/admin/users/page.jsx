@@ -93,50 +93,6 @@ const UserList = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  const addUser = () => {
-    setAddingUser(true);
-  };
-
-  const cancelAdd = () => {
-    setNewUser({
-      nombre: '',
-      correo: '',
-      rol: '',
-      telefono: '',
-      direccion: '',
-      codigo_postal: '',
-    });
-    setAddingUser(false);
-  };
-
-  const saveNewUser = async () => {
-    try {
-      // Realiza una solicitud HTTP al backend para guardar el nuevo usuario
-      await axios.post("https://marketx-production.up.railway.app/users", newUser);
-
-      setNewUser({
-        nombre: '',
-        correo: '',
-        rol: '',
-        telefono: '',
-        direccion: '',
-        codigo_postal: '',
-      });
-      setAddingUser(false);
-      refetch();
-    } catch (error) {
-      console.log('Error adding user:', error);
-    }
-  };
-
-  const handleNewUserInputChange = (e) => {
-    setNewUser({
-      ...newUser,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   
   if (isLoading) {
     return <Loading />;
@@ -188,9 +144,9 @@ const UserList = () => {
             <td>
               <button onClick={() => editUser(user._id)}>Editar</button>
               { (user.rol === "baneado") ?
-              <button onClick={() => desbanearUser(user._id)}>Desbanear</button>
+              <button onClick={() => desbanearUser(user._id)}>Bloquear</button>
                 : 
-              <button onClick={() => blockUser(user._id)}>Banear</button> 
+              <button onClick={() => blockUser(user._id)}>Desbloquear</button> 
 
               }
             </td>
@@ -200,139 +156,72 @@ const UserList = () => {
 
       {editingUserId && (
         <div className={styles.editUserForm}>
-          <h2>Editar Usuario</h2>
-          <form>
-            <div>
-              <label htmlFor='nombre'>Nombre:</label>
-              <input
-                type='text'
-                id='nombre'
-                name='nombre'
-                value={editedUser.nombre}
-                onChange={handleInputChange}
-              />
+            <div className={styles.editUserForm2}>
+              <h2 className={styles.nameEdit}>Editar Usuario</h2>
+              <form className={styles.editForm}>
+                <div className={styles.Edit}>
+                  <label className={styles.EditLabel} htmlFor='nombre'>Nombre:</label>
+                  <input
+                    type='text'
+                    id='nombre'
+                    name='nombre'
+                    value={editedUser.nombre}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className={styles.Edit}>
+                  <label className={styles.EditLabel} htmlFor='correo'>Correo:</label>
+                  <input
+                    type='email'
+                    id='correo'
+                    name='correo'
+                    value={editedUser.correo}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className={styles.Edit}>
+                  <label className={styles.EditLabel} htmlFor='rol'>Rol:</label>
+                  <select id='rol' name='rol' value={editedUser.rol} onChange={handleInputChange}>
+                    <option value='admin'>admin</option>
+                    <option value='user'>usuario</option>
+                  </select>
+                </div>
+                <div className={styles.Edit}>
+                  <label className={styles.EditLabel} htmlFor='telefono'>Teléfono:</label>
+                  <input
+                    type='tel'
+                    id='telefono'
+                    name='telefono'
+                    value={editedUser.telefono}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className={styles.Edit}>
+                  <label className={styles.EditLabel} htmlFor='direccion'>Dirección:</label>
+                  <input
+                    type='text'
+                    id='direccion'
+                    name='direccion'
+                    value={editedUser.direccion}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className={styles.Edit}>
+                  <label className={styles.EditLabel} htmlFor='codigo_postal'>Código Postal:</label>
+                  <input
+                    type='text'
+                    id='codigo_postal'
+                    name='codigo_postal'
+                    value={editedUser.codigo_postal}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </form>
+                <div>
+                  <button className={styles.EditB} onClick={saveChanges}>Guardar</button>
+                  <button className={styles.EditB} onClick={cancelEdit}>Cancelar</button>
+                </div>
             </div>
-            <div>
-              <label htmlFor='correo'>Correo:</label>
-              <input
-                type='email'
-                id='correo'
-                name='correo'
-                value={editedUser.correo}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor='rol'>Rol:</label>
-              <select id='rol' name='rol' value={editedUser.rol} onChange={handleInputChange}>
-                <option value='admin'>admin</option>
-                <option value='user'>usuario</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor='telefono'>Teléfono:</label>
-              <input
-                type='tel'
-                id='telefono'
-                name='telefono'
-                value={editedUser.telefono}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor='direccion'>Dirección:</label>
-              <input
-                type='text'
-                id='direccion'
-                name='direccion'
-                value={editedUser.direccion}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor='codigo_postal'>Código Postal:</label>
-              <input
-                type='text'
-                id='codigo_postal'
-                name='codigo_postal'
-                value={editedUser.codigo_postal}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <button onClick={saveChanges}>Guardar</button>
-              <button onClick={cancelEdit}>Cancelar</button>
-            </div>
-          </form>
-        </div>
-      )}
-
-      {addingUser && (
-        <div className={styles.addUserForm}>
-          <h2>Agregar Usuario</h2>
-          <form>
-            <div>
-              <label htmlFor='nombre'>Nombre:</label>
-              <input
-                type='text'
-                id='nombre'
-                name='nombre'
-                value={newUser.nombre}
-                onChange={handleNewUserInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor='correo'>Correo:</label>
-              <input
-                type='email'
-                id='correo'
-                name='correo'
-                value={newUser.correo}
-                onChange={handleNewUserInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor='rol'>Rol:</label>
-              <select id='rol' name='rol' value={newUser.rol} onChange={handleNewUserInputChange}>
-                <option value='admin'>admin</option>
-                <option value='user'>usuario</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor='telefono'>Teléfono:</label>
-              <input
-                type='tel'
-                id='telefono'
-                name='telefono'
-                value={newUser.telefono}
-                onChange={handleNewUserInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor='direccion'>Dirección:</label>
-              <input
-                type='text'
-                id='direccion'
-                name='direccion'
-                value={newUser.direccion}
-                onChange={handleNewUserInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor='codigo_postal'>Código Postal:</label>
-              <input
-                type='text'
-                id='codigo_postal'
-                name='codigo_postal'
-                value={newUser.codigo_postal}
-                onChange={handleNewUserInputChange}
-              />
-            </div>
-            <div>
-              <button onClick={saveNewUser}>Guardar</button>
-              <button onClick={cancelAdd}>Cancelar</button>
-            </div>
-          </form>
         </div>
       )}
     </div>
