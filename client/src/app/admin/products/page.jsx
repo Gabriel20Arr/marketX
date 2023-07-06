@@ -120,7 +120,6 @@ const ProductList = () => {
 						<th>PRECIO</th>
 						<th>STOCK</th>
 						<th>USUARIO</th>
-						<th>ACCION</th>
 						<th>ACCIONES</th>
 					</tr>
 				</thead>

@@ -23,11 +23,9 @@ const VentaSchema = new Schema({
   },
   producto: {
     type: String,
-    required: true,
   },
   cantidad:{
     type:Number,
-    required:true,
   }
 });
 
