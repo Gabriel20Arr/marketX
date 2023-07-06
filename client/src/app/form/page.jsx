@@ -71,6 +71,22 @@ export default function CrearProducto() {
 
 	const submitHandler = async (event) => {
 		event.preventDefault();
+		if (usuario.correo === "invitado@gmail.com") {
+			Swal.fire({
+				title: 'Debes estar registrado e iniciar sesión para poder publicar productos',
+				showDenyButton: true,
+				showCancelButton: true,
+				confirmButtonText: 'Registrarse',
+				denyButtonText: `Iniciar Sesión`,
+			  }).then((result) => {
+				if (result.isConfirmed) {
+				  router.push('/registrarse');
+				} else if (result.isDenied) {
+				  router.push('/login');
+				}
+			  });
+			  return
+		}
 		try {
 			const formData = new FormData();
 
@@ -175,7 +191,7 @@ export default function CrearProducto() {
 								<input
 									className='form-control'
 									type='text'
-									name='nombre'
+									name='titulo'
 									onChange={changeHandler}
 									value={form.titulo}
 								/>

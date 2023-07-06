@@ -109,6 +109,7 @@ export default function Detail({ params }) {
                       value={average}
                       precision={0.1}
                       emptyIcon={<StarIcon />}
+                      readOnly={true}
                     />
                     <span className={styles.calificaciones}> {puntuaciones2.length} calificaciones</span>
                   </div>

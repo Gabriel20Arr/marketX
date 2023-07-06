@@ -13,6 +13,7 @@ import santiImage from "./Tarjetas/imagenes/santi.webp.jpeg";
 import gabiImage from "./Tarjetas/imagenes/gabriel.webp.jpeg.jpeg"
 import juliImage from "./Tarjetas/imagenes/julian.webp.jpeg"
 import nachoImage from "./Tarjetas/imagenes/nacho.webp.jpeg"
+import daniel from "./Tarjetas/imagenes/daniel.webp.jpg"
 
 
 export default function About() {
@@ -75,7 +76,7 @@ export default function About() {
             github="https://github.com/Gabriel20Arr"
             />
           <Card
-            image="/person2.jpg"
+            image={daniel}
             name="Daniel Serrano"
             linkedin="https://www.linkedin.com/in/daniel-serrano-4021bb205"
             github="https://github.com/DSerranoG24"
