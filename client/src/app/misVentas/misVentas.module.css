@@ -3,6 +3,10 @@
     border-collapse: collapse;
 }
 
+.tabla{
+    margin: 0px 30px;
+}
+
 .userTable th,
 .userTable td {
     border: 1px solid #ccc;
@@ -28,42 +32,6 @@
     
 }
 
-.link {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 3.5em;
-    height: 2em;
-
-    background-color: white;
-    font-weight: bold;
-
-    color: black;
-    text-decoration: none;
-
-    border-radius: 3px;
-}
-
-.link:hover {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 3.7em;
-    height: 2.2em;
-
-    background-color: grey;
-    font-weight: bold;
-
-    color: black;
-    text-decoration: none;
-
-    border-radius: 3px;
-}
-
 .userTable { 
     margin: 20px 0;
 }
@@ -86,4 +54,27 @@
 .titulo{
     border-bottom: 1px solid black;
     display: flex;
+}
+
+
+.link {
+	margin-top: 2%;
+	margin-left: 2.5%;
+	padding: 3px 10px;
+
+
+	text-decoration: none;
+
+	border: 1px solid black;
+	border-radius: 5px;
+
+	width: fit-content;
+
+	background-color: #eeee;
+	font-size: 20px;
+}
+
+.link:hover{
+	font-size: 22px;
+	box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2);
 }

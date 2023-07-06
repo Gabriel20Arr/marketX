@@ -25,6 +25,8 @@ function Page() {
 			</div>
 			
 			<div className={styles.addButtonContainer}></div>
+
+			<div className={styles.tabla}>
 			<table className={styles.userTable}>
 				<thead>
 					<tr>
@@ -43,6 +45,8 @@ function Page() {
 					</tr>
 				))}
 			</table>
+			</div>
+			
 		</div>
 	);
 }

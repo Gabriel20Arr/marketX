@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './misCompras.module.css';
 import { useGetVentasQuery } from '../../redux/services/ventasApi';
-import Link from 'next/link';
 import Loading from '@/src/components/Loaders/Loaders';
+import { useRouter } from 'next/navigation';
 
 function Page() {
 	const { data, refetch, isLoading } = useGetVentasQuery(null);
-
+	const router = useRouter();
 	const [ventas, setVentas] = useState([]);
 	const [usuario, setUsuario] = useState({});
 
@@ -40,12 +40,14 @@ function Page() {
 		? ventas.filter((venta) => venta.comprador.correo === usuario?.correo)
 		: [];
 
+	const goBack = () => {
+		router.back();
+		};
+
 	return (
 		<div>
-			<div className={styles.Clink}>
-				<Link href='/home' className={styles.link}>
-					Volver
-				</Link>
+			<div >
+			<button onClick={goBack} className={styles.link}>Volver</button>
 			</div>
 			<div className={styles.conteiner}>
 				<div className={styles.contenedorTitulo}>

@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './misVentas.module.css';
 import { useGetVentasQuery } from '../../redux/services/ventasApi';
-import Link from 'next/link';
 import { enviarNotificacionPorCorreo } from '../../hooks/enviarCorreo.js';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
+import { useRouter } from 'next/navigation';
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 
 function Page() {
@@ -16,6 +18,8 @@ function Page() {
 	const [editedVenta, setEditedVenta] = useState({
 		despachado: '',
 	});
+
+	const router = useRouter();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -46,41 +50,53 @@ function Page() {
 		: [];
 
 	const marcarComoDespachado = async (ventaId) => {
-		const confirmacion = window.confirm(
-			'¿Estás seguro de marcar esta venta como despachada?'
-		);
-		if (confirmacion) {
-			const ventaToEdit = misVentas.find((venta) => venta._id === ventaId);
-			const updatedVenta = { ...ventaToEdit, despachado: true };
+		Swal.fire({
+			title: '¿Estás seguro?',
+			text: "No se podrá revertir esta acción!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar',
+			confirmButtonText: 'Si, marcar como despachado!'
+		  }).then(async(result) => {
+			if (result.isConfirmed) {
 
-			await axios.put(
-				"https://marketx-production.up.railway.app/ventas/actualizar",
-				updatedVenta
-			);
-
-			const { comprador } = ventaToEdit;
-
-			const correo = comprador.correo;
-			const asunto = 'Producto despachado';
-			const mensaje = 'Su producto ha sido despachado.';
-			await enviarNotificacionPorCorreo(correo, asunto, mensaje);
-
-			refetch();
-		}
+				const ventaToEdit = misVentas.find((venta) => venta._id === ventaId);
+				const updatedVenta = { ...ventaToEdit, despachado: true };
+	  
+				await axios.put(
+					"https://marketx-production.up.railway.app/ventas/actualizar",
+					updatedVenta
+				);
+	  
+				const { comprador } = ventaToEdit;
+	  
+				const correo = comprador.correo;
+				const asunto = 'Producto despachado';
+				const mensaje = 'Su producto ha sido despachado.';
+				await enviarNotificacionPorCorreo(correo, asunto, mensaje);
+	  
+				refetch();
+			}
+		  })
 	};
+
+	const goBack = () => {
+		router.back();
+	  };
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.Clink}>
-				<Link href='/home' className={styles.link}>
-					Volver
-				</Link>
+			<div>
+			<button onClick={goBack} className={styles.link}>Volver</button>
 			</div>
 
 			<div className={styles.contenedorTitulo}>
 				<h1 className={styles.titulo}>Lista de Ventas</h1>
 			</div>
 
+			<div className={styles.tabla}>
 			<table className={styles.userTable}>
 				<thead>
 					<tr className={styles.tituloTabla}>
@@ -127,6 +143,8 @@ function Page() {
 					))}
 				</tbody>
 			</table>
+			</div>
+
 		</div>
 	);
 }

@@ -68,8 +68,9 @@ export default function HomePage() {
       <div className={style.contenedor3}>
           <h3 className={style.publiRecientes} style={{marginLeft: '20px', fontWeight: 'bold'}}>Marcas recomendadas</h3>
         </div>
-
+      <div className={style.carousel}>
         <Carousel/> 
+      </div>
         
         <div className={style.contenedor3}>
           <h3 className={style.publiRecientes} style={{marginLeft: '20px', fontWeight: 'bold'}}>Publicaciones recientes</h3>

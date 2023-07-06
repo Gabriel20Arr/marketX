@@ -10,6 +10,7 @@ import style from "./cart.module.css";
 import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { useRouter } from "next/navigation";
+import { BagFill } from "react-bootstrap-icons";
 
 
 export default function Cart() {
@@ -50,6 +51,7 @@ export default function Cart() {
     };
 
     if (usuario.correo !== "invitado@gmail.com") {
+      localStorage.removeItem('carrito');
       try {
         const response = await axios.post(
           "https://marketx-production.up.railway.app/pago/createorder",
@@ -81,13 +83,17 @@ export default function Cart() {
         });
     }
   };
+  const goBack = () => {
+		router.back();
+	  };
 
   return (
     <div>
-      <h1 className="mt-5 mb-5 text-center">Carrito de compras</h1>
+        <button onClick={goBack} className={style.link}>Volver</button>
+      <h1 className="mt-5 mb-5 text-center"style={{fontSize:"50px"}}>Carrito de compras</h1>
       <div className="container">
         {cartItems.length === 0 ? (
-          <div>
+          <div className={style.carrito02}>
             El carrito está vacío.{" "}
             <Link href={"/home"}>Haz click para comenzar a comprar</Link>
           </div>
@@ -149,13 +155,15 @@ export default function Cart() {
               {cartItems.reduce((a, c) => a + c.quantity * c.precio, 0)}
             </div>
 
-            <div className={style.contenedorComprar}>
+            <div class="d-grid gap-2 col-6 mx-auto">
               <button
-                className={style.comprar}
+                class="btn btn-outline-primary btn-lg" 
+                type="button"
                 id="buttomPagar"
                 onClick={createOrderHandler}
+                style={{fontSize: '25px', fontWeight: 'bolder'}}
               >
-                Comprar
+                Comprar <BagFill style={{marginLeft: '10px'}}/>
               </button>
             </div>
           </div>

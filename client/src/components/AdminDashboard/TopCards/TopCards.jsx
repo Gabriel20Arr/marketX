@@ -86,11 +86,6 @@ function TopCards() {
 						<p className={styles.cardTitle}>${calculateDailyIncome()}</p>
 						<p className={styles.cardDescription}>Ventas Diarias</p>
 					</div>
-					<div className={`${styles.cardBadge} ${styles.greenBackground}`}>
-						<span className={styles.cardBadgeText}>
-							{calculatePercentageChange()}%
-						</span>
-					</div>
 				</div>
 			</div>
 			<div className={styles.card}>
@@ -108,11 +103,6 @@ function TopCards() {
 							{usersData ? usersData.length : 0}
 						</p>
 						<p className={styles.cardDescription}>Usuarios</p>
-					</div>
-					<div className={`${styles.cardBadge} ${styles.greenBackground}`}>
-						<span className={styles.cardBadgeText}>
-							{calculatePercentageChange()}
-						</span>
 					</div>
 				</div>
 			</div>

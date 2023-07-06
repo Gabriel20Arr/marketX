@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import styles from "./NavBar.module.css";
@@ -99,8 +99,8 @@ export default function Navigation() {
 
   const handlerSalir = async ()=>{
     localStorage.clear()
-    await signOut()
-    router.push('/')
+    await signOut({ callbackUrl: 'http://localhost:3000/' })
+    // router.push('/')
   }
 
   if (status === "loading") {
@@ -142,13 +142,16 @@ export default function Navigation() {
             <li class="nav-item">
               {path !== "/form" && (
                 <div>
-                  <Link
+                  {/* <Link
                     class="nav-link link-body-emphasis"
                     style={{ textDecoration: "none", marginLeft: '30px' }}
-                    href={usuario?.rol ? "/form" : "/registrarse"}
+                    href={(usuario.correo === "invitado@gmail.com") ?  "/registrarse":"/form" }
                   >
                     Publicar Producto
-                  </Link>
+                  </Link> */}
+                  <button className={styles.publicar} onClick={()=>{router.push('/form')}} disabled={(usuario?.correo === "invitado@gmail.com")}>
+                    Publicar Producto
+                  </button>
                 </div>
               )}
             </li>
@@ -216,7 +219,7 @@ export default function Navigation() {
                   : null
                   }
                   
-                  { (usuario || (usuario.direccion === "google")) ? (
+                  { (usuario || (usuario?.direccion === "google")) ? (
                   <NavDropdown.Item 
                     style={{fontSize: '20px'}}
                     onClick={ handlerSalir }
