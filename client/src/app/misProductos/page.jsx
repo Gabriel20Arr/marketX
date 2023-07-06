@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 function MisProductos() {
 	const { data, refetch } = useGetProductsUsersQuery();
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoadings] = useState(true);
 	const [editingProductId, setEditingProductId] = useState(null);
 	const [editedProduct, setEditedProduct] = useState({
 		precio: '',
@@ -21,11 +21,10 @@ function MisProductos() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			setIsLoading(true);
+			setIsLoadings(true);
 			await refetch();
-			setIsLoading(false);
+			setIsLoadings(false);
 		};
-
 		fetchData();
 	}, [refetch]);
 

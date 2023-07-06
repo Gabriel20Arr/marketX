@@ -133,7 +133,6 @@ const ProductList = () => {
 								<td>{prod.precio}</td>
 								<td>{prod.stock}</td>
 								<td>{prod.categorias[0]}</td>
-								<td>{prod.accion}</td>
 								<td>
 									<button onClick={() => handleDeleteProduct(prod._id,prod.categorias[0])}>
 										Eliminar

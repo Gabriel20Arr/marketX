@@ -20,12 +20,21 @@ const Landing = () => {
   const router = useRouter();
   const { dispatch } = useContext(Store);
 
-  const { data, refetch } = useGetUsersQuery(null);
+  const { data, refetch,error,isFetching,isLoading  } = useGetUsersQuery(null);
   useEffect(() => {
     refetch();
   }, [refetch]);
   // console.log(data);
-  
+  if (isLoading || isFetching) {
+    return <div>
+      <Loader/>
+    </div>
+  }
+  if (error) {
+    return <p>
+      Oops, ha habido un error, vuelva a intentarlo más tarde
+    </p>
+  }
   const home = (event) => {
     event.preventDefault();
     const guardado = data?.find((user) => user.correo === "invitado@gmail.com");
