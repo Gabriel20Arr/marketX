@@ -25,7 +25,6 @@ function Page() {
 		const fetchData = async () => {
 			await refetch();
 		};
-
 		fetchData();
 	}, [refetch]);
 
