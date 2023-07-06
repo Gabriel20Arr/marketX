@@ -1,34 +1,37 @@
 
-
+"use client"
 //////////////////
 
 import style from "./About.module.css";
-import Image from "next/image";
 import Link from "next/link";
 // import logo from "../../images/solologo.png";
 import { useSession } from "next-auth/react";
 import Loading from "@/src/components/Loaders/Loaders";
+import { useRouter } from "next/navigation";
 import Card from "./Tarjetas/Card";
 import santiImage from "./Tarjetas/imagenes/santi.webp.jpeg";
 import gabiImage from "./Tarjetas/imagenes/gabriel.webp.jpeg.jpeg"
 import juliImage from "./Tarjetas/imagenes/julian.webp.jpeg"
 import nachoImage from "./Tarjetas/imagenes/nacho.webp.jpeg"
 import daniel from "./Tarjetas/imagenes/daniel.webp.jpg"
+import leo from "./Tarjetas/imagenes/leo.webp.jpg"
 
 
 export default function About() {
   const { status } = useSession;
-
+  const router = useRouter();
   if (status === "loading") {
     return <Loading />;
   }
+  const goBack = () => {
+		router.back();
+	  };
   return (
     <div className={style.container}>
-      <div className={style.atrasCont}>
-        <Link href={"/home"} className={style.atras}>
-          Atrás
-        </Link>
-      </div>
+      
+          <div >
+       			 <button onClick={goBack} className={style.link}>Volver</button>
+      		</div>
 
       <div className={style.textContainer}>
         <h1 className={style.title}>Sobre nosotros</h1>
@@ -88,10 +91,10 @@ export default function About() {
             github="https://github.com/JulianSerante"
           />
           <Card
-            image="/person2.jpg"
+            image={leo}
             name="Leonel Ostrower"
-            linkedin="https://www.linkedin.com/in/persona2/"
-            github="https://github.com/persona2"
+            linkedin="https://www.linkedin.com/in/leonel-ostrower-30aa781b9/"
+            github="https://github.com/ostle"
           />
         </div>
       </div>

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './misCompras.module.css';
 import { useGetVentasQuery } from '../../redux/services/ventasApi';
-import Link from 'next/link';
 import Loading from '@/src/components/Loaders/Loaders';
 import { useRouter } from 'next/navigation';
 

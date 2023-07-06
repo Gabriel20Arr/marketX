@@ -3,6 +3,10 @@
     border-collapse: collapse;
 }
 
+.tabla{
+    margin: 0px 30px;
+}
+
 .userTable th,
 .userTable td {
     border: 1px solid #ccc;

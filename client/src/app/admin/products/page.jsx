@@ -3,13 +3,15 @@
 import React, { useEffect } from 'react';
 import { useGetProductsUsersQuery } from '../../../redux/services/productApi';
 import styles from './products.module.css';
-import Link from 'next/link';
 import axios from 'axios';
 import { enviarNotificacionPorCorreo } from '@/src/hooks/enviarCorreo';
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import { useRouter } from "next/navigation";
 
 const ProductList = () => {
 	const { data, refetch } = useGetProductsUsersQuery(null);
-
+	const router = useRouter();
 	const products = data?.flatMap(user => (
 		user.productos
 	))
@@ -66,37 +68,53 @@ const ProductList = () => {
     	);
 	}
 
-  	const handleDeleteProduct = async (id) => {
-		const confirme = window.confirm("Estas seguro de eliminar este producto?")
-		if(confirme) {
-			try {
-				await axios.delete(`https://marketx-production.up.railway.app/producto/eliminar/${id}`)
-				refetch();
-			} catch (error) {
-				console.log(error);
+  	const handleDeleteProduct = (id) => {
+		Swal.fire({
+			title: '¿Estás seguro?',
+			text: "No podrás revertirlo!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar',
+			confirmButtonText: 'Si, estoy seguro!'
+		  }).then( async(result) => {
+			if (result.isConfirmed) {
+				try {
+					await axios.delete(`https://marketx-production.up.railway.app/producto/eliminar/${id}`)
+					refetch();
+				} catch (error) {
+					console.log(error);
+				}
 			}
-		} 
+		  })
   	};
 
 	useEffect(() => {
 		refetch();
 	}, [refetch]);
-	
+
+	const goBack = () => {
+		router.back();
+	  };
 
 	return (
 		<div>
-			<Link href='/admin' className={styles.link}>
-				Volver
-			</Link>
+			<div >
+       			 <button onClick={goBack} className={styles.link}>Volver</button>
+      		</div>
 
 			<div className={styles.contenedorTitulo}>
 				<h1 className={styles.titulo}>Lista de Productos</h1>
 			</div>
 
 			<div className={styles.addButtonContainer}></div>
+
+			<div className={styles.tabla}>
 			<table className={styles.userTable}>
 				<thead>
 					<tr>
+						<th>IMAGEN</th>
 						<th>TITULO</th>
 						<th>CATEGORIA</th>
 						<th>PRECIO</th>
@@ -110,6 +128,7 @@ const ProductList = () => {
 					{products?.map((prod) => {
 						return (
 							<tr key={prod._id}>
+								<td><img src={prod.imagen} alt={prod.titulo} style={{width:"70px"}} /></td>
 								<td>{prod.titulo}</td>
 								<td>{prod.categoria}</td>
 								<td>{prod.precio}</td>
@@ -136,6 +155,7 @@ const ProductList = () => {
 					}
 				</tbody>
 			</table>
+			</div>
 		</div>
 	);
 };

@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useGetProductsUsersQuery } from '@/src/redux/services/productApi';
 import styles from './misProductos.module.css';
-import Link from 'next/link';
 import axios from 'axios';
 import Loading from '@/src/components/Loaders/Loaders';
 import { useRouter } from "next/navigation";
@@ -109,6 +108,7 @@ function MisProductos() {
 				<table className={styles.userTable}>
 					<thead>
 						<tr>
+							<th>Imagen</th>
 							<th>Título</th>
 							<th>Categoría</th>
 							<th>Precio</th>
@@ -119,6 +119,7 @@ function MisProductos() {
 					<tbody>
 						{productos.productos?.map((producto) => (
 							<tr key={producto._id}>
+								<th><img src={producto.imagen} alt={producto.titulo} style={{width:"70px"}}/></th>
 								<td>{producto.titulo}</td>
 								<td>{producto.categoria}</td>
 								<td>{producto.precio}</td>
