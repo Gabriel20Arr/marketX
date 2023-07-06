@@ -68,7 +68,7 @@ const success = async(req, res) => {
         const object = {valor: (elem.precio * elem.quantity), fecha, producto: elem._id};
 
         // await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
-        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object], carrito: []})
+        await UsuarioActualizado(usuario._id, {comprado:[...user.comprado,object]})
     } )
 
     const asunto = "La compra ha sido exitosa";

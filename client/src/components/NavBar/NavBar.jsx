@@ -10,6 +10,8 @@ import { useSession, signOut } from "next-auth/react";
 import { NavDropdown } from 'react-bootstrap';
 import { useGetUsersQuery } from "@/src/redux/services/userApi";
 import axios from 'axios';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 
 
 export default function Navigation() {
@@ -110,6 +112,26 @@ export default function Navigation() {
   const usuarioJSON = localStorage.getItem("usuario");
   const usuario = JSON.parse(usuarioJSON);
 
+  const handlePublicar = ()=>{
+    if (usuario.correo === "invitado@gmail.com") {
+      Swal.fire({
+				title: 'Debes tener una cuenta para publicar un producto',
+				showDenyButton: true,
+				showCancelButton: true,
+				confirmButtonText: 'Registrarse',
+				denyButtonText: `Iniciar Sesión`,
+			  }).then((result) => {
+				if (result.isConfirmed) {
+				  router.push('/registrarse');
+				} else if (result.isDenied) {
+				  router.push('/login');
+				}
+			  });
+			  return
+    }
+    router.push("/form")
+  }
+
   return (
     <nav style={{backgroundColor: "#030a32"}} class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
@@ -149,7 +171,7 @@ export default function Navigation() {
                   >
                     Publicar Producto
                   </Link> */}
-                  <button className={styles.publicar} onClick={()=>{router.push('/form')}} disabled={(usuario?.correo === "invitado@gmail.com")}>
+                  <button className={styles.publicar} onClick={handlePublicar}>
                     Publicar Producto
                   </button>
                 </div>
@@ -208,40 +230,40 @@ export default function Navigation() {
                     </NavDropdown.Item>
                   ) : null}
                   
-                  { (!usuario) ? 
-                  <NavDropdown.Divider /> &&
-                  <NavDropdown.Item
-                    style={{fontSize: '20px'}} 
-                    onClick={ handlerSalir }
-                  >
-                    Salir
-                  </NavDropdown.Item>
-                  : null
-                  }
                   
-                  { (usuario || (usuario?.direccion === "google")) ? (
-                  <NavDropdown.Item 
+                  { ((usuario || (usuario?.direccion === "google")) && (usuario.correo !== "invitado@gmail.com") ) ? (
+                    <NavDropdown.Item 
                     style={{fontSize: '20px'}}
                     onClick={ handlerSalir }
-                  >
+                    >
                     Cerrar sesión
                   </NavDropdown.Item>
                     ) : (
                       <div>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
-                        >
+                          onClick={() => handelrRouter('login')}
+                          >
                           Iniciar sesión
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           style={{fontSize: '20px'}} 
-                          onClick={() => handelrRouter}
-                        >
+                          onClick={() => handelrRouter('registrarse')}
+                          >
                           Registrarse
                         </NavDropdown.Item>
                       </div>
                     )
+                  }
+                  { (!usuario || (usuario.correo === "invitado@gmail.com")) ? 
+                  <NavDropdown.Divider /> &&
+                  <NavDropdown.Item
+                    style={{fontSize: '20px'}} 
+                    onClick={ () => handelrRouter('') }
+                  >
+                    Salir
+                  </NavDropdown.Item>
+                  : null
                   }
 
                 </NavDropdown>
